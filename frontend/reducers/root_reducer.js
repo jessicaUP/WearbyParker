@@ -7,3 +7,5 @@ const rootReducer = combineReducers({
   session,
   users
 })
+
+export default rootReducer;
