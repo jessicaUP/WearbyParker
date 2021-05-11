@@ -31,3 +31,27 @@ Migrating to CreateUsers (20210510181627)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-05-10 22:39:26 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/Users/jess/Desktop/Wearby Parker/WearbyParker/app/controllers/application_controller.rb:12: syntax error, unexpected tINTEGER, expecting keyword_do or '{' or '('
+... your password."] }, status 401
+...                            ^~~):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected tINTEGER, expecting keyword_do or '{' or '('
+app/controllers/static_pages_controller.rb:1:in `<top (required)>'
+Started GET "/" for ::1 at 2021-05-10 22:41:39 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 792ms (Views: 785.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-10 22:43:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 71ms (Views: 64.4ms | ActiveRecord: 0.0ms)
+
+

@@ -1,4 +1,7 @@
-# /.bundle
-# bundle.js
-# bundle.js.map
+/.bundle
+bundle.js
+bundle.js.map
 
+node_modules/
+
+currentRoutes

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_logged_in
     unless current_user
-      render json: { base: ["The information you entered is incorrect. Try again or reset your password."] }, status 401
+      render json: { base: ['The information you entered is incorrect. Try again or reset your password.'] }, status: 401
     end
   end
 
@@ -24,9 +24,7 @@ class ApplicationController < ActionController::Base
   def logout!
     current_user.reset_session_token!
     session[:session_token] = nil
+    @current_user = nil
   end
-
-
-
 
 end
