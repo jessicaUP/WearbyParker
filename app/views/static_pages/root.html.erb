@@ -1,0 +1,12 @@
+<% if logged_in? %>
+  <script id='bootstrap-current-user' type='text/javascript'>
+  	window.currentUser = <%= render(
+      'api/users/user.json.jbuilder',
+  		user: current_user
+    ).html_safe %>
+  </script>
+<% end %>
+
+<main id='root'>
+  <img src='https://giphy.com/embed/J6dqg3BbXBXtwk9JYn/video'/>
+</main>
