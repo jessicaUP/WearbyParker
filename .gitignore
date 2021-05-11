@@ -1,6 +1,6 @@
 /.bundle
-bundle.js
-bundle.js.map
+# bundle.js
+# bundle.js.map
 
 /public/assets 
 
