@@ -7,6 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if logged_in? %>
+    <script id='current-user' type='text/javascript'>
+      window.currentUser = <%= render('api/users/user.json.jbuilder',
+      		user: current_user).html_safe %>
+      </script>
+    <% end %>
+    <script src="../../assets/bundle.js"></script>
   </head>
 
   <body>
