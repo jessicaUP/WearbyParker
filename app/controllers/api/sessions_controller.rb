@@ -9,6 +9,7 @@ class Api::SessionController < ApplicationController
     if @user 
       login!(@user)
       render '/api/account'
+      # need to check this
     else
       render json: ["The information you entered is incorrect. Try again or reset your password."], status 401
     end
@@ -18,7 +19,14 @@ class Api::SessionController < ApplicationController
     @user = current_user
     if @user
       logout!
-      render
+      render json: ["You're now signed-out"]
+        # status code?
+    else
+      render json: ["Not logged in"]
+        # status code?
+    end
+  end
+
 
 
 end

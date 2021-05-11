@@ -1,5 +1,45 @@
 {
-  "name": "WearbyParker",
+  "name": "wearby_parker",
   "private": true,
-  "dependencies": {}
+  "description": "Jessica Uphoff's clone of Warby Parker site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
+    "webpack": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicaUP/WearbyParker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicaUP/WearbyParker/issues"
+  },
+  "homepage": "https://github.com/jessicaUP/WearbyParker#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "webpack-cli": "^4.7.0"
+  },
+  "devDependencies": {
+    "webpack-query-loader": "^2.0.5"
+  }
 }
