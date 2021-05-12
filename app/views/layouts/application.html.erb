@@ -14,11 +14,10 @@
     <% if logged_in? %>
       <script id='current-user' type='text/javascript'>
         window.currentUser = 
-          <%= render('api/user/user.json.jbuilder',
+          <%= render('api/users/user.json.jbuilder',
       		  user: current_user).html_safe %>
       </script>
     <% end %>
-    <script src="../../assets/bundle.js"></script>
   </head>
 
   <body>
