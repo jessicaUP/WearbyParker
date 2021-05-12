@@ -8,7 +8,7 @@ class SignupForm extends React.Component {
       email: '',
       password: ''
     };
-
+    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,13 +20,11 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createUser(this.state)
-      // .then(() => this.props.history.push('/account'))
+    this.props.createNewUser(this.state)
+      .then(() => this.props.history.push('/'))
   }
 
   render() {
-
-
 
     return (
       <>

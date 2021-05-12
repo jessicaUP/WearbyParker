@@ -12,6 +12,11 @@ button {
 button:hover {
   background-color: rgb(2, 146, 203);
 }
+button.demo {
+  border: 1px solid lightgray;
+  background-color: white;
+  color: lightgray;
+}
 
 h2 {
   font-size: 32px;
@@ -55,6 +60,7 @@ h2 {
   height: 314px;
   width: 386px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
