@@ -9,6 +9,7 @@ class SigninForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestDemoLogin = this.guestDemoLogin.bind(this);
   }
 
   handleInput(type) {
@@ -18,21 +19,17 @@ class SigninForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
-    console.log(e)
-    e.preventDefault();
+    // e.preventDefault();
+    alert("Submitted")
     this.props.login(this.state)
-      // .then(() => this.props.history.push('/'))
   }
 
-  // guestDemoLogin() {
-
-  //   return (
-  //     <div className="demo-login">
-  //       <button onClick={this.}>Guest Demo Login</button>
-  //     </div>
-  //   )
-  // }
+  guestDemoLogin() {
+    this.setState = {
+      email: 'user@me.com',
+      password: 'password123'
+    };
+  }
 
   render() {
     console.log(this.state)
@@ -59,8 +56,9 @@ class SigninForm extends React.Component {
             placeholder='Password'
           />
           </div>
-          <button onClick={this.handleSubmit} >Sign in</button>
+          <button onClick={this.handleSubmit}>Sign in</button>
         </form>
+        <button className='demo' onClick={this.guestDemoLogin}>DEMO USER</button>
       </div>
       </>
     )
