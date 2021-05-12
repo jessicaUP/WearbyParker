@@ -1,0 +1,58 @@
+button {
+  // color: rgba(255, 255, 255, 0.5);
+  color: white;
+  background-color: rgb(0, 162, 225);
+  font-size: 15px;
+  font-weight: lighter;
+  border: none;
+  height: 46px;
+  width: 385px;
+  padding: 6px 16px 6px 16px;
+}
+button:hover {
+  background-color: rgb(2, 146, 203);
+}
+
+h2 {
+  font-size: 32px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 70px;
+  text-align: center;
+}
+
+.input {
+  color: rgb(136, 136, 136);
+  background-color: rgb(247, 247, 247);
+  font-size: 15px;
+  font-weight: lighter;
+  height: 22px;
+  width: 324px;
+  padding: 12px 40px 12px 20px;
+  border: 1px solid lightgray;
+  margin-bottom: 12px;
+}
+
+.inputs {
+  margin-top: 30px;
+}
+
+.signup-form {
+  height: 314px;
+  width: 386px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signin-form {
+  height: 314px;
+  width: 386px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

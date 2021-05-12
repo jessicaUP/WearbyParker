@@ -8,10 +8,10 @@ class Api::SessionController < ApplicationController
 
     if @user 
       login!(@user)
-      render '/api/account'
+      render '/api/user/show'
       # need to check this
     else
-      render json: ["The information you entered is incorrect. Try again or reset your password."], status: 401
+      render json: ["The information you entered is incorrect. Try again or reset your password."], status 401
     end
   end
 

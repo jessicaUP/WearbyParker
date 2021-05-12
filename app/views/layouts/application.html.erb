@@ -8,10 +8,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
     <% if logged_in? %>
-    <script id='current-user' type='text/javascript'>
-      window.currentUser = <%= render('api/users/user.json.jbuilder',
-      		user: current_user).html_safe %>
+      <script id='current-user' type='text/javascript'>
+        window.currentUser = 
+          <%= render('api/user/user.json.jbuilder',
+      		  user: current_user).html_safe %>
       </script>
     <% end %>
     <script src="../../assets/bundle.js"></script>

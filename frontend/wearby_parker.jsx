@@ -7,13 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = undefined;
   
   if (window.currentUser) {
+    const { currentUser } = window;
+    const { id } = currentUser;
     preloadedState = {
-      session: { id: window.currentUser.id },
-      entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+      entitities: {
+        users: {
+          [id]: currentUser
+        }
+      },
+      session: { id }
       }
     };
-  } 
   
   const root = document.getElementById('root')
   const store = configureStore(preloadedState);
