@@ -22,7 +22,7 @@ h2 {
 
 .input {
   color: rgb(136, 136, 136);
-  background-color: rgb(247, 247, 247);
+  background-color: white;
   font-size: 15px;
   font-weight: lighter;
   height: 22px;
@@ -32,6 +32,14 @@ h2 {
   margin-bottom: 12px;
 }
 
+.input:placeholder-shown:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.input:placeholder-shown {
+  color: rgb(182, 182, 182);
+  background-color: rgb(247, 247, 247);
+}
 .inputs {
   margin-top: 30px;
 }
