@@ -9,9 +9,17 @@ button {
   width: 385px;
   padding: 6px 16px 6px 16px;
 }
+
+.all-form {
+  position: relative;
+  top: 100px;
+  justify-content: center;
+}
+
 button:hover {
   background-color: rgb(2, 146, 203);
 }
+
 .demo-button {
   border: none;
   background-color: white;
@@ -75,4 +83,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.break-line {
+  border-top: 1px solid lightgray;
 }
