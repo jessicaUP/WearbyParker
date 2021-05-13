@@ -19,11 +19,6 @@ class SignupForm extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.createNewUser(this.state)
-      .then(() => this.props.history.push('/'))
-  }
 
   handleDemo(e) {
     e.preventDefault();
@@ -33,6 +28,25 @@ class SignupForm extends React.Component {
     this.props.login(user)
       .then(() => this.props.history.push('/account'))
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.submitClear()) {
+      this.props.createNewUser(this.state)
+        .then(() => this.props.history.push('/'))
+    }
+  }
+
+  submitClear() {
+    let sendStatus = true;
+    let inputs = Object.values(this.state);
+
+    inputs.forEach(value => {
+      if (value === '') sendStatus = false;
+    });
+    return sendStatus;
+  }
+
 
 
   render() {
@@ -69,7 +83,7 @@ class SignupForm extends React.Component {
               placeholder='Password'
             />
             </div>
-            <button >Create account</button>
+            <button className={`click-${this.submitClear()}`} >Create account</button>
             <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
           </form>
         </div>

@@ -628,10 +628,12 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      submitCleared: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
+    _this.submitClearCheck = _this.submitClearCheck.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -642,24 +644,19 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         _this2.setState(_defineProperty({}, type, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this3 = this;
 
-      e.preventDefault();
-      this.props.login(this.state).then(function () {
-        return _this3.props.history.push('/account');
-      });
+        _this2.setState({
+          submitCleared: _this2.submitClearCheck()
+        });
+      };
     }
   }, {
     key: "handleDemo",
     value: function handleDemo(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       e.preventDefault();
+      debugger;
       var user = {
         email: 'uphoff.jessica@gmail.com',
         password: 'wearbyparker'
@@ -667,8 +664,31 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       this.handleInput('email');
       this.handleInput('password');
       this.props.login(user).then(function () {
-        return _this4.props.history.push('/account');
+        return _this3.props.history.push('/account');
       });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+
+      if (this.submitClearCheck()) {
+        this.props.login(this.state).then(function () {
+          return _this4.props.history.push('/account');
+        });
+      }
+    }
+  }, {
+    key: "submitClearCheck",
+    value: function submitClearCheck() {
+      var sendStatus = true;
+      var inputs = Object.values(this.state);
+      inputs.forEach(function (value) {
+        if (value === '') sendStatus = false;
+      });
+      return sendStatus;
     }
   }, {
     key: "render",
@@ -699,7 +719,9 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.password,
         onChange: this.handleInput('password'),
         placeholder: "Password"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "click-".concat(this.state.submitCleared)
+      }, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemo
       }, "Demo user?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
@@ -827,19 +849,9 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this3 = this;
-
-      e.preventDefault();
-      this.props.createNewUser(this.state).then(function () {
-        return _this3.props.history.push('/');
-      });
-    }
-  }, {
     key: "handleDemo",
     value: function handleDemo(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       e.preventDefault();
       var user = {
@@ -849,8 +861,31 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       this.handleInput('email');
       this.handleInput('password');
       this.props.login(user).then(function () {
-        return _this4.props.history.push('/account');
+        return _this3.props.history.push('/account');
       });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+
+      if (this.submitClear()) {
+        this.props.createNewUser(this.state).then(function () {
+          return _this4.props.history.push('/');
+        });
+      }
+    }
+  }, {
+    key: "submitClear",
+    value: function submitClear() {
+      var sendStatus = true;
+      var inputs = Object.values(this.state);
+      inputs.forEach(function (value) {
+        if (value === '') sendStatus = false;
+      });
+      return sendStatus;
     }
   }, {
     key: "render",
@@ -885,7 +920,9 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.password,
         onChange: this.handleInput('password'),
         placeholder: "Password"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Create account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "click-".concat(this.submitClear())
+      }, "Create account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemo
       }, "Demo user?"))));
