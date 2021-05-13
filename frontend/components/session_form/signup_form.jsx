@@ -34,41 +34,46 @@ class SignupForm extends React.Component {
       .then(() => this.props.history.push('/account'))
   }
 
+
   render() {
+    let error = (this.props.errors.session.length) ? (
+      <p className='errors' >{this.props.errors.session[0]}</p>) : ''
+
 
     return (
-      <>
-      <h2>Nice to meet you!</h2>
-      <div className='signup-form'>
-          <form onSubmit={this.handleSubmit} className='session-form' >
-          <div className='inputs'>
-          <input
-            className='input'
-            type='text'
-            value={this.state.name}
-            onChange={this.handleInput('name')}
-            placeholder='First and last name'
-          />
-          <input
-            className='input'
-            type='text'
-            value={this.state.email}
-            onChange={this.handleInput('email')}
-            placeholder='Email address'
-          />
-          <input
-            className='input'
-            type='password'
-            value={this.state.password}
-            onChange={this.handleInput('password')}
-            placeholder='Password'
-          />
-          </div>
-          <button >Create account</button>
-          <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
-        </form>
+      <div className='all-form' >
+        <h2>Nice to meet you!</h2>
+        <div className='signup-form'>
+            <form onSubmit={this.handleSubmit} className='session-form' >
+            <div className='inputs'>
+            { error }
+            <input
+              className='input'
+              type='text'
+              value={this.state.name}
+              onChange={this.handleInput('name')}
+              placeholder='First and last name'
+            />
+            <input
+              className='input'
+              type='text'
+              value={this.state.email}
+              onChange={this.handleInput('email')}
+              placeholder='Email address'
+            />
+            <input
+              className='input'
+              type='password'
+              value={this.state.password}
+              onChange={this.handleInput('password')}
+              placeholder='Password'
+            />
+            </div>
+            <button >Create account</button>
+            <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
+          </form>
+        </div>
       </div>
-      </>
     )
   }
 }
