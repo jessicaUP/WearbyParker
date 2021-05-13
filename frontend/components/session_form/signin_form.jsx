@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class SigninForm extends React.Component {
   constructor(props) {
@@ -9,7 +11,7 @@ class SigninForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.guestDemoLogin = this.guestDemoLogin.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleInput(type) {
@@ -19,16 +21,18 @@ class SigninForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // e.preventDefault();
-    alert("Submitted")
+    e.preventDefault();
     this.props.login(this.state)
-  }
-
-  guestDemoLogin() {
-    this.setState = {
-      email: 'user@me.com',
-      password: 'password123'
-    };
+      .then(() => this.props.history.push('/account'))
+    }
+    
+  handleDemo(e) {
+    e.preventDefault();
+    let user = { email: 'uphoff.jessica@gmail.com', password: 'wearbyparker' };
+    this.handleInput('email');
+    this.handleInput('password');
+    this.props.login(user)
+      .then(() => this.props.history.push('/account'))
   }
 
   render() {
@@ -57,8 +61,12 @@ class SigninForm extends React.Component {
           />
           </div>
           <button onClick={this.handleSubmit}>Sign in</button>
+          <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
         </form>
-        <button className='demo' onClick={this.guestDemoLogin}>DEMO USER</button>
+        <h2>I'm new here</h2>
+        <button 
+          className='demo-button'
+          onClick={() => this.props.history.push('/signup')}>Create an account</button>
       </div>
       </>
     )

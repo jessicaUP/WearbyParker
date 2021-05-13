@@ -6,18 +6,18 @@ import Splash from './splash/splash'
 
 import SigninContainer from './session_form/signin_form_container';
 import SignupContainer from './session_form/signup_form_container';
-// import SplashContainer from './session_form/splash_container';
+import AccountContainer from './account/account_container';
 
 
 
 const App = () => (
   <>
   <Route path='/' component={NavBarContainer}></Route>
-  <Splash />
   <Switch>
     <AuthRoute path='/signin' component={SigninContainer} />
     <AuthRoute path='/signup' component={SignupContainer} />
     <ProtectedRoute path='/account' component={AccountContainer} />
+    <Splash />
   </Switch>
   </>
 );

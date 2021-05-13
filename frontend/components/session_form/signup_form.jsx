@@ -10,6 +10,7 @@ class SignupForm extends React.Component {
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleInput(type) {
@@ -19,10 +20,18 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     this.props.createNewUser(this.state)
       .then(() => this.props.history.push('/'))
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    let user = { email: 'uphoff.jessica@gmail.com', password: 'wearbyparker' };
+    this.handleInput('email');
+    this.handleInput('password');
+    this.props.login(user)
+      .then(() => this.props.history.push('/account'))
   }
 
   render() {
@@ -56,6 +65,7 @@ class SignupForm extends React.Component {
           />
           </div>
           <button >Create account</button>
+          <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
         </form>
       </div>
       </>
