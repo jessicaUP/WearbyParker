@@ -7,32 +7,48 @@ class SigninForm extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      submitCleared: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+    this.submitClearCheck = this.submitClearCheck.bind(this);
   }
 
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.currentTarget.value });
+      this.setState({ submitCleared: this.submitClearCheck() })
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.login(this.state)
-      .then(() => this.props.history.push('/account'))
-    }
-    
   handleDemo(e) {
     e.preventDefault();
+    debugger
     let user = { email: 'uphoff.jessica@gmail.com', password: 'wearbyparker' };
     this.handleInput('email');
     this.handleInput('password');
     this.props.login(user)
+    .then(() => this.props.history.push('/account'))
+  }
+  
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.submitClearCheck()) {
+        this.props.login(this.state)
       .then(() => this.props.history.push('/account'))
+    }
+  }
+
+  submitClearCheck() {
+    let sendStatus = true;
+    let inputs = Object.values(this.state);
+    
+    inputs.forEach(value => {
+      if (value === '') sendStatus = false;
+    });
+    return sendStatus;
   }
 
   render() {
@@ -61,8 +77,8 @@ class SigninForm extends React.Component {
               placeholder='Password'
             />
             </div>
-            <button >Sign in</button>
-            <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
+            <button className={`click-${this.state.submitCleared}`} >Sign in</button>
+            <button className='demo-button' onClick={this.handleDemo} >Demo user?</button>
           </form>
           <hr className='break-line' />
           <h2>I'm new here</h2>
