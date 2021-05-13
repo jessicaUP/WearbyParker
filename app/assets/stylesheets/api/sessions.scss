@@ -12,10 +12,16 @@ button {
 button:hover {
   background-color: rgb(2, 146, 203);
 }
-button.demo {
-  border: 1px solid lightgray;
+.demo-button {
+  border: none;
   background-color: white;
-  color: lightgray;
+  color: rgb(0, 164, 228);
+}
+
+.demo-button:hover {
+  border: none;
+  background-color: white;
+  color: rgb(2, 146, 203);
 }
 
 h2 {

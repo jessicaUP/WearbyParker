@@ -4,12 +4,11 @@ import {
 } from '../actions/session_actions';
 
 const _nullSession = {
-  currentUser: null,
+  id: null
 }
 
 const sessionReducer = (state = _nullSession, action) => {
   Object.freeze(state);
-  debugger
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, { id: action.currentUser.id });
