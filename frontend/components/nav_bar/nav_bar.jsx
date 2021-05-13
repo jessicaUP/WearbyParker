@@ -3,22 +3,32 @@ import { Link } from 'react-router-dom';
 
 const NavBar = ({ id }) => {
   const accountButton = !id ? (
-    <Link to='/signin' className='account-button'>Sign in</Link>
+    <div className='side-r' >
+      <Link to='/signin' className='nav-link'>Sign in</Link>
+    </div>
     ) : (
-    <Link to='/account' className='account-button'>Account</Link>
+    <div className='side-r' >
+      <Link to='/account' className='nav-link'>Account</Link>
+    </div >
   )
 
   
-
-  
   return (
+    <>
+    <div className='ribbon' >
+      <p className='ribbon' >The latest on shopping with us.</p>
+    </div>
     <header className='nav-bar'>
-      <a href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' target="_blank">Jessica Uphoff Linkedin></a>
-      <h3>WEARBY PARKER</h3>
-      <div>
-        {accountButton}
+      <div className='side-l' >
+        <a 
+          className='nav-link' 
+          href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
+          target="_blank">Jessica Uphoff Linkedin></a>
       </div>
+      <h3>WEARBY PARKER</h3>
+      {accountButton}
     </header>
+    </>
   )
 }
 
