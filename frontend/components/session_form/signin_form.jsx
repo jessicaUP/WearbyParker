@@ -36,15 +36,16 @@ class SigninForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    console.log(this.props)
+    let error = (this.props.errors.session.length) ? (
+      <p className='errors' >{this.props.errors.session[0]}</p>) : ''
 
     return (
       <div className='all-form' >
         <h2>Sign in</h2>
         <div className='signin-form'>
-          <form className='session-form' >
+          <form onSubmit={this.handleSubmit} className='session-form' >
             <div className='inputs'>
+            { error }
             <input
               className='input'
               type='text'
@@ -60,7 +61,7 @@ class SigninForm extends React.Component {
               placeholder='Password'
             />
             </div>
-            <button onClick={this.handleSubmit}>Sign in</button>
+            <button >Sign in</button>
             <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
           </form>
           <hr className='break-line' />
