@@ -1,19 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ id }) => {
-  const accountButton = !id ? (
-    <div className='side-r' >
-      <Link to='/signin' className='nav-link'>Sign in</Link>
-    </div>
-    ) : (
-    <div className='side-r' >
-      <Link to='/account' className='nav-link'>Account</Link>
-    </div >
-  )
+
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = this.props.currentUser;
+  }
 
   
-  return (
+  render() {
+    const accountButton = (
+      this.props.currentUser ? (
+        <div className='side-r' >
+          <Link to='/account' className='nav-link'>Account</Link>
+        </div >
+        ) : (
+        <div className='side-r' >
+          <Link to='/signin' className='nav-link'>Sign in</Link>
+        </div>
+        )
+      )
+    
+    return (
     <>
     <div className='ribbon' >
       <p className='ribbon' >The latest on shopping with us.</p>
@@ -26,10 +36,11 @@ const NavBar = ({ id }) => {
           target="_blank">Jessica Uphoff Linkedin></a>
       </div>
       <h3>WEARBY PARKER</h3>
-      {accountButton}
+        {accountButton}
     </header>
     </>
-  )
+    )
+  }
 }
 
 export default NavBar;
