@@ -5,7 +5,7 @@ import NavBar from './nav_bar';
 
 
 const mSTP = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.id
 });
 
 export default connect(mSTP)(NavBar);
