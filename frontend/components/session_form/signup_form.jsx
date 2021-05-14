@@ -6,7 +6,8 @@ class SignupForm extends React.Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      submitCleared: false
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,6 @@ class SignupForm extends React.Component {
       this.setState({ [type]: e.target.value });
     }
   }
-
 
   handleDemo(e) {
     e.preventDefault();

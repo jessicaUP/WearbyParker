@@ -832,7 +832,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      submitCleared: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
