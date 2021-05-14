@@ -9158,3 +9158,62 @@ Unpermitted parameter: :submitCleared
 Completed 401 Unauthorized in 410ms (Views: 0.3ms | ActiveRecord: 57.2ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5904349680232060365)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20210514152433)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210514152433_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20210514152433_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20210514152433_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20210514152433_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20210514152433_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514152433"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5904349680232060365)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mGender Load (2.0ms)[0m  [1m[34mSELECT "genders".* FROM "genders"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGender Create (4.4ms)[0m  [1m[32mINSERT INTO "genders" ("gender") VALUES ($1) RETURNING "id"[0m  [["gender", "Men"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGender Load (0.5ms)[0m  [1m[34mSELECT "genders".* FROM "genders"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGender Create (1.3ms)[0m  [1m[32mINSERT INTO "genders" ("gender") VALUES ($1) RETURNING "id"[0m  [["gender", "Women"]]
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGender Load (2.1ms)[0m  [1m[34mSELECT  "genders".* FROM "genders" WHERE "genders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mProduct Load (4.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (3.0ms)[0m  [1m[32mINSERT INTO "products" ("gender_id", "name", "color_name", "details", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["gender_id", 2], ["name", "Halton"], ["color_name", "Jet Black with Polished Gold"], ["details", "Halton's quiet confidence comes from its distinguished features: a mid-century acetate silhouette (with an angular bottom!), Art Deco-inspired metal temples, sleek temple tips, and a Graduated Rivet design.\nMade from hand-polished cellulose acetate and stainless steel\n\nAkulon-coated screws for durability\n\nHalton is available in a medium width\nIf your face is average in size, which is most common, this frame should fit you well. Select a few different options in a free Home Try-On."], ["price", 145.0]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProduct Load (9.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mActiveStorage::Attachment Load (2.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "photo"], ["LIMIT", 1]]

@@ -3,6 +3,9 @@ class Product < ApplicationRecord
   validates :gender_id, :name, :color_name, :details, :price, presence: true
   validates :gender_id, inclusion: { in: [1, 2] }
 
+#AWS
+  has_one_attached :photo 
+
 #GENDER
   belongs_to :gender,
     foreign_key: :gender_id,
