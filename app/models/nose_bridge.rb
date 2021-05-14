@@ -1,7 +1,7 @@
 class NoseBridge < ApplicationRecord
 
   validates :nose_bridge, presence: true
-  validates :nose_bridge, inclusion: { in: ['Standard', 'Low-bridge'. 'Fit'] }
+  validates :nose_bridge, inclusion: { in: ['Standard', 'Low-bridge', 'Fit'] }
 
   has_many :joins,
     foreign_key: :nose_bridge_id,
