@@ -656,7 +656,6 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      debugger;
       var user = {
         email: 'uphoff.jessica@gmail.com',
         password: 'wearbyparker'
