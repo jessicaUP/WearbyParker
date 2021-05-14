@@ -10,10 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_232610) do
+ActiveRecord::Schema.define(version: 2021_05_14_132554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "colors", force: :cascade do |t|
+    t.string "color", null: false
+  end
+
+  create_table "frame_widths", force: :cascade do |t|
+    t.string "frame_width", null: false
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.string "gender", null: false
+    t.index ["gender"], name: "index_genders_on_gender"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "material", null: false
+  end
+
+  create_table "nose_bridges", force: :cascade do |t|
+    t.string "nose_bridge", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "gender_id", null: false
+    t.string "name", null: false
+    t.string "color_name", null: false
+    t.text "details", null: false
+    t.float "price", null: false
+    t.index ["gender_id"], name: "index_products_on_gender_id"
+    t.index ["name"], name: "index_products_on_name"
+    t.index ["price"], name: "index_products_on_price"
+  end
+
+  create_table "products_colors", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "color_id", null: false
+  end
+
+  create_table "products_frame_widths", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "frame_width_id", null: false
+  end
+
+  create_table "products_materials", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "material_id", null: false
+  end
+
+  create_table "products_nose_bridges", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "nose_bridge_id", null: false
+  end
+
+  create_table "products_shapes", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "shape_id", null: false
+  end
+
+  create_table "shapes", force: :cascade do |t|
+    t.string "shape", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
