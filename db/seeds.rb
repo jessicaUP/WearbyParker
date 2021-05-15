@@ -105,122 +105,122 @@ NoseBridge.destroy_all
 ProductsNoseBridge.destroy_all
 
 #USERS --> last in user group
-jessica = User.create!(name: 'Jessica Uphoff', password: 'killercat', email: 'jessica@uphoff.com')
-nick = User.create!(name: 'Nick Missel', password: 'killercat', email: 'nick@missel.com')
-morgan = User.create!(name: 'Morgan Fritz', password: 'killercat', email: 'morgan@fritz.com')
-gabby = User.create!(name: 'Gabby West', password: 'killercat', email: 'gabby@west.com')
-karl = User.create!(name: 'Karl Brown', password: 'killercat', email: 'karl@brown.com')
-brad = User.create!(name: 'Brad Pitt', password: 'killercat', email: 'brad@pitt.com')
-bill = User.create!(name: 'Bill Skarsgard', password: 'killercat', email: 'bill@skarsgard.com')
-sam = User.create!(name: 'Samantha Frank', password: 'killercat', email: 'samantha@frank.com')
-claire = User.create!(name: 'Claire Rose', password: 'killercat', email: 'claire@rose.com')
-billy = User.create!(name: 'Billy Bob', password: 'killercat', email: 'billy@bob.com')
+jessica = User.create!(id: 1, name: 'Jessica Uphoff', password: 'killercat', email: 'jessica@uphoff.com')
+nick = User.create!(id: 2, name: 'Nick Missel', password: 'killercat', email: 'nick@missel.com')
+morgan = User.create!(id: 3, name: 'Morgan Fritz', password: 'killercat', email: 'morgan@fritz.com')
+gabby = User.create!(id: 4, name: 'Gabby West', password: 'killercat', email: 'gabby@west.com')
+karl = User.create!(id: 5, name: 'Karl Brown', password: 'killercat', email: 'karl@brown.com')
+brad = User.create!(id: 6, name: 'Brad Pitt', password: 'killercat', email: 'brad@pitt.com')
+bill = User.create!(id: 7, name: 'Bill Skarsgard', password: 'killercat', email: 'bill@skarsgard.com')
+sam = User.create!(id: 8, name: 'Samantha Frank', password: 'killercat', email: 'samantha@frank.com')
+claire = User.create!(id: 9, name: 'Claire Rose', password: 'killercat', email: 'claire@rose.com')
+billy = User.create!(id: 10, name: 'Billy Bob', password: 'killercat', email: 'billy@bob.com')
 
 
 #FILTERS --> first in product group
 
-Gender.create!(gender: 'Women')
-Gender.create!(gender: 'Men')
+Gender.create!(id: 1, gender: 'Women')
+Gender.create!(id: 2, gender: 'Men')
 
-FrameWidth.create!(frame_width: 'Extra narrow') #1
-FrameWidth.create!(frame_width: 'Narrow') #2
-FrameWidth.create!(frame_width: 'Medium') #3
-FrameWidth.create!(frame_width: 'Wide') #4
-FrameWidth.create!(frame_width: 'Extra wide') #5
+FrameWidth.create!(id: 1, frame_width: 'Extra narrow') #1
+FrameWidth.create!(id: 2, frame_width: 'Narrow') #2
+FrameWidth.create!(id: 3, frame_width: 'Medium') #3
+FrameWidth.create!(id: 4, frame_width: 'Wide') #4
+FrameWidth.create!(id: 5, frame_width: 'Extra wide') #5
 
-Shape.create!(shape: 'Rectangle') #1
-Shape.create!(shape: 'Square') #2
-Shape.create!(shape: 'Round') #3
-Shape.create!(shape: 'Cat-eye') #4
-Shape.create!(shape: 'Aviator') #5
+Shape.create!(id: 1, shape: 'Rectangle') #1
+Shape.create!(id: 2, shape: 'Square') #2
+Shape.create!(id: 3, shape: 'Round') #3
+Shape.create!(id: 4, shape: 'Cat-eye') #4
+Shape.create!(id: 5, shape: 'Aviator') #5
 
-Color.create!(color: 'Black') #1
-Color.create!(color: 'Tortoise') #2
-Color.create!(color: 'Two-tone') #3
-Color.create!(color: 'Crystal') #4
-Color.create!(color: 'Grey') #5
-Color.create!(color: 'Brown') #6
-Color.create!(color: 'Silver') #7
-Color.create!(color: 'Gold') #8
-Color.create!(color: 'Blue') #9
-Color.create!(color: 'Pink') #10
-Color.create!(color: 'Green') #11
-Color.create!(color: 'Red') #12
+Color.create!(id: 1, color: 'Black') #1
+Color.create!(id: 2, color: 'Tortoise') #2
+Color.create!(id: 3, color: 'Two-tone') #3
+Color.create!(id: 4, color: 'Crystal') #4
+Color.create!(id: 5, color: 'Grey') #5
+Color.create!(id: 6, color: 'Brown') #6
+Color.create!(id: 7, color: 'Silver') #7
+Color.create!(id: 8, color: 'Gold') #8
+Color.create!(id: 9, color: 'Blue') #9
+Color.create!(id: 10, color: 'Pink') #10
+Color.create!(id: 11, color: 'Green') #11
+Color.create!(id: 12, color: 'Red') #12
 
-Material.create!(material: 'Metal') #1
-Material.create!(material: 'Acetate') #2
-Material.create!(material: 'Mixed') #3
+Material.create!(id: 1, material: 'Metal') #1
+Material.create!(id: 2, material: 'Acetate') #2
+Material.create!(id: 3, material: 'Mixed') #3
 
-NoseBridge.create!(nose_bridge: 'Standard') #1
-NoseBridge.create!(nose_bridge: 'Low bridge fit') #2
+NoseBridge.create!(id: 1, nose_bridge: 'Standard') #1
+NoseBridge.create!(id: 2, nose_bridge: 'Low bridge fit') #2
 
 
 #PRODUCTS --> 2nd product group
 
-w1_ainsley = Product.create!(gender_id: 1, name: 'Ainsley', color_name: 'Jet Black', details: ainsley, price: 95)
-m2_ainsley = Product.create!(gender_id: 2, name: 'Ainsley', color_name: 'Jet Black', details: ainsley, price: 95)
-w3_ainsley = Product.create!(gender_id: 1, name: 'Ainsley', color_name: 'Striped Cypress', details: ainsley, price: 95)
-m4_ainsley = Product.create!(gender_id: 2, name: 'Ainsley', color_name: 'Striped Cypress', details: ainsley, price: 95)
+w1_ainsley = Product.create!(id: 1, gender_id: 1, name: 'Ainsley', color_name: 'Jet Black', details: ainsley, price: 95)
+m2_ainsley = Product.create!(id: 2, gender_id: 2, name: 'Ainsley', color_name: 'Jet Black', details: ainsley, price: 95)
+w3_ainsley = Product.create!(id: 3, gender_id: 1, name: 'Ainsley', color_name: 'Striped Cypress', details: ainsley, price: 95)
+m4_ainsley = Product.create!(id: 4, gender_id: 2, name: 'Ainsley', color_name: 'Striped Cypress', details: ainsley, price: 95)
 
-w5_butler = Product.create!(gender_id: 1, name: 'Butler', color_name: 'Teal Tortoise', details: butler, price: 95)
-m6_butler = Product.create!(gender_id: 2, name: 'Butler', color_name: 'Teal Tortoise', details: butler, price: 95)
-w7_butler = Product.create!(gender_id: 1, name: 'Butler', color_name: 'Butterscotch Tortoise', details: butler, price: 95)
-m8_butler = Product.create!(gender_id: 2, name: 'Butler', color_name: 'Butterscotch Tortoise', details: butler, price: 95)
-w9_butler = Product.create!(gender_id: 1, name: 'Butler', color_name: 'Shoreline Fade', details: butler, price: 95)
-m10_butler = Product.create!(gender_id: 2, name: 'Butler', color_name: 'Shoreline Fade', details: butler, price: 95)
-w11_butler = Product.create!(gender_id: 1, name: 'Butler', color_name: 'Jet Black', details: butler, price: 95)
-m12_butler = Product.create!(gender_id: 2, name: 'Butler', color_name: 'Jet Black', details: butler, price: 95)
+w5_butler = Product.create!(id: 5, gender_id: 1, name: 'Butler', color_name: 'Teal Tortoise', details: butler, price: 95)
+m6_butler = Product.create!(id: 6, gender_id: 2, name: 'Butler', color_name: 'Teal Tortoise', details: butler, price: 95)
+w7_butler = Product.create!(id: 7, gender_id: 1, name: 'Butler', color_name: 'Butterscotch Tortoise', details: butler, price: 95)
+m8_butler = Product.create!(id: 8, gender_id: 2, name: 'Butler', color_name: 'Butterscotch Tortoise', details: butler, price: 95)
+w9_butler = Product.create!(id: 9, gender_id: 1, name: 'Butler', color_name: 'Shoreline Fade', details: butler, price: 95)
+m10_butler = Product.create!(id: 10, gender_id: 2, name: 'Butler', color_name: 'Shoreline Fade', details: butler, price: 95)
+w11_butler = Product.create!(id: 11, gender_id: 1, name: 'Butler', color_name: 'Jet Black', details: butler, price: 95)
+m12_butler = Product.create!(id: 12, gender_id: 2, name: 'Butler', color_name: 'Jet Black', details: butler, price: 95)
 
-w13_elina = Product.create!(gender_id: 1, name: 'Elina', color_name: 'Truffle Tortoise with Polished Gold', details: elina, price: 145)
-w14_elina = Product.create!(gender_id: 1, name: 'Elina', color_name: 'Blue Agave with Polished Gold', details: elina, price: 145)
+w13_elina = Product.create!(id: 13, gender_id: 1, name: 'Elina', color_name: 'Truffle Tortoise with Polished Gold', details: elina, price: 145)
+w14_elina = Product.create!(id: 14, gender_id: 1, name: 'Elina', color_name: 'Blue Agave with Polished Gold', details: elina, price: 145)
 
-w15_esme = Product.create!(gender_id: 1, name: 'Esme', color_name: 'Sesame Tortoise', details: esme, price: 95)
-m16_esme = Product.create!(gender_id: 2, name: 'Esme', color_name: 'Sesame Tortoise', details: esme, price: 95)
-w17_esme = Product.create!(gender_id: 1, name: 'Esme', color_name: 'Blue Thistle', details: esme, price: 95)
-m18_esme = Product.create!(gender_id: 2, name: 'Esme', color_name: 'Blue Thistle', details: esme, price: 95)
-w19_esme = Product.create!(gender_id: 1, name: 'Esme', color_name: 'Oxblood', details: esme, price: 95)
-m20_esme = Product.create!(gender_id: 2, name: 'Esme', color_name: 'Oxblood', details: esme, price: 95)
+w15_esme = Product.create!(id: 15, gender_id: 1, name: 'Esme', color_name: 'Sesame Tortoise', details: esme, price: 95)
+m16_esme = Product.create!(id: 16, gender_id: 2, name: 'Esme', color_name: 'Sesame Tortoise', details: esme, price: 95)
+w17_esme = Product.create!(id: 17, gender_id: 1, name: 'Esme', color_name: 'Blue Thistle', details: esme, price: 95)
+m18_esme = Product.create!(id: 18, gender_id: 2, name: 'Esme', color_name: 'Blue Thistle', details: esme, price: 95)
+w19_esme = Product.create!(id: 19, gender_id: 1, name: 'Esme', color_name: 'Oxblood', details: esme, price: 95)
+m20_esme = Product.create!(id: 20, gender_id: 2, name: 'Esme', color_name: 'Oxblood', details: esme, price: 95)
 
-w21_gillian = Product.create!(gender_id: 1, name: 'Gillian', color_name: 'Teal Tortoise', details: gillian, price: 95)
-m22_gillian = Product.create!(gender_id: 2, name: 'Gillian', color_name: 'Teal Tortoise', details: gillian, price: 95)
-w23_gillian = Product.create!(gender_id: 1, name: 'Gillian', color_name: 'Jet Black', details: gillian, price: 95)
-m24_gillian = Product.create!(gender_id: 2, name: 'Gillian', color_name: 'Jet Black', details: gillian, price: 95)
-w25_gillian = Product.create!(gender_id: 1, name: 'Gillian', color_name: 'Nutmeg Crystal', details: gillian, price: 95)
-m26_gillian = Product.create!(gender_id: 2, name: 'Gillian', color_name: 'Nutmeg Crystal', details: gillian, price: 95)
+w21_gillian = Product.create!(id: 21, gender_id: 1, name: 'Gillian', color_name: 'Teal Tortoise', details: gillian, price: 95)
+m22_gillian = Product.create!(id: 22, gender_id: 2, name: 'Gillian', color_name: 'Teal Tortoise', details: gillian, price: 95)
+w23_gillian = Product.create!(id: 23, gender_id: 1, name: 'Gillian', color_name: 'Jet Black', details: gillian, price: 95)
+m24_gillian = Product.create!(id: 24, gender_id: 2, name: 'Gillian', color_name: 'Jet Black', details: gillian, price: 95)
+w25_gillian = Product.create!(id: 25, gender_id: 1, name: 'Gillian', color_name: 'Nutmeg Crystal', details: gillian, price: 95)
+m26_gillian = Product.create!(id: 26, gender_id: 2, name: 'Gillian', color_name: 'Nutmeg Crystal', details: gillian, price: 95)
 
-w27_halton = Product.create!(gender_id: 1, name: 'Halton', color_name: 'Jet Black with Polished Gold', details: halton, price: 145)
-m28_halton = Product.create!(gender_id: 2, name: 'Halton', color_name: 'Jet Black with Polished Gold', details: halton, price: 145)
-w29_halton = Product.create!(gender_id: 1, name: 'Halton', color_name: 'Nutmeg Crystal with Riesling', details: halton, price: 145)
-m30_halton = Product.create!(gender_id: 2, name: 'Halton', color_name: 'Nutmeg Crystal with Riesling', details: halton, price: 145)
+w27_halton = Product.create!(id: 27, gender_id: 1, name: 'Halton', color_name: 'Jet Black with Polished Gold', details: halton, price: 145)
+m28_halton = Product.create!(id: 28, gender_id: 2, name: 'Halton', color_name: 'Jet Black with Polished Gold', details: halton, price: 145)
+w29_halton = Product.create!(id: 29, gender_id: 1, name: 'Halton', color_name: 'Nutmeg Crystal with Riesling', details: halton, price: 145)
+m30_halton = Product.create!(id: 30, gender_id: 2, name: 'Halton', color_name: 'Nutmeg Crystal with Riesling', details: halton, price: 145)
 
-w31_irving = Product.create!(gender_id: 1, name: 'Irving', color_name: 'Black Oak Tortoise', details: irving, price: 95)
-m32_irving = Product.create!(gender_id: 2, name: 'Irving', color_name: 'Black Oak Tortoise', details: irving, price: 95)
-w33_irving = Product.create!(gender_id: 1, name: 'Irving', color_name: 'Pacific Crystal', details: irving, price: 95)
-m34_irving = Product.create!(gender_id: 2, name: 'Irving', color_name: 'Pacific Crystal', details: irving, price: 95)
+w31_irving = Product.create!(id: 31, gender_id: 1, name: 'Irving', color_name: 'Black Oak Tortoise', details: irving, price: 95)
+m32_irving = Product.create!(id: 32, gender_id: 2, name: 'Irving', color_name: 'Black Oak Tortoise', details: irving, price: 95)
+w33_irving = Product.create!(id: 33, gender_id: 1, name: 'Irving', color_name: 'Pacific Crystal', details: irving, price: 95)
+m34_irving = Product.create!(id: 34, gender_id: 2, name: 'Irving', color_name: 'Pacific Crystal', details: irving, price: 95)
 
-w35_jayla = Product.create!(gender_id: 1, name: 'Jayla', color_name: 'Russet Red with Riesling', details: jayla, price: 145)
-m36_jayla = Product.create!(gender_id: 2, name: 'Jayla', color_name: 'Russet Red with Riesling', details: jayla, price: 145)
-w37_jayla = Product.create!(gender_id: 1, name: 'Jayla', color_name: 'Cognac Tortoise with Polished Gold', details: jayla, price: 145)
-m38_jayla = Product.create!(gender_id: 2, name: 'Jayla', color_name: 'Cognac Tortoise with Polished Gold', details: jayla, price: 145)
+w35_jayla = Product.create!(id: 35, gender_id: 1, name: 'Jayla', color_name: 'Russet Red with Riesling', details: jayla, price: 145)
+m36_jayla = Product.create!(id: 36, gender_id: 2, name: 'Jayla', color_name: 'Russet Red with Riesling', details: jayla, price: 145)
+w37_jayla = Product.create!(id: 37, gender_id: 1, name: 'Jayla', color_name: 'Cognac Tortoise with Polished Gold', details: jayla, price: 145)
+m38_jayla = Product.create!(id: 38, gender_id: 2, name: 'Jayla', color_name: 'Cognac Tortoise with Polished Gold', details: jayla, price: 145)
 
-w39_newcomb = Product.create!(gender_id: 1, name: 'Newcomb', color_name: 'Polished Gold with Savanna Tortoise', details: newcomb, price: 195)
-m40_newcomb = Product.create!(gender_id: 2, name: 'Newcomb', color_name: 'Polished Gold with Savanna Tortoise', details: newcomb, price: 195)
+w39_newcomb = Product.create!(id: 39, gender_id: 1, name: 'Newcomb', color_name: 'Polished Gold with Savanna Tortoise', details: newcomb, price: 195)
+m40_newcomb = Product.create!(id: 40, gender_id: 2, name: 'Newcomb', color_name: 'Polished Gold with Savanna Tortoise', details: newcomb, price: 195)
 
-w41_percey = Product.create!(gender_id: 1, name: 'Percey', color_name: 'Crystal', details: percey, price: 95)
-m42_percey = Product.create!(gender_id: 2, name: 'Percey', color_name: 'Crystal', details: percey, price: 95)
-w43_percey = Product.create!(gender_id: 1, name: 'Percey', color_name: 'Petal Tortoise', details: percey, price: 95)
-m44_percey = Product.create!(gender_id: 2, name: 'Percey', color_name: 'Petal Tortoise', details: percey, price: 95)
-w45_percey = Product.create!(gender_id: 1, name: 'Percey', color_name: 'Tidal Blue', details: percey, price: 95)
-m46_percey = Product.create!(gender_id: 2, name: 'Percey', color_name: 'Tidal Blue', details: percey, price: 95)
-w47_percey = Product.create!(gender_id: 1, name: 'Percey', color_name: 'Striped Sassafras', details: percey, price: 95)
-m48_percey = Product.create!(gender_id: 2, name: 'Percey', color_name: 'Striped Sassafras', details: percey, price: 95)
-w49_percey = Product.create!(gender_id: 1, name: 'Percey', color_name: 'Crystal with Oak Barrel and Blue Bay', details: percey, price: 95)
-m50_percey = Product.create!(gender_id: 2, name: 'Percey', color_name: 'Crystal with Oak Barrel and Blue Bay', details: percey, price: 95)
+w41_percey = Product.create!(id: 41, gender_id: 1, name: 'Percey', color_name: 'Crystal', details: percey, price: 95)
+m42_percey = Product.create!(id: 42, gender_id: 2, name: 'Percey', color_name: 'Crystal', details: percey, price: 95)
+w43_percey = Product.create!(id: 43, gender_id: 1, name: 'Percey', color_name: 'Petal Tortoise', details: percey, price: 95)
+m44_percey = Product.create!(id: 44, gender_id: 2, name: 'Percey', color_name: 'Petal Tortoise', details: percey, price: 95)
+w45_percey = Product.create!(id: 45, gender_id: 1, name: 'Percey', color_name: 'Tidal Blue', details: percey, price: 95)
+m46_percey = Product.create!(id: 46, gender_id: 2, name: 'Percey', color_name: 'Tidal Blue', details: percey, price: 95)
+w47_percey = Product.create!(id: 47, gender_id: 1, name: 'Percey', color_name: 'Striped Sassafras', details: percey, price: 95)
+m48_percey = Product.create!(id: 48, gender_id: 2, name: 'Percey', color_name: 'Striped Sassafras', details: percey, price: 95)
+w49_percey = Product.create!(id: 49, gender_id: 1, name: 'Percey', color_name: 'Crystal with Oak Barrel and Blue Bay', details: percey, price: 95)
+m50_percey = Product.create!(id: 50, gender_id: 2, name: 'Percey', color_name: 'Crystal with Oak Barrel and Blue Bay', details: percey, price: 95)
 
-w51_thorpe = Product.create!(gender_id: 1, name: 'Thorpe', color_name: 'Poblano with Polished Silver', details: thorpe, price: 95)
-m52_thorpe = Product.create!(gender_id: 2, name: 'Thorpe', color_name: 'Poblano with Polished Silver', details: thorpe, price: 95)
-w53_thorpe = Product.create!(gender_id: 1, name: 'Thorpe', color_name: 'Acorn Tortoise with Riesling', details: thorpe, price: 95)
-m54_thorpe = Product.create!(gender_id: 2, name: 'Thorpe', color_name: 'Acorn Tortoise with Riesling', details: thorpe, price: 95)
+w51_thorpe = Product.create!(id: 51, gender_id: 1, name: 'Thorpe', color_name: 'Poblano with Polished Silver', details: thorpe, price: 95)
+m52_thorpe = Product.create!(id: 52, gender_id: 2, name: 'Thorpe', color_name: 'Poblano with Polished Silver', details: thorpe, price: 95)
+w53_thorpe = Product.create!(id: 53, gender_id: 1, name: 'Thorpe', color_name: 'Acorn Tortoise with Riesling', details: thorpe, price: 95)
+m54_thorpe = Product.create!(id: 54, gender_id: 2, name: 'Thorpe', color_name: 'Acorn Tortoise with Riesling', details: thorpe, price: 95)
 
 
 #JOINS
