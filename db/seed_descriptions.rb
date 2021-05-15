@@ -45,7 +45,7 @@ halton = "Halton's quiet confidence comes from its distinguished features:
   If your face is average in size, which is most common, this frame should fit 
   you well. Unsure of your size? Select a few different options in a free Home Try-On."
 
-ivring = "Meticulously sculptured acetate surrounds Irving’s statement round 
+irving = "Meticulously sculptured acetate surrounds Irving’s statement round 
   lenses, and adds an element of depth and dimension to its smart-looking 
   silhouette.\nMade from hand-polished cellulose acetate\nAkulon-coated screws 
   for durability\n\nDemonstrated frame widths\nIrving is available in a wide width\n

@@ -8,8 +8,6 @@ class ProductsColor < ApplicationRecord
     class_name: :Color
 
   has_many :products,
-    foreign_key: :product_id,
-    primary_key: :id,
-    class_name: :Product
-
+    through: :joins,
+    source: :joins
 end

@@ -4,11 +4,12 @@ class Material < ApplicationRecord
   validates :material, inclusion: { in: ['Acetate', 'Metal', 'Mixed'] }
 
   has_many :joins,
+    class_name: :ProductsMaterial,
     foreign_key: :material_id,
-    primary_key: :id,
-    class_name: :ProductsMaterial
+    primary_key: :id
 
   has_many :products,
+    class_name: :Products,
     through: :joins,
     source: :joins
 
