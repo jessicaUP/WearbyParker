@@ -9,8 +9,9 @@ class Material < ApplicationRecord
     primary_key: :id
 
   has_many :products,
-    class_name: :Products,
     through: :joins,
-    source: :joins
+    source: :product
+
+
 
 end

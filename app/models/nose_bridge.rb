@@ -10,6 +10,6 @@ class NoseBridge < ApplicationRecord
 
   has_many :products,
     through: :joins,
-    source: :joins
+    source: :product
 
 end
