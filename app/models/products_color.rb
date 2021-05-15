@@ -1,6 +1,6 @@
 class ProductsColor < ApplicationRecord
 
-  validates :color_id, :product_id, presence: true
+  validates :color_id, :product_id, :color_id, presence: true
 
   belongs_to :color,
     foreign_key: :color_id,
