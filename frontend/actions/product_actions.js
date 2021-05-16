@@ -1,16 +1,16 @@
-import { fetchProduct } from '../util/product';
+import * as ProductApi from '../util/product';
 
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 
 
 const receiveProduct = product => {
-  return {
+  return ({
     type: RECEIVE_PRODUCT,
     product
-  }
+  })
 };
 
 
 export const fetchProduct = productId => dispatch => (
-  fetchProduct(productId).then(product => dispatch(receiveProduct(product)))
+  ProductApi.fetchProduct(productId).then(product => dispatch(receiveProduct(product)))
 )
