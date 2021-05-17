@@ -24,21 +24,27 @@ class NavBar extends React.Component {
       )
     
     return (
-    <>
-    <div className='ribbon' >
-      <p className='ribbon' >The latest on shopping with us.</p>
-    </div>
-    <header className='nav-bar'>
-      <div className='side-l' >
-        <a 
-          className='nav-link' 
-          href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
-          target="_blank">Jessica Uphoff Linkedin></a>
+    <div className='total-menu'>
+      <div className='ribbon' >
+        <p className='ribbon' >The latest on shopping with us.</p>
       </div>
-      <h3>WEARBY PARKER</h3>
-        {accountButton}
-    </header>
-    </>
+
+      <div className='nav-bar'>
+        <div className='side-l' >
+          <a 
+            className='nav-link' 
+            href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
+            target="_blank">Jessica Uphoff Linkedin></a>
+        </div>
+        <h3>WEARBY PARKER</h3>
+          {accountButton}
+      </div>
+        <div className='nav-bottom'>
+          <button>Home Try-on</button>
+          <button>Eyeglasses</button>
+          <button>Sunglasses</button>
+        </div>
+    </div>
     )
   }
 }
