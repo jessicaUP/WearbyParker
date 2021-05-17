@@ -1,6 +1,3 @@
-// .top .middle-details .bottom-details {
-//   display: flex;
-// }
 
 .index-body {
   // position: absolute;
@@ -26,14 +23,16 @@ h5.serif {
 
 .pictures {
   position: relative;
-  width: 600px;
-  height: 640px;
+  // width: 600px;
+  // height: 640px;
   border: 1px solid lightgray;
 }
 
 .scroll-picture {
+  object-fit: cover;
   position: absolute;
-
+  width: 600px;
+  height: 640px;
 }
 
 .top{
@@ -63,7 +62,7 @@ p {
 }
 
 .details-picture {
-  height: 540px;
+  height: 200px;
   width: 375px;
   padding-left: 72px;
   border: 1px solid lightgray;

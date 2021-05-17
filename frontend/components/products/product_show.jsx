@@ -4,33 +4,33 @@ import { withRouter } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchProduct(this.props.match.params.productId)
   }
 
   render() {
     // let product = this.props.fetchProduct(this.props.match.params.productId)
     // this.props.fetchProduct(this.props.id)
-    // let { product } = this.props
-    // if (!product) return null;
-    debugger
+    let { product } = this.props
+    if (!product) return null;
+
+    let details = product.details
+
     return (
       <div className='index-body'>
         <div className='top' >
           <div className='pictures'>
-            <img className='scroll-picture' src="" alt='eyewear-picture' />
+            <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
             <img className='scroll-picture' src="" alt='eyewear-picture' />
             <img className='scroll-picture' src="" alt='eyewear-picture' />
             <img className='scroll-picture' src="" alt='eyewear-picture' />
           </div>
             <div className='r-side'>
-              <h2>Title</h2>
-              <p>color name</p>
-              <p>Starting at PRICE</p>
+              <h2>{product.name}</h2>
+              <p>{product.colors}</p>
+              <p>Starting at {product.price}</p>
               <div>
                 <button className='purchase' >Select lenses and purchase</button>
                 <button className='try-on' >Try at home for free</button>

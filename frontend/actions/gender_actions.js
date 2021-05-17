@@ -1,16 +1,18 @@
-import { fetchGender } from '../util/gender';
+import * as GenderApi from '../util/gender';
 
-export const RECEIVE_GENDER = 'RECEIVE_GENDER';
+export const RECEIVE_GENDER_PRODUCTS = 'RECEIVE_GENDER_PRODUCTS';
 
 
-const receiveGender = gender => {
+const receiveGenderProducts = products => {
+  debugger
   return {
-    type: RECEIVE_GENDER,
-    gender
+    type: RECEIVE_GENDER_PRODUCTS,
+    products
   }
 };
 
 
-export const fetchGender = genderId => dispatch => (
-  fetchGender(genderId).then(gender => dispatch(receiveGender(gender)))
-)
+export const fetchGenderProducts = genderId => dispatch => {
+  debugger
+  return GenderApi.fetchGenderProducts(genderId).then(products => dispatch(receiveGenderProducts(products)))
+}

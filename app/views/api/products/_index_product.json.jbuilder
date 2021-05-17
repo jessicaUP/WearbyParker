@@ -1,13 +1,8 @@
-json.products do 
-  products.each do |product|
-    json.set! product.id do
-      json.extract! :name
-      json.colors do 
-        product.products_colors.each do |color|
-          json.extract! :color_name
-        end
-      end
+json.array! products do |product|  
+json.pr  
+    json.extract! :name
+    json.photoTileUrl url_for(product.photo)
+    product.products_colors.each do |color|
+      json.extract! color.color
     end
-  end 
-end
-
+end 
