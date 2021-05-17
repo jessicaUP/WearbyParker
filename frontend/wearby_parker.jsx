@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  // window.banner = 
   window.fetchProduct = fetchProduct;
   
   const root = document.getElementById('root')

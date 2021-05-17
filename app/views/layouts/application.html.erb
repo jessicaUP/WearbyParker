@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
+    <script>
+        window.banner = '<%= image_url('banner-img.jpg') %>'
+    </script>
+
     <% if logged_in? %>
       <script id='current-user' type='text/javascript'>
         window.currentUser = 
@@ -21,6 +25,7 @@
   </head>
 
   <body>
+  
     <%= yield %>
   </body>
 </html>

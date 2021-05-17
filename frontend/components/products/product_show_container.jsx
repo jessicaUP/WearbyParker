@@ -4,9 +4,6 @@ import ProductShow from './product_show'
 import { withRouter } from 'react-router-dom';
 
 const mSTP = (state, ownProps) => {
-  console.log(ownProps.match.params.productId)
-  console.log(state)
-  debugger
   return ({
     product: state.entities.products[ownProps.match.params.productId]
   })
