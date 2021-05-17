@@ -1,0 +1,87 @@
+// .top .middle-details .bottom-details {
+//   display: flex;
+// }
+
+.index-body {
+  // position: absolute;
+  // top: 125px;
+  padding-right: 72px;
+  padding-left: 72px;
+
+}
+
+h5.serif {
+  font-size: 26px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 500px
+  // margin-left: 72px;
+  // margin-right: 72px;
+}
+
+
+.materials {
+  width: 340px;
+  height: 156px;
+}
+
+.pictures {
+  position: relative;
+  width: 600px;
+  height: 640px;
+  border: 1px solid lightgray;
+}
+
+.scroll-picture {
+  position: absolute;
+
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.middle-details {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 100%;
+  padding-top: 175px;
+  padding-bottom: 175px;
+}
+
+button.purchase, button.try-on {
+  width: 250px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+
+p {
+  font-size: 16px;
+}
+
+.details-picture {
+  height: 540px;
+  width: 375px;
+  padding-left: 72px;
+  border: 1px solid lightgray;
+  margin-left: 100px;
+
+}
+
+.r-side {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  justify-content: space-between;
+  width: 200px;
+  height: 370px;
+}
+
+.bottom-details {
+  display: flex;
+  flex-direction: row;
+  
+}

@@ -1,0 +1,21 @@
+.splash {
+  position: absolute;
+  background-image: url('app/assets/images/banner-img.jpg');
+
+  button {
+    background-color: white;
+    color: black;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+  }
+
+  .text-overlay {
+    position: absolute;
+  }
+
+}
