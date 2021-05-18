@@ -1,0 +1,41 @@
+.product-index {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  
+  .product-tile {
+    width: 500px;
+    height: 300px; 
+    margin-top: 50px;
+    justify-content: center;
+    
+    h2.product-name {
+      margin-top: 0;
+    }
+    
+    div.tile-image {
+      align-content: center;
+      // border: 1px solid lightgrey;
+      width: 420px;
+      height: 200px;
+      margin-left: 45px;
+    }
+    
+    .tile-colors {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+
+      .color-preview {
+        text-align: center;
+        margin: 20px;
+        border: 1px solid lightgray;
+        border-radius: 25%;
+      }
+    }
+
+  }
+
+}

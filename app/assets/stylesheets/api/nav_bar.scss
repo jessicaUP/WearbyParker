@@ -25,6 +25,7 @@
   width: 220px;
   font-size: 13px;
 }
+
 .side-r {
   margin-top: 20px;
   margin-right: 90px;
@@ -40,8 +41,10 @@
 .nav-bottom {
   direction: flex;
   flex-direction: row;
-  align-content: center;
+  // align-content: center;
+  justify-content: center;
   margin-top: 75px;
+
   button {
     background-color: white;
     color: black;

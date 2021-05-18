@@ -13,4 +13,7 @@ class Color < ApplicationRecord
     through: :products_colors,
     source: :product
 
+  has_many_attached :photos
+
+
 end

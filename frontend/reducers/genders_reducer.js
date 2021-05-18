@@ -1,7 +1,7 @@
 export const RECEIVE_GENDER_PRODUCTS = 'RECEIVE_GENDER_PRODUCTS';
 
 
-const gendersReducer = (oldState = {}, action) => {
+const genderProductsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
 
   let nextState = Object.assign({}, oldState);
@@ -9,11 +9,13 @@ const gendersReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_GENDER_PRODUCTS:
       debugger
-      nextState[action.gender.genderId] = action.gender;
+      let genderId = parseInt(Object.keys(action.products)[0])
+
+      nextState[genderId] = action.products;
       return nextState;
     default:
       return oldState;
   }
 };
 
-export default gendersReducer;
+export default genderProductsReducer;
