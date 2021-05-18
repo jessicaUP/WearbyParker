@@ -7,7 +7,7 @@ const mSTP = (state, ownProps) => {
   console.log(state)
   debugger
   return ({
-    genderId: state.entities.genders[ownProps.match.params.genderId],
+    genderId: state.entities.genderProducts[ownProps.match.params.genderId],
   })
 }
 

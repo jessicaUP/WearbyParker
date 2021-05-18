@@ -4,10 +4,22 @@ import { withRouter } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentPhoto: 'photo1',
+    }
+
+    this.handlePhoto = this.handlePhoto.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId)
+  }
+
+  handlePhoto() {
+    return (e) => {
+      this.setState({ currentPhoto: e.currentTarget.value });
+    }
   }
 
   render() {
@@ -18,14 +30,34 @@ class ProductShow extends React.Component {
 
     let details = product.details
 
+    let image;
+
+    switch (this.state.currentPhoto) {
+      case 'photo1':
+        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        break;
+      case 'photo2':
+        image = <img className='scroll-picture' src='' alt='eyewear-picture' />
+        break;
+      case 'photo3':
+        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        break;
+      case 'photo4':
+        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        break;
+    }
+
     return (
       <div className='index-body'>
         <div className='top' >
           <div className='pictures'>
-            <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
-            <img className='scroll-picture' src="" alt='eyewear-picture' />
-            <img className='scroll-picture' src="" alt='eyewear-picture' />
-            <img className='scroll-picture' src="" alt='eyewear-picture' />
+            {image}
+            <form>
+              <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
+              <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
+              <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
+              <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
+            </form>
           </div>
             <div className='r-side'>
               <h2>{product.name}</h2>

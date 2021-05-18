@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 
 import users from './users_reducer';
 import productsReducer from './products_reducer';
-import gendersReducer from './genders_reducer';
+import genderProductsReducer from './genders_reducer';
 
 const entitiesReducer = combineReducers({
     users,
-    genders: gendersReducer,
+    genderProducts: genderProductsReducer,
     products: productsReducer
   });
 

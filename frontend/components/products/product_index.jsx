@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductTile from './product_tile'
 
 class ProductIndex extends React.Component {
   constructor(props) {
@@ -12,12 +13,17 @@ class ProductIndex extends React.Component {
   }
 
   render() {
-    let { products } = this.props
-    if (!products) return null;
     debugger
+    let { genderId } = this.props
+    if (!genderId) return null;
+
+    let productArray = Object.values(genderId)[0]
+
     return (
       <div className='product-index'>
-        <h1>Get itttttt</h1>
+        {
+          productArray.map(product => <ProductTile key={product.id} product={product} />)
+        }
       </div>
     )
   }
