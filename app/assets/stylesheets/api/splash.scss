@@ -1,5 +1,8 @@
 .splash {
   position: absolute;
+  left: 0;
+  top: 130px;
+  width: 100%;
   // background-image: url('app/assets/images/banner-img.jpg');
 
   button {
@@ -11,11 +14,37 @@
     position: absolute;
     width: 100%;
     height: auto;
-    border: 1px solid black;
+    // border: 1px solid black;
   }
 
   .text-overlay {
     position: absolute;
+    z-index: 2;
+    top: 80px;
+    right: 100px;
+    align-items: center;
+
+    .splash {
+      display: flex;
+      align-items: center;
+    }
+
+    .banner-title {
+      font-size: 55px;
+      width: 400px;
+    }
+
+    button {
+      border-radius: 50px;
+      width: 150px;
+      height: 35px;
+      margin-right: 10px;
+      margin-top: 10px;
+
+      #men {
+        margin-left: 30px;
+      }
+    }
   }
 
 }

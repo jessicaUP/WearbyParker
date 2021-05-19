@@ -25,7 +25,7 @@ class SigninForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    let user = { email: 'uphoff.jessica@gmail.com', password: 'wearbyparker' };
+    let user = { email: 'jessica@uphoff.com', password: 'killercat' };
     this.handleInput('email');
     this.handleInput('password');
     this.props.login(user)
