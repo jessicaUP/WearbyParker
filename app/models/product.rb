@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   validates :gender_id, inclusion: { in: [1, 2] }
 
 #AWS
-  has_one_attached :photo 
+   
 
 #GENDER
   belongs_to :gender, optional: true,

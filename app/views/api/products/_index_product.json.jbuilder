@@ -1,8 +1,6 @@
 json.array! products do |product|  
-json.pr  
-    json.extract! :name
-    json.photoTileUrl url_for(product.photo)
+    json.extract! product, :name
     product.products_colors.each do |color|
-      json.extract! color.color
+      json.extract! color, :color, :id
     end
 end 

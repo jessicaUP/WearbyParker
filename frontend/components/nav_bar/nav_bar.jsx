@@ -9,6 +9,7 @@ class NavBar extends React.Component {
     this.state = this.props.currentUser;
   }
 
+
   
   render() {
     const accountButton = (
@@ -23,6 +24,10 @@ class NavBar extends React.Component {
         )
       )
     
+    const toggleItem = () => {
+      $('.dropdown').toggleClass('toggle')
+    }
+
     return (
     <div className='total-menu'>
       <div className='ribbon' >
@@ -41,8 +46,22 @@ class NavBar extends React.Component {
       </div>
         <div className='nav-bottom'>
           <button>Home Try-on</button>
-          <button>Eyeglasses</button>
-          <button>Sunglasses</button>
+
+
+          <div className='menu-item'>
+            <button onClick={toggleItem}>Eyeglasses</button>
+
+            <div className="dropdown">
+                <div>
+                  <Link className='drop-options' to='/genders/2' >Men</Link>
+                </div>
+                <div>
+                  <Link className='drop-options' to='/genders/1' >Women</Link>
+                </div>
+            </div>
+
+              <button>Sunglasses</button>
+        </div>
         </div>
     </div>
     )

@@ -15,9 +15,11 @@ class Account extends React.Component {
   
   render() {
     return (
-      <div className='account'>
-        <h2>Account</h2>
-        <button onClick={this.props.logout}>Sign out</button>
+      <div className='account-container' >
+        <div className='account' >
+          <h2>Account</h2>
+          <button onClick={this.props.logout}>Sign out</button>
+        </div>
       </div>
     );
   }
