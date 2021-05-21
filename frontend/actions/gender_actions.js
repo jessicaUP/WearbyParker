@@ -4,7 +4,6 @@ export const RECEIVE_GENDER_PRODUCTS = 'RECEIVE_GENDER_PRODUCTS';
 
 
 const receiveGenderProducts = products => {
-  debugger
   return {
     type: RECEIVE_GENDER_PRODUCTS,
     products
@@ -13,6 +12,6 @@ const receiveGenderProducts = products => {
 
 
 export const fetchGenderProducts = genderId => dispatch => {
-  debugger
-  return GenderApi.fetchGenderProducts(genderId).then(products => dispatch(receiveGenderProducts(products)))
+  return GenderApi.fetchGenderProducts(genderId)
+    .then(products => dispatch(receiveGenderProducts(products)))
 }

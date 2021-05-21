@@ -1,5 +1,4 @@
-export const RECEIVE_GENDER_PRODUCTS = 'RECEIVE_GENDER_PRODUCTS';
-
+import { RECEIVE_GENDER_PRODUCTS } from '../actions/gender_actions'
 
 const genderProductsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -8,7 +7,6 @@ const genderProductsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_GENDER_PRODUCTS:
-      debugger
       let genderId = parseInt(Object.keys(action.products)[0])
 
       nextState[genderId] = action.products;

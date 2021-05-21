@@ -3,17 +3,15 @@ import ProductTile from './product_tile'
 
 class ProductIndex extends React.Component {
   constructor(props) {
-    debugger
+    
     super(props);
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchGenderProducts(this.props.match.params.genderId)
   }
 
   render() {
-    debugger
     let { genderId } = this.props
     if (!genderId) return null;
 

@@ -9,86 +9,86 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 ainsley = "Ainsley makes a statement through ample acetate, a pronounced 
-  keyhole bridge, and our signature Graduated Rivet design\nMade from 
-  hand-polished cellulose acetate\nAkulon-coated screws for durability\n\n
-  Demonstrated frame widths\nAinsley is available in a medium width\nIf your 
+  keyhole bridge, and our signature Graduated Rivet design#Made from 
+  hand-polished cellulose acetate#Akulon-coated screws for durability#
+  Demonstrated frame widths#Ainsley is available in a medium width#If your 
   face is average in size, which is most common, this frame should fit you well. 
   Unsure of your size? Select a few different options in a free Home Try-On."
 
 butler = "Butler is a studious shape that would look right at home in a private
  library with lots of leather-bound tomes. Looks great in the outside world
- too, though.\nMade from hand-polished cellulose acetate\nAkulon-coated screws
- for durability\n\nDemonstrated frame widths\nButler is available in narrow 
- and medium\nChoose a width that corresponds with your face width. If you’re
+ too, though.#Made from hand-polished cellulose acetate#Akulon-coated screws
+ for durability#Demonstrated frame widths#Butler is available in narrow 
+ and medium#Choose a width that corresponds with your face width. If you’re
  still unsure, select a few different sizes in a free Home Try-On."
 
 elina = "Elina has way more to offer than its rounded, easy-to-wear cat-eye
  shape. We elevated the frame with Art Deco-inspired metal temples, sleek 
- temple tips, and a Graduated Rivet design.\nMade from hand-polished cellulose 
- acetate and stainless steel\nAkulon-coated screws for durability\nDemonstrated
- frame widths\nElina is available in a medium width\nIf your face is average 
+ temple tips, and a Graduated Rivet design.#Made from hand-polished cellulose 
+ acetate and stainless steel#Akulon-coated screws for durability#Demonstrated
+ frame widths#Elina is available in a medium width#If your face is average 
  in size, which is most common, this frame should fit you well. Unsure of your 
  size? Select a few different options in a free Home Try-On."
 
 esme = "A head turn here. A double take there. Esme commands just this sort of 
   attention with its squarish cat-eyed lenses and overall impression of 
-  understated confidence.\nMade from hand-polished cellulose acetate\n
-  Akulon-coated screws for durability\n\nDemonstrated frame widths\nEsme is 
-  available in narrow and medium\nChoose a width that corresponds with your 
+  understated confidence.#Made from hand-polished cellulose acetate#
+  Akulon-coated screws for durability#Demonstrated frame widths#Esme is 
+  available in narrow and medium#Choose a width that corresponds with your 
   face width. If you’re still unsure, select a few different sizes in a 
   free Home Try-On."
 
 gillian = "With Gillian, grand proportions (oversized round lenses, anyone?) 
-  meet thinner acetate for an airier, softer look. Balance is key, after all.\n
-  Made from hand-polished cellulose acetate\nAkulon-coated screws for durability\n
-  Demonstrated frame widths\nGillian is available in a medium width\nIf your face 
+  meet thinner acetate for an airier, softer look. Balance is key, after all.#
+  Made from hand-polished cellulose acetate#Akulon-coated screws for durability#
+  Demonstrated frame widths#Gillian is available in a medium width#If your face 
   is average in size, which is most common, this frame should fit you well. 
   Unsure of your size? Select a few different options in a free Home Try-On."
 
 halton = "Halton's quiet confidence comes from its distinguished features: 
   a mid-century acetate silhouette (with an angular bottom!), Art Deco-inspired 
-  metal temples, sleek temple tips, and a Graduated Rivet design.\nMade from 
-  hand-polished cellulose acetate and stainless steel\nAkulon-coated screws for 
-  durability\n\nDemonstrated frame widths\nHalton is available in a medium width\n
+  metal temples, sleek temple tips, and a Graduated Rivet design.#Made from 
+  hand-polished cellulose acetate and stainless steel#Akulon-coated screws for 
+  durability#Demonstrated frame widths#Halton is available in a medium width#
   If your face is average in size, which is most common, this frame should fit 
   you well. Unsure of your size? Select a few different options in a free Home Try-On."
 
 irving = "Meticulously sculptured acetate surrounds Irving’s statement round 
   lenses, and adds an element of depth and dimension to its smart-looking 
-  silhouette.\nMade from hand-polished cellulose acetate\nAkulon-coated screws 
-  for durability\n\nDemonstrated frame widths\nIrving is available in a wide width\n
+  silhouette.#Made from hand-polished cellulose acetate#Akulon-coated screws 
+  for durability#Demonstrated frame widths#Irving is available in a wide width#
   If you have a wide or broad face, this frame should fit you well. Unsure of 
   your size? Select a few different options in a free Home Try-On."
 
 jayla = "Jayla draws inspiration from a few of our favorite design eras, with 
   its roomy mid-century acetate silhouette, Art Deco-inspired metal temples, 
-  sleek temple tips, and Graduated Rivet design.\nMade from hand-polished 
-  cellulose acetate and stainless steel\nAkulon-coated screws for durability\n
-  Demonstrated frame widths\n\nJayla is available in a wide width\nIf you have a 
+  sleek temple tips, and Graduated Rivet design.#Made from hand-polished 
+  cellulose acetate and stainless steel#Akulon-coated screws for durability#
+  Demonstrated frame widths#Jayla is available in a wide width#If you have a 
   wide or broad face, this frame should fit you well. Unsure of your size? Select 
   a few different options in a free Home Try-On."
 
 newcomb = "A featherlight titanium style, Newcomb combines rounded lenses, a 
-  sleek brow bar, and custom tortoise patterns painted by hand and with heat.\n
-  Made from the strongest, lightest ion-plated titanium\nAkulon-coated screws 
-  for durability\nTitanium temple tips\n\nPVC nose pads prevent slipping and 
-  pressure\nDemonstrated frame widths\nNewcomb is available in a narrow width\n
+  sleek brow bar, and custom tortoise patterns painted by hand and with heat.#
+  Made from the strongest, lightest ion-plated titanium#Akulon-coated screws 
+  for durability#Titanium temple tips#PVC nose pads prevent slipping and 
+  pressure#Demonstrated frame widths#Newcomb is available in a narrow width#
   If you have a slender or narrow face, this frame should fit you well. 
   Unsure of your size? Select a few different options in a free Home Try-On."
 
 percey = "With round lenses and a keyhole bridge, Percey is a bookish modern 
-  classic.\nMade from hand-polished cellulose acetate\nAkulon-coated screws for 
-  durability\n\nDemonstrated frame widths\nFrom top to bottom: extra wide, wide, 
-  medium, extra narrow\nPercey is available in extra narrow, narrow, medium, 
-  wide, and extra wide\nChoose a width that corresponds with your own face width, 
+  classic.#Made from hand-polished cellulose acetate#Akulon-coated screws for 
+  durability#Demonstrated frame widths#From top to bottom: extra wide, wide, 
+  medium, extra narrow#Percey is available in extra narrow, narrow, medium, 
+  wide, and extra wide#Choose a width that corresponds with your own face width, 
   e.g., pick a narrow frame if you have a narrow face (and so on). If you’re 
   still unsure of your size, select a few different options in a free Home Try-On."
 
 thorpe = "Inspired by classic circular frames from various eras, Thorpe
   features Art Deco-inspired metal temples, sleek temple tips, and a Graduated 
-  Rivet design. If you're a fan of round lenses, look no further.\nMade from 
-  hand-polished cellulose acetate and stainless steel\nAkulon-coated screws for 
-  durability\n\nDemonstrated frame widths\nThorpe is available in a medium width\n
+  Rivet design. If you're a fan of round lenses, look no further.#Made from 
+  hand-polished cellulose acetate and stainless steel#Akulon-coated screws for 
+  durability#Demonstrated frame widths#Thorpe is available in a medium width#
   If your face is average in size, which is most common, this frame should fit 
   you well. Unsure of your size? Select a few different options in a free Home Try-On."
 
@@ -125,11 +125,11 @@ billy = User.create!(id: 10, name: 'Billy Bob', password: 'killercat', email: 'b
 Gender.create!(id: 1, gender: 'Women')
 Gender.create!(id: 2, gender: 'Men')
 
-FrameWidth.create!(id: 1, frame_width: 'Extra narrow') #1
-FrameWidth.create!(id: 2, frame_width: 'Narrow') #2
-FrameWidth.create!(id: 3, frame_width: 'Medium') #3
-FrameWidth.create!(id: 4, frame_width: 'Wide') #4
-FrameWidth.create!(id: 5, frame_width: 'Extra wide') #5
+FrameWidth.create!(id: 1, frame_width: 'Extra narrow', description: 'If you have an especially slender or narrow face') #1
+FrameWidth.create!(id: 2, frame_width: 'Narrow', description: 'if you have a slender or narrow face') #2
+FrameWidth.create!(id: 3, frame_width: 'Medium', description: 'If you face is average in size (the most common option!)') #3
+FrameWidth.create!(id: 4, frame_width: 'Wide', description: 'If you have a wide or broad face') #4
+FrameWidth.create!(id: 5, frame_width: 'Extra wide', description: 'If you have an especially wide or broad face') #5
 
 Shape.create!(id: 1, shape: 'Rectangle') #1
 Shape.create!(id: 2, shape: 'Square') #2
@@ -178,20 +178,20 @@ m22_gillian = Product.create!(id: 10, gender_id: 2, name: 'Gillian', details: gi
 w27_halton = Product.create!(id: 11, gender_id: 1, name: 'Halton', details: halton, price: 145)
 m28_halton = Product.create!(id: 12, gender_id: 2, name: 'Halton', details: halton, price: 145)
 
-w31_irving = Product.create!(id: 13, gender_id: 1, name: 'Irving', details: irving, price: 95)
-m32_irving = Product.create!(id: 14, gender_id: 2, name: 'Irving', details: irving, price: 95)
+# w31_irving = Product.create!(id: 13, gender_id: 1, name: 'Irving', details: irving, price: 95)
+# m32_irving = Product.create!(id: 14, gender_id: 2, name: 'Irving', details: irving, price: 95)
 
-w35_jayla = Product.create!(id: 15, gender_id: 1, name: 'Jayla', details: jayla, price: 145)
-m36_jayla = Product.create!(id: 16, gender_id: 2, name: 'Jayla', details: jayla, price: 145)
+# w35_jayla = Product.create!(id: 15, gender_id: 1, name: 'Jayla', details: jayla, price: 145)
+# m36_jayla = Product.create!(id: 16, gender_id: 2, name: 'Jayla', details: jayla, price: 145)
 
-w39_newcomb = Product.create!(id: 17, gender_id: 1, name: 'Newcomb', details: newcomb, price: 195)
-m40_newcomb = Product.create!(id: 18, gender_id: 2, name: 'Newcomb', details: newcomb, price: 195)
+# w39_newcomb = Product.create!(id: 17, gender_id: 1, name: 'Newcomb', details: newcomb, price: 195)
+# m40_newcomb = Product.create!(id: 18, gender_id: 2, name: 'Newcomb', details: newcomb, price: 195)
 
-w41_percey = Product.create!(id: 19, gender_id: 1, name: 'Percey', details: percey, price: 95)
-m42_percey = Product.create!(id: 20, gender_id: 2, name: 'Percey', details: percey, price: 95)
+# w41_percey = Product.create!(id: 19, gender_id: 1, name: 'Percey', details: percey, price: 95)
+# m42_percey = Product.create!(id: 20, gender_id: 2, name: 'Percey', details: percey, price: 95)
 
-w51_thorpe = Product.create!(id: 21, gender_id: 1, name: 'Thorpe', details: thorpe, price: 95)
-m52_thorpe = Product.create!(id: 22, gender_id: 2, name: 'Thorpe', details: thorpe, price: 95)
+# w51_thorpe = Product.create!(id: 21, gender_id: 1, name: 'Thorpe', details: thorpe, price: 95)
+# m52_thorpe = Product.create!(id: 22, gender_id: 2, name: 'Thorpe', details: thorpe, price: 95)
 
 
 
@@ -223,28 +223,28 @@ ProductsFrameWidth.create!(product_id: 11, frame_width_id: 3)
 ProductsFrameWidth.create!(product_id: 12, frame_width_id: 1)
 ProductsFrameWidth.create!(product_id: 12, frame_width_id: 2)
 ProductsFrameWidth.create!(product_id: 12, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 13, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 13, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 14, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 14, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 15, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 15, frame_width_id: 4)
-ProductsFrameWidth.create!(product_id: 15, frame_width_id: 5)
-ProductsFrameWidth.create!(product_id: 16, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 16, frame_width_id: 4)
-ProductsFrameWidth.create!(product_id: 16, frame_width_id: 5)
-ProductsFrameWidth.create!(product_id: 17, frame_width_id: 1)
-ProductsFrameWidth.create!(product_id: 17, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 18, frame_width_id: 1)
-ProductsFrameWidth.create!(product_id: 18, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 19, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 19, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 20, frame_width_id: 2)
-ProductsFrameWidth.create!(product_id: 20, frame_width_id: 3)
-ProductsFrameWidth.create!(product_id: 21, frame_width_id: 4)
-ProductsFrameWidth.create!(product_id: 21, frame_width_id: 5)
-ProductsFrameWidth.create!(product_id: 22, frame_width_id: 4)
-ProductsFrameWidth.create!(product_id: 22, frame_width_id: 5)
+# ProductsFrameWidth.create!(product_id: 13, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 13, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 14, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 14, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 15, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 15, frame_width_id: 4)
+# ProductsFrameWidth.create!(product_id: 15, frame_width_id: 5)
+# ProductsFrameWidth.create!(product_id: 16, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 16, frame_width_id: 4)
+# ProductsFrameWidth.create!(product_id: 16, frame_width_id: 5)
+# ProductsFrameWidth.create!(product_id: 17, frame_width_id: 1)
+# ProductsFrameWidth.create!(product_id: 17, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 18, frame_width_id: 1)
+# ProductsFrameWidth.create!(product_id: 18, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 19, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 19, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 20, frame_width_id: 2)
+# ProductsFrameWidth.create!(product_id: 20, frame_width_id: 3)
+# ProductsFrameWidth.create!(product_id: 21, frame_width_id: 4)
+# ProductsFrameWidth.create!(product_id: 21, frame_width_id: 5)
+# ProductsFrameWidth.create!(product_id: 22, frame_width_id: 4)
+# ProductsFrameWidth.create!(product_id: 22, frame_width_id: 5)
 
 #SHAPE
 #AINSLEY (1..4)
@@ -268,211 +268,389 @@ ProductsShape.create!(product_id: 12, shape_id: 2)
 ProductsShape.create!(product_id: 11, shape_id: 1)
 ProductsShape.create!(product_id: 12, shape_id: 1)
 #IRVING (31..34)
-ProductsShape.create!(product_id: 13, shape_id: 4)
-ProductsShape.create!(product_id: 14, shape_id: 4)
-#JAYLA (35..38)
-ProductsShape.create!(product_id: 15, shape_id: 4)
-ProductsShape.create!(product_id: 16, shape_id: 4)
-#NEWCOMB (39..40
-ProductsShape.create!(product_id: 17, shape_id: 2)
-ProductsShape.create!(product_id: 18, shape_id: 2)
-#PERCEY (41..50)
-ProductsShape.create!(product_id: 19, shape_id: 2)
-ProductsShape.create!(product_id: 20, shape_id: 2)
-#PERCEY (41..50) --> duplicate, need rectangle
-ProductsShape.create!(product_id: 19, shape_id: 1)
-ProductsShape.create!(product_id: 20, shape_id: 1)
-#THROPE (51..54)
-ProductsShape.create!(product_id: 21, shape_id: 3)
-ProductsShape.create!(product_id: 22, shape_id: 3)
+# ProductsShape.create!(product_id: 13, shape_id: 4)
+# ProductsShape.create!(product_id: 14, shape_id: 4)
+# #JAYLA (35..38)
+# ProductsShape.create!(product_id: 15, shape_id: 4)
+# ProductsShape.create!(product_id: 16, shape_id: 4)
+# #NEWCOMB (39..40
+# ProductsShape.create!(product_id: 17, shape_id: 2)
+# ProductsShape.create!(product_id: 18, shape_id: 2)
+# #PERCEY (41..50)
+# ProductsShape.create!(product_id: 19, shape_id: 2)
+# ProductsShape.create!(product_id: 20, shape_id: 2)
+# #PERCEY (41..50) --> duplicate, need rectangle
+# ProductsShape.create!(product_id: 19, shape_id: 1)
+# ProductsShape.create!(product_id: 20, shape_id: 1)
+# #THROPE (51..54)
+# ProductsShape.create!(product_id: 21, shape_id: 3)
+# ProductsShape.create!(product_id: 22, shape_id: 3)
 
 
 #COLOR CATEGORY - black, tortoise, two-tone, crystal, grey, brown, silver, gold, blue , pink, green, red
 #AINSLEY (1..4)
 a = ProductsColor.create!(product_id: 1, color_id: 1, color_name: 'Jet Black')
-    a0 = open('')
-    a.photo0.attach(io: a1, filename: 'a0.jpeg')
-    a1 = open('')
-    a.photo1.attach(io: a2, filename: 'a1.jpeg')
-    a2 = open('')
-    a.photo2.attach(io: a3, filename: 'a2.jpeg')
-    a3 = open('')
-    a.photo3.attach(io: a4, filename: 'a3.jpeg')
-    a4 = open('')
-    a.photo4.attach(io: a5, filename: 'a4.jpeg')
+    a0 = open('https://wearby-parker-seed.s3.amazonaws.com/a0.jpeg')
+    a.photo0.attach(io: a0, filename: 'a0.jpeg')
+    a1 = open('https://wearby-parker-seed.s3.amazonaws.com/a1.jpeg')
+    a.photo1.attach(io: a1, filename: 'a1.jpeg')
+    a2 = open('https://wearby-parker-seed.s3.amazonaws.com/a2.jpeg')
+    a.photo2.attach(io: a2, filename: 'a2.jpeg')
+    a3 = open('https://wearby-parker-seed.s3.amazonaws.com/a3.jpeg')
+    a.photo3.attach(io: a3, filename: 'a3.jpeg')
+    a4 = open('https://wearby-parker-seed.s3.amazonaws.com/a4.jpeg')
+    a.photo4.attach(io: a4, filename: 'a4.jpeg')
 b = ProductsColor.create!(product_id: 2, color_id: 1, color_name: 'Jet Black')
-    b0 = open('')
-    b.photo0.attach(io: b1, filename: 'b0.jpeg')
-    b1 = open('')
-    b.photo1.attach(io: b2, filename: 'b1.jpeg')
-    b2 = open('')
-    b.photo2.attach(io: b3, filename: 'b2.jpeg')
-    b3 = open('')
-    b.photo3.attach(io: b4, filename: 'b3.jpeg')
-    b4 = open('')
-    b.photo4.attach(io: b5, filename: 'b4.jpeg')
+    b0 = open('https://wearby-parker-seed.s3.amazonaws.com/a0.jpeg')
+    b.photo0.attach(io: b0, filename: 'b0.jpeg')
+    b1 = open('https://wearby-parker-seed.s3.amazonaws.com/a1.jpeg')
+    b.photo1.attach(io: b1, filename: 'b1.jpeg')
+    b2 = open('https://wearby-parker-seed.s3.amazonaws.com/b2.jpeg')
+    b.photo2.attach(io: b2, filename: 'b2.jpeg')
+    b3 = open('https://wearby-parker-seed.s3.amazonaws.com/a3.jpeg')
+    b.photo3.attach(io: b3, filename: 'b3.jpeg')
+    b4 = open('https://wearby-parker-seed.s3.amazonaws.com/a4.jpeg')
+    b.photo4.attach(io: b4, filename: 'b4.jpeg')
 c = ProductsColor.create!(product_id: 1, color_id: 11, color_name: 'Striped Cypress')
-    c0 = open('')
-    c.photo0.attach(io: c1, filename: 'c0.jpeg')
-    c1 = open('')
-    c.photo1.attach(io: c2, filename: 'c1.jpeg')
-    c2 = open('')
-    c.photo2.attach(io: c3, filename: 'c2.jpeg')
-    c3 = open('')
-    c.photo3.attach(io: c4, filename: 'c3.jpeg')
-    c4 = open('')
-    c.photo4.attach(io: c5, filename: 'c4.jpeg')
+    c0 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    c.photo0.attach(io: c0, filename: 'c0.jpeg')
+    c1 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    c.photo1.attach(io: c1, filename: 'c1.jpeg')
+    c2 = open('https://wearby-parker-seed.s3.amazonaws.com/c2.jpeg')
+    c.photo2.attach(io: c2, filename: 'c2.jpeg')
+    c3 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    c.photo3.attach(io: c3, filename: 'c1.jpeg')
+    c4 = open('https://wearby-parker-seed.s3.amazonaws.com/c4.jpeg')
+    c.photo4.attach(io: c4, filename: 'c4.jpeg')
 d = ProductsColor.create!(product_id: 2, color_id: 11, color_name: 'Striped Cypress')
-    d0 = open('')
-    d.photo0.attach(io: d1, filename: 'd0.jpeg')
-    d1 = open('')
-    d.photo1.attach(io: d2, filename: 'd1.jpeg')
-    d2 = open('')
-    d.photo2.attach(io: d3, filename: 'd2.jpeg')
-    d3 = open('')
-    d.photo3.attach(io: d4, filename: 'd3.jpeg')
-    d4 = open('')
-    d.photo4.attach(io: d5, filename: 'd4.jpeg')
-
+    d0 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    d.photo0.attach(io: d0, filename: 'd0.jpeg')
+    d1 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    d.photo1.attach(io: d1, filename: 'd1.jpeg')
+    d2 = open('https://wearby-parker-seed.s3.amazonaws.com/d2.jpeg')
+    d.photo2.attach(io: d2, filename: 'd2.jpeg')
+    d3 = open('https://wearby-parker-seed.s3.amazonaws.com/c1.jpeg')
+    d.photo3.attach(io: d3, filename: 'd3.jpeg')
+    d4 = open('https://wearby-parker-seed.s3.amazonaws.com/c4.jpeg')
+    d.photo4.attach(io: d4, filename: 'd4.jpeg')
 e = ProductsColor.create!(product_id: 3, color_id: 2, color_name: 'Teal Tortoise')
-    e0 = open('')
-    e.photo0.attach(io: e1, filename: 'e0.jpeg')
-    e1 = open('')
-    e.photo1.attach(io: e2, filename: 'e1.jpeg')
-    e2 = open('')
-    e.photo2.attach(io: e3, filename: 'e2.jpeg')
-    e3 = open('')
-    e.photo3.attach(io: e4, filename: 'e3.jpeg')
-    e4 = open('')
-    e.photo4.attach(io: e5, filename: 'e4.jpeg')
+    e0 = open('https://wearby-parker-seed.s3.amazonaws.com/e0.jpeg')
+    e.photo0.attach(io: e0, filename: 'e0.jpeg')
+    e1 = open('https://wearby-parker-seed.s3.amazonaws.com/e1.jpeg')
+    e.photo1.attach(io: e1, filename: 'e1.jpeg')
+    e2 = open('https://wearby-parker-seed.s3.amazonaws.com/e2.jpeg')
+    e.photo2.attach(io: e2, filename: 'e2.jpeg')
+    e3 = open('https://wearby-parker-seed.s3.amazonaws.com/e3.jpeg')
+    e.photo3.attach(io: e3, filename: 'e3.jpeg')
+    e4 = open('https://wearby-parker-seed.s3.amazonaws.com/e4.jpeg')
+    e.photo4.attach(io: e4, filename: 'e4.jpeg')
 f = ProductsColor.create!(product_id: 4, color_id: 2, color_name: 'Teal Tortoise')
-    f0 = open('')
-    f.photo0.attach(io: f1, filename: 'f0.jpeg')
-    f1 = open('')
-    f.photo1.attach(io: f2, filename: 'f1.jpeg')
-    f2 = open('')
-    f.photo2.attach(io: f3, filename: 'f2.jpeg')
-    f3 = open('')
-    f.photo3.attach(io: f4, filename: 'f3.jpeg')
-    f4 = open('')
-    f.photo4.attach(io: f5, filename: 'f4.jpeg')
+    f0 = open('https://wearby-parker-seed.s3.amazonaws.com/e0.jpeg')
+    f.photo0.attach(io: f0, filename: 'f0.jpeg')
+    f1 = open('https://wearby-parker-seed.s3.amazonaws.com/e1.jpeg')
+    f.photo1.attach(io: f1, filename: 'f1.jpeg')
+    f2 = open('https://wearby-parker-seed.s3.amazonaws.com/f2.jpeg')
+    f.photo2.attach(io: f2, filename: 'f2.jpeg')
+    f3 = open('https://wearby-parker-seed.s3.amazonaws.com/e3.jpeg')
+    f.photo3.attach(io: f3, filename: 'f3.jpeg')
+    f4 = open('https://wearby-parker-seed.s3.amazonaws.com/e4.jpeg')
+    f.photo4.attach(io: f4, filename: 'f4.jpeg')
 g = ProductsColor.create!(product_id: 3, color_id: 2, color_name: 'Butterscotch Tortoise')
-    g0 = open('')
-    g.photo0.attach(io: g1, filename: 'g0.jpeg')
-    g1 = open('')
-    g.photo1.attach(io: g2, filename: 'g1.jpeg')
-    g2 = open('')
-    g.photo2.attach(io: g3, filename: 'g2.jpeg')
-    g3 = open('')
-    g.photo3.attach(io: g4, filename: 'g3.jpeg')
-    g4 = open('')
-    g.photo4.attach(io: g5, filename: 'g4.jpeg')
+    g0 = open('https://wearby-parker-seed.s3.amazonaws.com/g0.jpeg')
+    g.photo0.attach(io: g0, filename: 'g0.jpeg')
+    g1 = open('https://wearby-parker-seed.s3.amazonaws.com/g1.jpeg')
+    g.photo1.attach(io: g1, filename: 'g1.jpeg')
+    g2 = open('https://wearby-parker-seed.s3.amazonaws.com/g2.jpeg')
+    g.photo2.attach(io: g2, filename: 'g2.jpeg')
+    g3 = open('https://wearby-parker-seed.s3.amazonaws.com/g3.jpeg')
+    g.photo3.attach(io: g3, filename: 'g3.jpeg')
+    g4 = open('https://wearby-parker-seed.s3.amazonaws.com/g4.jpeg')
+    g.photo4.attach(io: g4, filename: 'g4.jpeg')
 gg = ProductsColor.create!(product_id: 4, color_id: 2, color_name: 'Butterscotch Tortoise')
-    gg0 = open('')
-    gg.photo0.attach(io: gg1, filename: 'gg0.jpeg')
-    gg1 = open('')
-    gg.photo1.attach(io: gg2, filename: 'gg1.jpeg')
-    gg2 = open('')
-    gg.photo2.attach(io: gg3, filename: 'gg2.jpeg')
-    gg3 = open('')
-    gg.photo3.attach(io: gg4, filename: 'gg3.jpeg')
-    gg4 = open('')
-    gg.photo4.attach(io: gg5, filename: 'gg4.jpeg')
+    gg0 = open('https://wearby-parker-seed.s3.amazonaws.com/g0.jpeg')
+    gg.photo0.attach(io: gg0, filename: 'gg0.jpeg')
+    gg1 = open('https://wearby-parker-seed.s3.amazonaws.com/g1.jpeg')
+    gg.photo1.attach(io: gg1, filename: 'gg1.jpeg')
+    gg2 = open('https://wearby-parker-seed.s3.amazonaws.com/gg2.jpeg')
+    gg.photo2.attach(io: gg2, filename: 'gg2.jpeg')
+    gg3 = open('https://wearby-parker-seed.s3.amazonaws.com/g3.jpeg')
+    gg.photo3.attach(io: gg3, filename: 'gg3.jpeg')
+    gg4 = open('https://wearby-parker-seed.s3.amazonaws.com/g4.jpeg')
+    gg.photo4.attach(io: gg4, filename: 'gg4.jpeg')
 h = ProductsColor.create!(product_id: 3, color_id: 9, color_name: 'Shoreline Fade')
-    h0 = open('')
-    h.photo0.attach(io: h1, filename: 'h0.jpeg')
-    h1 = open('')
-    h.photo1.attach(io: h2, filename: 'h1.jpeg')
-    h2 = open('')
-    h.photo2.attach(io: h3, filename: 'h2.jpeg')
-    h3 = open('')
-    h.photo3.attach(io: h4, filename: 'h3.jpeg')
-    h4 = open('')
-    h.photo4.attach(io: h5, filename: 'h4.jpeg')
+    h0 = open('https://wearby-parker-seed.s3.amazonaws.com/h0.jpeg')
+    h.photo0.attach(io: h0, filename: 'h0.jpeg')
+    h1 = open('https://wearby-parker-seed.s3.amazonaws.com/h1.jpeg')
+    h.photo1.attach(io: h1, filename: 'h1.jpeg')
+    h2 = open('https://wearby-parker-seed.s3.amazonaws.com/h2.jpeg')
+    h.photo2.attach(io: h2, filename: 'h2.jpeg')
+    h3 = open('https://wearby-parker-seed.s3.amazonaws.com/h3.jpeg')
+    h.photo3.attach(io: h3, filename: 'h3.jpeg')
+    h4 = open('https://wearby-parker-seed.s3.amazonaws.com/h4.jpeg')
+    h.photo4.attach(io: h4, filename: 'h4.jpeg')
 i = ProductsColor.create!(product_id: 4, color_id: 9, color_name: 'Shoreline Fade')
-    i0 = open('')
-    i.photo0.attach(io: i1, filename: 'i0.jpeg')
-    i1 = open('')
-    i.photo1.attach(io: i2, filename: 'i1.jpeg')
-    i2 = open('')
-    i.photo2.attach(io: i3, filename: 'i2.jpeg')
-    i3 = open('')
-    i.photo3.attach(io: i4, filename: 'i3.jpeg')
-    i4 = open('')
-    i.photo4.attach(io: i5, filename: 'i4.jpeg')
+    i0 = open('https://wearby-parker-seed.s3.amazonaws.com/h0.jpeg')
+    i.photo0.attach(io: i0, filename: 'i0.jpeg')
+    i1 = open('https://wearby-parker-seed.s3.amazonaws.com/h1.jpeg')
+    i.photo1.attach(io: i1, filename: 'i1.jpeg')
+    i2 = open('https://wearby-parker-seed.s3.amazonaws.com/h2.jpeg')
+    i.photo2.attach(io: i2, filename: 'i2.jpeg')
+    i3 = open('https://wearby-parker-seed.s3.amazonaws.com/h3.jpeg')
+    i.photo3.attach(io: i3, filename: 'i3.jpeg')
+    i4 = open('https://wearby-parker-seed.s3.amazonaws.com/h4.jpeg')
+    i.photo4.attach(io: i4, filename: 'i4.jpeg')
 j = ProductsColor.create!(product_id: 3, color_id: 1, color_name: 'Jet Black')
-    j0 = open('')
-    j.photo0.attach(io: j1, filename: 'j0.jpeg')
-    j1 = open('')
-    j.photo1.attach(io: j2, filename: 'j1.jpeg')
-    j2 = open('')
-    j.photo2.attach(io: j3, filename: 'j2.jpeg')
-    j3 = open('')
-    j.photo3.attach(io: j4, filename: 'j3.jpeg')
-    j4 = open('')
-    j.photo4.attach(io: j5, filename: 'j4.jpeg')
+    j0 = open('https://wearby-parker-seed.s3.amazonaws.com/j0.jpeg')
+    j.photo0.attach(io: j0, filename: 'j0.jpeg')
+    j1 = open('https://wearby-parker-seed.s3.amazonaws.com/j1.jpeg')
+    j.photo1.attach(io: j1, filename: 'j1.jpeg')
+    j2 = open('https://wearby-parker-seed.s3.amazonaws.com/j2.jpeg')
+    j.photo2.attach(io: j2, filename: 'j2.jpeg')
+    j3 = open('https://wearby-parker-seed.s3.amazonaws.com/j3.jpeg')
+    j.photo3.attach(io: j3, filename: 'j3.jpeg')
+    j4 = open('https://wearby-parker-seed.s3.amazonaws.com/j4.jpeg')
+    j.photo4.attach(io: j4, filename: 'j4.jpeg')
 k = ProductsColor.create!(product_id: 4, color_id: 1, color_name: 'Jet Black')
-    k0 = open('')
-    k.photo0.attach(io: k1, filename: 'k0.jpeg')
-    k1 = open('')
-    k.photo1.attach(io: k2, filename: 'k1.jpeg')
-    k2 = open('')
-    k.photo2.attach(io: k3, filename: 'k2.jpeg')
-    k3 = open('')
-    k.photo3.attach(io: k4, filename: 'k3.jpeg')
-    k4 = open('')
-    k.photo4.attach(io: k5, filename: 'k4.jpeg')
+    k0 = open('https://wearby-parker-seed.s3.amazonaws.com/j0.jpeg')
+    k.photo0.attach(io: k0, filename: 'k0.jpeg')
+    k1 = open('https://wearby-parker-seed.s3.amazonaws.com/j1.jpeg')
+    k.photo1.attach(io: k1, filename: 'k1.jpeg')
+    k2 = open('https://wearby-parker-seed.s3.amazonaws.com/j2.jpeg')
+    k.photo2.attach(io: k2, filename: 'k2.jpeg')
+    k3 = open('https://wearby-parker-seed.s3.amazonaws.com/j3.jpeg')
+    k.photo3.attach(io: k3, filename: 'k3.jpeg')
+    k4 = open('https://wearby-parker-seed.s3.amazonaws.com/j4.jpeg')
+    k.photo4.attach(io: k4, filename: 'k4.jpeg')
 
 l = ProductsColor.create!(product_id: 5, color_id: 2, color_name: 'Truffle Tortoise with Polished Gold')
+    l0 = open('https://wearby-parker-seed.s3.amazonaws.com/l0.jpeg')
+    l.photo0.attach(io: l0, filename: 'l0.jpeg')
+    l1 = open('https://wearby-parker-seed.s3.amazonaws.com/l1.jpeg')
+    l.photo1.attach(io: l1, filename: 'l1.jpeg')
+    l2 = open('https://wearby-parker-seed.s3.amazonaws.com/l2.jpeg')
+    l.photo2.attach(io: l2, filename: 'l2.jpeg')
+    l3 = open('https://wearby-parker-seed.s3.amazonaws.com/l3.jpeg')
+    l.photo3.attach(io: l3, filename: 'l3.jpeg')
+    l4 = open('https://wearby-parker-seed.s3.amazonaws.com/l4.jpeg')
+    l.photo4.attach(io: l4, filename: 'l4.jpeg')
 m = ProductsColor.create!(product_id: 5, color_id: 9, color_name: 'Blue Agave with Polished Gold')
-
+    m0 = open('https://wearby-parker-seed.s3.amazonaws.com/m0.jpeg')
+    m.photo0.attach(io: m0, filename: 'm0.jpeg')
+    m1 = open('https://wearby-parker-seed.s3.amazonaws.com/m1.jpeg')
+    m.photo1.attach(io: m1, filename: 'm1.jpeg')
+    m2 = open('https://wearby-parker-seed.s3.amazonaws.com/m2.jpeg')
+    m.photo2.attach(io: m2, filename: 'm2.jpeg')
+    m3 = open('https://wearby-parker-seed.s3.amazonaws.com/m3.jpeg')
+    m.photo3.attach(io: m3, filename: 'm3.jpeg')
+    m4 = open('https://wearby-parker-seed.s3.amazonaws.com/m4.jpeg')
+    m.photo4.attach(io: m4, filename: 'm4.jpeg')
 n = ProductsColor.create!(product_id: 7, color_id: 2, color_name: 'Sesame Tortoise')
+    n0 = open('https://wearby-parker-seed.s3.amazonaws.com/n0.jpeg')
+    n.photo0.attach(io: n0, filename: 'n0.jpeg')
+    n1 = open('https://wearby-parker-seed.s3.amazonaws.com/n1.jpeg')
+    n.photo1.attach(io: n1, filename: 'n1.jpeg')
+    n2 = open('https://wearby-parker-seed.s3.amazonaws.com/n2.jpeg')
+    n.photo2.attach(io: n2, filename: 'n2.jpeg')
+    n3 = open('https://wearby-parker-seed.s3.amazonaws.com/n3.jpeg')
+    n.photo3.attach(io: n3, filename: 'n3.jpeg')
+    n4 = open('https://wearby-parker-seed.s3.amazonaws.com/n4.jpeg')
+    n.photo4.attach(io: n4, filename: 'n4.jpeg')
 o = ProductsColor.create!(product_id: 8, color_id: 2, color_name: 'Sesame Tortoise')
+    o0 = open('https://wearby-parker-seed.s3.amazonaws.com/n0.jpeg')
+    o.photo0.attach(io: o0, filename: 'o0.jpeg')
+    o1 = open('https://wearby-parker-seed.s3.amazonaws.com/n1.jpeg')
+    o.photo1.attach(io: o1, filename: 'o1.jpeg')
+    o2 = open('https://wearby-parker-seed.s3.amazonaws.com/o2.jpeg')
+    o.photo2.attach(io: o2, filename: 'o2.jpeg')
+    o3 = open('https://wearby-parker-seed.s3.amazonaws.com/n3.jpeg')
+    o.photo3.attach(io: o3, filename: 'o3.jpeg')
+    o4 = open('https://wearby-parker-seed.s3.amazonaws.com/n4.jpeg')
+    o.photo4.attach(io: o4, filename: 'o4.jpeg')
 p = ProductsColor.create!(product_id: 7, color_id: 9, color_name: 'Blue Thistle')
+    p0 = open('https://wearby-parker-seed.s3.amazonaws.com/p0.jpeg')
+    p.photo0.attach(io: p0, filename: 'p0.jpeg')
+    p1 = open('https://wearby-parker-seed.s3.amazonaws.com/p1.jpeg')
+    p.photo1.attach(io: p1, filename: 'p1.jpeg')
+    p2 = open('https://wearby-parker-seed.s3.amazonaws.com/p2.jpeg')
+    p.photo2.attach(io: p2, filename: 'p2.jpeg')
+    p3 = open('https://wearby-parker-seed.s3.amazonaws.com/p1.jpeg')
+    p.photo3.attach(io: p3, filename: 'p3.jpeg')
+    p4 = open('https://wearby-parker-seed.s3.amazonaws.com/p4.jpeg')
+    p.photo4.attach(io: p4, filename: 'p4.jpeg')
 q = ProductsColor.create!(product_id: 8, color_id: 9, color_name: 'Blue Thistle')
+    q0 = open('https://wearby-parker-seed.s3.amazonaws.com/p0.jpeg')
+    q.photo0.attach(io: q0, filename: 'q0.jpeg')
+    q1 = open('https://wearby-parker-seed.s3.amazonaws.com/p1.jpeg')
+    q.photo1.attach(io: q1, filename: 'q1.jpeg')
+    q2 = open('https://wearby-parker-seed.s3.amazonaws.com/p2.jpeg')
+    q.photo2.attach(io: q2, filename: 'q2.jpeg')
+    q3 = open('https://wearby-parker-seed.s3.amazonaws.com/p1.jpeg')
+    q.photo3.attach(io: q3, filename: 'q3.jpeg')
+    q4 = open('https://wearby-parker-seed.s3.amazonaws.com/p5.jpeg')
+    q.photo4.attach(io: q4, filename: 'q4.jpeg')
 r = ProductsColor.create!(product_id: 7, color_id: 12, color_name: 'Oxblood')
+    r0 = open('https://wearby-parker-seed.s3.amazonaws.com/r0.jpeg')
+    r.photo0.attach(io: r0, filename: 'r0.jpeg')
+    r1 = open('https://wearby-parker-seed.s3.amazonaws.com/r1.jpeg')
+    r.photo1.attach(io: r1, filename: 'r1.jpeg')
+    r2 = open('https://wearby-parker-seed.s3.amazonaws.com/r2.jpeg')
+    r.photo2.attach(io: r2, filename: 'r2.jpeg')
+    r3 = open('https://wearby-parker-seed.s3.amazonaws.com/r3.jpeg')
+    r.photo3.attach(io: r3, filename: 'r3.jpeg')
+    r4 = open('https://wearby-parker-seed.s3.amazonaws.com/r4.jpeg')
+    r.photo4.attach(io: r4, filename: 'r4.jpeg')
 s = ProductsColor.create!(product_id: 8, color_id: 12, color_name: 'Oxblood')
+    s0 = open('https://wearby-parker-seed.s3.amazonaws.com/r0.jpeg')
+    s.photo0.attach(io: s0, filename: 's0.jpeg')
+    s1 = open('https://wearby-parker-seed.s3.amazonaws.com/r1.jpeg')
+    s.photo1.attach(io: s1, filename: 's1.jpeg')
+    s2 = open('https://wearby-parker-seed.s3.amazonaws.com/s2.jpeg')
+    s.photo2.attach(io: s2, filename: 's2.jpeg')
+    s3 = open('https://wearby-parker-seed.s3.amazonaws.com/r3.jpeg')
+    s.photo3.attach(io: s3, filename: 's3.jpeg')
+    s4 = open('https://wearby-parker-seed.s3.amazonaws.com/r4.jpeg')
+    s.photo4.attach(io: s4, filename: 's4.jpeg')
 
 t = ProductsColor.create!(product_id: 9, color_id: 2, color_name: 'Teal Tortoise')
+    t0 = open('https://wearby-parker-seed.s3.amazonaws.com/t0.jpeg')
+    t.photo0.attach(io: t0, filename: 't0.jpeg')
+    t1 = open('https://wearby-parker-seed.s3.amazonaws.com/t1.jpeg')
+    t.photo1.attach(io: t1, filename: 't1.jpeg')
+    t2 = open('https://wearby-parker-seed.s3.amazonaws.com/t2.jpeg')
+    t.photo2.attach(io: t2, filename: 't2.jpeg')
+    t3 = open('https://wearby-parker-seed.s3.amazonaws.com/t4.jpeg')
+    t.photo3.attach(io: t3, filename: 't3.jpeg')
+    t4 = open('https://wearby-parker-seed.s3.amazonaws.com/t5.jpeg')
+    t.photo4.attach(io: t4, filename: 't4.jpeg')
 u = ProductsColor.create!(product_id: 10, color_id: 2, color_name: 'Teal Tortoise')
+    u0 = open('https://wearby-parker-seed.s3.amazonaws.com/t0.jpeg')
+    u.photo0.attach(io: u0, filename: 'u0.jpeg')
+    u1 = open('https://wearby-parker-seed.s3.amazonaws.com/t1.jpeg')
+    u.photo1.attach(io: u1, filename: 'u1.jpeg')
+    u2 = open('https://wearby-parker-seed.s3.amazonaws.com/u2.jpeg')
+    u.photo2.attach(io: u2, filename: 'u2.jpeg')
+    u3 = open('https://wearby-parker-seed.s3.amazonaws.com/t4.jpeg')
+    u.photo3.attach(io: u3, filename: 'u3.jpeg')
+    u4 = open('https://wearby-parker-seed.s3.amazonaws.com/t5.jpeg')
+    u.photo4.attach(io: u4, filename: 'u4.jpeg')
 v = ProductsColor.create!(product_id: 9, color_id: 1, color_name: 'Jet Black')
+    v0 = open('https://wearby-parker-seed.s3.amazonaws.com/v0.jpeg')
+    v.photo0.attach(io: v0, filename: 'v0.jpeg')
+    v1 = open('https://wearby-parker-seed.s3.amazonaws.com/v1.jpeg')
+    v.photo1.attach(io: v1, filename: 'v1.jpeg')
+    v2 = open('https://wearby-parker-seed.s3.amazonaws.com/v2.jpeg')
+    v.photo2.attach(io: v2, filename: 'v2.jpeg')
+    v3 = open('https://wearby-parker-seed.s3.amazonaws.com/v3.jpeg')
+    v.photo3.attach(io: v3, filename: 'v3.jpeg')
+    v4 = open('https://wearby-parker-seed.s3.amazonaws.com/v4.jpeg')
+    v.photo4.attach(io: v4, filename: 'v4.jpeg')
 w = ProductsColor.create!(product_id: 10, color_id: 1, color_name: 'Jet Black')
+    w0 = open('https://wearby-parker-seed.s3.amazonaws.com/v0.jpeg')
+    w.photo0.attach(io: w0, filename: 'w0.jpeg')
+    w1 = open('https://wearby-parker-seed.s3.amazonaws.com/v1.jpeg')
+    w.photo1.attach(io: w1, filename: 'w1.jpeg')
+    w2 = open('https://wearby-parker-seed.s3.amazonaws.com/w2.jpeg')
+    w.photo2.attach(io: w2, filename: 'w2.jpeg')
+    w3 = open('https://wearby-parker-seed.s3.amazonaws.com/v3.jpeg')
+    w.photo3.attach(io: w3, filename: 'w3.jpeg')
+    w4 = open('https://wearby-parker-seed.s3.amazonaws.com/v4.jpeg')
+    w.photo4.attach(io: w4, filename: 'w4.jpeg')
 x = ProductsColor.create!(product_id: 9, color_id: 4, color_name: 'Nutmeg Crystal')
+    x0 = open('https://wearby-parker-seed.s3.amazonaws.com/x0.jpeg')
+    x.photo0.attach(io: x0, filename: 'x0.jpeg')
+    x1 = open('https://wearby-parker-seed.s3.amazonaws.com/x1.jpeg')
+    x.photo1.attach(io: x1, filename: 'x1.jpeg')
+    x2 = open('https://wearby-parker-seed.s3.amazonaws.com/x2.jpeg')
+    x.photo2.attach(io: x2, filename: 'x2.jpeg')
+    x3 = open('https://wearby-parker-seed.s3.amazonaws.com/x3.jpeg')
+    x.photo3.attach(io: x3, filename: 'x3.jpeg')
+    x4 = open('https://wearby-parker-seed.s3.amazonaws.com/x4.jpeg')
+    x.photo4.attach(io: x4, filename: 'x4.jpeg')
 y = ProductsColor.create!(product_id: 10, color_id: 4, color_name: 'Nutmeg Crystal')
+    y0 = open('https://wearby-parker-seed.s3.amazonaws.com/x0.jpeg')
+    y.photo0.attach(io: y0, filename: 'y0.jpeg')
+    y1 = open('https://wearby-parker-seed.s3.amazonaws.com/x1.jpeg')
+    y.photo1.attach(io: y1, filename: 'y1.jpeg')
+    y2 = open('https://wearby-parker-seed.s3.amazonaws.com/y2.jpeg')
+    y.photo2.attach(io: y2, filename: 'y2.jpeg')
+    y3 = open('https://wearby-parker-seed.s3.amazonaws.com/x3.jpeg')
+    y.photo3.attach(io: y3, filename: 'y3.jpeg')
+    y4 = open('https://wearby-parker-seed.s3.amazonaws.com/x4.jpeg')
+    y.photo4.attach(io: y4, filename: 'y4.jpeg')
 
 z = ProductsColor.create!(product_id: 11, color_id: 1, color_name: 'Jet Black with Polished Gold')
+    z0 = open('https://wearby-parker-seed.s3.amazonaws.com/z0.jpeg')
+    z.photo0.attach(io: z0, filename: 'z0.jpeg')
+    z1 = open('https://wearby-parker-seed.s3.amazonaws.com/z1.jpeg')
+    z.photo1.attach(io: z1, filename: 'z1.jpeg')
+    z2 = open('https://wearby-parker-seed.s3.amazonaws.com/z2.jpeg')
+    z.photo2.attach(io: z2, filename: 'z2.jpeg')
+    z3 = open('https://wearby-parker-seed.s3.amazonaws.com/z4.jpeg')
+    z.photo3.attach(io: z3, filename: 'z3.jpeg')
+    z4 = open('https://wearby-parker-seed.s3.amazonaws.com/z4.jpeg')
+    z.photo4.attach(io: z4, filename: 'z4.jpeg')
 aa = ProductsColor.create!(product_id: 12, color_id: 1, color_name: 'Jet Black with Polished Gold')
+    aa0 = open('https://wearby-parker-seed.s3.amazonaws.com/z0.jpeg')
+    aa.photo0.attach(io: aa0, filename: 'aa0.jpeg')
+    aa1 = open('https://wearby-parker-seed.s3.amazonaws.com/z2.jpeg')
+    aa.photo1.attach(io: aa1, filename: 'aa1.jpeg')
+    aa2 = open('https://wearby-parker-seed.s3.amazonaws.com/aa2.jpeg')
+    aa.photo2.attach(io: aa2, filename: 'aa2.jpeg')
+    aa3 = open('https://wearby-parker-seed.s3.amazonaws.com/z4.jpeg')
+    aa.photo3.attach(io: aa3, filename: 'aa3.jpeg')
+    aa4 = open('https://wearby-parker-seed.s3.amazonaws.com/z4.jpeg')
+    aa.photo4.attach(io: aa4, filename: 'aa4.jpeg')
 bb = ProductsColor.create!(product_id: 11, color_id: 4, color_name: 'Nutmeg Crystal with Riesling')
+    bb0 = open('https://wearby-parker-seed.s3.amazonaws.com/bb0.jpeg')
+    bb.photo0.attach(io: bb0, filename: 'bb0.jpeg')
+    bb1 = open('https://wearby-parker-seed.s3.amazonaws.com/bb1.jpeg')
+    bb.photo1.attach(io: bb1, filename: 'bb1.jpeg')
+    bb2 = open('https://wearby-parker-seed.s3.amazonaws.com/bb2.jpeg') 
+    bb.photo2.attach(io: bb2, filename: 'bb2.jpeg')
+    bb3 = open('https://wearby-parker-seed.s3.amazonaws.com/bb3.jpeg')
+    bb.photo3.attach(io: bb3, filename: 'bb3.jpeg')
+    bb4 = open('https://wearby-parker-seed.s3.amazonaws.com/bb4.jpeg')
+    bb.photo4.attach(io: bb4, filename: 'bb4.jpeg')
 cc = ProductsColor.create!(product_id: 12, color_id: 4, color_name: 'Nutmeg Crystal with Riesling')
+    cc0 = open('https://wearby-parker-seed.s3.amazonaws.com/bb0.jpeg')
+    cc.photo0.attach(io: cc0, filename: 'cc0.jpeg')
+    cc1 = open('https://wearby-parker-seed.s3.amazonaws.com/bb1.jpeg')
+    cc.photo1.attach(io: cc1, filename: 'cc1.jpeg')
+    cc2 = open('https://wearby-parker-seed.s3.amazonaws.com/cc2.jpeg')
+    cc.photo2.attach(io: cc2, filename: 'cc2.jpeg')
+    cc3 = open('https://wearby-parker-seed.s3.amazonaws.com/bb3.jpeg')
+    cc.photo3.attach(io: cc3, filename: 'cc3.jpeg')
+    cc4 = open('https://wearby-parker-seed.s3.amazonaws.com/bb4.jpeg')
+    cc.photo4.attach(io: cc4, filename: 'cc4.jpeg')
 
-dd = ProductsColor.create!(product_id: 13, color_id: 1, color_name: 'Black Oak Tortoise')
-ee = ProductsColor.create!(product_id: 14, color_id: 1, color_name: 'Black Oak Tortoise')
-ff = ProductsColor.create!(product_id: 13, color_id: 4, color_name: 'Pacific Crystal')
-gg = ProductsColor.create!(product_id: 14, color_id: 4, color_name: 'Pacific Crystal')
+# dd = ProductsColor.create!(product_id: 13, color_id: 1, color_name: 'Black Oak Tortoise')
+# ee = ProductsColor.create!(product_id: 14, color_id: 1, color_name: 'Black Oak Tortoise')
+# ff = ProductsColor.create!(product_id: 13, color_id: 4, color_name: 'Pacific Crystal')
+# gg = ProductsColor.create!(product_id: 14, color_id: 4, color_name: 'Pacific Crystal')
 
-hh = ProductsColor.create!(product_id: 15, color_id: 12, color_name: 'Russet Red with Riesling')
-ii = ProductsColor.create!(product_id: 16, color_id: 12, color_name: 'Russet Red with Riesling')
-jj = ProductsColor.create!(product_id: 15, color_id: 2, color_name: 'Cognac Tortoise with Polished Gold')
-kk = ProductsColor.create!(product_id: 16, color_id: 2, color_name: 'Cognac Tortoise with Polished Gold')
+# hh = ProductsColor.create!(product_id: 15, color_id: 12, color_name: 'Russet Red with Riesling')
+# ii = ProductsColor.create!(product_id: 16, color_id: 12, color_name: 'Russet Red with Riesling')
+# jj = ProductsColor.create!(product_id: 15, color_id: 2, color_name: 'Cognac Tortoise with Polished Gold')
+# kk = ProductsColor.create!(product_id: 16, color_id: 2, color_name: 'Cognac Tortoise with Polished Gold')
 
-ll = ProductsColor.create!(product_id: 17, color_id: 2, color_name: 'Polished Gold with Savanna Tortoise')
-mm = ProductsColor.create!(product_id: 18, color_id: 2, color_name: 'Polished Gold with Savanna Tortoise')
+# ll = ProductsColor.create!(product_id: 17, color_id: 2, color_name: 'Polished Gold with Savanna Tortoise')
+# mm = ProductsColor.create!(product_id: 18, color_id: 2, color_name: 'Polished Gold with Savanna Tortoise')
 
-nn = ProductsColor.create!(product_id: 19, color_id: 4, color_name: 'Crystal')
-oo = ProductsColor.create!(product_id: 20, color_id: 4, color_name: 'Crystal')
-pp = ProductsColor.create!(product_id: 19, color_id: 2, color_name: 'Petal Tortoise')
-qq = ProductsColor.create!(product_id: 20, color_id: 2, color_name: 'Petal Tortoise')
-rr = ProductsColor.create!(product_id: 19, color_id: 9, color_name: 'Tidal Blue')
-ss = ProductsColor.create!(product_id: 20, color_id: 9, color_name: 'Tidal Blue')
-tt = ProductsColor.create!(product_id: 19, color_id: 3, color_name: 'Striped Sassafras')
-uu = ProductsColor.create!(product_id: 20, color_id: 3, color_name: 'Striped Sassafras')
-vv = ProductsColor.create!(product_id: 19, color_id: 4, color_name: 'Crystal with Oak Barrel and Blue Bay')
-ww = ProductsColor.create!(product_id: 20, color_id: 4, color_name: 'Crystal with Oak Barrel and Blue Bay')
+# nn = ProductsColor.create!(product_id: 19, color_id: 4, color_name: 'Crystal')
+# oo = ProductsColor.create!(product_id: 20, color_id: 4, color_name: 'Crystal')
+# pp = ProductsColor.create!(product_id: 19, color_id: 2, color_name: 'Petal Tortoise')
+# qq = ProductsColor.create!(product_id: 20, color_id: 2, color_name: 'Petal Tortoise')
+# rr = ProductsColor.create!(product_id: 19, color_id: 9, color_name: 'Tidal Blue')
+# ss = ProductsColor.create!(product_id: 20, color_id: 9, color_name: 'Tidal Blue')
+# tt = ProductsColor.create!(product_id: 19, color_id: 3, color_name: 'Striped Sassafras')
+# uu = ProductsColor.create!(product_id: 20, color_id: 3, color_name: 'Striped Sassafras')
+# vv = ProductsColor.create!(product_id: 19, color_id: 4, color_name: 'Crystal with Oak Barrel and Blue Bay')
+# ww = ProductsColor.create!(product_id: 20, color_id: 4, color_name: 'Crystal with Oak Barrel and Blue Bay')
 
-xx = ProductsColor.create!(product_id: 21, color_id: 7, color_name: 'Poblano with Polished Silver')
-yy = ProductsColor.create!(product_id: 22, color_id: 7, color_name: 'Poblano with Polished Silver')
-zz = ProductsColor.create!(product_id: 21, color_id: 2, color_name: 'Acorn Tortoise with Riesling') 
-aaa = ProductsColor.create!(product_id: 22, color_id: 2, color_name: 'Acorn Tortoise with Riesling') 
+# xx = ProductsColor.create!(product_id: 21, color_id: 7, color_name: 'Poblano with Polished Silver')
+# yy = ProductsColor.create!(product_id: 22, color_id: 7, color_name: 'Poblano with Polished Silver')
+# zz = ProductsColor.create!(product_id: 21, color_id: 2, color_name: 'Acorn Tortoise with Riesling') 
+# aaa = ProductsColor.create!(product_id: 22, color_id: 2, color_name: 'Acorn Tortoise with Riesling') 
 
 #MATERIALS
 ProductsMaterial.create!(product_id: 1, material_id: 2)
@@ -492,20 +670,20 @@ ProductsMaterial.create!(product_id: 10, material_id: 2)
 ProductsMaterial.create!(product_id: 11, material_id: 3)
 ProductsMaterial.create!(product_id: 12, material_id: 3)
 
-ProductsMaterial.create!(product_id: 13, material_id: 2)
-ProductsMaterial.create!(product_id: 14, material_id: 2)
+# ProductsMaterial.create!(product_id: 13, material_id: 2)
+# ProductsMaterial.create!(product_id: 14, material_id: 2)
 
-ProductsMaterial.create!(product_id: 15, material_id: 3)
-ProductsMaterial.create!(product_id: 16, material_id: 3)
+# ProductsMaterial.create!(product_id: 15, material_id: 3)
+# ProductsMaterial.create!(product_id: 16, material_id: 3)
 
-ProductsMaterial.create!(product_id: 17, material_id: 1)
-ProductsMaterial.create!(product_id: 18, material_id: 1)
+# ProductsMaterial.create!(product_id: 17, material_id: 1)
+# ProductsMaterial.create!(product_id: 18, material_id: 1)
 
-ProductsMaterial.create!(product_id: 19, material_id: 2)
-ProductsMaterial.create!(product_id: 20, material_id: 2)
+# ProductsMaterial.create!(product_id: 19, material_id: 2)
+# ProductsMaterial.create!(product_id: 20, material_id: 2)
 
-ProductsMaterial.create!(product_id: 21, material_id: 3)
-ProductsMaterial.create!(product_id: 22, material_id: 3)
+# ProductsMaterial.create!(product_id: 21, material_id: 3)
+# ProductsMaterial.create!(product_id: 22, material_id: 3)
 
 
 #NOSE BRIDGE
@@ -527,17 +705,17 @@ ProductsNoseBridge.create!(product_id: 10, nose_bridge_id: 2)
 ProductsNoseBridge.create!(product_id: 11, nose_bridge_id: 1)
 ProductsNoseBridge.create!(product_id: 12, nose_bridge_id: 1)
 
-ProductsNoseBridge.create!(product_id: 13, nose_bridge_id: 1)
-ProductsNoseBridge.create!(product_id: 14, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 13, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 14, nose_bridge_id: 1)
 
-ProductsNoseBridge.create!(product_id: 15, nose_bridge_id: 1)
-ProductsNoseBridge.create!(product_id: 16, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 15, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 16, nose_bridge_id: 1)
 
-ProductsNoseBridge.create!(product_id: 17, nose_bridge_id: 1)
-ProductsNoseBridge.create!(product_id: 18, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 17, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 18, nose_bridge_id: 1)
 
-ProductsNoseBridge.create!(product_id: 19, nose_bridge_id: 1)
-ProductsNoseBridge.create!(product_id: 20, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 19, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 20, nose_bridge_id: 1)
 
-ProductsNoseBridge.create!(product_id: 21, nose_bridge_id: 1)
-ProductsNoseBridge.create!(product_id: 22, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 21, nose_bridge_id: 1)
+# ProductsNoseBridge.create!(product_id: 22, nose_bridge_id: 1)

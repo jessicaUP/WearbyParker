@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :products, only: [:show]
     resources :genders, only: [:show]
+    resources :carts, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:create, :update, :destroy]
+    resources :cart_tryon_items, only: [:create, :update, :destroy]
   end
 end

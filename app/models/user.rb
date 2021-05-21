@@ -8,7 +8,22 @@ class User < ApplicationRecord
   # validates_format_of :name, :with => " "
   # validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-  before_validation :ensure_sessioin_token
+  before_validation :ensure_session_token
+  after_validation :ensure_cart
+
+  has_one :cart,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: :Cart
+
+  has_many :cart_items,
+    through: :carts,
+    source: :cart_items
+    
+  has_many :cart_tryon_items,
+    through: :carts,
+    source: :cart_tryon_items
+
 
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
@@ -34,15 +49,19 @@ class User < ApplicationRecord
      SecureRandom.urlsafe_base64
   end
 
-  def ensure_sessioin_token
+  def ensure_session_token
     self.session_token ||= generate_session_token
   end
 
+  
   def reset_session_token!
     self.session_token = generate_session_token
     self.save
     self.session_token
   end
-    
+  
+  def ensure_cart
+    self.cart || self.cart = Cart.new(user_id: self.id)
+  end
 
 end
