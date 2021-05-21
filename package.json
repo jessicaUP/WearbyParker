@@ -40,6 +40,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-query-loader": "^2.0.5"
   },
