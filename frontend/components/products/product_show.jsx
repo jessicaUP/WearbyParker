@@ -10,8 +10,8 @@ class ProductShow extends React.Component {
 
     this.state = {
       currentPhoto: 'photo1',
-      colorId: props.match.params.colorId
-      // currentColor: colorName
+      colorId: props.match.params.colorId,
+      // currentColor: null
     }
   
     this.handlePhoto = this.handlePhoto.bind(this)
@@ -40,7 +40,6 @@ class ProductShow extends React.Component {
   }
 
   render() {
-    debugger
     // let product = this.props.fetchProduct(this.props.match.params.productId)
     // this.props.fetchProduct(this.props.id)
     let { product } = this.props
@@ -55,7 +54,6 @@ class ProductShow extends React.Component {
 
     product.colors.forEach(color => { 
       if (color.id === this.state.colorId) {
-        debugger    
         colorname = color.color_name
         photo1 = color.photo1Url
         photo2 = color.photo2Url
@@ -82,7 +80,6 @@ class ProductShow extends React.Component {
 
     // let colorName;
     // product.colors.forEach(color => {
-    //   debugger
     //   if (this.state.colorId === color.id) colorName = color.color_name
     // })
 
@@ -90,18 +87,21 @@ class ProductShow extends React.Component {
       
 
 
-    debugger
     return (
       <div className='index-body'>
         <div className='top' >
+          <div className='pictures-container'>
           <div className='pictures'>
             {image}
-            <form>
-              <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
-              <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
-              <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
-              <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
+            <form >
+              <div className='options-colors'>
+                <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
+                <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
+                <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
+                <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
+              </div>
             </form>
+          </div>
           </div>
             <div className='r-side'>
               <h2>{product.name}</h2>
@@ -111,7 +111,7 @@ class ProductShow extends React.Component {
             
               <p>Starting at {product.price}</p>
               <div>
-                <AddItemForm product={product} createCartItem={this.props.createCartItem} />
+                <AddItemForm product={product} colorPhoto={photo3} pickedColor={colorname} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
               </div>
             </div>
@@ -119,16 +119,13 @@ class ProductShow extends React.Component {
         <div className='middle-details' >
           <h5 className='serif' >{details[0]}</h5>
         </div>
-        <div className='bottom-details' >
-          <div className='details-picture' >
-            {/* <img src="" alt='eyewear-picture' /> */}
-          </div>
+        {/* <div className='bottom-details' >
           <div className='bottom-text'>
-            <h5 className='serif' >We offer a variety of prescription and lense types</h5>
+            <h5 className='serif-detail' >We offer a variety of prescription and lense types</h5>
             <p>Need to renew your prescription? We have an app that lets tou do it from home</p>
             
             <div>
-              <h5 className='sans'>Prescription type</h5>
+              <h5 className='sans-details'>Prescription type</h5>
               <ul>
                 <li>Non-prescription</li>
                 <li>Single-vision</li>
@@ -142,13 +139,13 @@ class ProductShow extends React.Component {
                 <li>Polycarbonate</li>
                 <li>1.67 high-index</li>
               </ul>
-            </div>
+            </div> */}
 
-            <img src={window.case} />
 
-            <div>
-              <h3>Everything that's included</h3>
-              <p>Each pair of sunglasses comes with a frame case and lens cloth.
+            <div className='bottom'>
+              <img src={window.case} />
+              <h3 className='bottom-note-title'>Everything that's included</h3>
+              <p className='bottom-note'>Each pair of sunglasses comes with a frame case and lens cloth.
                  We also offer free shipping and a 30-day, hassle-free return or
                  exchange policy as well as a one-year, no scratch guarantee for
                  our lenses; we'll replace your scratched lenses for free within the first 12 months.</p>
@@ -156,8 +153,8 @@ class ProductShow extends React.Component {
 
 
           </div>
-        </div>
-      </div>
+        // </div>
+      // </div>
     )
   }
 }

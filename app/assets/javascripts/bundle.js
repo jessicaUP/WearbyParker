@@ -361,7 +361,6 @@ var receiveProduct = function receiveProduct(product) {
 
 var fetchProduct = function fetchProduct(productId) {
   return function (dispatch) {
-    debugger;
     return _util_product__WEBPACK_IMPORTED_MODULE_0__.fetchProduct(productId).then(function (product) {
       return dispatch(receiveProduct(product));
     });
@@ -767,7 +766,6 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit() {
       var _this6 = this;
 
-      debugger;
       return function (e) {
         e.preventDefault();
 
@@ -804,6 +802,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           key: idx,
           className: "cart-options"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "selection-button",
           onClick: _this7.handleClick('frame_width', 2),
           value: frameWidth.frame_width
         }, frameWidth.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -823,17 +822,23 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "add-cart-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "left-select-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: this.props.colorPhoto,
+          className: "selection-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-color"
+        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "right-select-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "icon-button",
-          onClick: this.backForm()
-        }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
           onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", _defineProperty({
-          className: "icon-button"
-        }, "className", "option-title"), "Select a frame width"), options));
+        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title"
+        }, "Select a frame width"), options));
       }
 
       if (formPage === 2) {
@@ -841,7 +846,16 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "add-cart-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "left-select-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: this.props.colorPhoto,
+          className: "selection-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-color"
+        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "right-select-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "icon-button",
@@ -895,7 +909,16 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "add-cart-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "left-select-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: this.props.colorPhoto,
+          className: "selection-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-color"
+        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "right-select-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "icon-button",
@@ -946,7 +969,16 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "add-cart-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "left-select-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: this.props.colorPhoto,
+          className: "selection-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-color"
+        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "right-select-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "icon-button",
@@ -1260,19 +1292,19 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "logo"
       }, "WEARBY PARKER")), accountButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "nav-bottom"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Home Try-on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "menu-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: toggleItem
-      }, "Eyeglasses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "dropdown"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Home Try-on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
         to: "/genders/2"
-      }, "Men")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu"
+      }, "Men")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
         to: "/genders/1"
-      }, "Women"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sunglasses"))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu"
+      }, "Women")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "menu-item"
+      })));
     }
   }]);
 
@@ -1482,7 +1514,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       currentPhoto: 'photo1',
-      colorId: props.match.params.colorId // currentColor: colorName
+      colorId: props.match.params.colorId // currentColor: null
 
     };
     _this.handlePhoto = _this.handlePhoto.bind(_assertThisInitialized(_this));
@@ -1526,9 +1558,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      debugger; // let product = this.props.fetchProduct(this.props.match.params.productId)
+      // let product = this.props.fetchProduct(this.props.match.params.productId)
       // this.props.fetchProduct(this.props.id)
-
       var product = this.props.product;
       if (!product) return null;
       var image;
@@ -1539,7 +1570,6 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       var photo4 = product.colors[0].photo4Url;
       product.colors.forEach(function (color) {
         if (color.id === _this4.state.colorId) {
-          debugger;
           colorname = color.color_name;
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
@@ -1582,20 +1612,22 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           break;
       } // let colorName;
       // product.colors.forEach(color => {
-      //   debugger
       //   if (this.state.colorId === color.id) colorName = color.color_name
       // })
 
 
       var details = product.details.split('#');
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "top"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "pictures-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "pictures"
-      }, image, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, image, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "options-colors"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
         name: "photo-radios",
         value: "photo1",
@@ -1616,7 +1648,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         name: "photo-radios",
         value: "photo4",
         onClick: this.handlePhoto()
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "r-side"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, colorname), product.colors.map(function (color, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -1628,6 +1660,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         });
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
         product: product,
+        colorPhoto: photo3,
+        pickedColor: colorname,
         createCartItem: this.props.createCartItem
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "try-on"
@@ -1636,20 +1670,16 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
         className: "serif"
       }, details[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "bottom-details"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "details-picture"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "bottom-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-        className: "serif"
-      }, "We offer a variety of prescription and lense types"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Need to renew your prescription? We have an app that lets tou do it from home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-        className: "sans"
-      }, "Prescription type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Non-prescription"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Single-vision"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Progressives"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Readers"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
-        className: "sans"
-      }, "Lense material"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Polycarbonate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "1.67 high-index"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "bottom"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: window["case"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Everything that's included"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Each pair of sunglasses comes with a frame case and lens cloth. We also offer free shipping and a 30-day, hassle-free return or exchange policy as well as a one-year, no scratch guarantee for our lenses; we'll replace your scratched lenses for free within the first 12 months.")))));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        className: "bottom-note-title"
+      }, "Everything that's included"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "bottom-note"
+      }, "Each pair of sunglasses comes with a frame case and lens cloth. We also offer free shipping and a 30-day, hassle-free return or exchange policy as well as a one-year, no scratch guarantee for our lenses; we'll replace your scratched lenses for free within the first 12 months."))) // </div>
+      // </div>
+      ;
     }
   }]);
 
@@ -1684,7 +1714,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  debugger;
   return {
     product: state.entities.products[ownProps.match.params.productId]
   };
