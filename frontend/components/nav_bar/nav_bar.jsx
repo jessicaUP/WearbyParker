@@ -6,7 +6,6 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = this.props.currentUser;
   }
 
 
@@ -41,7 +40,7 @@ class NavBar extends React.Component {
             href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
             target="_blank">Jessica Uphoff Linkedin></a>
         </div>
-        <h3>WEARBY PARKER</h3>
+          <Link to='/'><h3 className='logo' >WEARBY PARKER</h3></Link>
           {accountButton}
       </div>
         <div className='nav-bottom'>

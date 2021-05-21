@@ -3,16 +3,51 @@ import { NavLink } from 'react-router-dom';
 
 class ProductTile extends React.Component {
 
+  constructor(props) {
+    
+    super(props);
+
+    this.state = {
+      selectedColor: props.product.colors[0],
+      colorName: props.product.colors[0].color_name,
+      colorPhoto: props.product.colors[0].photo0Url
+
+    }
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  handleSelect(colorId, colorname, colorPhoto) {
+    return (e) => {
+      e.preventDefault();
+      this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto})
+    }
+  }
+
+
+
+
   render() {
     let { product } = this.props
-    const color = Object.values(product.color)
-    debugger
+    const colors = Object.values(product.colors)
+    
     return (
       <div className='product-tile'>
        <h2 className='product-name'>{product.name}</h2>
-       <div className='tile-image'></div> 
+        <NavLink to={`/products/${product.id}/color/${this.state.selectedColor}`}
+           colorname={this.state.colorName}
+           ><div className='tile-image' >
+             <img src={this.state.colorPhoto} alt="" />
+          </div></NavLink>
         <div className='tile-colors'>
-          {color.map((color, idx) => <NavLink to={`/products/${product.id}`} className='color-preview' key={idx} >{color.color}</NavLink>)}
+          {product.colors.map((color, idx) => (
+            <input type="radio"
+                   className='radio-color-options'
+                   name={`radio-${product.id}`} 
+                   onChange={this.handleSelect(color.id, color.name, color.photo0Url)}
+                   key={color.id}
+                   defaultChecked={idx === 0}
+                   />  )) }
+
         </div>
       </div>
 
@@ -21,5 +56,6 @@ class ProductTile extends React.Component {
 
   }
 }
+
 
 export default ProductTile;

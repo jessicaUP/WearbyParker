@@ -12,4 +12,14 @@ class ProductsFrameWidth < ApplicationRecord
   primary_key: :id,
   class_name: :Product
 
+  has_many :cart_items,
+    foreign_key: :products_frame_width_id,
+    primary_key: :id,
+    class_name: :CartItem
+
+  has_many :cart_tryon_items,
+    foreign_key: :products_frame_width_id,
+    primary_key: :id,
+    class_name: :CartTryonItem
+
 end

@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import AddItemForm from '../cart/add_item_form'
+import { Link } from 'react-router-dom';
+
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -7,13 +10,21 @@ class ProductShow extends React.Component {
 
     this.state = {
       currentPhoto: 'photo1',
+      colorId: props.match.params.colorId
+      // currentColor: colorName
     }
-
+  
     this.handlePhoto = this.handlePhoto.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchProduct(this.props.match.params.productId)
+    this.props.fetchProduct(parseInt(this.props.match.params.productId))
+    let colorName;
+    
+    // this.props.product.colors.forEach(color => {
+    //   if (this.state.colorId === color.id) colorName = color.color_name
+    // })
   }
 
   handlePhoto() {
@@ -22,31 +33,64 @@ class ProductShow extends React.Component {
     }
   }
 
+  handleClick(colorId, colorName) {
+    return (e) => {
+      this.setState({ colorId: colorId, currentColor: colorName });
+    }
+  }
+
   render() {
+    debugger
     // let product = this.props.fetchProduct(this.props.match.params.productId)
     // this.props.fetchProduct(this.props.id)
     let { product } = this.props
     if (!product) return null;
 
-    let details = product.details
-
     let image;
+    let colorname;
+    let photo1 = product.colors[0].photo1Url;
+    let photo2 = product.colors[0].photo2Url;
+    let photo3 = product.colors[0].photo3Url;
+    let photo4 = product.colors[0].photo4Url;
+
+    product.colors.forEach(color => { 
+      if (color.id === this.state.colorId) {
+        debugger    
+        colorname = color.color_name
+        photo1 = color.photo1Url
+        photo2 = color.photo2Url
+        photo3 = color.photo3Url
+        photo4 = color.photo4Url
+      }
+    })
+
 
     switch (this.state.currentPhoto) {
       case 'photo1':
-        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        image = <img className='scroll-picture' src={photo1} alt='eyewear-picture' />
         break;
       case 'photo2':
-        image = <img className='scroll-picture' src='' alt='eyewear-picture' />
+        image = <img className='scroll-picture' src={photo2} alt='eyewear-picture' />
         break;
       case 'photo3':
-        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        image = <img className='scroll-picture' src={photo3} alt='eyewear-picture' />
         break;
       case 'photo4':
-        image = <img className='scroll-picture' src={product.photoUrl} alt='eyewear-picture' />
+        image = <img className='scroll-picture' src={photo4} alt='eyewear-picture' />
         break;
     }
 
+    // let colorName;
+    // product.colors.forEach(color => {
+    //   debugger
+    //   if (this.state.colorId === color.id) colorName = color.color_name
+    // })
+
+    let details = product.details.split('#')
+      
+
+
+    debugger
     return (
       <div className='index-body'>
         <div className='top' >
@@ -61,28 +105,56 @@ class ProductShow extends React.Component {
           </div>
             <div className='r-side'>
               <h2>{product.name}</h2>
-              <p>{product.colors}</p>
+              <h5>{colorname}</h5>
+              {product.colors.map((color, idx) => <input type="radio"
+                name="color-radios" onClick={this.handleClick(color.id, color.color_name)} key={idx} defaultChecked={`${color.id === this.state.colorId}`} />  ) }
+            
               <p>Starting at {product.price}</p>
               <div>
-                <button className='purchase' >Select lenses and purchase</button>
+                <AddItemForm product={product} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
               </div>
             </div>
         </div>
         <div className='middle-details' >
-          <h5 className='serif' >Halton's quiet confidence comes from its distinguished features: a mid-century acetate silhouette (with an angular bottom!), Art Deco-inspired metal temples, sleek temple tips, and a Graduated Rivet design.</h5>
-          <ul className='materials'>
-            <li>Made from hand-polished cellulose acetate and stainless steel</li>
-            <li>Akulon-coated screws for durability</li>
-          </ul>
+          <h5 className='serif' >{details[0]}</h5>
         </div>
         <div className='bottom-details' >
           <div className='details-picture' >
-            <img src="" alt='eyewear-picture' />
+            {/* <img src="" alt='eyewear-picture' /> */}
           </div>
           <div className='bottom-text'>
-            <h5 className='serif' >Halton is available in a medium width</h5>
-            <p>If your face is average in size, which is most common, this frame should fit you well. Unsure of your size? Select a few different options in a free Home Try-On.</p>
+            <h5 className='serif' >We offer a variety of prescription and lense types</h5>
+            <p>Need to renew your prescription? We have an app that lets tou do it from home</p>
+            
+            <div>
+              <h5 className='sans'>Prescription type</h5>
+              <ul>
+                <li>Non-prescription</li>
+                <li>Single-vision</li>
+                <li>Progressives</li>
+                <li>Readers</li>
+              </ul>
+            </div>
+            <div>
+              <h5 className='sans'>Lense material</h5>
+              <ul>
+                <li>Polycarbonate</li>
+                <li>1.67 high-index</li>
+              </ul>
+            </div>
+
+            <img src={window.case} />
+
+            <div>
+              <h3>Everything that's included</h3>
+              <p>Each pair of sunglasses comes with a frame case and lens cloth.
+                 We also offer free shipping and a 30-day, hassle-free return or
+                 exchange policy as well as a one-year, no scratch guarantee for
+                 our lenses; we'll replace your scratched lenses for free within the first 12 months.</p>
+            </div>
+
+
           </div>
         </div>
       </div>

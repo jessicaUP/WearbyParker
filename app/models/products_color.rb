@@ -8,9 +8,20 @@ class ProductsColor < ApplicationRecord
     class_name: :Color
 
   belongs_to :product,
-  foreign_key: :product_id,
-  primary_key: :id,
-  class_name: :Product
+    foreign_key: :product_id,
+    primary_key: :id,
+    class_name: :Product
+
+  has_many :cart_items,
+    foreign_key: :products_color_id,
+    primary_key: :id,
+    class_name: :CartItem
+
+  has_many :cart_tryon_items,
+    foreign_key: :products_color_id,
+    primary_key: :id,
+    class_name: :CartTryonItem
+
 
   #AWS
 
