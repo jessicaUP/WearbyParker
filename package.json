@@ -39,11 +39,11 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0"
-  },
-  "devDependencies": {
-    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "webpack-cli": "^4.7.0",
     "webpack-query-loader": "^2.0.5"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
   }
 }
