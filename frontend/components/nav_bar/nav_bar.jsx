@@ -45,21 +45,15 @@ class NavBar extends React.Component {
       </div>
         <div className='nav-bottom'>
           <button>Home Try-on</button>
-
-
+            <Link className='drop-options' to='/genders/2' ><button className='menu' >Men</button></Link>
+            <Link className='drop-options' to='/genders/1' ><button className='menu' >Women</button></Link>
           <div className='menu-item'>
-            <button onClick={toggleItem}>Eyeglasses</button>
+            {/* <button onClick={toggleItem}>Eyeglasses</button> */}
 
-            <div className="dropdown">
-                <div>
-                  <Link className='drop-options' to='/genders/2' >Men</Link>
-                </div>
-                <div>
-                  <Link className='drop-options' to='/genders/1' >Women</Link>
-                </div>
-            </div>
+            {/* <div className="dropdown"> */}
+            {/* </div> */}
 
-              <button>Sunglasses</button>
+              {/* <button>Sunglasses</button> */}
         </div>
         </div>
     </div>

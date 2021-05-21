@@ -9,7 +9,6 @@ import AddItemForm from './add_item_form';
 // }
 
 const mDTP = (dispatch) => {
-  debugger
   return ({
     createCartItem: (cartItem) => dispatch(createCartItem(cartItem))
   })

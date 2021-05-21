@@ -1,7 +1,7 @@
 class Api::CartItemsController < ApplicationController
 
   def create
-    debugger
+    
     user_cart = Cart.find_by(user_id: current_user.id)
     @item = CartItem.new(cart_item_params)
     @item.cart_id = user_cart.id

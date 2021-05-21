@@ -61,7 +61,7 @@ class AddItemForm extends React.Component {
   }
 
   handleSubmit() {
-    debugger
+    
     return (e) => {
       e.preventDefault();
         this.props.createCartItem({ 
@@ -92,7 +92,7 @@ class AddItemForm extends React.Component {
     let options = product.frameWidths.map((frameWidth, idx) => {
       return (
         <div key={idx} className='cart-options'>
-          <button onClick={this.handleClick('frame_width', 2)} value={frameWidth.frame_width} >{frameWidth.frame_width}</button>
+          <button className='selection-button' onClick={this.handleClick('frame_width', 2)} value={frameWidth.frame_width} >{frameWidth.frame_width}</button>
           <p className='option-desc'>{frameWidth.description}</p>
         </div>
       )
@@ -107,12 +107,16 @@ class AddItemForm extends React.Component {
       return (
         <div className='add-cart-item'>
           <div className='left-select-item'>
-        
+            <img src={this.props.colorPhoto} className='selection-photo' />
+            <div className='name-color'>
+              <h2 className='option-title'>{this.props.product.name}</h2>
+              <p className='option-color' >{this.props.pickedColor}</p>
+            </div>
+
           </div>
           <div className='right-select-item'>
-            <button className='icon-button' onClick={this.backForm()}>←</button>
             <button className='icon-button' onClick={this.exitForm()}>X</button>
-            <h2 className='icon-button' className='option-title'>Select a frame width</h2>
+            <h2 className='option-title'>Select a frame width</h2>
             {options}
           </div>
         </div>
@@ -124,6 +128,11 @@ class AddItemForm extends React.Component {
       return (
         <div className='add-cart-item'>
           <div className='left-select-item'>
+            <img src={this.props.colorPhoto} className='selection-photo' />
+            <div className='name-color'>
+              <h2 className='option-title'>{this.props.product.name}</h2>
+              <p className='option-color' >{this.props.pickedColor}</p>
+            </div>
         
           </div>
           <div className='right-select-item'>
@@ -160,6 +169,11 @@ class AddItemForm extends React.Component {
       return (
         <div className='add-cart-item'>
           <div className='left-select-item'>
+            <img src={this.props.colorPhoto} className='selection-photo' />
+            <div className='name-color'>
+              <h2 className='option-title'>{this.props.product.name}</h2>
+              <p className='option-color' >{this.props.pickedColor}</p>
+            </div>
         
           </div>
           <div className='right-select-item'>
@@ -195,6 +209,11 @@ class AddItemForm extends React.Component {
       return (
         <div className='add-cart-item'>
           <div className='left-select-item'>
+            <img src={this.props.colorPhoto} className='selection-photo' />
+            <div className='name-color'>
+              <h2 className='option-title'>{this.props.product.name}</h2>
+              <p className='option-color' >{this.props.pickedColor}</p>
+            </div>
         
           </div>
           <div className='right-select-item'>

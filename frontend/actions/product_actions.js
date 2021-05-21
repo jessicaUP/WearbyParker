@@ -12,6 +12,6 @@ const receiveProduct = product => {
 
 
 export const fetchProduct = productId => dispatch => {
-  debugger
+  
   return ProductApi.fetchProduct(productId).then(product => dispatch(receiveProduct(product)))
 }

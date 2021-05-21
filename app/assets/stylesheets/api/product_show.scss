@@ -1,21 +1,22 @@
 // @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 .index-body {
-  // position: absolute;
-  // top: 125px;
+  position: absolute;
+  top: 125px;
+  right: 0;
+  left: 0;
+  bottom: 0;
   // padding-right: 72px;
   // padding-left: 72px;
   // background-color: rgb(252, 252, 252);
 
-  h5.serif {
-    font-size: 26px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: 500px
-    // margin-left: 72px;
-    // margin-right: 72px;
-  }
+
 }
 
+.options-colors {
+  display: flex;
+  flex-direction: row;
+}
 
 
 .materials {
@@ -30,30 +31,39 @@
 .top{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 70px;
+  width: 200px;
+  // margin-top: 30px;
+  // margin-bottom: 70px;
 
-
-  .pictures {
-    width: 600px;
-    margin-left: 50px;
-    margin-top: 130px;
-    // position: relative;
+  .picture-container{
+    max-width: 200px;
+    height: 100px;
     
-    .scroll-picture {
-      // position: absolute;
-      width: 700px;
-      height: 320px;
-      object-fit: scale-down;
+    .pictures {
+      max-width: 100%;
+      width: 200px;
+      margin-left: 50px;
+      // margin-top: 130px;
+      position: relative;
+      
+      .scroll-picture {
+        max-height: 100%;
+        max-width: 100%;
+        width: 200px;
+        object-fit: contain;
+      }
+      
     }
-
   }
+  .scroll-picture {
+  width: 650px;
+  margin: 75px;
+}
 
   .r-side {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  margin-left: 10px;
   justify-content: space-between;
   width: 200px;
   height: 370px;
@@ -67,10 +77,10 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: 200px;
+  height: 100px;
   width: 100%;
-  padding-top: 175px;
-  padding-bottom: 175px;
+  padding-top: 75px;
+  padding-bottom: 85px;
   // box-shadow: 0px 0 10px -10px black;
   background-color: white;
   position: relative;
@@ -114,7 +124,7 @@ p {
 
 .details-picture {
   height: 200px;
-  width: 375px;
+  width: 200px;
   padding-left: 72px;
   border: 1px solid lightgray;
   margin-left: 100px;
@@ -126,5 +136,30 @@ p {
 .bottom-details {
   display: flex;
   flex-direction: row;
+
+    .serif-details {
+    font-size: 26px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 500px
+    // margin-left: 72px;
+    // margin-right: 72px;
+  }
   
+}
+
+.bottom {
+  max-width: 75%;
+  align-items: center;
+  justify-content: center;
+
+  .bottom-note-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+  
+    .bottom-note {
+      width: 75%;
+    }
+  }
+
 }

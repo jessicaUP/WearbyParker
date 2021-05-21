@@ -47,6 +47,7 @@
 }
 
 .nav-bottom {
+  display: flex;
   direction: flex;
   width: 100%;
   flex-direction: row;
@@ -85,28 +86,30 @@ p.ribbon {
 }
 
 .menu-item {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   position: relative;
+  justify-content: center;
   // cursor: pointer;
 }
 
-.drop-container {
-  width: 300px;
-}
+// .drop-container {
+//   width: 300px;
+// }
 
-.dropdown {
-  position: absolute;
-  display: none;
-  &.toggle {
-    position: absolute;
-    display: block;
-    right: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    height: 500px;
-    border: 1px solid lightgray;
+// .dropdown {
+//   position: absolute;
+//   display: none;
+//   &.toggle {
+//     position: absolute;
+//     display: block;
+//     right: 0;
+//     left: 0;
+//     width: 100%;
+//     background-color: white;
+//     height: 500px;
+//     border: 1px solid lightgray;
 
-  }
-}
+//   }
+// }
 
