@@ -1,7 +1,10 @@
 ## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WearbyParker is a clone of the eyewear company, Warby Parker's ecommerce site. The site allows for easy navigation throughout and provides 
+
+
+
+
 
 Things you may want to cover:
 
