@@ -23,9 +23,9 @@ class NavBar extends React.Component {
         )
       )
     
-    const toggleItem = () => {
-      $('.dropdown').toggleClass('toggle')
-    }
+    // const toggleItem = () => {
+    //   $('.dropdown').toggleClass('toggle')
+    // }
 
     return (
     <div className='total-menu'>
