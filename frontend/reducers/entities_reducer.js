@@ -12,5 +12,4 @@ const entitiesReducer = combineReducers({
     cart: fullCartReducer
   });
 
-
 export default entitiesReducer;
