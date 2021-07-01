@@ -3,7 +3,7 @@ export const fetchCartTryonItem = (cartTryonId) => (
     method: 'GET',
     url: `/api/cart_tryon_items/${cartTryonId}`
   })
-)
+);
 
 export const postCartTryonItem = cartTryonItem => (
   $.ajax({
@@ -18,7 +18,7 @@ export const updateCartTryonItem = cartTryonItemId => (
     url: `/api/cart_tryon_items/${cartTryonItemId}`,
     method: 'PATCH'
   })
-)
+);
 
 export const deleteCartTryonItem = cartTryonItemId => (
   $.ajax({
