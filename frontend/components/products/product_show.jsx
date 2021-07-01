@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import AddItemForm from '../cart/add_item_form'
+import AddItemForm from '../cart/add_item_form';
 import { Link } from 'react-router-dom';
 
 
@@ -12,11 +12,11 @@ class ProductShow extends React.Component {
       currentPhoto: 'photo1',
       colorId: props.match.params.colorId,
       // currentColor: null
-    }
+    };
   
     this.handlePhoto = this.handlePhoto.bind(this)
     this.handleClick = this.handleClick.bind(this)
-  }
+  };
 
   componentDidMount() {
     this.props.fetchProduct(parseInt(this.props.match.params.productId))
@@ -25,19 +25,19 @@ class ProductShow extends React.Component {
     // this.props.product.colors.forEach(color => {
     //   if (this.state.colorId === color.id) colorName = color.color_name
     // })
-  }
+  };
 
   handlePhoto() {
     return (e) => {
       this.setState({ currentPhoto: e.currentTarget.value });
     }
-  }
+  };
 
   handleClick(colorId, colorName) {
     return (e) => {
       this.setState({ colorId: colorId, currentColor: colorName });
     }
-  }
+  };
 
   render() {
     // let product = this.props.fetchProduct(this.props.match.params.productId)
@@ -76,7 +76,7 @@ class ProductShow extends React.Component {
       case 'photo4':
         image = <img className='scroll-picture' src={photo4} alt='eyewear-picture' />
         break;
-    }
+    };
 
     // let colorName;
     // product.colors.forEach(color => {
