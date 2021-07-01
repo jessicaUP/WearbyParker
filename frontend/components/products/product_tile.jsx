@@ -14,17 +14,14 @@ class ProductTile extends React.Component {
 
     }
     this.handleSelect = this.handleSelect.bind(this)
-  }
+  };
 
   handleSelect(colorId, colorname, colorPhoto) {
     return (e) => {
       e.preventDefault();
       this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto})
     }
-  }
-
-
-
+  };
 
   render() {
     let { product } = this.props
