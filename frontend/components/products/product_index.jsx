@@ -1,15 +1,15 @@
 import React from 'react';
-import ProductTile from './product_tile'
+import ProductTile from './product_tile';
 
 class ProductIndex extends React.Component {
   constructor(props) {
     
     super(props);
-  }
+  };
 
   componentDidMount() {
     this.props.fetchGenderProducts(this.props.match.params.genderId)
-  }
+  };
 
   render() {
     let { genderId } = this.props
@@ -25,7 +25,7 @@ class ProductIndex extends React.Component {
       </div>
     )
   }
-}
+};
 
 
 export default ProductIndex; 
