@@ -21,7 +21,7 @@ class SigninForm extends React.Component {
       this.setState({ [type]: e.currentTarget.value });
       this.setState({ submitCleared: this.submitClearCheck() })
     }
-  }
+  };
 
   handleDemo(e) {
     e.preventDefault();
@@ -30,7 +30,7 @@ class SigninForm extends React.Component {
     this.handleInput('password');
     this.props.login(user)
     .then(() => this.props.history.push('/account'))
-  }
+  };
   
   handleSubmit(e) {
     e.preventDefault();
@@ -38,7 +38,7 @@ class SigninForm extends React.Component {
         this.props.login(this.state)
       .then(() => this.props.history.push('/account'))
     }
-  }
+  };
 
   submitClearCheck() {
     let sendStatus = true;
@@ -48,7 +48,7 @@ class SigninForm extends React.Component {
       if (value === '') sendStatus = false;
     });
     return sendStatus;
-  }
+  };
 
   render() {
     let error = (this.props.errors.session.length) ? (
@@ -88,6 +88,6 @@ class SigninForm extends React.Component {
       </div>
     )
   }
-}
+};
 
 export default SigninForm;
