@@ -85,8 +85,6 @@ class ProductShow extends React.Component {
 
     let details = product.details.split('#')
       
-
-
     return (
       <div className='index-body'>
         <div className='top' >
@@ -141,7 +139,6 @@ class ProductShow extends React.Component {
               </ul>
             </div> */}
 
-
             <div className='bottom'>
               <img src={window.case} />
               <h3 className='bottom-note-title'>Everything that's included</h3>
@@ -150,8 +147,6 @@ class ProductShow extends React.Component {
                  exchange policy as well as a one-year, no scratch guarantee for
                  our lenses; we'll replace your scratched lenses for free within the first 12 months.</p>
             </div>
-
-
           </div>
         // </div>
       // </div>
