@@ -1,4 +1,4 @@
-import { RECEIVE_GENDER_PRODUCTS } from '../actions/gender_actions'
+import { RECEIVE_GENDER_PRODUCTS } from '../actions/gender_actions';
 
 const genderProductsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
