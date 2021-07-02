@@ -17,6 +17,6 @@ const cartTryonItemsReducer = (oldState = {}, action) => {
     default:
       return oldState;
   }
-}
+};
 
 export default cartTryonItemsReducer;
