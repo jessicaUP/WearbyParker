@@ -1,4 +1,4 @@
-import { RECEIVE_PRODUCT } from '../actions/product_actions'
+import { RECEIVE_PRODUCT } from '../actions/product_actions';
 
 const productsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
