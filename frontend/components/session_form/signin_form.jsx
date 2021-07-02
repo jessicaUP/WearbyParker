@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 class SigninForm extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,7 @@ class SigninForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.submitClearCheck = this.submitClearCheck.bind(this);
-  }
+  };
 
   handleInput(type) {
     return (e) => {
