@@ -16,6 +16,7 @@ const sessionErrorsReducer =  (state = _initialState, action) => {
        return errors
     case RECEIVE_CURRENT_USER:
       return _initialState;
+    // case CLEAR_SESSION_ERRORS:
     default:
       return _initialState;
   }
