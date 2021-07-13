@@ -1,25 +1,47 @@
 .product-index {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   width: 100%;
   justify-content: center;
   margin-top: 130px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  column-count: 3;
+  column-width: 400px;
+  
   
   .product-tile {
-    width: 500px;
-    height: 300px; 
-    margin-top: 50px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: auto;
+    // height: auto; 
+    // margin-top: 50px;
+    // justify-content: center;
+    align-items: center;
+    align-content: center;
     
     h2.product-name {
       margin-top: 0;
     }
+
+    a  {
+      width: 100%;
+      align-content: center;
+    }
     
     div.tile-image {
-      align-content: center;
-      width: 420px;
-      height: 200px;
-      margin-left: 45px;
+      width: auto;
+      height: 250px;
+
+      // margin-left: 45px;
+    }
+
+    img {
+      // max-width: 100%;
+      // height: auto;
+      object-fit: contain;
     }
     
     .tile-colors {
