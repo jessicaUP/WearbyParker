@@ -1616,7 +1616,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       //   if (this.state.colorId === color.id) colorName = color.color_name
       // })
 
-      var details = product.details.split('#');
+      var details = product.details.split('#'); // let plan = (product.price / 3).round
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1658,7 +1659,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           key: idx,
           defaultChecked: "".concat(color.id === _this4.state.colorId)
         });
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at ", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
         product: product,
         colorPhoto: photo3,
         pickedColor: colorname,
