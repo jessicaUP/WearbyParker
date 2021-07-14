@@ -16,6 +16,7 @@
     justify-content: space-around;
 
     width: auto;
+    height: 320px;
     // height: auto; 
     // margin-top: 50px;
     // justify-content: center;
@@ -27,21 +28,26 @@
     }
 
     a  {
-      width: 100%;
-      align-content: center;
+      object-fit: contain;
+      //   width: 100%;
+    //   align-content: center;
     }
     
     div.tile-image {
+      display: flex;
       width: auto;
-      height: 250px;
-
-      // margin-left: 45px;
+      // height: 250px;
+      align-content: center;
+      object-fit: contain;
     }
 
     img {
-      // max-width: 100%;
-      // height: auto;
-      object-fit: contain;
+      // width: 90%;
+      // align-self: center;
+      display: inline-block;
+      top: 0;
+      left: 0;
+      right: 0;
     }
     
     .tile-colors {
