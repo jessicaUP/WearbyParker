@@ -1544,10 +1544,11 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         });
 
         if (num === 2) {
-          background.style.backgroundColor = "rgba(43, 52, 62, .03)"; // image.style.display = "relative";
-          // image.style.bottom = "20px";
+          background.style.backgroundColor = "rgba(43, 52, 62, .03)";
+          image.style.width = "140%"; // image.style.bottom = "20px";
         } else {
           background.style.backgroundColor = "white";
+          image.style.width = "75%";
         }
       };
     }

@@ -31,10 +31,11 @@ class ProductShow extends React.Component {
       this.setState({ currentPhoto: e.currentTarget.value });
       if (num === 2) {
         background.style.backgroundColor = "rgba(43, 52, 62, .03)"
-        // image.style.display = "relative";
+        image.style.width = "140%";
         // image.style.bottom = "20px";
       } else {
         background.style.backgroundColor = "white"
+        image.style.width = "75%";
       }
     }
   };
