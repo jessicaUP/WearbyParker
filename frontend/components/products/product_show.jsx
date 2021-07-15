@@ -99,10 +99,10 @@ class ProductShow extends React.Component {
             {image}
             <form >
               <div className='options-colors'>
-                <input type='radio' className='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
-                <input type='radio' className='photo-radios' value='photo2' onClick={this.handlePhoto()} />
-                <input type='radio' className='photo-radios' value='photo3' onClick={this.handlePhoto()} />
-                <input type='radio' className='photo-radios' value='photo4' onClick={this.handlePhoto()} />
+                <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
+                <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
+                <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
+                <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
               </div>
             </form>
           </div>
