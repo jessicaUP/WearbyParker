@@ -26,10 +26,13 @@ class ProductShow extends React.Component {
 
   handlePhoto(num) {
     return (e) => {
-      let background = document.querySelector(".top")
+      let background = document.querySelector(".top");
+      let image = document.querySelector(".scroll-picture");
       this.setState({ currentPhoto: e.currentTarget.value });
       if (num === 2) {
         background.style.backgroundColor = "rgba(43, 52, 62, .03)"
+        // image.style.display = "relative";
+        // image.style.bottom = "20px";
       } else {
         background.style.backgroundColor = "white"
       }
@@ -54,7 +57,7 @@ class ProductShow extends React.Component {
     } else if (!this.state.currentColor) {
       product.colors.forEach(color => {
         if (parseInt(this.state.colorId) === color.id) {
-          // this.setState({ currentColor: color.color_name });
+          this.setState({ currentColor: color.color_name });
             // HAVING THIS IN THE RENDER IS CAUSING A WARNING!!
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
