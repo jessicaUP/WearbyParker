@@ -6,10 +6,14 @@
   right: 0;
   left: 0;
   bottom: 0;
+  height: 650px;
 }
 
 .options-colors {
   display: flex;
+  position: relative;
+  bottom: 50px;
+  z-index: 1;
   flex-direction: row;
 }
 
@@ -21,38 +25,35 @@
 .top {
   display: flex;
   flex-direction: row;
-  width: 200px;
+  width: 100%;
+  height: 636px;
 
-  .picture-container{
-    max-width: 200px;
-    height: 100px;
+  .pictures-container {
+    width: 68%;
+    height: 655px;
+    // display: flex;
     
     .pictures {
-      max-width: 100%;
-      width: 200px;
-      margin-left: 50px;
-      position: relative;
+      display: flex;
+      width: 100%;
+      height: 656px;
+      align-content: center;
+      justify-content: center;
       
       .scroll-picture {
-        max-height: 100%;
-        max-width: 100%;
-        width: 200px;
         object-fit: contain;
+        width: 80%;
+
       }
-      
     }
   }
-  .scroll-picture {
-  width: 650px;
-  margin: 75px;
-}
 
   .r-side {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   justify-content: space-between;
-  width: 200px;
+  width: 32%;
   height: 370px;
 
     h2.product-name {
@@ -83,14 +84,9 @@
   padding-bottom: 85px;
   background-color: white;
   position: relative;
-}
-
-.radio-cont {
-  display: flex;
-  flex-direction: row;
-
 
 }
+
 
 //DROP SHADOW SOURCE: https://css-tricks.com/almanac/properties/o/object-fit/
 .middle-details:before, .middle-details:after {
