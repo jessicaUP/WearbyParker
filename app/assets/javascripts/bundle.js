@@ -1525,10 +1525,15 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
   _createClass(ProductShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProduct(parseInt(this.props.match.params.productId)); // if ( this.state.colorCheck === false ) {
-      //   debugger
-      //   this.setState({ currentCheck: true })
-      // }
+      this.props.fetchProduct(parseInt(this.props.match.params.productId));
+
+      if (this.state.colorCheck === false) {
+        debugger;
+        this.setState({
+          currentCheck: true,
+          currentColor: "YELLOW"
+        });
+      }
     }
   }, {
     key: "handlePhoto",
@@ -1563,7 +1568,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       var product = this.props.product;
       if (!product) return null;
       var image;
-      var colorname;
+      var colorname = this.state.currentColor;
       var photo1 = product.colors[0].photo1Url;
       var photo2 = product.colors[0].photo2Url;
       var photo3 = product.colors[0].photo3Url;
@@ -1575,7 +1580,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
 
       product.colors.forEach(function (color) {
         if (color.id === _this4.state.colorId) {
-          colorname = color.color_name;
+          // colorname = color.color_name;
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
           photo3 = color.photo3Url;
@@ -1794,7 +1799,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      selectedColor: props.product.colors[0],
+      selectedColor: props.product.colors[0].id,
       colorName: props.product.colors[0].color_name,
       colorPhoto: props.product.colors[0].photo0Url
     };
