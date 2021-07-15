@@ -1515,7 +1515,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       currentPhoto: 'photo1',
       colorId: props.match.params.colorId,
       currentColor: null,
-      colorCheck: false
+      colorCheck: 1
     };
     _this.handlePhoto = _this.handlePhoto.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
@@ -1527,13 +1527,18 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchProduct(parseInt(this.props.match.params.productId));
 
-      if (this.state.colorCheck === false) {
-        debugger;
+      if (this.state.colorCheck === 1) {
+        // this.props.product.colors.forEach(color => {
+        //   if (this.state.colorId === color.id) this.setState({ currentColor: color.color_name });
+        // })
         this.setState({
-          currentCheck: true,
           currentColor: "YELLOW"
         });
       }
+
+      this.setState({
+        currentCheck: this.state.currentCheck + 1
+      });
     }
   }, {
     key: "handlePhoto",
@@ -1729,6 +1734,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  debugger;
   return {
     product: state.entities.products[ownProps.match.params.productId]
   };
