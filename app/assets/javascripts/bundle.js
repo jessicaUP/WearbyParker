@@ -1828,8 +1828,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        e.preventDefault();
-
         _this2.setState({
           selectedColor: colorId,
           colorName: colorname,
