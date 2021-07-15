@@ -1513,8 +1513,9 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       currentPhoto: 'photo1',
-      colorId: props.match.params.colorId // currentColor: null
-
+      colorId: props.match.params.colorId,
+      currentColor: null,
+      colorCheck: false
     };
     _this.handlePhoto = _this.handlePhoto.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
@@ -1524,10 +1525,10 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
   _createClass(ProductShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProduct(parseInt(this.props.match.params.productId));
-      var colorName; // this.props.product.colors.forEach(color => {
-      //   if (this.state.colorId === color.id) colorName = color.color_name
-      // })
+      this.props.fetchProduct(parseInt(this.props.match.params.productId)); // if ( this.state.colorCheck === false ) {
+      //   debugger
+      //   this.setState({ currentCheck: true })
+      // }
     }
   }, {
     key: "handlePhoto",
@@ -1566,7 +1567,12 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       var photo1 = product.colors[0].photo1Url;
       var photo2 = product.colors[0].photo2Url;
       var photo3 = product.colors[0].photo3Url;
-      var photo4 = product.colors[0].photo4Url;
+      var photo4 = product.colors[0].photo4Url; // if (this.state.currentColor === true ) {
+      //   this.props.product.colors.forEach(color => {
+      //     if (this.state.colorId === color.id) colorName = color.color_name
+      //   })
+      // }
+
       product.colors.forEach(function (color) {
         if (color.id === _this4.state.colorId) {
           colorname = color.color_name;
@@ -1611,13 +1617,9 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           break;
       }
 
-      ; // let colorName;
-      // product.colors.forEach(color => {
-      //   if (this.state.colorId === color.id) colorName = color.color_name
-      // })
-
-      var details = product.details.split('#'); // let plan = (product.price / 3).round
-
+      ;
+      var details = product.details.split('#');
+      var plan = Math.round(product.price / 3);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1630,36 +1632,43 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         className: "options-colors"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        name: "photo-radios",
+        className: "photo-radios",
         value: "photo1",
         onClick: this.handlePhoto(),
         defaultChecked: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        name: "photo-radios",
+        className: "photo-radios",
         value: "photo2",
         onClick: this.handlePhoto()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        name: "photo-radios",
+        className: "photo-radios",
         value: "photo3",
         onClick: this.handlePhoto()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        name: "photo-radios",
+        className: "photo-radios",
         value: "photo4",
         onClick: this.handlePhoto()
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "r-side"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, colorname), product.colors.map(function (color, idx) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "product-name"
+      }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+        className: "product-color"
+      }, colorname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "radio-cont"
+      }, product.colors.map(function (color, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "radio",
           name: "color-radios",
+          className: "color-radios",
           onClick: _this4.handleClick(color.id, color.color_name),
           key: idx,
           defaultChecked: "".concat(color.id === _this4.state.colorId)
         });
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
         product: product,
         colorPhoto: photo3,
         pickedColor: colorname,

@@ -54,8 +54,21 @@
   justify-content: space-between;
   width: 200px;
   height: 370px;
-  }
 
+    h2.product-name {
+      font-size: 28px;
+      text-align: left;
+    }
+
+    h5.product-color {
+      text-align: left;
+      font-style: italic;
+    }
+
+    .radio-cont {
+      font-size: 40px;
+    }
+  }
 }
 
 .middle-details {
@@ -70,6 +83,13 @@
   padding-bottom: 85px;
   background-color: white;
   position: relative;
+}
+
+.radio-cont {
+  display: flex;
+  flex-direction: row;
+
+
 }
 
 //DROP SHADOW SOURCE: https://css-tricks.com/almanac/properties/o/object-fit/

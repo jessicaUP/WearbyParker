@@ -11,7 +11,8 @@ class ProductShow extends React.Component {
     this.state = {
       currentPhoto: 'photo1',
       colorId: props.match.params.colorId,
-      // currentColor: null
+      currentColor: null,
+      colorCheck: false
     };
   
     this.handlePhoto = this.handlePhoto.bind(this)
@@ -20,11 +21,10 @@ class ProductShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProduct(parseInt(this.props.match.params.productId))
-    let colorName;
-    
-    // this.props.product.colors.forEach(color => {
-    //   if (this.state.colorId === color.id) colorName = color.color_name
-    // })
+    // if ( this.state.colorCheck === false ) {
+    //   debugger
+    //   this.setState({ currentCheck: true })
+    // }
   };
 
   handlePhoto() {
@@ -52,13 +52,19 @@ class ProductShow extends React.Component {
     let photo3 = product.colors[0].photo3Url;
     let photo4 = product.colors[0].photo4Url;
 
+    // if (this.state.currentColor === true ) {
+    //   this.props.product.colors.forEach(color => {
+    //     if (this.state.colorId === color.id) colorName = color.color_name
+    //   })
+    // }
+
     product.colors.forEach(color => { 
       if (color.id === this.state.colorId) {
-        colorname = color.color_name
-        photo1 = color.photo1Url
-        photo2 = color.photo2Url
-        photo3 = color.photo3Url
-        photo4 = color.photo4Url
+        colorname = color.color_name;
+        photo1 = color.photo1Url;
+        photo2 = color.photo2Url;
+        photo3 = color.photo3Url;
+        photo4 = color.photo4Url;
       }
     })
 
@@ -78,13 +84,9 @@ class ProductShow extends React.Component {
         break;
     };
 
-    // let colorName;
-    // product.colors.forEach(color => {
-    //   if (this.state.colorId === color.id) colorName = color.color_name
-    // })
 
     let details = product.details.split('#')
-    // let plan = (product.price / 3).round
+    let plan = Math.round(product.price / 3)
 
     return (
       <div className='index-body'>
@@ -94,21 +96,27 @@ class ProductShow extends React.Component {
             {image}
             <form >
               <div className='options-colors'>
-                <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
-                <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
-                <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
-                <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
+                <input type='radio' className='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
+                <input type='radio' className='photo-radios' value='photo2' onClick={this.handlePhoto()} />
+                <input type='radio' className='photo-radios' value='photo3' onClick={this.handlePhoto()} />
+                <input type='radio' className='photo-radios' value='photo4' onClick={this.handlePhoto()} />
               </div>
             </form>
           </div>
           </div>
             <div className='r-side'>
-              <h2>{product.name}</h2>
-              <h5>{colorname}</h5>
-              {product.colors.map((color, idx) => <input type="radio"
-                name="color-radios" onClick={this.handleClick(color.id, color.color_name)} key={idx} defaultChecked={`${color.id === this.state.colorId}`} />  ) }
-            
-              <p>Starting at ${product.price}, including prescription lenses.</p>
+              <h2 className='product-name'>{product.name}</h2>
+              <h5 className='product-color'>{colorname}</h5>
+              <div className='radio-cont'>
+                {product.colors.map((color, idx) => <input 
+                  type='radio'
+                  name='color-radios'
+                  className='color-radios'
+                  onClick={this.handleClick(color.id, color.color_name)}
+                  key={idx}
+                  defaultChecked={`${color.id === this.state.colorId}`} />  ) }
+              </div>
+              <p>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
               <div>
                 <AddItemForm product={product} colorPhoto={photo3} pickedColor={colorname} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
