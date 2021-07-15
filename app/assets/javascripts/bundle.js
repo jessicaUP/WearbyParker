@@ -1642,23 +1642,23 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         className: "options-colors"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        className: "photo-radios",
+        name: "photo-radios",
         value: "photo1",
         onClick: this.handlePhoto(),
         defaultChecked: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        className: "photo-radios",
+        name: "photo-radios",
         value: "photo2",
         onClick: this.handlePhoto()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        className: "photo-radios",
+        name: "photo-radios",
         value: "photo3",
         onClick: this.handlePhoto()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
-        className: "photo-radios",
+        name: "photo-radios",
         value: "photo4",
         onClick: this.handlePhoto()
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
