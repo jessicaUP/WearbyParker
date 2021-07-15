@@ -8,7 +8,7 @@ class ProductTile extends React.Component {
     super(props);
 
     this.state = {
-      selectedColor: props.product.colors[0],
+      selectedColor: props.product.colors[0].id,
       colorName: props.product.colors[0].color_name,
       colorPhoto: props.product.colors[0].photo0Url
 
