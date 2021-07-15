@@ -12,7 +12,7 @@ class ProductShow extends React.Component {
       currentPhoto: 'photo1',
       colorId: props.match.params.colorId,
       currentColor: null,
-      colorCheck: 1
+      colorCheck: false
     };
   
     this.handlePhoto = this.handlePhoto.bind(this)
@@ -21,13 +21,7 @@ class ProductShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProduct(parseInt(this.props.match.params.productId))
-    if ( this.state.colorCheck === 1 ) {
-      // this.props.product.colors.forEach(color => {
-      //   if (this.state.colorId === color.id) this.setState({ currentColor: color.color_name });
-      // })
-      this.setState({ currentColor: "YELLOW" })
-    }
-    this.setState({ currentCheck: this.state.currentCheck + 1 })
+    this.setState({ currentCheck: true })
   };
 
   handlePhoto() {
@@ -38,6 +32,9 @@ class ProductShow extends React.Component {
 
   handleClick(colorId, colorName) {
     return (e) => {
+      // e.preventDefault
+      // let ele = document.getElementById(colorId);
+      // ele.checked = true;
       this.setState({ colorId: colorId, currentColor: colorName });
     }
   };
@@ -46,14 +43,27 @@ class ProductShow extends React.Component {
     // let product = this.props.fetchProduct(this.props.match.params.productId)
     // this.props.fetchProduct(this.props.id)
     let { product } = this.props
-    if (!product) return null;
+    if (!product) {
+      return null;
+    } else if (!this.state.currentColor) {
+      product.colors.forEach(color => {
+        if (parseInt(this.state.colorId) === color.id) {
+          this.setState({ currentColor: color.color_name });
+          photo1 = color.photo1Url;
+          photo2 = color.photo2Url;
+          photo3 = color.photo3Url;
+          photo4 = color.photo4Url;
+        }
+      })
+    }
+
 
     let image;
-    let colorname = this.state.currentColor;
-    let photo1 = product.colors[0].photo1Url;
-    let photo2 = product.colors[0].photo2Url;
-    let photo3 = product.colors[0].photo3Url;
-    let photo4 = product.colors[0].photo4Url;
+    // let colorname = this.state.currentColor;
+    let photo1;
+    let photo2;
+    let photo3;
+    let photo4;
 
     // if (this.state.currentColor === true ) {
     //   this.props.product.colors.forEach(color => {
@@ -62,13 +72,13 @@ class ProductShow extends React.Component {
     // }
 
     product.colors.forEach(color => { 
-      if (color.id === this.state.colorId) {
-        // colorname = color.color_name;
-        photo1 = color.photo1Url;
-        photo2 = color.photo2Url;
-        photo3 = color.photo3Url;
-        photo4 = color.photo4Url;
-      }
+        if (parseInt(this.state.colorId) === color.id) {
+          // colorname = color.color_name;
+          photo1 = color.photo1Url;
+          photo2 = color.photo2Url;
+          photo3 = color.photo3Url;
+          photo4 = color.photo4Url;
+        }
     })
 
 
@@ -109,7 +119,7 @@ class ProductShow extends React.Component {
           </div>
             <div className='r-side'>
               <h2 className='product-name'>{product.name}</h2>
-              <h5 className='product-color'>{colorname}</h5>
+              <h5 className='product-color'>{this.state.currentColor}</h5>
               <div className='radio-cont'>
                 {product.colors.map((color, idx) => <input 
                   type='radio'
@@ -117,11 +127,11 @@ class ProductShow extends React.Component {
                   className='color-radios'
                   onClick={this.handleClick(color.id, color.color_name)}
                   key={idx}
-                  defaultChecked={`${color.id === this.state.colorId}`} />  ) }
+                  defaultChecked={`${color.id === parseInt(this.state.colorId)}`} />  ) }
               </div>
               <p>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
               <div>
-                <AddItemForm product={product} colorPhoto={photo3} pickedColor={colorname} createCartItem={this.props.createCartItem} />
+                <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
               </div>
             </div>
