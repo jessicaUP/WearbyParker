@@ -1537,13 +1537,15 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         var background = document.querySelector(".top");
+        var image = document.querySelector(".scroll-picture");
 
         _this2.setState({
           currentPhoto: e.currentTarget.value
         });
 
         if (num === 2) {
-          background.style.backgroundColor = "rgba(43, 52, 62, .03)";
+          background.style.backgroundColor = "rgba(43, 52, 62, .03)"; // image.style.display = "relative";
+          // image.style.bottom = "20px";
         } else {
           background.style.backgroundColor = "white";
         }
@@ -1578,8 +1580,11 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       } else if (!this.state.currentColor) {
         product.colors.forEach(function (color) {
           if (parseInt(_this4.state.colorId) === color.id) {
-            // this.setState({ currentColor: color.color_name });
-            // HAVING THIS IN THE RENDER IS CAUSING A WARNING!!
+            _this4.setState({
+              currentColor: color.color_name
+            }); // HAVING THIS IN THE RENDER IS CAUSING A WARNING!!
+
+
             photo1 = color.photo1Url;
             photo2 = color.photo2Url;
             photo3 = color.photo3Url;
