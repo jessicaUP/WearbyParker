@@ -1532,13 +1532,21 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handlePhoto",
-    value: function handlePhoto() {
+    value: function handlePhoto(num) {
       var _this2 = this;
 
       return function (e) {
+        var background = document.querySelector(".top");
+
         _this2.setState({
           currentPhoto: e.currentTarget.value
         });
+
+        if (num === 2) {
+          background.style.backgroundColor = "rgba(43, 52, 62, .03)";
+        } else {
+          background.style.backgroundColor = "white";
+        }
       };
     }
   }, {
@@ -1570,10 +1578,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       } else if (!this.state.currentColor) {
         product.colors.forEach(function (color) {
           if (parseInt(_this4.state.colorId) === color.id) {
-            _this4.setState({
-              currentColor: color.color_name
-            });
-
+            // this.setState({ currentColor: color.color_name });
+            // HAVING THIS IN THE RENDER IS CAUSING A WARNING!!
             photo1 = color.photo1Url;
             photo2 = color.photo2Url;
             photo3 = color.photo3Url;
@@ -1648,30 +1654,30 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         className: "pictures-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "pictures"
-      }, image, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, image), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "options-colors"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
         name: "photo-radios",
         value: "photo1",
-        onClick: this.handlePhoto(),
+        onClick: this.handlePhoto(1),
         defaultChecked: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
         name: "photo-radios",
         value: "photo2",
-        onClick: this.handlePhoto()
+        onClick: this.handlePhoto(2)
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
         name: "photo-radios",
         value: "photo3",
-        onClick: this.handlePhoto()
+        onClick: this.handlePhoto(3)
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "radio",
         name: "photo-radios",
         value: "photo4",
-        onClick: this.handlePhoto()
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: this.handlePhoto(4)
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "r-side"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name"

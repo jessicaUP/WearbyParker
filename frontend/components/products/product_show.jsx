@@ -24,9 +24,15 @@ class ProductShow extends React.Component {
     this.setState({ currentCheck: true })
   };
 
-  handlePhoto() {
+  handlePhoto(num) {
     return (e) => {
+      let background = document.querySelector(".top")
       this.setState({ currentPhoto: e.currentTarget.value });
+      if (num === 2) {
+        background.style.backgroundColor = "rgba(43, 52, 62, .03)"
+      } else {
+        background.style.backgroundColor = "white"
+      }
     }
   };
 
@@ -48,7 +54,8 @@ class ProductShow extends React.Component {
     } else if (!this.state.currentColor) {
       product.colors.forEach(color => {
         if (parseInt(this.state.colorId) === color.id) {
-          this.setState({ currentColor: color.color_name });
+          // this.setState({ currentColor: color.color_name });
+            // HAVING THIS IN THE RENDER IS CAUSING A WARNING!!
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
           photo3 = color.photo3Url;
@@ -107,15 +114,13 @@ class ProductShow extends React.Component {
           <div className='pictures-container'>
           <div className='pictures'>
             {image}
-            <form >
-              <div className='options-colors'>
-                <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto()} defaultChecked/>
-                <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto()} />
-                <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto()} />
-                <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto()} />
-              </div>
-            </form>
           </div>
+            <div className='options-colors'>
+              <input type='radio' name='photo-radios' value='photo1' onClick={this.handlePhoto(1)} defaultChecked/>
+              <input type='radio' name='photo-radios' value='photo2' onClick={this.handlePhoto(2)} />
+              <input type='radio' name='photo-radios' value='photo3' onClick={this.handlePhoto(3)} />
+              <input type='radio' name='photo-radios' value='photo4' onClick={this.handlePhoto(4)} />
+            </div>
           </div>
             <div className='r-side'>
               <h2 className='product-name'>{product.name}</h2>
