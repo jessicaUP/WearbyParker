@@ -12,7 +12,7 @@ class ProductShow extends React.Component {
       currentPhoto: 'photo1',
       colorId: props.match.params.colorId,
       currentColor: null,
-      colorCheck: false
+      colorCheck: 1
     };
   
     this.handlePhoto = this.handlePhoto.bind(this)
@@ -21,10 +21,13 @@ class ProductShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProduct(parseInt(this.props.match.params.productId))
-    if ( this.state.colorCheck === false ) {
-      debugger
-      this.setState({ currentCheck: true, currentColor: "YELLOW" })
+    if ( this.state.colorCheck === 1 ) {
+      // this.props.product.colors.forEach(color => {
+      //   if (this.state.colorId === color.id) this.setState({ currentColor: color.color_name });
+      // })
+      this.setState({ currentColor: "YELLOW" })
     }
+    this.setState({ currentCheck: this.state.currentCheck + 1 })
   };
 
   handlePhoto() {
