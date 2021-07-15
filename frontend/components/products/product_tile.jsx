@@ -29,12 +29,12 @@ class ProductTile extends React.Component {
     
     return (
       <div className='product-tile'>
-       <h2 className='product-name'>{product.name}</h2>
         <NavLink to={`/products/${product.id}/color/${this.state.selectedColor}`}
            colorname={this.state.colorName}
            ><div className='tile-image' >
              <img src={this.state.colorPhoto} alt="" />
           </div></NavLink>
+          <h2 className='product-name'>{product.name}</h2>
         <div className='tile-colors'>
           {product.colors.map((color, idx) => (
             <input type="radio"
