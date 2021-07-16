@@ -27,8 +27,12 @@ class AddItemForm extends React.Component {
   }
 
   handleClick(type, num, cost = 0) {
+    let mid = document.querySelector('.middle-details');
+    let bottom = document.querySelector('.bottom');
     return (e) => {
       e.preventDefault();
+      mid.style.display = 'none';
+      bottom.style.display = 'none';
       if (this.state.formPage > 0)  {
         let oldState = Object.assign({}, this.state )
         let newState = Object.assign({}, oldState, { cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value })})
@@ -42,6 +46,10 @@ class AddItemForm extends React.Component {
   exitForm() {
     return (e) => {
       e.preventDefault();
+      let mid = document.querySelector('.middle-details');
+      let bottom = document.querySelector('.bottom');
+      mid.style.display = 'flex';
+      bottom.style.display = 'block';
       this.setState({ formPage: 0 })
     }
   }
