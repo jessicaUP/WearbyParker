@@ -701,8 +701,12 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var cost = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var mid = document.querySelector('.middle-details');
+      var bottom = document.querySelector('.bottom');
       return function (e) {
         e.preventDefault();
+        mid.style.display = 'none';
+        bottom.style.display = 'none';
 
         if (_this2.state.formPage > 0) {
           var oldState = Object.assign({}, _this2.state);
@@ -729,6 +733,10 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         e.preventDefault();
+        var mid = document.querySelector('.middle-details');
+        var bottom = document.querySelector('.bottom');
+        mid.style.display = 'flex';
+        bottom.style.display = 'block';
 
         _this3.setState({
           formPage: 0
@@ -1498,8 +1506,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-
 var ProductShow = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductShow, _React$Component);
 
@@ -1545,7 +1551,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
 
         if (num === 2) {
           background.style.backgroundColor = "rgba(43, 52, 62, .03)";
-          image.style.width = "140%"; // image.style.bottom = "20px";
+          image.style.width = "112%";
         } else {
           background.style.backgroundColor = "white";
           image.style.width = "75%";
@@ -1558,9 +1564,6 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       return function (e) {
-        // e.preventDefault
-        // let ele = document.getElementById(colorId);
-        // ele.checked = true;
         _this3.setState({
           colorId: colorId,
           currentColor: colorName
@@ -1572,8 +1575,6 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      // let product = this.props.fetchProduct(this.props.match.params.productId)
-      // this.props.fetchProduct(this.props.id)
       var product = this.props.product;
 
       if (!product) {
@@ -1594,20 +1595,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         });
       }
 
-      var image; // let colorname = this.state.currentColor;
-
+      var image;
       var photo1;
       var photo2;
       var photo3;
-      var photo4; // if (this.state.currentColor === true ) {
-      //   this.props.product.colors.forEach(color => {
-      //     if (this.state.colorId === color.id) colorName = color.color_name
-      //   })
-      // }
-
+      var photo4;
       product.colors.forEach(function (color) {
         if (parseInt(_this4.state.colorId) === color.id) {
-          // colorname = color.color_name;
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
           photo3 = color.photo3Url;
@@ -1700,18 +1694,20 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           key: idx,
           defaultChecked: "".concat(color.id === parseInt(_this4.state.colorId))
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
         product: product,
         colorPhoto: photo3,
         pickedColor: this.state.currentColor,
         createCartItem: this.props.createCartItem
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "try-on"
-      }, "Try at home for free")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Try at home for free"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "middle-details"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "white-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
         className: "serif"
-      }, details[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, details[0]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "bottom"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: window["case"]

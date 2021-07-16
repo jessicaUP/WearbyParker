@@ -1,7 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import AddItemForm from '../cart/add_item_form';
-import { Link } from 'react-router-dom';
 
 
 class ProductShow extends React.Component {
@@ -31,8 +29,7 @@ class ProductShow extends React.Component {
       this.setState({ currentPhoto: e.currentTarget.value });
       if (num === 2) {
         background.style.backgroundColor = "rgba(43, 52, 62, .03)"
-        image.style.width = "140%";
-        // image.style.bottom = "20px";
+        image.style.width = "112%";
       } else {
         background.style.backgroundColor = "white"
         image.style.width = "75%";
@@ -42,16 +39,11 @@ class ProductShow extends React.Component {
 
   handleClick(colorId, colorName) {
     return (e) => {
-      // e.preventDefault
-      // let ele = document.getElementById(colorId);
-      // ele.checked = true;
       this.setState({ colorId: colorId, currentColor: colorName });
     }
   };
 
   render() {
-    // let product = this.props.fetchProduct(this.props.match.params.productId)
-    // this.props.fetchProduct(this.props.id)
     let { product } = this.props
     if (!product) {
       return null;
@@ -70,21 +62,14 @@ class ProductShow extends React.Component {
 
 
     let image;
-    // let colorname = this.state.currentColor;
     let photo1;
     let photo2;
     let photo3;
     let photo4;
 
-    // if (this.state.currentColor === true ) {
-    //   this.props.product.colors.forEach(color => {
-    //     if (this.state.colorId === color.id) colorName = color.color_name
-    //   })
-    // }
 
     product.colors.forEach(color => { 
         if (parseInt(this.state.colorId) === color.id) {
-          // colorname = color.color_name;
           photo1 = color.photo1Url;
           photo2 = color.photo2Url;
           photo3 = color.photo3Url;
@@ -139,14 +124,14 @@ class ProductShow extends React.Component {
                   defaultChecked={`${color.id === parseInt(this.state.colorId)}`} />  ) }
               </div>
               <p>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
-              <div>
                 <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
-              </div>
             </div>
         </div>
         <div className='middle-details' >
-          <h5 className='serif' >{details[0]}</h5>
+          <div className='white-box'>
+            <h5 className='serif' >{details[0]}</h5>
+          </div>
         </div>
         {/* <div className='bottom-details' >
           <div className='bottom-text'>

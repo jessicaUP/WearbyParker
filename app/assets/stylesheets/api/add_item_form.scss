@@ -1,11 +1,14 @@
 .add-cart-item {
+  display: flex;
+  flex-direction: row;
   position: absolute;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
-  z-index: 2;
+  top: -130px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
   background-color: white;
+  overflow: hidden;
 }
 
 .icon-button {
@@ -57,9 +60,4 @@
 
 .option-desc {
   margin-top: 10px;
-}
-
-.add-cart-item {
-  display: flex;
-  flex-direction: row;
 }
