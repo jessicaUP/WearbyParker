@@ -8,6 +8,60 @@
   // height: 100%;
   z-index: 2;
   background-color: rgb(248, 248, 248);
+  justify-items: center;
+
+
+ // SMALL PAGE WIDTH
+
+  .left-select-item-s {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+    height: 50px;
+
+    .icon-button-s {
+      color: lightgray;
+      width: 10px;
+      background-color: white;
+      height: 50px;
+    }
+
+    .name-color-s {
+      display: flex;
+      flex-direction: row;
+      // align-self: left;
+      margin-top: 30%;
+      margin-right: auto;
+      // justify-self: start;
+
+      #small-title {
+        display: inline-block;
+        margin-bottom: 0;
+        font-family: sans-serif;
+        font-weight: normal;
+        font-size: 16px;
+        color: rgb(59, 59, 59);
+        text-align: center;
+
+      }
+    }
+
+    
+  }
+  
+  .right-select-item-s {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: auto;
+    width: 65%;
+    margin-left: 17%;
+    margin-top: 35%;
+    align-content: center;
+  }
+
 
  // LARGE PAGE WIDTH
   .right-select-item-l {
@@ -19,19 +73,13 @@
     padding: 70px 36px 0 36px;
     background-color: white;
     
-    .section-l {
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-size: 22px;
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
 
   }
 
   .left-select-item-l {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: space-around;
     align-items: center;
     position: absolute;
     bottom: 0;
@@ -43,31 +91,43 @@
     .name-color-l {
       display: flex;
       flex-direction: row;
-      text-align: left;
-      position: relative;
-      bottom: 0;
-      left: 0;
-
-      .option-title-l {
-        font-size: 32px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        margin-top: 0;
-        text-align: left;
-      }
-
-      .option-color-l {
-        text-align: left;
-        font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
-        color: rgb(85, 85, 85);
-        font-style: italic;
-        font-size: 18px;
-        margin-top: 12px;
-        margin-left: 15px;
-      }
-
+      // align-self: left;
+      margin-top: 30%;
+      margin-right: auto;
+      // justify-self: start;
 
     }
+
+    .icon-button-s {
+      position: unset;
+    }
   }
+
+ // SAME FOR BOTH LAYOUTS 
+  .option-title {
+    font-size: 32px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 0;
+    text-align: left;
+  };
+
+  .option-color {
+    text-align: left;
+    font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
+    color: rgb(85, 85, 85);
+    font-style: italic;
+    font-size: 18px;
+    margin-top: 23px;
+    margin-left: 15px;
+  }
+
+  .section-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
 
 
   p.option-description {
@@ -76,10 +136,26 @@
     font-weight: lighter;
     color: rgb(85, 85, 85);
     margin: 10px 0 30px 10px;
+  }
 
-
+  .sub-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    #sub {
+      float: right;
+      font-weight: normal;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      margin-top: 10px;
+    }
   }
 }
+
+
+
+// BACK EXIT BUTTONS
 
 .icon-button {
   position: absolute;
@@ -90,17 +166,31 @@
   width: 10px;
 }
 
+
+#back-button {
+  right: 50px;
+}
+
 .selection-button {
   background-color: rgb(242, 242, 242);
   color: rgb(75, 75, 75);
   border-radius: 25px;
   width: fit-content;
-  height: 30px;
+  margin-right: auto;
+  height: 32px;
 }   
 
 .left-select-cart {
   margin-left: 30px;
+  margin-bottom: 5px;
   width: 80%;
+}
+
+.option-price {
+  float: right;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 // .name-color {
@@ -128,7 +218,12 @@
   height: auto;
   mix-blend-mode: multiply;
   object-fit: contain;
+  margin-top: 10%;
 
+}
+
+#small-photo {
+  width: 65%;
 }
 
 // .selection-button {

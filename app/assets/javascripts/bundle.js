@@ -743,7 +743,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         var header = document.querySelector('.total-menu');
         var mid = document.querySelector('.middle-details');
         var bottom = document.querySelector('.bottom');
-        header.style.display = 'none';
+        header.style.display = 'flex';
         mid.style.display = 'flex';
         bottom.style.display = 'block';
 
@@ -820,17 +820,9 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.formPage > 1) {
         smallExit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X");
-      } else {
-        smallExit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
+          className: "icon-button-s",
           onClick: this.backForm()
-        }, "\u2190"));
+        }, "\u2190");
       }
 
       if (windowWidth < 950) {
@@ -838,9 +830,13 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "left-select-item-s"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "name-color-s"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title-s"
-        }, this.props.product.name), smallExit), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        }, smallExit, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "section-title",
+          id: "small-title"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "icon-button-s",
+          onClick: this.exitForm()
+        }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
           src: photo,
           className: "selection-photo",
           id: "small-photo"
@@ -854,9 +850,9 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "name-color-l"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title-l"
+          className: "section-title"
         }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-color-l"
+          className: "option-color"
         }, this.props.pickedColor)));
       }
     }
@@ -889,7 +885,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "right-select-item-s"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-              className: "option-title-s"
+              className: "section-title"
             }, "Select a frame width"), options);
           // case 2:
           //   return (
@@ -911,7 +907,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               className: "icon-button",
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-              className: "section-l"
+              className: "section-title"
             }, "Select a frame width"), options);
 
           case 2:
@@ -919,12 +915,13 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               className: "right-select-item-l"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
               className: "icon-button",
+              id: "back-button",
               onClick: this.backForm()
             }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
               className: "icon-button",
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-              className: "section-l"
+              className: "section-title"
             }, "Select a prescription type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -934,7 +931,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Single-vision"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Corrects one field of vision (near, intermediate, or distance)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -944,7 +941,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Progressives"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "$295"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between  multiple pairs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -954,7 +951,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Non-prescription"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Offers style and protection with no vision correction")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -964,7 +961,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Readers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Offers simple magnification for, well, reading (no prescription necessary)")));
 
           case 3:
@@ -977,7 +974,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               className: "icon-button",
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-              className: "section-l"
+              className: "section-title"
             }, "Select a lense type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -987,7 +984,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Classic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "Free"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -997,7 +994,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Blue-light-filtering"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "+$50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -1007,14 +1004,14 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Light-responsive"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-price"
             }, "+$100"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "option-desc"
+              className: "option-description"
             }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "sub-total"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               id: "sub"
             }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               id: "sub"
-            }, totalPrice)));
+            }, "$".concat(totalPrice))));
 
           case 4:
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1026,7 +1023,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               className: "icon-button",
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-              className: "option-title"
+              className: "section-title"
             }, "Review your selections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {

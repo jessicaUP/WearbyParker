@@ -57,7 +57,7 @@ class AddItemForm extends React.Component {
       let header = document.querySelector('.total-menu');
       let mid = document.querySelector('.middle-details');
       let bottom = document.querySelector('.bottom');
-      header.style.display = 'none';
+      header.style.display = 'flex';
       mid.style.display = 'flex';
       bottom.style.display = 'block';
       this.setState({ formPage: 0 })
@@ -118,14 +118,7 @@ class AddItemForm extends React.Component {
     
     if (this.state.formPage > 1) {
       smallExit = (
-        <button className='icon-button' onClick={this.exitForm()}>X</button>
-      );
-    } else {
-      smallExit = (
-        <>
-        <button className='icon-button' onClick={this.exitForm()}>X</button>
-        <button className='icon-button' onClick={this.backForm()}>←</button>
-        </>
+        <button className='icon-button-s' onClick={this.backForm()}>←</button>
       )
     }
 
@@ -133,8 +126,9 @@ class AddItemForm extends React.Component {
       return (
         <div className='left-select-item-s'>
           <div className='name-color-s'>
-            <h2 className='option-title-s'>{this.props.product.name}</h2>
             {smallExit}
+            <h2 className='section-title' id='small-title'>{this.props.product.name}</h2>
+            <button className='icon-button-s' onClick={this.exitForm()}>X</button>
           </div>
           <img src={photo} className='selection-photo' id='small-photo'/>
         </div>
@@ -144,8 +138,8 @@ class AddItemForm extends React.Component {
         <div className='left-select-item-l'>
           <img src={photo} className='selection-photo' />
           <div className='name-color-l'>
-            <h2 className='option-title-l'>{this.props.product.name}</h2>
-            <p className='option-color-l' >{this.props.pickedColor}</p>
+            <h2 className='section-title'>{this.props.product.name}</h2>
+            <p className='option-color' >{this.props.pickedColor}</p>
           </div>
         </div>
       )
@@ -173,7 +167,7 @@ class AddItemForm extends React.Component {
         case 1:
           return (
             <div className='right-select-item-s'>
-              <h2 className='option-title-s'>Select a frame width</h2>
+              <h2 className='section-title'>Select a frame width</h2>
               {options}
             </div>
           );
@@ -197,35 +191,35 @@ class AddItemForm extends React.Component {
           return (
             <div className='right-select-item-l'>
               <button className='icon-button' onClick={this.exitForm()}>X</button>
-              <h2 className='section-l'>Select a frame width</h2>
+              <h2 className='section-title'>Select a frame width</h2>
               {options}
             </div>
           );
         case 2:
           return (
             <div className='right-select-item-l'>
-              <button className='icon-button' onClick={this.backForm()}>←</button>
+              <button className='icon-button' id='back-button' onClick={this.backForm()}>←</button>
               <button className='icon-button' onClick={this.exitForm()}>X</button>
-              <h2 className='section-l'>Select a prescription type</h2>
+              <h2 className='section-title'>Select a prescription type</h2>
               <div className='cart-options'>
                 <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision' className='selection-button' >Single-vision</button>
                 <p className='option-price'>$95</p>
-                <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
+                <p className='option-description'>Corrects one field of vision (near, intermediate, or distance)</p>
               </div>
               <div className='cart-options'>
                 <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives' className='selection-button' >Progressives</button>
                 <p className='option-price'>$295</p>
-                <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between  multiple pairs</p>
+                <p className='option-description'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between  multiple pairs</p>
               </div>
               <div className='cart-options'>
                 <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription' className='selection-button' >Non-prescription</button>
                 <p className='option-price'>$95</p>
-                <p className='option-desc'>Offers style and protection with no vision correction</p>
+                <p className='option-description'>Offers style and protection with no vision correction</p>
               </div>
               <div className='cart-options'>
                 <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers' className='selection-button' >Readers</button>
                 <p className='option-price'>$95</p>
-                <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
+                <p className='option-description'>Offers simple magnification for, well, reading (no prescription necessary)</p>
               </div>
             </div>
 
@@ -235,25 +229,25 @@ class AddItemForm extends React.Component {
             <div className='right-select-item-l'>
              <button className='icon-button' onClick={this.backForm()}>←</button>
              <button className='icon-button' onClick={this.exitForm()}>X</button>
-              <h2 className='section-l'>Select a lense type</h2>
+              <h2 className='section-title'>Select a lense type</h2>
              <div className='cart-options'>
                 <button onClick={this.handleClick('lense_type', 4)} value='Classic' className='selection-button' >Classic</button>
                <p className='option-price'>Free</p>
-               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
+                <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
              </div>
              <div className='cart-options'>
                 <button onClick={this.handleClick('lense_type', 4, 295)} value='Blue-light-filtering' className='selection-button' >Blue-light-filtering</button>
                <p className='option-price'>+$50</p>
-               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
+                <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
              </div>
              <div className='cart-options'>
                 <button onClick={this.handleClick('lense_type', 4, 95)} value='Light-responsive' className='selection-button' >Light-responsive</button>
                <p className='option-price'>+$100</p>
-               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
+                <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
              </div>
              <div className='sub-total'>
                <p id='sub'>Subtotal</p>
-               <p id='sub'>{totalPrice}</p>
+               <p id='sub'>{`$${totalPrice}`}</p>
              </div>
            </div>
           );
@@ -262,7 +256,7 @@ class AddItemForm extends React.Component {
             <div className='right-select-item-l'>
              <button className='icon-button' onClick={this.backForm()}>←</button>
              <button className='icon-button' onClick={this.exitForm()}>X</button>
-             <h2 className='option-title'>Review your selections</h2>
+             <h2 className='section-title'>Review your selections</h2>
              <p>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
              <div className='cart-selections'>
                <h2>{product.name}</h2>
