@@ -54,7 +54,7 @@ class SigninForm extends React.Component {
 
     return (
       <div className='all-form' >
-        <h2>Sign in</h2>
+        <h2 className='session-h2'>Sign in</h2>
         <div className='signin-form'>
           <form onSubmit={this.handleSubmit} className='session-form' >
             <div className='inputs'>
@@ -78,7 +78,7 @@ class SigninForm extends React.Component {
             <button className='demo-button' onClick={this.handleDemo} >Demo user?</button>
           </form>
           <hr className='break-line' />
-          <h2>I'm new here</h2>
+          <h2 className='session-h2'>I'm new here</h2>
           <button 
             className='demo-button'
             onClick={() => this.props.history.push('/signup')}>Create an account</button>
