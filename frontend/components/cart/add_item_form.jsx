@@ -33,10 +33,12 @@ class AddItemForm extends React.Component {
   }
 
   handleClick(type, num, cost = 0) {
+    let header = document.querySelector('.total-menu');
     let mid = document.querySelector('.middle-details');
     let bottom = document.querySelector('.bottom');
     return (e) => {
       e.preventDefault();
+      header.style.display = 'none';
       mid.style.display = 'none';
       bottom.style.display = 'none';
       if (this.state.formPage > 0)  {
@@ -52,8 +54,10 @@ class AddItemForm extends React.Component {
   exitForm() {
     return (e) => {
       e.preventDefault();
+      let header = document.querySelector('.total-menu');
       let mid = document.querySelector('.middle-details');
       let bottom = document.querySelector('.bottom');
+      header.style.display = 'none';
       mid.style.display = 'flex';
       bottom.style.display = 'block';
       this.setState({ formPage: 0 })
@@ -153,6 +157,7 @@ class AddItemForm extends React.Component {
   rightRender() {
     let windowWidth = window.innerWidth;
     const { product } = this.props
+    const { totalPrice, cartItem } = this.state
 
     let options = product.frameWidths.map((frameWidth, idx) => {
       return (
@@ -196,20 +201,109 @@ class AddItemForm extends React.Component {
               {options}
             </div>
           );
-        // case 2:
-        //   return (
+        case 2:
+          return (
+            <div className='right-select-item-l'>
+              <button className='icon-button' onClick={this.backForm()}>←</button>
+              <button className='icon-button' onClick={this.exitForm()}>X</button>
+              <h2 className='section-l'>Select a prescription type</h2>
+              <div className='cart-options'>
+                <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision' className='selection-button' >Single-vision</button>
+                <p className='option-price'>$95</p>
+                <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
+              </div>
+              <div className='cart-options'>
+                <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives' className='selection-button' >Progressives</button>
+                <p className='option-price'>$295</p>
+                <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between  multiple pairs</p>
+              </div>
+              <div className='cart-options'>
+                <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription' className='selection-button' >Non-prescription</button>
+                <p className='option-price'>$95</p>
+                <p className='option-desc'>Offers style and protection with no vision correction</p>
+              </div>
+              <div className='cart-options'>
+                <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers' className='selection-button' >Readers</button>
+                <p className='option-price'>$95</p>
+                <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
+              </div>
+            </div>
 
-        //   );
-        // case 3:
-        //   return (
-
-        //   );
-        // case 4:
-        //   return (
-
-        //   );
+          );
+        case 3:
+          return (
+            <div className='right-select-item-l'>
+             <button className='icon-button' onClick={this.backForm()}>←</button>
+             <button className='icon-button' onClick={this.exitForm()}>X</button>
+              <h2 className='section-l'>Select a lense type</h2>
+             <div className='cart-options'>
+                <button onClick={this.handleClick('lense_type', 4)} value='Classic' className='selection-button' >Classic</button>
+               <p className='option-price'>Free</p>
+               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
+             </div>
+             <div className='cart-options'>
+                <button onClick={this.handleClick('lense_type', 4, 295)} value='Blue-light-filtering' className='selection-button' >Blue-light-filtering</button>
+               <p className='option-price'>+$50</p>
+               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
+             </div>
+             <div className='cart-options'>
+                <button onClick={this.handleClick('lense_type', 4, 95)} value='Light-responsive' className='selection-button' >Light-responsive</button>
+               <p className='option-price'>+$100</p>
+               <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
+             </div>
+             <div className='sub-total'>
+               <p id='sub'>Subtotal</p>
+               <p id='sub'>{totalPrice}</p>
+             </div>
+           </div>
+          );
+        case 4:
+          return (
+            <div className='right-select-item-l'>
+             <button className='icon-button' onClick={this.backForm()}>←</button>
+             <button className='icon-button' onClick={this.exitForm()}>X</button>
+             <h2 className='option-title'>Review your selections</h2>
+             <p>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
+             <div className='cart-selections'>
+               <h2>{product.name}</h2>
+               <label type='hidden' >Product Id
+               </label>
+               <label type='hidden' >Product Id
+               </label>
+               <label className='sub'>Frame width
+                 <p className='selected-option' >{cartItem.frame_width}</p>
+                 <input type='hidden' value={cartItem.frame_width.id} />
+               </label>
+             </div>
+             <div className='cart-selections'>
+               <label className='sub'>Prescription
+                 <p className='selected-option' >{cartItem.prescription_type}</p>
+                 <input type='hidden' value={cartItem.prescription_type} />
+               </label>
+             </div>
+             <div className='cart-selections'>
+               <label className='sub'>Lense type
+                 <p className='selected-option' >{cartItem.lense_type}</p>
+                 <input type='hidden' value={cartItem.lense_type} />
+               </label>
+             </div>
+             <div className='cart-selections'>
+               <label className='sub'>Lense material
+                 <p className='selected-option' >{cartItem.lense_material}</p>
+                 <input type='hidden' value={cartItem.lense_material} />
+               </label>
+             </div>
+             <div className='sub-total'>
+               <p id='sub'>Subtotal</p>
+               <p id='sub'>${totalPrice}</p>
+             </div>
+             <button className='back-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
+             <button className='back-button' onClick={this.startForm()}>Edit Selections</button>
+           </div>
+          );
       }
     }
+ 
 
 
 
@@ -236,7 +330,7 @@ class AddItemForm extends React.Component {
   render() {
 
     const { product } = this.props
-    const { cartItem, formPage, totalPrice } = this.state
+    const { formPage } = this.state
     
 
     if (formPage === 0) {
@@ -254,7 +348,32 @@ class AddItemForm extends React.Component {
       )
     }
 
-    // if (formPage === 2) {
+    if (formPage === 2) {
+      return (
+        <div className='add-cart-item'>
+          {this.leftRender('colorPhoto')}
+          {this.rightRender()}
+        </div>
+      )
+    }
+    
+    if (formPage === 3) {
+      return (
+        <div className='add-cart-item'>
+          {this.leftRender('colorPhoto')}
+          {this.rightRender()}
+        </div>
+      )
+    }
+
+    if (formPage === 4) {
+      return (
+        <div className='add-cart-item'>
+          {this.leftRender('colorPhoto')}
+          {this.rightRender()}
+        </div>
+      )
+    }
 
     //   return (
     //     <div className='add-cart-item'>
