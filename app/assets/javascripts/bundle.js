@@ -887,9 +887,55 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
               className: "section-title"
             }, "Select a frame width"), options);
-          // case 2:
-          //   return (
-          //   );
+
+          case 2:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "right-select-item-s"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              className: "icon-button",
+              onClick: this.backForm()
+            }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              className: "icon-button",
+              onClick: this.exitForm()
+            }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+              className: "option-title"
+            }, "Select a prescription type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('prescription_type', 3, 95),
+              value: "Single-vision"
+            }, "Single-vision"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-desc"
+            }, "Corrects one field of vision (near, intermediate, or distance)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('prescription_type', 3, 295),
+              value: "Progressives"
+            }, "Progressives"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "$295"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-desc"
+            }, "Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('prescription_type', 3, 95),
+              value: "Non-prescription"
+            }, "Non-prescription"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-desc"
+            }, "Offers style and protection with no vision correction")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('prescription_type', 3, 95),
+              value: "Readers"
+            }, "Readers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-desc"
+            }, "Offers simple magnification for, well, reading (no prescription necessary)")));
           // case 3:
           //   return (
           //   );
@@ -1024,16 +1070,16 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
               className: "section-title"
-            }, "Review your selections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            }, "Review your selections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-description",
+              id: "info-cart"
+            }, "With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              type: "hidden"
-            }, "Product Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              type: "hidden"
-            }, "Product Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               className: "sub"
             }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "selected-option"
+              className: "option-description",
+              id: "p-option"
             }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "hidden",
               value: cartItem.frame_width.id
@@ -1042,7 +1088,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               className: "sub"
             }, "Prescription", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "selected-option"
+              className: "option-description",
+              id: "p-option"
             }, cartItem.prescription_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "hidden",
               value: cartItem.prescription_type
@@ -1051,7 +1098,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               className: "sub"
             }, "Lense type", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "selected-option"
+              className: "option-description",
+              id: "p-option"
             }, cartItem.lense_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "hidden",
               value: cartItem.lense_type
@@ -1060,7 +1108,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               className: "sub"
             }, "Lense material", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-              className: "selected-option"
+              className: "option-description",
+              id: "p-option"
             }, cartItem.lense_material), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "hidden",
               value: cartItem.lense_material
@@ -1071,10 +1120,11 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               id: "sub"
             }, "$", totalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-              className: "back-button",
+              className: "cart-button",
               onClick: this.handleSubmit()
             }, "Add to cart: $", totalPrice), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-              className: "back-button",
+              className: "cart-button",
+              id: "back-button",
               onClick: this.startForm()
             }, "Edit Selections"));
         }
