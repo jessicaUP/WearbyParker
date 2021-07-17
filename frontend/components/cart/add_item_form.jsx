@@ -171,10 +171,34 @@ class AddItemForm extends React.Component {
               {options}
             </div>
           );
-        // case 2:
-        //   return (
-
-        //   );
+        case 2:
+          return (
+            <div className='right-select-item-s'>
+                 <button className='icon-button' onClick={this.backForm()}>←</button>
+                 <button className='icon-button' onClick={this.exitForm()}>X</button>
+                 <h2 className='option-title'>Select a prescription type</h2>
+                 <div className='cart-options'>
+                   <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision'>Single-vision</button>
+                   <p className='option-price'>$95</p>
+                   <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
+                 </div>
+                 <div className='cart-options'>
+                   <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives'>Progressives</button>
+                   <p className='option-price'>$295</p>
+                   <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs</p>
+                 </div>
+                 <div className='cart-options'>
+                   <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription'>Non-prescription</button>
+                   <p className='option-price'>$95</p>
+                   <p className='option-desc'>Offers style and protection with no vision correction</p>
+                 </div>
+                 <div className='cart-options'>
+                   <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers'>Readers</button>
+                   <p className='option-price'>$95</p>
+                   <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
+                 </div>
+               </div>
+               );
         // case 3:
         //   return (
 
@@ -257,33 +281,29 @@ class AddItemForm extends React.Component {
              <button className='icon-button' onClick={this.backForm()}>←</button>
              <button className='icon-button' onClick={this.exitForm()}>X</button>
              <h2 className='section-title'>Review your selections</h2>
-             <p>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
+             <p className='option-description' id='info-cart'>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
              <div className='cart-selections'>
-               <h2>{product.name}</h2>
-               <label type='hidden' >Product Id
-               </label>
-               <label type='hidden' >Product Id
-               </label>
+               {/* <h2>{product.name}</h2> */}
                <label className='sub'>Frame width
-                 <p className='selected-option' >{cartItem.frame_width}</p>
+                 <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
                  <input type='hidden' value={cartItem.frame_width.id} />
                </label>
              </div>
              <div className='cart-selections'>
                <label className='sub'>Prescription
-                 <p className='selected-option' >{cartItem.prescription_type}</p>
+                 <p className='option-description' id='p-option'>{cartItem.prescription_type}</p>
                  <input type='hidden' value={cartItem.prescription_type} />
                </label>
              </div>
              <div className='cart-selections'>
                <label className='sub'>Lense type
-                 <p className='selected-option' >{cartItem.lense_type}</p>
+                 <p className='option-description' id='p-option'>{cartItem.lense_type}</p>
                  <input type='hidden' value={cartItem.lense_type} />
                </label>
              </div>
              <div className='cart-selections'>
                <label className='sub'>Lense material
-                 <p className='selected-option' >{cartItem.lense_material}</p>
+                 <p className='option-description' id='p-option'>{cartItem.lense_material}</p>
                  <input type='hidden' value={cartItem.lense_material} />
                </label>
              </div>
@@ -291,8 +311,8 @@ class AddItemForm extends React.Component {
                <p id='sub'>Subtotal</p>
                <p id='sub'>${totalPrice}</p>
              </div>
-             <button className='back-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
-             <button className='back-button' onClick={this.startForm()}>Edit Selections</button>
+            <button className='cart-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
+            <button className='cart-button' id='back-button' onClick={this.startForm()}>Edit Selections</button>
            </div>
           );
       }
