@@ -56,7 +56,7 @@ class SignupForm extends React.Component {
 
     return (
       <div className='all-form' >
-        <h2>Nice to meet you!</h2>
+        <h2 className='session-h2'>Nice to meet you!</h2>
         <div className='signup-form'>
             <form onSubmit={this.handleSubmit} className='session-form' >
             <div className='inputs'>

@@ -679,6 +679,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       formPage: 0,
+      pageWidth: window.innerWidth,
       cartItem: {
         frame_width: null,
         prescription_type: '',
@@ -692,6 +693,10 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.exitForm = _this.exitForm.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.sizeLabel = _this.sizeLabel.bind(_assertThisInitialized(_this));
+    _this.leftRender = _this.leftRender.bind(_assertThisInitialized(_this));
+    _this.rightRender = _this.rightRender.bind(_assertThisInitialized(_this)); // this.changeResize = this.changeResize.bind(this);
+
     return _this;
   }
 
@@ -788,23 +793,76 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           lense_material: _this6.state.lense
         });
       };
-    } // handleClick() {
-    //   return (e) => {
-    //     e.preventDefault();
-    //       //  HOW DO I HANDLE THE SUBMIT??
-    //   }
-    // }
-
+    }
   }, {
-    key: "render",
-    value: function render() {
+    key: "sizeLabel",
+    value: function sizeLabel() {
+      var label;
+
+      if (window.innerWidth < 950) {
+        label = 'small';
+      } else {
+        label = 'large';
+      }
+
+      return label;
+    }
+  }, {
+    key: "leftRender",
+    value: function leftRender(photoName) {
+      var windowWidth = window.innerWidth;
+      var photo = this.props[photoName];
+      var smallExit;
+
+      if (this.state.formPage > 1) {
+        smallExit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "icon-button",
+          onClick: this.exitForm()
+        }, "X");
+      } else {
+        smallExit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "icon-button",
+          onClick: this.exitForm()
+        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "icon-button",
+          onClick: this.backForm()
+        }, "\u2190"));
+      }
+
+      if (windowWidth < 950) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "left-select-item-s"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color-s"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title-s"
+        }, this.props.product.name), smallExit), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: photo,
+          className: "selection-photo",
+          id: "small-photo"
+        }));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "left-select-item-l"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: photo,
+          className: "selection-photo"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "name-color-l"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "option-title-l"
+        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-color-l"
+        }, this.props.pickedColor)));
+      }
+    }
+  }, {
+    key: "rightRender",
+    value: function rightRender() {
       var _this7 = this;
 
+      var windowWidth = window.innerWidth;
       var product = this.props.product;
-      var _this$state = this.state,
-          cartItem = _this$state.cartItem,
-          formPage = _this$state.formPage,
-          totalPrice = _this$state.totalPrice;
       var options = product.frameWidths.map(function (frameWidth, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           key: idx,
@@ -814,9 +872,81 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           onClick: _this7.handleClick('frame_width', 2),
           value: frameWidth.frame_width
         }, frameWidth.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
+          className: "option-description"
         }, frameWidth.description));
       });
+
+      if (windowWidth < 950) {
+        switch (this.state.formPage) {
+          case 1:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "right-select-item-s"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+              className: "option-title-s"
+            }, "Select a frame width"), options);
+          // case 2:
+          //   return (
+          //   );
+          // case 3:
+          //   return (
+          //   );
+          // case 4:
+          //   return (
+          //   );
+        }
+      } else {
+        // BIGGER
+        switch (this.state.formPage) {
+          case 1:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "right-select-item-l"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              className: "icon-button",
+              onClick: this.exitForm()
+            }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+              className: "section-l"
+            }, "Select a frame width"), options);
+          // case 2:
+          //   return (
+          //   );
+          // case 3:
+          //   return (
+          //   );
+          // case 4:
+          //   return (
+          //   );
+        }
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this8 = this;
+
+      var changeResize = function changeResize() {
+        console.log("booya");
+
+        var wWidth = _this8.sizeLabel();
+
+        if (wWidth !== _this8.state.pageWidth) {
+          _this8.setState({
+            pageWidth: wWidth
+          });
+        }
+
+        return;
+      };
+
+      window.addEventListener("resize", changeResize); // window.removeEventListener("resize", changeResize);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var product = this.props.product;
+      var _this$state = this.state,
+          cartItem = _this$state.cartItem,
+          formPage = _this$state.formPage,
+          totalPrice = _this$state.totalPrice;
 
       if (formPage === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -825,273 +955,352 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         }, "Select lenses and purchase");
       }
 
+      ;
+
       if (formPage === 1) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "add-cart-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "left-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          src: this.props.colorPhoto,
-          className: "selection-photo"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "name-color"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-color"
-        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "right-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, "Select a frame width"), options));
-      }
+        }, this.leftRender('colorPhoto'), this.rightRender());
+      } // if (formPage === 2) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a prescription type</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision'>Single-vision</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives'>Progressives</button>
+      //           <p className='option-price'>$295</p>
+      //           <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription'>Non-prescription</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Offers style and protection with no vision correction</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers'>Readers</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 3) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a lense type</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4)} value='Classic'>Classic</button>
+      //           <p className='option-price'>Free</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4, 295)} value='Blue-light-filtering'>Blue-light-filtering</button>
+      //           <p className='option-price'>+$50</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4, 95)} value='Light-responsive'>Light-responsive</button>
+      //           <p className='option-price'>+$100</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
+      //         </div>
+      //         <div className='sub-total'>
+      //           <p id='sub'>Subtotal</p>
+      //           <p id='sub'>{totalPrice}</p>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 3) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a lense Material</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_material', 4)} value='Polycarbonate'>Polycarbonate</button>
+      //           <p className='option-price'>Free</p>
+      //           <p className='option-desc'>High-quality and impact resistant</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_material', 4, 30)} value='1.67 high-index'>1.67 high-index</button>
+      //           <p className='option-price'>+$30</p>
+      //           <p className='option-desc'>Thinner lenses, so you do not have coke-bottles as glasses (if total powers if +/-4.0 or higher)</p>
+      //         </div>
+      //         <div className='sub-total'>
+      //           <p id='sub'>Subtotal</p>
+      //           <p id='sub'>{totalPrice}</p>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 4) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Review your selections</h2>
+      //         <p>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
+      //         <div className='cart-selections'>
+      //           <h2>{product.name}</h2>
+      //           <label type='hidden' >Product Id
+      //           </label>
+      //           <label type='hidden' >Product Id
+      //           </label>
+      //           <label className='sub'>Frame width
+      //             <p className='selected-option' >{cartItem.frame_width}</p>
+      //             <input type='hidden' value={cartItem.frame_width.id} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Prescription
+      //             <p className='selected-option' >{cartItem.prescription_type}</p>
+      //             <input type='hidden' value={cartItem.prescription_type} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Lense type
+      //             <p className='selected-option' >{cartItem.lense_type}</p>
+      //             <input type='hidden' value={cartItem.lense_type} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Lense material
+      //             <p className='selected-option' >{cartItem.lense_material}</p>
+      //             <input type='hidden' value={cartItem.lense_material} />
+      //           </label>
+      //         </div>
+      //         <div className='sub-total'>
+      //           <p id='sub'>Subtotal</p>
+      //           <p id='sub'>${totalPrice}</p>
+      //         </div>
+      //         <button className='back-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
+      //         <button className='back-button' onClick={this.startForm()}>Edit Selections</button>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // const { product } = this.props
+      // const { cartItem, formPage, totalPrice } = this.state
+      // let options = product.frameWidths.map((frameWidth, idx) => {
+      //   return (
+      //     <div key={idx} className='cart-options'>
+      //       <button className='selection-button' onClick={this.handleClick('frame_width', 2)} value={frameWidth.frame_width} >{frameWidth.frame_width}</button>
+      //       <p className='option-desc'>{frameWidth.description}</p>
+      //     </div>
+      //   )
+      // })
+      // if (formPage === 0) {
+      //   return (
+      //     <button className='purchase' onClick={this.handleClick('start', 1)} >Select lenses and purchase</button>
+      //   )
+      // }
+      // if (formPage === 1) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       {leftMenu}
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a frame width</h2>
+      //         {options}
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 2) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a prescription type</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision'>Single-vision</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives'>Progressives</button>
+      //           <p className='option-price'>$295</p>
+      //           <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription'>Non-prescription</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Offers style and protection with no vision correction</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers'>Readers</button>
+      //           <p className='option-price'>$95</p>
+      //           <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 3) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a lense type</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4)} value='Classic'>Classic</button>
+      //           <p className='option-price'>Free</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4, 295)} value='Blue-light-filtering'>Blue-light-filtering</button>
+      //           <p className='option-price'>+$50</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_type', 4, 95)} value='Light-responsive'>Light-responsive</button>
+      //           <p className='option-price'>+$100</p>
+      //           <p className='option-desc'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
+      //         </div>
+      //           <div className='sub-total'>
+      //             <p id='sub'>Subtotal</p>
+      //             <p id='sub'>{totalPrice}</p>
+      //           </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 3) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //         <img src={this.props.colorPhoto} className='selection-photo' />
+      //         <div className='name-color'>
+      //           <h2 className='option-title'>{this.props.product.name}</h2>
+      //           <p className='option-color' >{this.props.pickedColor}</p>
+      //         </div>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Select a lense Material</h2>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_material', 4)} value='Polycarbonate'>Polycarbonate</button>
+      //           <p className='option-price'>Free</p>
+      //           <p className='option-desc'>High-quality and impact resistant</p>
+      //         </div>
+      //         <div className='cart-options'>
+      //           <button onClick={this.handleClick('lense_material', 4, 30)} value='1.67 high-index'>1.67 high-index</button>
+      //           <p className='option-price'>+$30</p>
+      //           <p className='option-desc'>Thinner lenses, so you do not have coke-bottles as glasses (if total powers if +/-4.0 or higher)</p>
+      //         </div>
+      //           <div className='sub-total'>
+      //             <p id='sub'>Subtotal</p>
+      //             <p id='sub'>{totalPrice}</p>
+      //           </div>
+      //       </div>
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 4) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       <div className='left-select-item'>
+      //       </div>
+      //       <div className='right-select-item'>
+      //         <button className='icon-button' onClick={this.backForm()}>←</button>
+      //         <button className='icon-button' onClick={this.exitForm()}>X</button>
+      //         <h2 className='option-title'>Review your selections</h2>
+      //         <p>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
+      //         <div className='cart-selections'>
+      //           <h2>{product.name}</h2>
+      //           <label type='hidden' >Product Id
+      //           </label>
+      //           <label type='hidden' >Product Id
+      //           </label>
+      //           <label className='sub'>Frame width
+      //             <p className='selected-option' >{cartItem.frame_width}</p>
+      //             <input type='hidden' value={cartItem.frame_width.id} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Prescription
+      //             <p className='selected-option' >{cartItem.prescription_type}</p>
+      //             <input type='hidden' value={cartItem.prescription_type} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Lense type
+      //             <p className='selected-option' >{cartItem.lense_type}</p>
+      //             <input type='hidden' value={cartItem.lense_type} />
+      //           </label>
+      //         </div>
+      //         <div className='cart-selections'>
+      //           <label className='sub'>Lense material
+      //             <p className='selected-option' >{cartItem.lense_material}</p>
+      //             <input type='hidden' value={cartItem.lense_material} />
+      //           </label>
+      //         </div>
+      //           <div className='sub-total'>
+      //             <p id='sub'>Subtotal</p>
+      //             <p id='sub'>${totalPrice}</p>
+      //           </div>
+      //         <button className='back-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
+      //         <button className='back-button' onClick={this.startForm()}>Edit Selections</button>
+      //       </div>
+      //     </div>
+      //   )
+      // }
 
-      if (formPage === 2) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "left-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          src: this.props.colorPhoto,
-          className: "selection-photo"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "name-color"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-color"
-        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "right-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.backForm()
-        }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, "Select a prescription type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('prescription_type', 3, 95),
-          value: "Single-vision"
-        }, "Single-vision"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Corrects one field of vision (near, intermediate, or distance)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('prescription_type', 3, 295),
-          value: "Progressives"
-        }, "Progressives"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "$295"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('prescription_type', 3, 95),
-          value: "Non-prescription"
-        }, "Non-prescription"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Offers style and protection with no vision correction")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('prescription_type', 3, 95),
-          value: "Readers"
-        }, "Readers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "$95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Offers simple magnification for, well, reading (no prescription necessary)"))));
-      }
-
-      if (formPage === 3) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "left-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          src: this.props.colorPhoto,
-          className: "selection-photo"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "name-color"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-color"
-        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "right-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.backForm()
-        }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, "Select a lense type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('lense_type', 4),
-          value: "Classic"
-        }, "Classic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "Free"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('lense_type', 4, 295),
-          value: "Blue-light-filtering"
-        }, "Blue-light-filtering"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "+$50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('lense_type', 4, 95),
-          value: "Light-responsive"
-        }, "Light-responsive"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "+$100"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "sub-total"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, totalPrice))));
-      }
-
-      if (formPage === 3) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "left-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          src: this.props.colorPhoto,
-          className: "selection-photo"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "name-color"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-color"
-        }, this.props.pickedColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "right-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.backForm()
-        }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, "Select a lense Material"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('lense_material', 4),
-          value: "Polycarbonate"
-        }, "Polycarbonate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "Free"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "High-quality and impact resistant")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-options"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleClick('lense_material', 4, 30),
-          value: "1.67 high-index"
-        }, "1.67 high-index"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-price"
-        }, "+$30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-desc"
-        }, "Thinner lenses, so you do not have coke-bottles as glasses (if total powers if +/-4.0 or higher)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "sub-total"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, totalPrice))));
-      }
-
-      if (formPage === 4) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "left-select-item"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "right-select-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.backForm()
-        }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "icon-button",
-          onClick: this.exitForm()
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "option-title"
-        }, "Review your selections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-selections"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          type: "hidden"
-        }, "Product Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          type: "hidden"
-        }, "Product Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          className: "sub"
-        }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "selected-option"
-        }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "hidden",
-          value: cartItem.frame_width.id
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-selections"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          className: "sub"
-        }, "Prescription", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "selected-option"
-        }, cartItem.prescription_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "hidden",
-          value: cartItem.prescription_type
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-selections"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          className: "sub"
-        }, "Lense type", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "selected-option"
-        }, cartItem.lense_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "hidden",
-          value: cartItem.lense_type
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "cart-selections"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          className: "sub"
-        }, "Lense material", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "selected-option"
-        }, cartItem.lense_material), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "hidden",
-          value: cartItem.lense_material
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "sub-total"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          id: "sub"
-        }, "$", totalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "back-button",
-          onClick: this.handleSubmit()
-        }, "Add to cart: $", totalPrice), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "back-button",
-          onClick: this.startForm()
-        }, "Edit Selections")));
-      }
     }
   }]);
 
@@ -1694,7 +1903,9 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           key: idx,
           defaultChecked: "".concat(color.id === parseInt(_this4.state.colorId))
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "price-desc"
+      }, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
         product: product,
         colorPhoto: photo3,
         pickedColor: this.state.currentColor,
@@ -2037,7 +2248,9 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       }, this.props.errors.session[0]) : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "all-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "session-h2"
+      }, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
@@ -2063,7 +2276,9 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleDemo
       }, "Demo user?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
         className: "break-line"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "I'm new here"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "session-h2"
+      }, "I'm new here"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-button",
         onClick: function onClick() {
           return _this5.props.history.push('/signup');
@@ -2232,7 +2447,9 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       }, this.props.errors.session[0]) : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "all-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Nice to meet you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "session-h2"
+      }, "Nice to meet you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signup-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,

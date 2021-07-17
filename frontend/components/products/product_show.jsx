@@ -123,7 +123,7 @@ class ProductShow extends React.Component {
                   key={idx}
                   defaultChecked={`${color.id === parseInt(this.state.colorId)}`} />  ) }
               </div>
-              <p>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
+              <p className='price-desc'>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
                 <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} />
                 <button className='try-on' >Try at home for free</button>
             </div>

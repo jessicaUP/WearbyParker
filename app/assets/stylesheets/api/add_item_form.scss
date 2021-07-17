@@ -1,14 +1,79 @@
 .add-cart-item {
-  display: flex;
-  flex-direction: row;
   position: absolute;
   top: -130px;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 5;
-  background-color: white;
-  overflow: hidden;
+  z-index: 2;
+  background-color: rgb(248, 248, 248);
+  column-count: 2;
+  column-width: 900px;
+
+ // LARGE PAGE WIDTH
+  .right-select-item-l {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 25%;
+    padding: 16px 36px 0 36px;
+    background-color: white;
+    
+    .section-l {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+  }
+
+  .left-select-item-l {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 55%;
+    padding: 70px;
+
+    .name-color-l {
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+
+      .option-title-l {
+        font-size: 32px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-top: 0;
+        text-align: left;
+      }
+
+      .option-color-l {
+        text-align: left;
+        font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
+        color: rgb(85, 85, 85);
+        font-style: italic;
+        font-size: 18px;
+        margin-top: 12px;
+        margin-left: 15px;
+      }
+
+
+    }
+  }
+
+
+  p.option-description {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    color: rgb(85, 85, 85);
+    margin: 10px 0 30px 10px;
+
+
+  }
 }
 
 .icon-button {
@@ -26,38 +91,41 @@
 }   
 
 .left-select-cart {
-  margin-left: 30px
-}
-
-.name-color {
-  display: flex;
-  flex-direction: row;
-  height: fit-content;
-  margin-top: 150px;
-
-  .option-title {
-    margin: 0;
-    margin-bottom: 8px;
-  }
-  
-  .option-color {
-    margin-left: 8px;
-  }
-}
-
-.option-title {
-  font-size: 20px;
-}
-
-.selection-photo {
-  margin-top: 160px;
+  margin-left: 30px;
   width: 60%;
 }
 
-.selection-button {
-  margin-top: 25px;
+// .name-color {
+//   display: flex;
+//   flex-direction: row;
+//   height: fit-content;
+//   margin-top: 150px;
+
+//   .option-title {
+//     margin: 0;
+//     margin-bottom: 8px;
+//   }
+  
+//   .option-color {
+//     margin-left: 8px;
+//   }
+// }
+
+// .option-title {
+//   font-size: 20px;
+// }
+
+.selection-photo {
+  margin-top: 160px;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+
 }
 
-.option-desc {
-  margin-top: 10px;
-}
+// .selection-button {
+//   margin-top: 25px;
+// }
+
+
