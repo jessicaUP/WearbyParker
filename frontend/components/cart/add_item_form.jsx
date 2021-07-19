@@ -80,54 +80,63 @@ class AddItemForm extends React.Component {
 
 
   handleSubmit() {
+
+    return (e) => {
+      e.preventDefault();
+      let colorName = this.props.pickedColor
+      let colorId;
+      this.props.product.colors.forEach(color => {
+        debugger
+        if (color.color_name === colorName) {
+          colorId = color.id
+        }
+      });
     
-    
-    
-    let colorName = this.props.pickedColor
-    let colorId;
-    this.props.product.colors.forEach(color => {
       debugger
-      if (color.color_name === colorName) {
-        colorId = color.id
+      let fw_id; 
+      switch (this.state.cartItem.frame_width) {
+        case 'Extra narrow':
+          fw_id = 1;
+          break;
+        case 'Narrow':
+          fw_id = 2;
+          break;
+        case 'Medium':
+          fw_id = 3;
+          break;
+        case 'Wide':
+          fw_id = 4;
+          break;
+        case 'Extra wide':
+          fw_id = 5;
+          break;
+        
       }
-    });
   
-    debugger
-    let fw_id; 
-    switch (this.state.cartItem.frame_width) {
-      case 'Extra narrow':
-        fw_id = 1;
-        break;
-      case 'Narrow':
-        fw_id = 2;
-        break;
-      case 'Medium':
-        fw_id = 3;
-        break;
-      case 'Wide':
-        fw_id = 4;
-        break;
-      case 'Extra wide':
-        fw_id = 5;
-        break;
-      
+  
+        // e.preventDefault();
+        debugger
+          this.props.createCartItem({ 
+            product_id: this.props.product.id,
+            price: this.state.totalPrice,
+            products_color_id: colorId,
+            products_frame_width_id: fw_id,
+            prescription_type: this.state.cartItem.prescription_type,
+            lense_type: this.state.cartItem.lense_type,
+            lense_material: this.state.cartItem.lense_material
+          })
+        
+          // this.props.pickedColor
+          // this.props.product.colors
+          
+          // REDIRECT GOES HERE
+      let header = document.querySelector('.total-menu');
+      header.style.display = 'flex';
+  
+      location.replace("http://localhost:3000/#/carts");
+
     }
-
-
-      // e.preventDefault();
-      debugger
-        this.props.createCartItem({ 
-          product_id: this.props.product.id,
-          quantity: 1,
-          products_color_id: colorId,
-          products_frame_width_id: fw_id,
-          prescription_type: this.state.cartItem.prescription_type,
-          lense_type: this.state.cartItem.lense_type,
-          lense_material: this.state.cartItem.lense_material
-        })
-      
-        // this.props.pickedColor
-        // this.props.product.colors
+    
 
 
 
@@ -201,7 +210,7 @@ class AddItemForm extends React.Component {
 
     if (windowWidth < 950) {
       switch (this.state.formPage) {
-        case 1:
+        case 1: 
           return (
             <div className='right-select-item-s'>
               <h2 className='section-title'>Select a frame width</h2>
@@ -389,7 +398,6 @@ class AddItemForm extends React.Component {
   
   componentDidMount() {
     let changeResize = () => {
-      console.log("booya")
       let wWidth = this.sizeLabel();
       if (wWidth !== this.state.pageWidth) {
         this.setState({ pageWidth: wWidth })
@@ -585,7 +593,7 @@ class AddItemForm extends React.Component {
     //   )
     // }
 
-    // if (formPage === 4) {
+    // if (formPage === ß) {
     //   return (
     //     <div className='add-cart-item'>
     //       <div className='left-select-item'>

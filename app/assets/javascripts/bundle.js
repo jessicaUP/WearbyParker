@@ -781,52 +781,66 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var colorName = this.props.pickedColor;
-      var colorId;
-      this.props.product.colors.forEach(function (color) {
+      var _this6 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var colorName = _this6.props.pickedColor;
+        var colorId;
+
+        _this6.props.product.colors.forEach(function (color) {
+          debugger;
+
+          if (color.color_name === colorName) {
+            colorId = color.id;
+          }
+        });
+
+        debugger;
+        var fw_id;
+
+        switch (_this6.state.cartItem.frame_width) {
+          case 'Extra narrow':
+            fw_id = 1;
+            break;
+
+          case 'Narrow':
+            fw_id = 2;
+            break;
+
+          case 'Medium':
+            fw_id = 3;
+            break;
+
+          case 'Wide':
+            fw_id = 4;
+            break;
+
+          case 'Extra wide':
+            fw_id = 5;
+            break;
+        } // e.preventDefault();
+
+
         debugger;
 
-        if (color.color_name === colorName) {
-          colorId = color.id;
-        }
-      });
-      debugger;
-      var fw_id;
-
-      switch (this.state.cartItem.frame_width) {
-        case 'Extra narrow':
-          fw_id = 1;
-          break;
-
-        case 'Narrow':
-          fw_id = 2;
-          break;
-
-        case 'Medium':
-          fw_id = 3;
-          break;
-
-        case 'Wide':
-          fw_id = 4;
-          break;
-
-        case 'Extra wide':
-          fw_id = 5;
-          break;
-      } // e.preventDefault();
+        _this6.props.createCartItem({
+          product_id: _this6.props.product.id,
+          price: _this6.state.totalPrice,
+          products_color_id: colorId,
+          products_frame_width_id: fw_id,
+          prescription_type: _this6.state.cartItem.prescription_type,
+          lense_type: _this6.state.cartItem.lense_type,
+          lense_material: _this6.state.cartItem.lense_material
+        }); // this.props.pickedColor
+        // this.props.product.colors
+        // REDIRECT GOES HERE
 
 
-      debugger;
-      this.props.createCartItem({
-        product_id: this.props.product.id,
-        quantity: 1,
-        products_color_id: colorId,
-        products_frame_width_id: fw_id,
-        prescription_type: this.state.cartItem.prescription_type,
-        lense_type: this.state.cartItem.lense_type,
-        lense_material: this.state.cartItem.lense_material
-      }); // this.props.pickedColor
-      // this.props.product.colors
+        var header = document.querySelector('.total-menu');
+        header.style.display = 'flex';
+        location.replace("http://localhost:3000/#/carts");
+      };
     }
   }, {
     key: "sizeLabel",
@@ -889,7 +903,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "rightRender",
     value: function rightRender() {
-      var _this6 = this;
+      var _this7 = this;
 
       var windowWidth = window.innerWidth;
       var product = this.props.product;
@@ -902,7 +916,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "cart-options"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
-          onClick: _this6.handleClick('frame_width', 2),
+          onClick: _this7.handleClick('frame_width', 2),
           value: frameWidth.frame_width
         }, frameWidth.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "option-description"
@@ -1204,15 +1218,13 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this7 = this;
+      var _this8 = this;
 
       var changeResize = function changeResize() {
-        console.log("booya");
+        var wWidth = _this8.sizeLabel();
 
-        var wWidth = _this7.sizeLabel();
-
-        if (wWidth !== _this7.state.pageWidth) {
-          _this7.setState({
+        if (wWidth !== _this8.state.pageWidth) {
+          _this8.setState({
             pageWidth: wWidth
           });
         }
@@ -1391,7 +1403,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       //     </div>
       //   )
       // }
-      // if (formPage === 4) {
+      // if (formPage === ß) {
       //   return (
       //     <div className='add-cart-item'>
       //       <div className='left-select-item'>
@@ -1690,7 +1702,6 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // NEED TO FIND THE CART ID
-      debugger;
       this.props.fetchCart();
     }
   }, {
