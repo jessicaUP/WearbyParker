@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { fetchCart } from '../../actions/cart_actions';
 import CartShow from './cart_show';
 
-// const mSTP = (state) => {
-//   return ({
-//     cartItems: Object.values(state.entities.cartItems)
-//   })
-// }
+const mSTP = (state) => {
+  debugger
+  return ({
+    cartItems: Object.values(state.entities.cart.cart)
+  })
+}
 
 const mDTP = (dispatch) => {
   return ({
@@ -15,4 +16,4 @@ const mDTP = (dispatch) => {
   })
 }
 
-export default connect(null, mDTP)(CartShow)
+export default connect(mSTP, mDTP)(CartShow)

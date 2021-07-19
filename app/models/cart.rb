@@ -1,7 +1,4 @@
-class Cart < ApplicationRecord
-
-  validates :user_id, presence: true
- 
+class Cart < ApplicationRecord 
 
   belongs_to :user,
     foreign_key: :user_id,

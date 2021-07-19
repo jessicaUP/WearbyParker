@@ -10,14 +10,28 @@ class CartShow extends React.Component {
   }
 
   componentDidMount() {
+    // NEED TO FIND THE CART ID
+    debugger
     this.props.fetchCart()
+    
+  }
+
+  totalCost(amount) {
+    let final = this.state.total + amount
+    this.setState({ total: final })
   }
 
 
   render () {
 
-    let { cart } = this.props
-    if (!cart) return null
+    debugger
+    let { cartItems } = this.props
+    if (!cartItems) return null;
+
+    // cartItems.values[1].values.forEach((item) => {
+    //   this.totalCost(item.)
+    // })
+    
     return (
       <div className='cart-show'>
         <h2>Your Cart: {this.state.total}</h2>

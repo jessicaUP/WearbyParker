@@ -683,10 +683,9 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       cartItem: {
         frame_width: null,
         prescription_type: '',
-        prescription_method: '',
         lense_type: '',
         lense_material: '',
-        color_id: null
+        products_color_id: null
       },
       totalPrice: 0
     };
@@ -695,7 +694,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.sizeLabel = _this.sizeLabel.bind(_assertThisInitialized(_this));
     _this.leftRender = _this.leftRender.bind(_assertThisInitialized(_this));
-    _this.rightRender = _this.rightRender.bind(_assertThisInitialized(_this)); // this.changeResize = this.changeResize.bind(this);
+    _this.rightRender = _this.rightRender.bind(_assertThisInitialized(_this));
+    _this.combineForm = _this.combineForm.bind(_assertThisInitialized(_this)); // this.changeResize = this.changeResize.bind(this);
 
     return _this;
   }
@@ -724,7 +724,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           _this2.setState(newState);
         }
 
-        if (_this2.state.formPage < 4) _this2.setState({
+        if (_this2.state.formPage < 5) _this2.setState({
           totalPrice: _this2.state.totalPrice + cost
         });
 
@@ -781,22 +781,52 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var _this6 = this;
+      var colorName = this.props.pickedColor;
+      var colorId;
+      this.props.product.colors.forEach(function (color) {
+        debugger;
 
-      return function (e) {
-        e.preventDefault();
+        if (color.color_name === colorName) {
+          colorId = color.id;
+        }
+      });
+      debugger;
+      var fw_id;
 
-        _this6.props.createCartItem({
-          product_id: _this6.props.product.id,
-          quantity: 1,
-          products_frame_width_id: _this6.state.frame_width,
-          products_color_id: _this6.state.color_id,
-          prescription_type: _this6.state.prescription_type,
-          prescription_method: _this6.state.prescription_method,
-          lense_type: _this6.state.lense_type,
-          lense_material: _this6.state.lense
-        });
-      };
+      switch (this.state.cartItem.frame_width) {
+        case 'Extra narrow':
+          fw_id = 1;
+          break;
+
+        case 'Narrow':
+          fw_id = 2;
+          break;
+
+        case 'Medium':
+          fw_id = 3;
+          break;
+
+        case 'Wide':
+          fw_id = 4;
+          break;
+
+        case 'Extra wide':
+          fw_id = 5;
+          break;
+      } // e.preventDefault();
+
+
+      debugger;
+      this.props.createCartItem({
+        product_id: this.props.product.id,
+        quantity: 1,
+        products_color_id: colorId,
+        products_frame_width_id: fw_id,
+        prescription_type: this.state.cartItem.prescription_type,
+        lense_type: this.state.cartItem.lense_type,
+        lense_material: this.state.cartItem.lense_material
+      }); // this.props.pickedColor
+      // this.props.product.colors
     }
   }, {
     key: "sizeLabel",
@@ -859,7 +889,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "rightRender",
     value: function rightRender() {
-      var _this7 = this;
+      var _this6 = this;
 
       var windowWidth = window.innerWidth;
       var product = this.props.product;
@@ -872,7 +902,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           className: "cart-options"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
-          onClick: _this7.handleClick('frame_width', 2),
+          onClick: _this6.handleClick('frame_width', 2),
           value: frameWidth.frame_width
         }, frameWidth.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "option-description"
@@ -1021,7 +1051,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
               className: "section-title"
-            }, "Select a lense type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            }, "Select a lens type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-options"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
               onClick: this.handleClick('lense_type', 4),
@@ -1070,13 +1100,52 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               onClick: this.exitForm()
             }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
               className: "section-title"
+            }, "Select a lens material"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('lense_material', 5),
+              value: "Polycarbonate",
+              className: "selection-button"
+            }, "Polycerbonate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "Free"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-description"
+            }, "High-quality and impact-resistant")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "cart-options"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              onClick: this.handleClick('lense_material', 5, 30),
+              value: "1.67 high-index",
+              className: "selection-button"
+            }, "1.67 high-index"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-price"
+            }, "+$30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              className: "option-description"
+            }, "Thinner lenses recommended tor strong prescription (if total power if +/-4.0 or higher)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "sub-total"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              id: "sub"
+            }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+              id: "sub"
+            }, "$".concat(totalPrice))));
+
+          case 5:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "right-select-item-l"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              className: "icon-button",
+              onClick: this.backForm()
+            }, "\u2190"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+              className: "icon-button",
+              onClick: this.exitForm()
+            }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+              className: "section-title"
             }, "Review your selections"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description",
               id: "info-cart"
             }, "With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              className: "sub"
+              className: "sub-title"
             }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description",
               id: "p-option"
@@ -1086,7 +1155,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              className: "sub"
+              className: "subtitle"
             }, "Prescription", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description",
               id: "p-option"
@@ -1096,7 +1165,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              className: "sub"
+              className: "subtitle"
             }, "Lense type", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description",
               id: "p-option"
@@ -1106,21 +1175,23 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "cart-selections"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-              className: "sub"
+              className: "subtitle"
             }, "Lense material", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description",
               id: "p-option"
             }, cartItem.lense_material), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "hidden",
               value: cartItem.lense_material
-            }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-              className: "sub-total"
+            }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+              className: "sub-total",
+              id: "sub-final"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               id: "sub"
             }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               id: "sub"
             }, "$", totalPrice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
               className: "cart-button",
+              id: "buy-button",
               onClick: this.handleSubmit()
             }, "Add to cart: $", totalPrice), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
               className: "cart-button",
@@ -1133,15 +1204,15 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this8 = this;
+      var _this7 = this;
 
       var changeResize = function changeResize() {
         console.log("booya");
 
-        var wWidth = _this8.sizeLabel();
+        var wWidth = _this7.sizeLabel();
 
-        if (wWidth !== _this8.state.pageWidth) {
-          _this8.setState({
+        if (wWidth !== _this7.state.pageWidth) {
+          _this7.setState({
             pageWidth: wWidth
           });
         }
@@ -1152,12 +1223,12 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       window.addEventListener("resize", changeResize); // window.removeEventListener("resize", changeResize);
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "combineForm",
+    value: function combineForm(formNum, photoName) {
       var product = this.props.product;
       var formPage = this.state.formPage;
 
-      if (formPage === 0) {
+      if (formNum === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "purchase",
           onClick: this.handleClick('start', 1)
@@ -1166,29 +1237,55 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
       ;
 
-      if (formPage === 1) {
+      if (formNum > 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "add-cart-item"
-        }, this.leftRender('colorPhoto'), this.rightRender());
+        }, this.leftRender("".concat(photoName)), this.rightRender());
       }
-
-      if (formPage === 2) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, this.leftRender('colorPhoto'), this.rightRender());
-      }
-
-      if (formPage === 3) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, this.leftRender('colorPhoto'), this.rightRender());
-      }
-
-      if (formPage === 4) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "add-cart-item"
-        }, this.leftRender('colorPhoto'), this.rightRender());
-      } //   return (
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var product = this.props.product;
+      var formPage = this.state.formPage;
+      return this.combineForm(formPage, 'colorPhoto'); // if (formPage === 0) {
+      //   return (
+      //     <button className='purchase' onClick={this.handleClick('start', 1)} >Select lenses and purchase</button>
+      //   )
+      // };
+      // if (formPage === 1) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       {this.leftRender('colorPhoto')}
+      //       {this.rightRender()}
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 2) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       {this.leftRender('colorPhoto')}
+      //       {this.rightRender()}
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 3) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       {this.leftRender('colorPhoto')}
+      //       {this.rightRender()}
+      //     </div>
+      //   )
+      // }
+      // if (formPage === 5) {
+      //   return (
+      //     <div className='add-cart-item'>
+      //       {this.leftRender('colorPhoto')}
+      //       {this.rightRender()}
+      //     </div>
+      //   )
+      // }
+      //   return (
       //     <div className='add-cart-item'>
       //       <div className='left-select-item'>
       //         <img src={this.props.colorPhoto} className='selection-photo' />
@@ -1526,7 +1623,6 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       //     </div>
       //   )
       // }
-
     }
   }]);
 
@@ -1593,13 +1689,28 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
   _createClass(CartShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // NEED TO FIND THE CART ID
+      debugger;
       this.props.fetchCart();
+    }
+  }, {
+    key: "totalCost",
+    value: function totalCost(amount) {
+      var _final = this.state.total + amount;
+
+      this.setState({
+        total: _final
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var cart = this.props.cart;
-      if (!cart) return null;
+      debugger;
+      var cartItems = this.props.cartItems;
+      if (!cartItems) return null; // cartItems.values[1].values.forEach((item) => {
+      //   this.totalCost(item.)
+      // })
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Your Cart: ", this.state.total));
@@ -1629,11 +1740,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart_show */ "./frontend/components/cart/cart_show.jsx");
 
 
- // const mSTP = (state) => {
-//   return ({
-//     cartItems: Object.values(state.entities.cartItems)
-//   })
-// }
+
+
+var mSTP = function mSTP(state) {
+  debugger;
+  return {
+    cartItems: Object.values(state.entities.cart.cart)
+  };
+};
 
 var mDTP = function mDTP(dispatch) {
   return {
@@ -1643,7 +1757,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_cart_show__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_cart_show__WEBPACK_IMPORTED_MODULE_2__.default));
 
 /***/ }),
 
