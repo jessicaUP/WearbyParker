@@ -2,14 +2,25 @@ class Api::CartItemsController < ApplicationController
 
   def create
     
-    user_cart = Cart.find_by(user_id: current_user.id)
-    @item = CartItem.new(cart_item_params)
-    @item.cart_id = user_cart.id
+    @cart = Cart.find_by(user_id: current_user.id) || Cart.find_by(id: session[:cart_id])
+    # @item.cart_id = user_cart.id
+    # debugger
+    # user_cart ||= Cart.create!
+
+    if !@cart
+      @cart = Cart.new
+      session[:cart_id] = @cart.id
+    end
+
+    @item = CartItem.create(cart_item_params)
+    @item.update({ cart_id: @cart.id })
+ 
+
     
-    if @item.save
-      @cart_items = user_cart.cart_items
-      @tryon_items = user_cart.cart_tryon_items
-      render '/api/carts/index'
+    if @item.save!
+      @cart_items = @cart.cart_items
+      @tryon_items = @cart.cart_tryon_items
+      render '/api/carts/show'
     else
       render json: @item.errors.full_messages, status: 401
     end
@@ -37,7 +48,7 @@ class Api::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:product_id, :quantity, :color_id, :frame_width_id, :prescription_type, :prescription_method, :lense_type, :lense_material)
+    params.require(:cartItem).permit(:product_id, :quantity, :products_color_id, :products_frame_width_id, :prescription_type, :lense_type, :lense_material)
   end
 
 end

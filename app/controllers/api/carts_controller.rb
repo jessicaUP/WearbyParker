@@ -1,14 +1,15 @@
 class Api::CartsController < ApplicationController
 
   def index
-    @cart = current_user.cart
+    # debugger
+    @cart = Cart.find_by(user_id: current_user.id) || Cart.find(session[:cart_id])
     @cart_items = @cart.cart_items
     @tryon_items = @cart.cart_tryon_items
     render :show
   end
 
   def create
-    @cart = Cart.new(user_id: current_user.id)
+    @cart = Cart.new(user_id: current_user.id) || Cart.find(session[:cart_id])
     if @cart.save
       render :show
     else

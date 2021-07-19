@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
 
   def login!(user)
     session[:session_token] = user.session_token
+    # session[:cart] ||= Cart.create().id
+    # SHOPPING CART IN COOKIE
   end
   
   def logged_in?
