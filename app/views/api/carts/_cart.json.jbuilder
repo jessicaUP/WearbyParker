@@ -1,7 +1,7 @@
 json.extract! @cart, :id
   json.cartItems do
     json.array! @cart_items do |item|
-      json.extract! item, :product_id, :quantity, :prescription_type, :lense_type, :lense_material
+      json.extract! item, :product_id, :price, :prescription_type, :lense_type, :lense_material
       json.extract! item.product, :name
       json.extract! item.products_color, :color_name
       json.extract! item.products_frame_width.frame_width, :frame_width, :description

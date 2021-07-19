@@ -1,6 +1,6 @@
 class CartItem < ApplicationRecord
 
-  validates :cart_id, :product_id, :quantity, :products_color_id, :products_frame_width_id, presence: true
+  validates :cart_id, :product_id, :price, :products_color_id, :products_frame_width_id, presence: true
   validates :prescription_type, :lense_type, :lense_material, presence: true
  
   belongs_to :cart,

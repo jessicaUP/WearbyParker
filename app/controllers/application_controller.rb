@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def login!(user)
     session[:session_token] = user.session_token
-    # session[:cart] ||= Cart.create().id
+    session[:cart] = Cart.find_by(user_id: user.id) || Cart.create().id
     # SHOPPING CART IN COOKIE
   end
   

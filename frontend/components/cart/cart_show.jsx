@@ -11,7 +11,7 @@ class CartShow extends React.Component {
 
   componentDidMount() {
     // NEED TO FIND THE CART ID
-    debugger
+    
     this.props.fetchCart()
     
   }
