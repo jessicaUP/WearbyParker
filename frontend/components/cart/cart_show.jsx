@@ -42,12 +42,12 @@ class CartShow extends React.Component {
 
     return (
       <div className='cart-show'>
+        <h2>Your Cart: {total}</h2>
         <div className='cart-item-index'>
           {
-            itemArray.map(cartItem => <ItemShow key={cartItem.id} cartItem={cartItem} />)
+            itemArray.map((cartItem, idx) => <ItemShow key={idx} cartItem={cartItem} />)
           }
         </div>
-        <h2>Your Cart: {total}</h2>
 
 
       </div>
