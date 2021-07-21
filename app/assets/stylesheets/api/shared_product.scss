@@ -1,3 +1,11 @@
+    h2.product-name {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 23px;
+      color: rgb(83, 83, 83);
+    }  
+  
   .option-title {
     font-size: 32px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -20,6 +28,7 @@
     font-size: 22px;
     margin-top: 20px;
     margin-bottom: 20px;
+    // width: min;
   }
 
 
@@ -51,3 +60,28 @@
     justify-content: space-between;
     top: 10%;
   }
+
+#sub {
+  float: right;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+
+}
+
+
+#sub-title {
+  float: right;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+  color: rgb(83, 83, 83);
+}
+
+.subtitle {
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  color: rgb(83, 83, 83);
+}
