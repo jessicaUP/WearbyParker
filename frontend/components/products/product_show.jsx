@@ -96,6 +96,9 @@ class ProductShow extends React.Component {
 
     let details = product.details.split('#')
     let plan = Math.round(product.price / 3)
+    debugger
+
+
 
     return (
       <div className='index-body'>
@@ -121,7 +124,8 @@ class ProductShow extends React.Component {
                   className='color-radios'
                   onClick={this.handleClick(color.id, color.color_name)}
                   key={idx}
-                  defaultChecked={`${color.id === parseInt(this.state.colorId)}`} />  ) }
+                  // checked={`${color.id === parseInt(this.state.colorId)}`} />)}
+                  defaultChecked={color.id === parseInt(this.state.colorId) ? 'checked' : ''} />)}
               </div>
               <p className='price-desc'>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
                 <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} />

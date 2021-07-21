@@ -2333,6 +2333,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       ;
       var details = product.details.split('#');
       var plan = Math.round(product.price / 3);
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2378,8 +2379,9 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           name: "color-radios",
           className: "color-radios",
           onClick: _this4.handleClick(color.id, color.color_name),
-          key: idx,
-          defaultChecked: "".concat(color.id === parseInt(_this4.state.colorId))
+          key: idx // checked={`${color.id === parseInt(this.state.colorId)}`} />)}
+          ,
+          defaultChecked: color.id === parseInt(_this4.state.colorId) ? 'checked' : ''
         });
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "price-desc"
