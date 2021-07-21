@@ -8,7 +8,12 @@ class Api::CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.find(session[:cart_id]) || Cart.new(user_id: current_user.id)
+ 
+    @cart = Cart.find_by(user_id: current_user.id) || Cart.find(session[:cart_id])
+    
+    @cart = Cart.new(user_id: current_user.id) if !@cart
+      
+
     if @cart.save
       render :show
     else

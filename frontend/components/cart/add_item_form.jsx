@@ -86,13 +86,11 @@ class AddItemForm extends React.Component {
       let colorName = this.props.pickedColor
       let colorId;
       this.props.product.colors.forEach(color => {
-        debugger
         if (color.color_name === colorName) {
           colorId = color.id
         }
       });
     
-      debugger
       let fw_id; 
       switch (this.state.cartItem.frame_width) {
         case 'Extra narrow':
@@ -113,9 +111,7 @@ class AddItemForm extends React.Component {
         
       }
   
-  
-        // e.preventDefault();
-        debugger
+
           this.props.createCartItem({ 
             product_id: this.props.product.id,
             price: this.state.totalPrice,
