@@ -21,11 +21,12 @@ class CartItemShow extends React.Component {
     return (
       <div className='cart-item-info' > 
         <div className='item-picture'>
-          {/* IMAGE GOES HERE */}
+          <img className='cart-picture' src={cartItem.photo0Url} alt='eyewear-picture' />
         </div>
         <div className='cart-item-desc'>
           <div className='cart-selections'>
             <h2 className='section-title' id='item-name'>{cartItem.name}</h2>
+            <p className='option-color'>{cartItem.color_name}</p>
             <label className='subtitle'>Frame width
               <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
               <input type='hidden' value={cartItem.frame_width.id} />

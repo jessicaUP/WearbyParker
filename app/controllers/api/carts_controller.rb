@@ -1,7 +1,7 @@
 class Api::CartsController < ApplicationController
 
   def index
-    @cart = Cart.find_by(user_id: current_user.id) || Cart.find(session[:cart_id])
+    @cart = cart
     @cart_items = @cart.cart_items
     @tryon_items = @cart.cart_tryon_items
     render :show
@@ -9,9 +9,7 @@ class Api::CartsController < ApplicationController
 
   def create
  
-    @cart = Cart.find_by(user_id: current_user.id) || Cart.find(session[:cart_id])
-    
-    @cart = Cart.new(user_id: current_user.id) if !@cart
+    @cart = cart
       
 
     if @cart.save
