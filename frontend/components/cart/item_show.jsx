@@ -25,8 +25,8 @@ class CartItemShow extends React.Component {
         </div>
         <div className='cart-item-desc'>
           <div className='cart-selections'>
-            <h2 className='section-title'>{cartItem.name}</h2>
-            <label className='sub-title'>Frame width
+            <h2 className='section-title' id='item-name'>{cartItem.name}</h2>
+            <label className='subtitle'>Frame width
               <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
               <input type='hidden' value={cartItem.frame_width.id} />
             </label>
@@ -49,10 +49,9 @@ class CartItemShow extends React.Component {
               <input type='hidden' value={cartItem.lense_material} />
             </label>
           </div>
-          <hr />
           <div className='sub-total' id='sub-final'>
-            <p id='sub'>Subtotal</p>
-            <p id='sub'>${cartItem.price}</p>340%
+            <div></div>
+            <p id='sub'>${cartItem.price}</p>
           </div>
         </div>
       </div>

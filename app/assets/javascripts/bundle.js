@@ -1723,7 +1723,9 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       var itemArray = cart.cartItems;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Your Cart: ", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "product-name"
+      }, "Your Cart: $", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item-index"
       }, itemArray.map(function (cartItem, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_show__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -1844,9 +1846,10 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "section-title"
+        className: "section-title",
+        id: "item-name"
       }, cartItem.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "sub-title"
+        className: "subtitle"
       }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-description",
         id: "p-option"
@@ -1883,14 +1886,12 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       }, cartItem.lense_material), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "hidden",
         value: cartItem.lense_material
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "sub-total",
         id: "sub-final"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         id: "sub"
-      }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        id: "sub"
-      }, "$", cartItem.price), "340%")));
+      }, "$", cartItem.price))));
     }
   }]);
 
