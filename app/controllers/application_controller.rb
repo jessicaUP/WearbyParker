@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :cart
   
+  # CURRENT USER
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by_session_token(session[:session_token])
@@ -28,6 +29,20 @@ class ApplicationController < ActionController::Base
     current_user.reset_session_token!
     session[:session_token] = nil
     @current_user = nil
+  end
+
+  # CART
+  def cart
+    if current_user
+      @cart = Cart.find_by(user_id: current_user.id)
+    elsif session[:cart_id]
+      @cart = Cart.find(session[:cart_id])
+    else 
+      @cart = Cart.create()
+      session[:cart] = @cart.id
+      @cart.user_id = current_user.id if current_user
+    end
+    return @cart
   end
 
 end

@@ -5,6 +5,7 @@ json.extract! @cart, :id
       json.extract! item.product, :name
       json.extract! item.products_color, :color_name
       json.extract! item.products_frame_width.frame_width, :frame_width, :description
+      json.photo0Url url_for(item.products_color.photo0)
     end
   end
   json.cartTryonItems do

@@ -19,6 +19,7 @@
     margin-top: 40px;
     font-size: 30px;
   }
+
 }
 
 .cart-item-info {
@@ -30,28 +31,42 @@
   padding: 10px;
 
   .item-picture {
-    width: 50%;
-    // height: 400px;
-    background-color: lightsalmon;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .cart-picture {
+      width: 80%;
+    }
   }
 
   .cart-item-desc {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 45%;
     padding: 10px;
 
     .section-title {
       margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .option-color {
+      font-size: 15px;
+      margin: 0;
+      margin-bottom: 30px;
     }
 
     .sub-total {
       border-top: 1px solid lightgray;
-      margin-bottom: 10px;
+      position: unset;
+      margin-top: 10px;
+      // margin-bottom: 10px;
     }
     
     #sub {
-      margin-top: 20px;
+      margin-top: 15px;
     }
   }
 }
