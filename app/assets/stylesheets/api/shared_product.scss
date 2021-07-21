@@ -1,0 +1,53 @@
+  .option-title {
+    font-size: 32px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 0;
+    text-align: left;
+  };
+
+  .option-color {
+    text-align: left;
+    font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
+    color: rgb(85, 85, 85);
+    font-style: italic;
+    font-size: 18px;
+    margin-top: 23px;
+    margin-left: 15px;
+  }
+
+  .section-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+  p.option-description {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    color: rgb(85, 85, 85);
+    margin: 10px 0 20px 10px;
+  }
+
+  #p-option {
+    margin-left: 0;
+    font-size: 13px;
+  }
+  
+  #info-cart {
+    text-align: center;
+    font-size: 13px;
+    line-height: 24px;
+    // justify-items: center;
+  }
+
+  .sub-total {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    top: 10%;
+  }

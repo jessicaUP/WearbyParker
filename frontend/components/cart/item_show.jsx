@@ -25,7 +25,7 @@ class CartItemShow extends React.Component {
         </div>
         <div className='cart-item-desc'>
           <div className='cart-selections'>
-            <h2>{cartItem.name}</h2>
+            <h2 className='section-title'>{cartItem.name}</h2>
             <label className='sub-title'>Frame width
               <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
               <input type='hidden' value={cartItem.frame_width.id} />
