@@ -5,8 +5,8 @@ import cartTryonItemsReducer from './products_reducer';
 
 const fullCartReducer = combineReducers({
   cart: cartsReducer,
-  cartItems: cartItemsReducer,
-  cartTryonItems: cartTryonItemsReducer 
+  // cartItems: cartItemsReducer,
+  // cartTryonItems: cartTryonItemsReducer 
 });
 
 export default fullCartReducer;

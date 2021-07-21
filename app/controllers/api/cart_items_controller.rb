@@ -6,22 +6,22 @@ class Api::CartItemsController < ApplicationController
     # @item.cart_id = user_cart.id
     # debugger
     # user_cart ||= Cart.create!
-
+    
     if !@cart
-      @cart = Cart.new
+      @cart = Cart.create
       session[:cart_id] = @cart.id
     end
 
     @item = CartItem.create(cart_item_params)
     @item.update({ cart_id: @cart.id })
- 
+    
 
     
     if @item.save!
       @cart_items = @cart.cart_items
       @tryon_items = @cart.cart_tryon_items
       # redirect_to :controller => 'carts', :action => :index
-      render :show
+      render 'api/carts/show'
     else
       render json: @item.errors.full_messages, status: 401
     end
