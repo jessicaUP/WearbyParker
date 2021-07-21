@@ -1,0 +1,37 @@
+.cart-show {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 125px;
+  right: 0;
+  left: 0;
+  background-color: rgb(248, 248, 248);
+  
+  .cart-item-index {
+    display: flex;
+    flex-direction: column;
+    width: 660px;
+    align-items: center;
+  }
+}
+
+.cart-item-info {
+  display: flex;
+  margin: 7px;
+  width: 640px;
+  height: 400px;
+  background-color: white;
+  padding: 10px;
+
+  .item-picture {
+    width: 40%;
+    // height: 400px;
+    background-color: lightsalmon;
+  }
+
+  .cart-item-desc {
+    display: flex;
+    flex-direction: column;
+  }
+}

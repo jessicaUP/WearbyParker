@@ -1723,14 +1723,14 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       var itemArray = cart.cartItems;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Your Cart: ", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item-index"
-      }, itemArray.map(function (cartItem) {
+      }, itemArray.map(function (cartItem, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_show__WEBPACK_IMPORTED_MODULE_1__.default, {
-          key: cartItem.id,
+          key: idx,
           cartItem: cartItem
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Your Cart: ", total));
+      })));
     }
   }]);
 
@@ -1840,6 +1840,8 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "item-picture"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item-desc"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, cartItem.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "sub-title"
@@ -1886,7 +1888,7 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
         id: "sub"
       }, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         id: "sub"
-      }, "$", cartItem.price)));
+      }, "$", cartItem.price), "340%")));
     }
   }]);
 

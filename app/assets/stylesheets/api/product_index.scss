@@ -3,7 +3,10 @@
   // flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-  margin-top: 130px;
+  position: absolute;
+  top: 130px;
+  right: 0;
+  left: 0;
   // display: grid;
   // grid-template-columns: 1fr 1fr 1fr;
   column-count: 3;
