@@ -16,6 +16,7 @@ const receiveCartItem = cartItem => {
 const removeCartItem = cartItemId => {
   return {
     type: REMOVE_CART_ITEM,
+    cartItemId
   }
 }
   
