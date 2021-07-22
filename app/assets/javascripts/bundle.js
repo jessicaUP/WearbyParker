@@ -834,7 +834,9 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
         var header = document.querySelector('.total-menu');
         header.style.display = 'flex';
-        location.replace("http://localhost:3000/#/carts");
+        location.assign("http://localhost:3000/#/carts").then(function () {
+          return location.reload();
+        });
       };
     }
   }, {
@@ -1692,7 +1694,8 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
     //   total: 0
     // };
 
-    _this.totalCost = _this.totalCost.bind(_assertThisInitialized(_this));
+    _this.totalCost = _this.totalCost.bind(_assertThisInitialized(_this)); // this.removePageItem = this.removePageItem.bind(this);
+
     return _this;
   }
 
@@ -1731,11 +1734,15 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       }, "Your Cart: $", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item-index"
       }, itemArray.map(function (cartItem, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_show__WEBPACK_IMPORTED_MODULE_1__.default, {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "item-cont",
+          id: "item-".concat(cartItem.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_show__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: idx,
           cartItem: cartItem,
-          deleteItem: _this2.props.deleteCartItem
-        });
+          deleteItem: _this2.props.deleteCartItem // removePageItem={this.props.removePageItem}
+
+        }));
       })));
     }
   }]);
@@ -1834,18 +1841,37 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, CartItemShow);
 
+    debugger;
     _this = _super.call(this, props);
     _this.state = {
       cartItem: props.cartItem
-    };
+    }, _this.deleteItem = _this.deleteItem.bind(_assertThisInitialized(_this));
+    _this.removePageItem = _this.removePageItem.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CartItemShow, [{
-    key: "render",
-    value: function render() {
+    key: "removePageItem",
+    value: function removePageItem(itemId) {
+      var ele = document.querySelector("#item-".concat(itemId));
+      ele.remove();
+    }
+  }, {
+    key: "deleteItem",
+    value: function deleteItem(itemId) {
       var _this2 = this;
 
+      return function (e) {
+        e.preventDefault();
+
+        _this2.props.deleteItem(itemId).then(function () {
+          return _this2.removePageItem(itemId);
+        });
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
       debugger;
       var cartItem = this.state.cartItem;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1860,9 +1886,7 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
         className: "cart-item-desc"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "icon-button",
-        onClick: function onClick() {
-          return _this2.props.deleteItem(cartItem.id);
-        }
+        onClick: this.deleteItem(cartItem.id)
       }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
