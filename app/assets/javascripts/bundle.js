@@ -268,7 +268,8 @@ var receiveCartItem = function receiveCartItem(cartItem) {
 
 var removeCartItem = function removeCartItem(cartItemId) {
   return {
-    type: REMOVE_CART_ITEM
+    type: REMOVE_CART_ITEM,
+    cartItemId: cartItemId
   };
 };
 
@@ -1712,6 +1713,8 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var cart = this.props.cart;
       if (!cart.id) return null; // if (Object.values(cart).length === 0) return null;
       // let { cartItems } = this.props
@@ -1730,7 +1733,8 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       }, itemArray.map(function (cartItem, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_show__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: idx,
-          cartItem: cartItem
+          cartItem: cartItem,
+          deleteItem: _this2.props.deleteCartItem
         });
       })));
     }
@@ -1756,7 +1760,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
-/* harmony import */ var _cart_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart_show */ "./frontend/components/cart/cart_show.jsx");
+/* harmony import */ var _actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart_item_actions */ "./frontend/actions/cart_item_actions.js");
+/* harmony import */ var _cart_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart_show */ "./frontend/components/cart/cart_show.jsx");
+
 
 
 
@@ -1771,11 +1777,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchCart: function fetchCart() {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.fetchCart)());
+    },
+    deleteCartItem: function deleteCartItem(cartItemId) {
+      return dispatch((0,_actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_2__.deleteCartItem)(cartItemId));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_cart_show__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_cart_show__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 
@@ -1835,6 +1844,8 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
   _createClass(CartItemShow, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       debugger;
       var cartItem = this.state.cartItem;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1847,7 +1858,12 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
         alt: "eyewear-picture"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item-desc"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "icon-button",
+        onClick: function onClick() {
+          return _this2.props.deleteItem(cartItem.id);
+        }
+      }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "section-title",
@@ -3532,7 +3548,7 @@ var updateCartItem = function updateCartItem(cartItemId) {
 };
 var deleteCartItem = function deleteCartItem(cartItemId) {
   return $.ajax({
-    url: "/cart_items/".concat(cartItemId),
+    url: "/api/cart_items/".concat(cartItemId),
     method: 'DELETE'
   });
 };

@@ -43,6 +43,10 @@ class Api::CartItemsController < ApplicationController
   def destroy
     @item = CartItem.find(params[:id])
     @item.destroy
+    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    @cart_items = @cart.cart_items
+    @tryon_items = @cart.cart_tryon_items
+    render '/api/carts/show'
   end
 
 
