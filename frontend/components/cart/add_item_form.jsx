@@ -129,7 +129,8 @@ class AddItemForm extends React.Component {
       let header = document.querySelector('.total-menu');
       header.style.display = 'flex';
   
-      location.replace("http://localhost:3000/#/carts");
+      location.assign("http://localhost:3000/#/carts")
+        .then(() => location.reload());
 
     }
     
@@ -427,6 +428,7 @@ class AddItemForm extends React.Component {
   }
   
   render() {
+    
 
     const { product } = this.props;
     const { formPage } = this.state;

@@ -10,10 +10,15 @@ class CartShow extends React.Component {
     // };
 
     this.totalCost = this.totalCost.bind(this);
+    // this.removePageItem = this.removePageItem.bind(this);
   }
 
+
+
   componentDidMount() { 
-    this.props.fetchCart();   
+    this.props.fetchCart();
+    
+
     
   }
 
@@ -45,7 +50,16 @@ class CartShow extends React.Component {
         <h2 className='product-name' >Your Cart: ${total}</h2>
         <div className='cart-item-index'>
           {
-            itemArray.map((cartItem, idx) => <ItemShow key={idx} cartItem={cartItem} deleteItem={this.props.deleteCartItem} />)
+            itemArray.map((cartItem, idx) => {
+              return (
+                <div className='item-cont' id={`item-${cartItem.id}`} >
+                  <ItemShow key={idx} 
+                    cartItem={cartItem} 
+                    deleteItem={this.props.deleteCartItem}
+                    // removePageItem={this.props.removePageItem}
+                    />
+                </div>
+            )})
           }
         </div>
 
