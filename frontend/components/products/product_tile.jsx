@@ -67,14 +67,17 @@ class ProductTile extends React.Component {
           <p className='subtitle'>Select a frame width</p>
           <p className='option-description'>For more widths, try another color or frame</p>
           <hr/>
-            {this.props.product.frame_widths.forEach(fw => {
-            <div className='option-cont' onClick={() => this.setState({ formPage: 2, selectedFrameWidth: fw.id })}>
-              <i class="far fa-check-circle"></i>
-              <div className='option-desc'>
-                <p className='subtitle'>{fw.frame_width}</p>
-                <p className='option-description'>{fw.description}</p>
-              </div>
-            </div>
+            {this.props.product.frame_widths.map(fw => {
+              return (
+                <div className='option-cont' onClick={() => this.setState({ formPage: 2, selectedFrameWidth: fw.id })}>
+                  <i class="fas fa-check-circle"></i>
+                  <div className='option-desc'>
+                    <p className='subtitle'>{fw.frame_width}</p>
+                    <p className='option-description'>{fw.description}</p>
+                  </div>
+                </div>
+
+              )
           })}
           </div>
           </>

@@ -2488,9 +2488,8 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             className: "subtitle"
           }, "Select a frame width"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description"
-          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.props.product.frame_widths.forEach(function (fw) {
-            /*#__PURE__*/
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.props.product.frame_widths.map(function (fw) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont",
               onClick: function onClick() {
                 return _this3.setState({
@@ -2499,7 +2498,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
                 });
               }
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-              "class": "far fa-check-circle"
+              "class": "fas fa-check-circle"
             }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-desc"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
