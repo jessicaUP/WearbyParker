@@ -5,4 +5,7 @@ json.array! products do |product|
           json.extract! color, :color_name, :id
           json.photo0Url url_for(color.photo0)
     end
+    product.products_frame_widths.each do |frameWidth|
+        json.extract! frameWidth, :frame_width, :description
+    end
 end 

@@ -3,8 +3,6 @@ import React from 'react';
 class CartItemShow extends React.Component {
 
   constructor(props) {
-    debugger
-
     super(props);
 
     this.state = {
@@ -33,7 +31,6 @@ class CartItemShow extends React.Component {
 
 
   render() {
-    debugger
     let { cartItem } = this.state;
 
     return (

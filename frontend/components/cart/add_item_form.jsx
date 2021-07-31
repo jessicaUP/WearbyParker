@@ -9,15 +9,18 @@ class AddItemForm extends React.Component {
     super(props);
     this.state = {
       formPage: 0,
-      pageWidth: window.innerWidth,
+      pageWidth: this.sizeLabel(window.innerWidth),
       cartItem: {
         frame_width: null,
         prescription_type: '',
         lense_type: '',
         lense_material: '',
-        products_color_id: null
+        products_color_id: null,  
+
       },
-      totalPrice: 0
+      totalPrice: 0,
+      cost: []
+
 
     };
 
@@ -33,10 +36,12 @@ class AddItemForm extends React.Component {
 
   }
 
-    handleClick(type, num, cost = 0) {
+  handleClick(type, num, cost = 0) {
     return (e) => {
       e.preventDefault();
       let header, mid, bottom;
+      let nextCost = this.state.cost;
+      nextCost << cost; 
       if (num === 1) {
         header = document.querySelector('.total-menu');
         mid = document.querySelector('.middle-details');
@@ -50,34 +55,13 @@ class AddItemForm extends React.Component {
         let newState = Object.assign({}, oldState, { cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value })})
         this.setState(newState)
       }
-      if (this.state.formPage < 5) this.setState({ totalPrice: (this.state.totalPrice + cost) })
+      if (this.state.formPage < 5) {
+        this.setState({ totalPrice: (this.state.totalPrice + cost)});
+        this.setState({cost: nextCost})
+      }
       this.setState({ formPage: num })
     }
   }
-
-  // handleClick(type, num, cost = 0) {
-  //   debugger
-  //   // USED ONCLICK FOR SELECTION & PRODUCT SHOW BUTTON
-  //   return (e) => {
-  //     e.preventDefault();
-  //     let header, mid, bottom;
-  //     if (num === 1) {
-  //       header = document.querySelector('.total-menu');
-  //       mid = document.querySelector('.middle-details');
-  //       bottom = document.querySelector('.bottom');
-  //       header.style.display = 'none';
-  //       mid.style.display = 'none';
-  //       bottom.style.display = 'none';
-  //     }
-  //     this.setState({ totalPrice: (this.state.totalPrice + cost) })
-
-  //     let oldState = Object.assign({}, this.state)
-  //     let newState = Object.assign({}, oldState, { cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value }) })
-  //     this.setState(newState)
-
-  //     this.setState({ formPage: num })
-  //   }
-  // }
 
   exitForm() {
     return (e) => {
@@ -176,9 +160,8 @@ class AddItemForm extends React.Component {
   }
 
   selectionPages(pageNum) {
-    debugger
     let { product } = this.props
-    let { cartItem, totalPrice } = this.state
+    let { cartItem, totalPrice, cost } = this.state
     let nextPage = pageNum + 1;
     let title, options;
 
@@ -221,27 +204,36 @@ class AddItemForm extends React.Component {
              <p className='option-description' id='info-cart'>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
              <div className='cart-selections'>
                {/* <h2>{product.name}</h2> */}
-               <label className='sub-title'>Frame width
+               <label className='subtitle'>Frame width
                  <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
                  <input type='hidden' value={cartItem.frame_width.id} />
                </label>
              </div>
              <div className='cart-selections'>
                <label className='subtitle'>Prescription
+               <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.prescription_type}</p>
+                 <p className='option-description' id='p-price'>${cost[0]}</p>
                  <input type='hidden' value={cartItem.prescription_type} />
+               </div>
                </label>
              </div>
              <div className='cart-selections'>
                <label className='subtitle'>Lense type
+               <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.lense_type}</p>
+                 <p className='option-description' id='p-price'>${cost[1]}</p>
                  <input type='hidden' value={cartItem.lense_type} />
+               </div>
                </label>
              </div>
              <div className='cart-selections'>
                <label className='subtitle'>Lense material
+               <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.lense_material}</p>
+                 <p className='option-description' id='p-price'>${cost[2]}</p>
                  <input type='hidden' value={cartItem.lense_material} />
+               </div>
                </label>
              </div>
              <hr />
@@ -260,7 +252,6 @@ class AddItemForm extends React.Component {
 
     let finalOptions = options.map((option, idx) => {
       let { type, name, price, priceName, desc } = option;
-      debugger
       return (
         <div className='cart-options' id={idx}>
           <button className='selection-button' onClick={this.handleClick(type, nextPage, price)} value={name}>{name}</button>
@@ -282,7 +273,7 @@ class AddItemForm extends React.Component {
     
     // }
     
-    combineForm(formNum, photoName) {
+  combineForm(formNum, photoName) {
     window.addEventListener("resize", this.changeResize);
     const { product } = this.props;
     const { formPage } = this.state;
@@ -314,7 +305,20 @@ class AddItemForm extends React.Component {
     //   <button className='icon-button' onClick={this.backForm()}>←</button>
     //   <button className='icon-button' onClick={this.exitForm()}>X</button>
     
-      
+    let smallHeader;
+    let back;
+
+    if (formNum === 1) {
+      back = '';
+    } else if (formNum > 1) {
+      back = <button className='icon-button' onClick={this.backForm()}>←</button>
+    }
+    
+    if (window.innerWidth < 900) {
+      smallHeader = <p className='small-name'>{this.props.product.name}</p>
+    } else {
+      smallHeader = '';
+    }
 
     if (formNum === 0) {
       return (
@@ -325,14 +329,19 @@ class AddItemForm extends React.Component {
     if (formNum > 0) {
       return (
         <div className='add-cart-item'>
-          <div className='left-select-item-l'>
+          <div className='back-exit' >
+            {back}
+            {smallHeader}
+            <button className='icon-button' onClick={this.exitForm()}>X</button>
+          </div>
+          <div className='left-select-item-l' id='left-top'>
             <img src={photo} className='selection-photo' />
             <div className='name-color-l'>
               <h2 className='section-title'>{this.props.product.name}</h2>
               <p className='option-color' >{this.props.pickedColor}</p>
             </div>
           </div>
-          <div className='right-select-item-l'>
+          <div className='right-select-item-l' id='right-bottom'>
             {/* {header1} */}
             <h2 className='section-title'>{title}</h2>
             {this.selectionPages(formNum)}
@@ -349,9 +358,16 @@ class AddItemForm extends React.Component {
 
   changeResize() {
     let wWidth = this.sizeLabel();
-    if (wWidth !== this.state.pageWidth) {
-      this.setState({ pageWidth: wWidth })
+    if (wWidth === 'small' && this.state.formPage > 0) {
+      let right = document.querySelector('#right-bottom');
+      let total = document.querySelector('#left-top');
+      // $('#left-top').addClass('left-select-item-s')
+      // $('#left-top').removeClass('left-select-item-l')
+      $('#right-bottom').toggleClass('right-select-item-l right-select-item-s')
+      // this.setState({ pageWidth: wWidth })
       console.log('booyah')
+    } else {
+
     }
     return;
   };

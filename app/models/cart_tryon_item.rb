@@ -1,6 +1,6 @@
 class CartTryonItem < ApplicationRecord
 
-  validates :cart_id, :product_id, :frame_width_id, presence: true
+  validates :cart_id, :product_id, :products_frame_width_id, presence: true
  
   belongs_to :cart,
     foreign_key: :cart_id,

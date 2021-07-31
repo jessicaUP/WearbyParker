@@ -96,7 +96,6 @@ class ProductShow extends React.Component {
 
     let details = product.details.split('#')
     let plan = Math.round(product.price / 3)
-    debugger
 
 
 
