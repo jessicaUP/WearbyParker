@@ -1,17 +1,23 @@
 class Api::CartTryonItemsController < ApplicationController
 
   def create
-    cart = Cart.find_by(user_id: current_user.id)
-    @item = CartTryonItem.new(cart_item_params)
-    @item.cart_id = cart.id
+    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    
+    if !@cart
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
 
     render json: ['Your home try-on is full!'] if cart.tryon_cart_full?
+    
+    @item = CartTryonItem.create(cart_item_params)
+    @item.update({ cart_id: @cart.id })
 
-    if @item.save
-      @cart_items = cart.cart_items
-      @tryon_items = cart.cart_tryon_items
-      @frame_widths = cart.frame_widths
-      render '/api/carts/show'
+    if @item.save!
+      @cart_items = @cart.cart_items
+      @tryon_items = @cart.cart_tryon_items
+      # @frame_widths = cart.frame_widths
+      render json: ['Added']
     else
       render json: @item.errors.full_messages, status: 401
     end
@@ -42,7 +48,7 @@ class Api::CartTryonItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:product_id, :quantity, :products_color_id, :frame_width_id)
+    params.require(:cartTryonItem).permit(:product_id, :products_color_id, :products_frame_width_id)
   end
 
 end

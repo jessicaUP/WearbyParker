@@ -1,4 +1,4 @@
-import * as CartTryonItemApi from '../util/cart'
+import * as CartTryonItemApi from '../util/cart_tryon_item'
 
 export const RECEIVE_CART_TRYON_ITEM = 'RECEIVE_CART_TRYON_ITEM'
 export const REMOVE_CART_TRYON_ITEM = 'REMOVE_CART_TRYON_ITEM'
@@ -14,6 +14,7 @@ const receiveCartTryonItem = cartTryonItem => {
 const removeCartTryonItem = cartTryonItemId => {
   return {
     type: REMOVE_CART_ITEM,
+    cartTryonItemId
   }
 }
 

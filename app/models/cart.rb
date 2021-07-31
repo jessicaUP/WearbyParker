@@ -17,7 +17,7 @@ class Cart < ApplicationRecord
 
 
   def tryon_cart_full?
-    self.tryon_items.length == 5
+    self.cart_tryon_items.length == 5
   end
 
 

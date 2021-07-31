@@ -42,7 +42,6 @@ class CartShow extends React.Component {
     
     let total = this.totalCost(cart.cartItems)
     // cart.cartItems.forEach((item) => this.totalCost(item.price))
-    debugger
     let itemArray = cart.cartItems
 
     return (
