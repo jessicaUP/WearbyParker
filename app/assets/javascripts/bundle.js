@@ -1948,6 +1948,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           cart = _this$props.cart;
       if (!genderId) return null;
       var tryonIds = [];
+      debugger;
 
       if (cart.length > 0) {
         cart.forEach(function (item) {
@@ -2399,7 +2400,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProductTile);
 
-    debugger;
     _this = _super.call(this, props);
     _this.state = {
       formCheck: true,
@@ -2443,15 +2443,15 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "tryonButton",
-    value: function tryonButton(item, cartArray) {
+    value: function tryonButton(item) {
       var _this3 = this;
 
+      var cartArray = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
       // if (!this.state.tryon) return;
       var formPage = this.state.formPage;
 
       var _final;
 
-      debugger;
       if (cartArray.includes(item.id)) this.setState({
         formPage: 2
       });
@@ -2571,7 +2571,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           key: color.id,
           defaultChecked: idx === 0
         });
-      }), form));
+      })), form);
     }
   }]);
 

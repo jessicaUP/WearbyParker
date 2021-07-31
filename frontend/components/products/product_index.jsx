@@ -61,7 +61,7 @@ class ProductIndex extends React.Component {
     if (!genderId) return null;
 
     let tryonIds = [];
-    
+    debugger
     if (cart.length > 0) {
       cart.forEach(item => tryonIds << item.id)
     }

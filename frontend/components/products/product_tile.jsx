@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 class ProductTile extends React.Component {
 
   constructor(props) {
-    debugger
     super(props);
 
     this.state = {
@@ -44,12 +43,11 @@ class ProductTile extends React.Component {
     }
   }
 
-  tryonButton(item, cartArray) {
+  tryonButton(item, cartArray = [] ) {
     // if (!this.state.tryon) return;
     let { formPage } = this.state;
     let final;
 
-    debugger
     if (cartArray.includes(item.id)) this.setState({ formPage: 2 });
 
     switch ( formPage ) {
@@ -125,9 +123,9 @@ class ProductTile extends React.Component {
             key={color.id}
             defaultChecked={idx === 0}
             />  )) }
-
-            {form}
+          
         </div>
+            {form}
       </div>
 
 
