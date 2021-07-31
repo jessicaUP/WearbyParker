@@ -1960,7 +1960,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
       var productArray = Object.values(genderId)[0];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "product-index"
+        className: "product-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tryon-ribbon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
@@ -2401,6 +2401,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProductTile);
 
     _this = _super.call(this, props);
+    debugger;
     _this.state = {
       formCheck: true,
       formPage: 0,
@@ -2472,6 +2473,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
 
         case 1:
           // FW AND EXIT
+          debugger;
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
@@ -2486,7 +2488,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             className: "subtitle"
           }, "Select a frame width"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description"
-          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.state.frameWidths.forEach(function (fw) {
+          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.props.product.frame_widths.forEach(function (fw) {
             /*#__PURE__*/
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont",

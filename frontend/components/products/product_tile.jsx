@@ -5,7 +5,7 @@ class ProductTile extends React.Component {
 
   constructor(props) {
     super(props);
-
+    debugger
     this.state = {
       formCheck: true,
       formPage: 0,
@@ -59,6 +59,7 @@ class ProductTile extends React.Component {
         break;
       case 1:
           // FW AND EXIT
+          debugger
         final = (
           <>
           <button className='icon-button' id='tryon' onClick={() => this.setState({ formPage: 0 })}>x</button>
@@ -66,7 +67,7 @@ class ProductTile extends React.Component {
           <p className='subtitle'>Select a frame width</p>
           <p className='option-description'>For more widths, try another color or frame</p>
           <hr/>
-          {this.state.frameWidths.forEach(fw => {
+            {this.props.product.frame_widths.forEach(fw => {
             <div className='option-cont' onClick={() => this.setState({ formPage: 2, selectedFrameWidth: fw.id })}>
               <i class="far fa-check-circle"></i>
               <div className='option-desc'>
