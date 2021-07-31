@@ -4,7 +4,7 @@ import ProductTile from './product_tile';
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       tryon: false
     };
@@ -72,7 +72,7 @@ class ProductIndex extends React.Component {
     let productArray = Object.values(genderId)[0]
 
     return (
-      <div className='product-index'>
+      <div className='product-show'>
         <div className='tryon-ribbon' >
           <label className='switch-button' >
             <input type='checkbox' onClick={this.handleTryon()} />

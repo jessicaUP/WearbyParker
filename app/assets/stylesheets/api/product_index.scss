@@ -1,34 +1,49 @@
+.product-show {
+  position: absolute;
+  top: 130px;
+  right: 0;
+  left: 0;
+  width: 100%;
+
+}
+
 .product-index {
   // display: flex;
   // flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-  position: absolute;
   top: 130px;
-  right: 0;
-  left: 0;
   // display: grid;
   // grid-template-columns: 1fr 1fr 1fr;
   column-count: 3;
   column-width: 375px;
+  
   padding-top: 72px;
   
+  .product-cont {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 450px;
+    height: 340px;
+  }
   
   .product-tile {
     display: flex;
+    // position: relative;
     flex-direction: column;
     justify-content: space-around;
-    margin-bottom: 85px;
-    width: auto;
-
+    // margin-bottom: 85px;
     align-items: center;
     align-content: center;
+    width: 450px;
+    height: 340px;
     
-
-
+    
+    
     a  {
       width: 100%;
-    //   align-content: center;
+      //   align-content: center;
     }
     
     div.tile-image {
@@ -38,7 +53,7 @@
       align-content: center;
       justify-content: center;
     }
-
+    
     img {
       width: 70%;
       margin-top: 15px;
@@ -51,14 +66,14 @@
       justify-content: center;
       width: 100px;
       justify-content: center;
-
-     
+      
+      
       input[type='radio'] { 
         transform: scale(1.8); 
         margin: 10px;
         background-color: black;
       }
-       
+      
       .color-preview {
         text-align: center;
         margin: 20px;
@@ -66,18 +81,19 @@
         border-radius: 25%;
       }
     }
-
+    
   }
-
+  
   .tryon-ribbon {
+    position: relative;
     display: flex;
     flex-direction: row;
+    // grid-column: 1 / -1;
     justify-content: space-between;
-
+    width: 100%;
+    
     .switch-button {
       display: inline-block;
-      position: relative;
-      width: 60px;
       height: 34px;
 
       .slider {
@@ -116,7 +132,7 @@
   }
 
   #tryon {
-    position: relative;
+    position: absolute;
     display: flex;
     width: 30px;
     height: 30px;
@@ -126,11 +142,21 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    bottom: none;
-    left: none;
-    top: none;
+    // bottom: 100px;
+    left: 20px;
+    top: 285px;
     right: none;
 
+  }
+
+  .form-try {
+    position: absolute;
+    width: 400px;
+    height: auto;
+    background-color: white;
+    z-index: 2;
+    bottom: 150px;
+    padding: 10px;
   }
 
 }
