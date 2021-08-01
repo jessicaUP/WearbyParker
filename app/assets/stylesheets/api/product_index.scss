@@ -160,6 +160,22 @@
     bottom: 80px;
     padding: 40px;
 
+    .hidden {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .hidden + .option-cont {
+      cursor: pointer;
+    }
+
+    .hidden:checked + .fas {
+      color: rgb(43, 90, 151);
+    }
+    
+
 
     .selection-button {
       color: white;
@@ -183,9 +199,10 @@
       height: 75px;
 
       .fas {
-        color: black;
+        color: lightgray;
       }
     }
   }
 
 }
+

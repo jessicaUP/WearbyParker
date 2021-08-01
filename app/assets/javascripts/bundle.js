@@ -1947,16 +1947,15 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           genderId = _this$props.genderId,
           cart = _this$props.cart;
       if (!genderId) return null;
-      var tryonIds = [];
-      debugger;
-
-      if (cart.length > 0) {
-        cart.forEach(function (item) {
-          return tryonIds << item.id;
-        });
-      } // <button className='icon-button' onClick={this.addItem()}>+</button>
+      debugger; // let tryonIds = [];
+      // if (cart.length > 0) {
+      //   cart.forEach(item => {
+      //     debugger
+      //     tryonIds << item.id
+      //   })
+      // }
+      // <button className='icon-button' onClick={this.addItem()}>+</button>
       // let { tryon } = this.state;
-
 
       var productArray = Object.values(genderId)[0];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1972,14 +1971,15 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "slider"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index"
-      }, productArray.map(function (product) {
+      }, productArray.map(function (product, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "product-cont"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_tile__WEBPACK_IMPORTED_MODULE_1__.default, {
-          key: product.id,
+          key: idx,
           product: product,
-          tyronIds: tryonIds,
+          cart: cart,
           createTryonCartItem: _this3.props.createTryonItem,
+          deleteTryonItem: _this3.props.deleteTryonItem,
           switchOn: _this3.state.tryon
         }));
       })));
@@ -2019,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  debugger;
   return {
     genderId: state.entities.genderProducts[ownProps.match.params.genderId],
     cart: state.entities.cart.cart.cartTryonItems
@@ -2402,8 +2403,8 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProductTile);
 
     _this = _super.call(this, props);
-    debugger;
     _this.state = {
+      check: true,
       formCheck: true,
       formPage: 0,
       selectedColor: props.product.colors[0].id,
@@ -2413,12 +2414,14 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       fwName: '',
       selectedFrameWidth: 0,
       tryonIds: props.tryonIds,
-      tryon: props.switchOn
+      tryon: props.switchOn,
+      tryonItem: ''
     };
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
     _this.tryonButton = _this.tryonButton.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.submitItem = _this.submitItem.bind(_assertThisInitialized(_this));
+    _this.deleteTryon = _this.deleteTryon.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2456,7 +2459,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             selectedColor = _this3$state.selectedColor,
             selectedFrameWidth = _this3$state.selectedFrameWidth;
         var id = _this3.props.product.id;
-        debugger;
 
         _this3.props.createTryonCartItem({
           product_id: id,
@@ -2471,18 +2473,31 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "tryonButton",
-    value: function tryonButton(item) {
+    value: function tryonButton(product, cart) {
       var _this4 = this;
 
-      var cartArray = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
       // if (!this.state.tryon) return;
       var formPage = this.state.formPage;
 
       var _final;
 
-      if (cartArray.includes(item.id)) this.setState({
-        formPage: 2
-      });
+      if (this.state.check) {
+        cart.forEach(function (item) {
+          if (item.product_id === product.id) {
+            debugger;
+
+            _this4.setState({
+              fwName: item.frame_width,
+              formPage: 2,
+              check: false,
+              tryonItem: item
+            });
+          }
+        });
+      } // if (cart.includes(item.id)) {
+      //   this.setState({ formPage: 2 });
+      // }
+
 
       switch (formPage) {
         case 0:
@@ -2500,7 +2515,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
 
         case 1:
           // FW AND EXIT
-          debugger;
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
@@ -2516,7 +2530,15 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           }, "Select a frame width"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description"
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.props.product.frame_widths.map(function (fw) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+              htmlFor: "fw-".concat(fw.id)
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+              type: "radio",
+              className: "hidden",
+              name: "hidden",
+              key: "fw-".concat(fw.id),
+              value: fw.frame_width
+            }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont",
               onClick: function onClick() {
                 return _this4.setState({
@@ -2532,7 +2554,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
               className: "subtitle"
             }, fw.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description"
-            }, fw.description)));
+            }, fw.description))));
           }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "selection-button",
             onClick: this.submitItem()
@@ -2544,9 +2566,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
-            onClick: function onClick() {
-              return _this4.props.deleteTryonItem(item.id);
-            }
+            onClick: this.deleteTryon()
           }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "form-try",
             id: "added"
@@ -2561,12 +2581,27 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       return _final;
     }
   }, {
-    key: "handleSelect",
-    value: function handleSelect(colorId, colorname, colorPhoto) {
+    key: "deleteTryon",
+    value: function deleteTryon() {
       var _this5 = this;
 
       return function (e) {
+        debugger;
+
+        _this5.props.deleteTryonItem(_this5.state.tryonItem.id);
+
         _this5.setState({
+          formPage: 0
+        });
+      };
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(colorId, colorname, colorPhoto) {
+      var _this6 = this;
+
+      return function (e) {
+        _this6.setState({
           selectedColor: colorId,
           colorName: colorname,
           colorPhoto: colorPhoto
@@ -2576,14 +2611,14 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       var product = this.props.product;
       var colors = Object.values(product.colors);
       var form = '';
 
       if (this.state.formCheck) {
-        form = this.tryonButton(product, this.props.tryonIds);
+        form = this.tryonButton(product, this.props.cart);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2605,7 +2640,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           type: "radio",
           className: "radio-color-options",
           name: "radio-".concat(product.id),
-          onChange: _this6.handleSelect(color.id, color.name, color.photo0Url),
+          onChange: _this7.handleSelect(color.id, color.name, color.photo0Url),
           key: color.id,
           defaultChecked: idx === 0
         });
@@ -3612,7 +3647,7 @@ var updateCartTryonItem = function updateCartTryonItem(cartTryonItemId) {
 };
 var deleteCartTryonItem = function deleteCartTryonItem(cartTryonItemId) {
   return $.ajax({
-    url: "/cart_tryon_items/".concat(cartTryonItemId),
+    url: "/api/cart_tryon_items/".concat(cartTryonItemId),
     method: 'DELETE'
   });
 };

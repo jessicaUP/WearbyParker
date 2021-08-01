@@ -47,6 +47,7 @@ class CartIndexItem extends React.Component {
 
         </div>
       </div>
+      </div>
 
     )
 

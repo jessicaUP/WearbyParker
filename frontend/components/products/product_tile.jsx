@@ -5,8 +5,8 @@ class ProductTile extends React.Component {
 
   constructor(props) {
     super(props);
-    debugger
     this.state = {
+      check: true,
       formCheck: true,
       formPage: 0,
       selectedColor: props.product.colors[0].id,
@@ -17,6 +17,7 @@ class ProductTile extends React.Component {
       selectedFrameWidth: 0,
       tryonIds: props.tryonIds,
       tryon: props.switchOn,
+      tryonItem: ''
 
 
     }
@@ -24,6 +25,7 @@ class ProductTile extends React.Component {
     this.tryonButton = this.tryonButton.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.submitItem = this.submitItem.bind(this);
+    this.deleteTryon = this.deleteTryon.bind(this);
   };
 
 
@@ -50,7 +52,6 @@ class ProductTile extends React.Component {
       e.preventDefault();
       let { selectedColor, selectedFrameWidth } = this.state;
       let { id } = this.props.product;
-      debugger
       this.props.createTryonCartItem({
         product_id: id,
         products_color_id: selectedColor,
@@ -61,12 +62,24 @@ class ProductTile extends React.Component {
     }
   }
 
-  tryonButton(item, cartArray = [] ) {
+  tryonButton(product, cart) {
     // if (!this.state.tryon) return;
     let { formPage } = this.state;
     let final;
 
-    if (cartArray.includes(item.id)) this.setState({ formPage: 2 });
+    if (this.state.check) {
+      cart.forEach(item => {
+        if (item.product_id === product.id) {
+          debugger
+          this.setState({ fwName: item.frame_width, formPage: 2, check: false, tryonItem: item })
+        }
+      })
+
+    }
+
+    // if (cart.includes(item.id)) {
+    //   this.setState({ formPage: 2 });
+    // }
 
     switch ( formPage ) {
       case 0:
@@ -77,7 +90,6 @@ class ProductTile extends React.Component {
         break;
       case 1:
           // FW AND EXIT
-          debugger
         final = (
           <>
           <button className='icon-button' id='tryon' onClick={() => this.setState({ formPage: 0 })}>x</button>
@@ -85,8 +97,10 @@ class ProductTile extends React.Component {
           <p className='subtitle'>Select a frame width</p>
           <p className='option-description'>For more widths, try another color or frame</p>
           <hr/>
-            {this.props.product.frame_widths.map(fw => {
+            {this.props.product.frame_widths.map((fw) => {
               return (
+                <label htmlFor={`fw-${fw.id}`} >
+                  <input type='radio' className='hidden' name='hidden' key={`fw-${fw.id}`} value={fw.frame_width} />
                 <div className='option-cont' onClick={() => this.setState({ fwName: fw.frame_width, selectedFrameWidth: fw.id })}>
                   <i className="fas fa-check-circle fa-lg"></i>
                   <div className='option-desc'>
@@ -94,6 +108,7 @@ class ProductTile extends React.Component {
                     <p className='option-description'>{fw.description}</p>
                   </div>
                 </div>
+                </label>
               )
           })}
             <button className='selection-button' onClick={this.submitItem()}>Add to Home Try-On</button>
@@ -105,7 +120,7 @@ class ProductTile extends React.Component {
         // DELETE BUTTON
         final = (
           <>
-          <button className='icon-button' id='tryon' onClick={() => this.props.deleteTryonItem(item.id)}>x</button>
+          <button className='icon-button' id='tryon' onClick={this.deleteTryon()}>x</button>
           <div className='form-try' id='added'>
             <i className="fas fa-check-circle fa-lg"></i>
             <p className='subtitle'>{this.state.fwName} is in your Home Try-On</p>
@@ -117,6 +132,14 @@ class ProductTile extends React.Component {
 
     return final;
 
+  }
+
+  deleteTryon() {
+    return (e) => {
+      debugger
+      this.props.deleteTryonItem(this.state.tryonItem.id)
+      this.setState({ formPage: 0 })
+    }
   }
 
   handleSelect(colorId, colorname, colorPhoto) {
@@ -131,7 +154,7 @@ class ProductTile extends React.Component {
 
     let form = '';
     if (this.state.formCheck) {
-      form = this.tryonButton(product, this.props.tryonIds)
+      form = this.tryonButton(product, this.props.cart)
     }
     
     return (
