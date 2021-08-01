@@ -91,6 +91,7 @@
     // grid-column: 1 / -1;
     justify-content: space-between;
     width: 100%;
+    position: -1;
     
     .switch-button {
       display: inline-block;
@@ -120,7 +121,7 @@
       }
 
       input:checked + .slider {
-        background-color: royalblue;
+        background-color: rgb(71, 85, 131);
       }
 
       input:checked + .slider:before {
@@ -151,13 +152,19 @@
 
   .form-try {
     position: absolute;
-    width: 400px;
+    width: 380px;
     height: auto;
     background-color: white;
     border: 1px solid rgb(233, 233, 233);
     z-index: 2;
     bottom: 80px;
-    padding: 20px;
+    padding: 40px;
+
+
+    .selection-button {
+      color: white;
+      background-color: rgb(71, 85, 131);
+    }
 
     .option-description {
       margin-left: 0;
@@ -175,9 +182,7 @@
       align-items: center;
       height: 75px;
 
-      .far {
-        width: 60px;
-        height: 60px;
+      .fas {
         color: black;
       }
     }

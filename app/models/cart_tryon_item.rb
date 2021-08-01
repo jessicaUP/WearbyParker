@@ -15,7 +15,7 @@ class CartTryonItem < ApplicationRecord
   belongs_to :products_frame_width,
     foreign_key: :products_frame_width_id,
     primary_key: :id,
-    class_name: :ProductFrameWidth
+    class_name: :ProductsFrameWidth
 
       
   belongs_to :products_color,
