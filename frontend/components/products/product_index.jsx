@@ -84,7 +84,11 @@ class ProductIndex extends React.Component {
             productArray.map(product => {
               return (
                 <div className='product-cont' >
-                  <ProductTile key={product.id} product={product} tyronIds={tryonIds} switchOn={this.state.tryon}/>
+                  <ProductTile key={product.id}
+                    product={product}
+                    tyronIds={tryonIds}
+                    createTryonCartItem={this.props.createTryonItem}
+                    switchOn={this.state.tryon}/>
                   {/* {this.tryonElements(product, tryonIds)} */}
                 </div>
               )

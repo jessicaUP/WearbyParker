@@ -327,14 +327,14 @@ var REMOVE_CART_TRYON_ITEM = 'REMOVE_CART_TRYON_ITEM';
 
 var receiveCartTryonItem = function receiveCartTryonItem(cartTryonItem) {
   return {
-    type: RECEIVE_CART_ITEM,
+    type: RECEIVE_CART_TRYON_ITEM,
     cartTryonItem: cartTryonItem
   };
 };
 
 var removeCartTryonItem = function removeCartTryonItem(cartTryonItemId) {
   return {
-    type: REMOVE_CART_ITEM,
+    type: REMOVE_CART_TRYON_ITEM,
     cartTryonItemId: cartTryonItemId
   };
 };
@@ -1979,6 +1979,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           key: product.id,
           product: product,
           tyronIds: tryonIds,
+          createTryonCartItem: _this3.props.createTryonItem,
           switchOn: _this3.state.tryon
         }));
       })));
@@ -2409,6 +2410,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       colorName: props.product.colors[0].color_name,
       colorPhoto: props.product.colors[0].photo0Url,
       frameWidths: props.product.frameWidths,
+      fwName: '',
       selectedFrameWidth: 0,
       tryonIds: props.tryonIds,
       tryon: props.switchOn
@@ -2416,6 +2418,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
     _this.tryonButton = _this.tryonButton.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.submitItem = _this.submitItem.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2443,9 +2446,33 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "submitItem",
+    value: function submitItem() {
+      var _this3 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var _this3$state = _this3.state,
+            selectedColor = _this3$state.selectedColor,
+            selectedFrameWidth = _this3$state.selectedFrameWidth;
+        var id = _this3.props.product.id;
+        debugger;
+
+        _this3.props.createTryonCartItem({
+          product_id: id,
+          products_color_id: selectedColor,
+          products_frame_width_id: selectedFrameWidth
+        });
+
+        _this3.setState({
+          formPage: 2
+        });
+      };
+    }
+  }, {
     key: "tryonButton",
     value: function tryonButton(item) {
-      var _this3 = this;
+      var _this4 = this;
 
       var cartArray = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
       // if (!this.state.tryon) return;
@@ -2464,7 +2491,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             className: "icon-button",
             id: "tryon",
             onClick: function onClick() {
-              return _this3.setState({
+              return _this4.setState({
                 formPage: formPage + 1
               });
             }
@@ -2478,7 +2505,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             className: "icon-button",
             id: "tryon",
             onClick: function onClick() {
-              return _this3.setState({
+              return _this4.setState({
                 formPage: 0
               });
             }
@@ -2492,13 +2519,13 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont",
               onClick: function onClick() {
-                return _this3.setState({
-                  formPage: 2,
+                return _this4.setState({
+                  fwName: fw.frame_width,
                   selectedFrameWidth: fw.id
                 });
               }
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-              "class": "fas fa-check-circle"
+              className: "fas fa-check-circle fa-lg"
             }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-desc"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -2506,18 +2533,28 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             }, fw.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description"
             }, fw.description)));
-          })));
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+            className: "selection-button",
+            onClick: this.submitItem()
+          }, "Add to Home Try-On")));
           break;
 
         case 2:
           // DELETE BUTTON
-          _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
             onClick: function onClick() {
-              return _this3.props.deleteTryonItem(item.id);
+              return _this4.props.deleteTryonItem(item.id);
             }
-          }, "x");
+          }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "form-try",
+            id: "added"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+            className: "fas fa-check-circle fa-lg"
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+            className: "subtitle"
+          }, this.state.fwName, " is in your Home Try-On")));
           break;
       }
 
@@ -2526,10 +2563,10 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSelect",
     value: function handleSelect(colorId, colorname, colorPhoto) {
-      var _this4 = this;
+      var _this5 = this;
 
       return function (e) {
-        _this4.setState({
+        _this5.setState({
           selectedColor: colorId,
           colorName: colorname,
           colorPhoto: colorPhoto
@@ -2539,14 +2576,14 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       var product = this.props.product;
       var colors = Object.values(product.colors);
       var form = '';
 
       if (this.state.formCheck) {
-        form = this.tryonButton(product, this.state.tryonIds);
+        form = this.tryonButton(product, this.props.tryonIds);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2568,7 +2605,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           type: "radio",
           className: "radio-color-options",
           name: "radio-".concat(product.id),
-          onChange: _this5.handleSelect(color.id, color.name, color.photo0Url),
+          onChange: _this6.handleSelect(color.id, color.name, color.photo0Url),
           key: color.id,
           defaultChecked: idx === 0
         });

@@ -13,6 +13,7 @@ class ProductTile extends React.Component {
       colorName: props.product.colors[0].color_name,
       colorPhoto: props.product.colors[0].photo0Url,
       frameWidths: props.product.frameWidths,
+      fwName: '',
       selectedFrameWidth: 0,
       tryonIds: props.tryonIds,
       tryon: props.switchOn,
@@ -22,6 +23,7 @@ class ProductTile extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.tryonButton = this.tryonButton.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.submitItem = this.submitItem.bind(this);
   };
 
 
@@ -40,6 +42,22 @@ class ProductTile extends React.Component {
         this.setState(newState)
       } 
 
+    }
+  };
+
+  submitItem() {
+    return (e) => {
+      e.preventDefault();
+      let { selectedColor, selectedFrameWidth } = this.state;
+      let { id } = this.props.product;
+      debugger
+      this.props.createTryonCartItem({
+        product_id: id,
+        products_color_id: selectedColor,
+        products_frame_width_id: selectedFrameWidth
+      })
+
+      this.setState({ formPage: 2 })
     }
   }
 
@@ -69,16 +87,16 @@ class ProductTile extends React.Component {
           <hr/>
             {this.props.product.frame_widths.map(fw => {
               return (
-                <div className='option-cont' onClick={() => this.setState({ formPage: 2, selectedFrameWidth: fw.id })}>
-                  <i class="fas fa-check-circle"></i>
+                <div className='option-cont' onClick={() => this.setState({ fwName: fw.frame_width, selectedFrameWidth: fw.id })}>
+                  <i className="fas fa-check-circle fa-lg"></i>
                   <div className='option-desc'>
                     <p className='subtitle'>{fw.frame_width}</p>
                     <p className='option-description'>{fw.description}</p>
                   </div>
                 </div>
-
               )
           })}
+            <button className='selection-button' onClick={this.submitItem()}>Add to Home Try-On</button>
           </div>
           </>
         )
@@ -86,7 +104,13 @@ class ProductTile extends React.Component {
       case 2:
         // DELETE BUTTON
         final = (
+          <>
           <button className='icon-button' id='tryon' onClick={() => this.props.deleteTryonItem(item.id)}>x</button>
+          <div className='form-try' id='added'>
+            <i className="fas fa-check-circle fa-lg"></i>
+            <p className='subtitle'>{this.state.fwName} is in your Home Try-On</p>
+          </div>
+          </>
         )
         break;
     }
@@ -107,7 +131,7 @@ class ProductTile extends React.Component {
 
     let form = '';
     if (this.state.formCheck) {
-      form = this.tryonButton(product, this.state.tryonIds)
+      form = this.tryonButton(product, this.props.tryonIds)
     }
     
     return (

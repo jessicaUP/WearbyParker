@@ -6,14 +6,14 @@ export const REMOVE_CART_TRYON_ITEM = 'REMOVE_CART_TRYON_ITEM'
 
 const receiveCartTryonItem = cartTryonItem => {
   return {
-    type: RECEIVE_CART_ITEM,
+    type: RECEIVE_CART_TRYON_ITEM,
     cartTryonItem
   }
 }
 
 const removeCartTryonItem = cartTryonItemId => {
   return {
-    type: REMOVE_CART_ITEM,
+    type: REMOVE_CART_TRYON_ITEM,
     cartTryonItemId
   }
 }
