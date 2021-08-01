@@ -10,6 +10,7 @@ class Api::CartTryonItemsController < ApplicationController
 
     render json: ['Your home try-on is full!'] if cart.tryon_cart_full?
     
+    debugger
     @item = CartTryonItem.create(cart_item_params)
     @item.update({ cart_id: @cart.id })
 
@@ -38,7 +39,7 @@ class Api::CartTryonItemsController < ApplicationController
   def destroy
     @item = CartTryonItem.find(params[:id])
     @item.destroy
-
+    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
     @cart_items = cart.cart_items
     @tryon_items = cart.cart_tryon_items
     render '/api/carts/show'

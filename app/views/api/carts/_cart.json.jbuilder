@@ -10,11 +10,12 @@ json.extract! @cart, :id
   end
   json.cartTryonItems do
     json.array! @tryon_items do |item|
-      json.extract! item, :product_id, :products_color_id
+      json.extract! item, :id, :product_id, :products_color_id
       json.extract! item.product, :name
-      json.extract! item.products_color, :color_name, :id
-      json.extract! item.products_color, :color_name, :id
-      json.extract! item.products_frame_width.frame_width, :frame_width, :description, :id
+      json.extract! item.products_color, :color_name
+      json.framewidths do
+        json.extract! item.products_frame_width.frame_width, :frame_width, :description, :id
+      end
     end
   end
 

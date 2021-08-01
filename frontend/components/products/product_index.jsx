@@ -59,12 +59,15 @@ class ProductIndex extends React.Component {
   render() {
     let { genderId, cart } = this.props
     if (!genderId) return null;
-
-    let tryonIds = [];
     debugger
-    if (cart.length > 0) {
-      cart.forEach(item => tryonIds << item.id)
-    }
+
+    // let tryonIds = [];
+    // if (cart.length > 0) {
+    //   cart.forEach(item => {
+    //     debugger
+    //     tryonIds << item.id
+    //   })
+    // }
     // <button className='icon-button' onClick={this.addItem()}>+</button>
 
     // let { tryon } = this.state;
@@ -81,13 +84,15 @@ class ProductIndex extends React.Component {
         </div>
         <div className='product-index'>
           {
-            productArray.map(product => {
+            productArray.map((product, idx) => {
               return (
                 <div className='product-cont' >
-                  <ProductTile key={product.id}
+                  <ProductTile 
+                    key={idx}
                     product={product}
-                    tyronIds={tryonIds}
+                    cart={cart}
                     createTryonCartItem={this.props.createTryonItem}
+                    deleteTryonItem={this.props.deleteTryonItem}
                     switchOn={this.state.tryon}/>
                   {/* {this.tryonElements(product, tryonIds)} */}
                 </div>

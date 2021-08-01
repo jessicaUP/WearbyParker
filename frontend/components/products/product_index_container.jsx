@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 
 const mSTP = (state, ownProps) => {
+  debugger
   return ({
     genderId: state.entities.genderProducts[ownProps.match.params.genderId],
     cart: state.entities.cart.cart.cartTryonItems
