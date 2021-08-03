@@ -1740,25 +1740,42 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(NavBar);
 
   function NavBar(props) {
+    var _this;
+
     _classCallCheck(this, NavBar);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      cartCount: props.cartCount
+    };
+    return _this;
   }
 
   _createClass(NavBar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCart();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var cart = this.props.cart;
+      if (!cart.id) return null;
       var accountButton = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "side-r"
+        className: "cart-icon-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/account",
         className: "nav-link"
-      }, "Account")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "side-r"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-user-alt"
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-icon-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/signin",
         className: "nav-link"
-      }, "Sign in")); // const toggleItem = () => {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-user-alt"
+      }))); // const toggleItem = () => {
       //   $('.dropdown').toggleClass('toggle')
       // }
 
@@ -1780,7 +1797,18 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "logo"
-      }, "WEARBY PARKER")), accountButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "WEARBY PARKER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "r-buttons"
+      }, accountButton, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-icon-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/carts",
+        className: "cart-link"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "circle"
+      }, this.props.cart.cartItems.length + this.props.cart.cartTryonItems.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-shopping-cart"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "nav-bottom"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Home Try-on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
@@ -1818,8 +1846,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _nav_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _nav_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+
 
 
 
@@ -1827,11 +1857,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    currentUser: state.session.id
+    currentUser: state.session.id,
+    cart: state.entities.cart.cart
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP)(_nav_bar__WEBPACK_IMPORTED_MODULE_3__.default));
+var mDTP = function mDTP(dispatch) {
+  return {
+    fetchCart: function fetchCart() {
+      return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCart)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(_nav_bar__WEBPACK_IMPORTED_MODULE_4__.default));
 
 /***/ }),
 
@@ -1961,6 +2000,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "banner-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: window.banner2,
+        className: "img-banner",
+        alt: "woman-in-glasses"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "product-name"
+      }, "Shop frames below or pick five pairs to try for free")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tryon-ribbon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "switch-button"
@@ -1969,7 +2016,17 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleTryon()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         className: "slider"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), "Available for Home Try-On"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "search-filter-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "label"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-sort"
+      }), "Filter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "label"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-search"
+      }), "Search"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index"
       }, productArray.map(function (product, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2529,16 +2586,12 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             className: "subtitle"
           }, "Select a frame width"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description"
-          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), this.props.product.frame_widths.map(function (fw) {
+          }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "option-box"
+          }, this.props.product.frame_widths.map(function (fw) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               htmlFor: "fw-".concat(fw.id)
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-              type: "radio",
-              className: "hidden",
-              name: "hidden",
-              key: "fw-".concat(fw.id),
-              value: fw.frame_width
-            }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont",
               onClick: function onClick() {
                 return _this4.setState({
@@ -2546,7 +2599,13 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
                   selectedFrameWidth: fw.id
                 });
               }
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+              type: "radio",
+              className: "hidden",
+              name: "hidden",
+              key: "fw-".concat(fw.id),
+              value: fw.frame_width
+            }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
               className: "fas fa-check-circle fa-lg"
             }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-desc"
@@ -2555,7 +2614,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
             }, fw.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
               className: "option-description"
             }, fw.description))));
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "selection-button",
             onClick: this.submitItem()
           }, "Add to Home Try-On")));

@@ -22,8 +22,40 @@
   top: 36px;
   left: 0;
   right: 0;
+
 }
 
+.r-buttons {
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  
+}
+
+.cart-icon-cont {
+  margin: 20px;
+  position: relative;
+
+  .circle {
+    position: absolute;
+    text-align: center;
+    justify-items: center;
+    top: -8px;
+    right: -6px;
+    padding-top: 3px;
+    background-color: rgb(71, 85, 131);
+    width: 15px;
+    height: 13px;
+    border-radius: 100%;
+    color: white;
+    font-size: 10px;
+  }
+
+}
+
+.fas {
+  color: lightgray;
+}
 .side-l {
   margin-top: 20px;
   margin-left: 90px;
