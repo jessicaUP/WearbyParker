@@ -6,19 +6,36 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      cartCount: props.cartCount
+    }
+
+  }
+
+  componentDidMount() {
+    this.props.fetchCart();
   }
 
 
   
   render() {
+
+    let cart = this.props.cart;
+    if (!cart.id) return null;
+
+
     const accountButton = (
       this.props.currentUser ? (
-        <div className='side-r' >
-          <Link to='/account' className='nav-link'>Account</Link>
+        <div className='cart-icon-cont' >
+          <Link to='/account' className='nav-link'>
+            <i class="fas fa-user-alt"></i>
+          </Link>
         </div >
         ) : (
-        <div className='side-r' >
-          <Link to='/signin' className='nav-link'>Sign in</Link>
+          <div className='cart-icon-cont' >
+          <Link to='/signin' className='nav-link'>
+          <i class="fas fa-user-alt"></i>
+          </Link>
         </div>
         )
       )
@@ -41,7 +58,18 @@ class NavBar extends React.Component {
             target="_blank">Jessica Uphoff Linkedin></a>
         </div>
           <Link to='/'><h3 className='logo' >WEARBY PARKER</h3></Link>
+        <div className='r-buttons'>
           {accountButton}
+          <div className='cart-icon-cont' >
+            <Link to='/carts' className='cart-link'>
+            <div className='circle' >
+                {this.props.cart.cartItems.length + this.props.cart.cartTryonItems.length}
+            </div>
+            <i class="fas fa-shopping-cart"></i>
+            </Link>
+
+          </div>
+        </div>
       </div>
         <div className='nav-bottom'>
           <button>Home Try-on</button>

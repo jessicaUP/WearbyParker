@@ -4,6 +4,25 @@
   right: 0;
   left: 0;
   width: 100%;
+
+  .banner-cont {
+    position: relative;
+
+    .product-name {
+      position: absolute;
+      text-align: left;
+      line-height: 40px;
+      font-size: 32px;
+      top: 30%;
+      left: 10%;
+      width: 40%;
+      // height: 100%;
+    }
+
+    .img-banner {
+      width: 100%;
+    }
+  }
   
 }
 
@@ -96,6 +115,93 @@
     
   }
   
+
+
+  #tryon {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    // bottom: 100px;
+    left: 20px;
+    top: 315px;
+    right: none;
+
+  }
+
+  .form-try {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    z-index: 2;
+    bottom: 75px;
+    padding: 25px 40px;
+
+    hr {
+      color: lightgray;
+    }
+
+    .hidden {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .hidden + .option-cont {
+      cursor: pointer;
+    }
+
+    .hidden:checked + .fas {
+      color: rgb(43, 90, 151);
+    }
+    
+
+
+    .selection-button {
+      color: white;
+      background-color: rgb(71, 85, 131);
+      margin: 0;
+    }
+
+    .option-description {
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+
+    .option-desc {
+      margin-left: 20px;
+      min-width: 80%;
+    }
+
+    .option-cont {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-self: left;
+      // justify-content: center;
+      align-items: center;
+      height: 75px;
+
+      .fas {
+        color: lightgray;
+      }
+    }
+  }
+
+}
+
   .tryon-ribbon {
     position: relative;
     display: flex;
@@ -104,10 +210,27 @@
     justify-content: space-between;
     width: 100%;
     position: -1;
+
+    .search-filter-cont {
+      margin: 20px;
+    }
+
+    .label {
+      margin: 20px;
+    }
+
+    .fas {
+      margin: 10px;
+    }
+
+    .switch-button {
+      margin: 20px;
+    }
     
     .switch-button {
       display: inline-block;
       height: 34px;
+      margin-left: 40px;
 
       .slider {
         position: relative;
@@ -141,80 +264,10 @@
         -ms-transform: translateX(26px);
         transform: translateX(26px);
       }
-    }
-  }
 
-  #tryon {
-    position: absolute;
-    display: flex;
-    width: 30px;
-    height: 30px;
-    border: 1px solid lightgray;
-    border-radius: 50%;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    // bottom: 100px;
-    left: 20px;
-    top: 285px;
-    right: none;
-
-  }
-
-  .form-try {
-    position: absolute;
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border: 1px solid rgb(233, 233, 233);
-    z-index: 2;
-    bottom: 80px;
-    padding: 40px;
-
-    .hidden {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .hidden + .option-cont {
-      cursor: pointer;
-    }
-
-    .hidden:checked + .fas {
-      color: rgb(43, 90, 151);
-    }
-    
-
-
-    .selection-button {
-      color: white;
-      background-color: rgb(71, 85, 131);
-    }
-
-    .option-description {
-      margin-left: 0;
-      margin-bottom: 0;
-    }
-
-    .option-desc {
-      margin-left: 20px;
-    }
-
-    .option-cont {
-      display: flex;
-      flex-direction: row;
-      // justify-content: center;
-      align-items: center;
-      height: 75px;
-
-      .fas {
-        color: lightgray;
+      .option-description {
+        width: auto;
       }
     }
   }
-
-}
 

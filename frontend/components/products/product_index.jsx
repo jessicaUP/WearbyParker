@@ -76,11 +76,28 @@ class ProductIndex extends React.Component {
 
     return (
       <div className='product-show'>
+        <div className='banner-cont' >
+          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' />
+          <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
+        </div>
+
         <div className='tryon-ribbon' >
           <label className='switch-button' >
             <input type='checkbox' onClick={this.handleTryon()} />
             <span className='slider' ></span>
+            {/* <p className='option-description'>Available for Home Try-On</p> */}
+            Available for Home Try-On
           </label>
+          <div className='search-filter-cont' >
+            <label className='label' >
+              <i class="fas fa-sort"></i>
+              Filter
+            </label>
+            <label className='label'>
+              <i class="fas fa-search"></i>
+              Search
+            </label>
+          </div>
         </div>
         <div className='product-index'>
           {

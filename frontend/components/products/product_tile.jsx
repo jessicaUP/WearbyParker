@@ -97,11 +97,12 @@ class ProductTile extends React.Component {
           <p className='subtitle'>Select a frame width</p>
           <p className='option-description'>For more widths, try another color or frame</p>
           <hr/>
+          <div className='option-box'>
             {this.props.product.frame_widths.map((fw) => {
               return (
                 <label htmlFor={`fw-${fw.id}`} >
-                  <input type='radio' className='hidden' name='hidden' key={`fw-${fw.id}`} value={fw.frame_width} />
                 <div className='option-cont' onClick={() => this.setState({ fwName: fw.frame_width, selectedFrameWidth: fw.id })}>
+                  <input type='radio' className='hidden' name='hidden' key={`fw-${fw.id}`} value={fw.frame_width} />
                   <i className="fas fa-check-circle fa-lg"></i>
                   <div className='option-desc'>
                     <p className='subtitle'>{fw.frame_width}</p>
@@ -111,6 +112,7 @@ class ProductTile extends React.Component {
                 </label>
               )
           })}
+              </div>
             <button className='selection-button' onClick={this.submitItem()}>Add to Home Try-On</button>
           </div>
           </>
