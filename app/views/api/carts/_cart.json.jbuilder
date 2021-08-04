@@ -16,6 +16,7 @@ json.extract! @cart, :id
       json.framewidths do
         json.extract! item.products_frame_width.frame_width, :frame_width, :description, :id
       end
+      json.photo0Url url_for(item.products_color.photo0)
     end
   end
 

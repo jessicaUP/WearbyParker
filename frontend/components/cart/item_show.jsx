@@ -21,10 +21,12 @@ class CartItemShow extends React.Component {
 
 
   deleteItem(itemId) {
+    let price = document.getElementById('price-num');
     return (e) => {
       e.preventDefault();
       this.props.deleteItem(itemId)
-        .then(() => this.removePageItem(itemId))
+      .then(() => this.removePageItem(itemId))
+        ``.then(() => location.reload());
     }
   }
 

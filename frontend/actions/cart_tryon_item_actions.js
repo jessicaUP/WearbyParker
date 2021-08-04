@@ -19,7 +19,7 @@ const removeCartTryonItem = cartTryonItemId => {
 }
 
 export const fetchCartTryonItem = cartTryonItemId => dispatch => {
-  return CartTryonItemApi.fetchCartTryonItems(cartTryonItemId)
+  return CartTryonItemApi.fetchCartTryonItem(cartTryonItemId)
     .then(cartTryonItem => dispatch(receiveCartTryonItems(cartTryonItem)))
 }
 
