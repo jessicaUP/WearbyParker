@@ -8,19 +8,25 @@ class Api::CartTryonItemsController < ApplicationController
       session[:cart_id] = @cart.id
     end
 
-    render json: ['Your home try-on is full!'] if cart.tryon_cart_full?
+    # render json: ['Your home try-on is full!'] if cart.tryon_cart_full?
     
-    @item = CartTryonItem.create(cart_item_params)
-    @item.update({ cart_id: @cart.id })
 
-    if @item.save!
+    if cart.tryon_cart_full?
       @cart_items = @cart.cart_items
       @tryon_items = @cart.cart_tryon_items
       # @frame_widths = cart.frame_widths
       # render json: ['Added']
       render 'api/carts/show'
     else
-      render json: @item.errors.full_messages, status: 401
+      @item = CartTryonItem.create(cart_item_params)
+      @item.update({ cart_id: @cart.id })
+
+
+      if @item.save!
+        render 'show'
+      else
+        render json: @item.errors.full_messages, status: 401
+      end
     end
 
   end

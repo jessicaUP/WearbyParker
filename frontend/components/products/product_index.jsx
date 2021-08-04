@@ -18,7 +18,6 @@ class ProductIndex extends React.Component {
   handleTryon() {
     return (e) => {
       // e.preventDefault();
-      debugger
       if (this.state.tryon) {
         this.setState({ tryon: false })
       } else {
