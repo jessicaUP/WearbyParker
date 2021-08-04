@@ -163,8 +163,13 @@
       cursor: pointer;
     }
 
-    .hidden:checked + .fas {
+    .hidden:checked {
+        color: rgb(43, 90, 151);
+      }
+      
+    input[type="radio"]:checked+label {
       color: rgb(43, 90, 151);
+
     }
     
 
@@ -194,9 +199,13 @@
       align-items: center;
       height: 75px;
 
-      .subtitle {
-        margin-left: 20px;
-      }
+      // .subtitle {
+      //   margin-left: 0;
+      // }
+
+      // .subtitle {
+      //   margin-left: 20px;
+      // }
 
       .fas {
         color: lightgray;
