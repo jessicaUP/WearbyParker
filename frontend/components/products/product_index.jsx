@@ -1,4 +1,5 @@
 import React from 'react';
+import AddTryon from '../cart/add_tryon_form';
 import ProductTile from './product_tile';
 
 class ProductIndex extends React.Component {
@@ -6,7 +7,7 @@ class ProductIndex extends React.Component {
     super(props);
     
     this.state = {
-      tryon: false
+      tryon: true
     };
 
     this.handleTryon = this.handleTryon.bind(this);
@@ -15,11 +16,15 @@ class ProductIndex extends React.Component {
   };
 
   handleTryon() {
-    let next;
-    this.state.tryon ? next = false : next = true; 
     return (e) => {
-      this.setState({ tryon: next })
-      console.log('yup')
+      // e.preventDefault();
+      debugger
+      if (this.state.tryon) {
+        this.setState({ tryon: false })
+      } else {
+        this.setState({ tryon: true })
+      }
+      
     }
   };
 
@@ -58,36 +63,33 @@ class ProductIndex extends React.Component {
 
   render() {
     let { genderId, cart } = this.props
-    if (!genderId) return null;
-    debugger
-
-    // let tryonIds = [];
-    // if (cart.length > 0) {
-    //   cart.forEach(item => {
-    //     debugger
-    //     tryonIds << item.id
-    //   })
-    // }
-    // <button className='icon-button' onClick={this.addItem()}>+</button>
-
-    // let { tryon } = this.state;
-
+    if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
+    let cartArray = [];
+    cart.forEach(item => {
+      debugger
+      cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width});
+    });
+
+    let switchButton;
+    if (this.state.tryon) {
+      switchButton = <i class="fas fa-toggle-on fa-lg" onClick={this.handleTryon()}></i>
+    } else {
+      switchButton = <i class="fas fa-toggle-off fa-lg" onClick={this.handleTryon()}></i>
+    };
 
     return (
       <div className='product-show'>
         <div className='banner-cont' >
-          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' />
+          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' /> 
           <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
         </div>
 
         <div className='tryon-ribbon' >
-          <label className='switch-button' >
-            <input type='checkbox' onClick={this.handleTryon()} />
-            <span className='slider' ></span>
-            {/* <p className='option-description'>Available for Home Try-On</p> */}
-            Available for Home Try-On
-          </label>
+          <div className='switch-button' >
+            {switchButton}
+            <p>Available for Home Try-On</p>
+          </div>
           <div className='search-filter-cont' >
             <label className='label' >
               <i class="fas fa-sort"></i>
@@ -111,7 +113,7 @@ class ProductIndex extends React.Component {
                     createTryonCartItem={this.props.createTryonItem}
                     deleteTryonItem={this.props.deleteTryonItem}
                     switchOn={this.state.tryon}/>
-                  {/* {this.tryonElements(product, tryonIds)} */}
+                  {this.state.tryon ? <AddTryon product={product} cart={cartArray} createTryonItem={this.props.createTryonItem} /> : ''}
                 </div>
               )
             })

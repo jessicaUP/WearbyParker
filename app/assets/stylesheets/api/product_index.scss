@@ -194,6 +194,10 @@
       align-items: center;
       height: 75px;
 
+      .subtitle {
+        margin-left: 20px;
+      }
+
       .fas {
         color: lightgray;
       }
@@ -202,6 +206,19 @@
 
 }
 
+#added {
+  width: auto;
+  height: auto;
+  padding: 18px;
+
+  .option-cont {
+    height: auto;
+  }
+
+  .fas {
+    color: rgb(71, 85, 131);
+  }
+}
   .tryon-ribbon {
     position: relative;
     display: flex;
@@ -228,41 +245,14 @@
     }
     
     .switch-button {
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       height: 34px;
       margin-left: 40px;
 
-      .slider {
-        position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: yellow;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
-      
-      .slider:before {
-        position: relative;
-        height: 26px;
-        width: 26px;
-        content: '';
-        left: 4px;
-        bottom: 4px;
-        background-color: red;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
-
-      input:checked + .slider {
-        background-color: rgb(71, 85, 131);
-      }
-
-      input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
+      p {
+        height: 14px;
       }
 
       .option-description {

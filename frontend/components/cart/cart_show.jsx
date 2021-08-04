@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemShow from './item_show';
+import ItemTryonShow from './item_tryon_show';
 
 class CartShow extends React.Component {
   constructor(props) {
@@ -39,29 +40,52 @@ class CartShow extends React.Component {
     // let { cartItems } = this.props
     // if (cartItems !== []) return null;
     
-    
     let total = this.totalCost(cart.cartItems)
     // cart.cartItems.forEach((item) => this.totalCost(item.price))
     let itemArray = cart.cartItems
+    let itemTryonArray = cart.cartTryonItems
+
+    let tryonPopup = (
+      <div className='popup-cont' >
+        <p>Still want to continue shopping? You can add 1 more frame to try. Shop frames</p>
+      </div>
+    )
+
+    if ( itemTryonArray.length === 5 ) tryonPopup = '';
 
     return (
       <div className='cart-show'>
-        <h2 className='product-name' >Your Cart: ${total}</h2>
+        <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
         <div className='cart-item-index'>
           {
             itemArray.map((cartItem, idx) => {
               return (
                 <div className='item-cont' id={`item-${cartItem.id}`} >
-                  <ItemShow key={idx} 
+                  <ItemShow key={`item-${cartItem.id}-${idx}`}
                     cartItem={cartItem} 
                     deleteItem={this.props.deleteCartItem}
-                    // removePageItem={this.props.removePageItem}
                     />
                 </div>
             )})
           }
         </div>
+        <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
+        {tryonPopup}
 
+        <div className='cart-item-index'>
+          {
+            itemTryonArray.map((cartItem, idx) => {
+              return (
+                <div className='item-cont' id={`tryon-${cartItem.id}`} >
+                  <ItemTryonShow key={`tryon-${cartItem.id}-${idx}`}
+                    cartItem={cartItem}
+                    deleteItem={this.props.deleteCartTryonItem}
+                    />
+                </div>
+              )
+            })
+          }
+        </div>
 
       </div>
     )

@@ -13,6 +13,11 @@
     flex-direction: column;
     width: 660px;
     align-items: center;
+
+  }
+    
+  #amount-count {
+    margin-top: 40px;
   }
   
   h2.product-name {
@@ -81,6 +86,31 @@
   }
 }
 
+.popup-cont {
+  width: 640px;
+  padding: 10px;
+  background-color: rgb(186, 219, 240);
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 8px;
+
+  p {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+}
+
 #item-name {
   width: min-content;
+}
+
+#info-tryon {
+  height: 225px;
+}
+
+#sub-final {
+  justify-content: flex-end;
 }
