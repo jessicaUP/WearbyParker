@@ -8,14 +8,21 @@ class CartTryonItemShow extends React.Component {
     this.state = {
       cartItem: props.cartItem
     },
-      this.deleteItem = this.deleteItem.bind(this);
+    
+    this.deleteItem = this.deleteItem.bind(this);
     this.removePageItem = this.removePageItem.bind(this);
 
   };
 
   removePageItem(itemId) {
     let ele = document.querySelector(`#tryon-${itemId}`);
-    ele.remove();
+    let ele2 = document.querySelector('#amount-count');
+    let count = parseInt(ele2.innerHTML.split(' ')[0])
+    ele2.innerHTML = `${count - 1} of 5 Home Try-On frames chosen`
+    let cartCount = document.querySelector('.circle')
+    let count2 = parseInt(cartCount.innerHTML);
+    cartCount.innerHTML = count2 - 1;
+    ele.remove(); 
   }
 
 
@@ -23,7 +30,7 @@ class CartTryonItemShow extends React.Component {
   deleteItem(itemId) {
     return (e) => {
       e.preventDefault();
-      this.props.deleteTryonItem(itemId)
+      this.props.deleteItem(itemId)
         .then(() => this.removePageItem(itemId))
     }
   }

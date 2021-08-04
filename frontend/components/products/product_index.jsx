@@ -67,13 +67,19 @@ class ProductIndex extends React.Component {
     let productArray = Object.values(genderId)[0]
     let cartArray = [];
     cart.forEach(item => {
-      debugger
-      cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width});
+      cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
     });
 
     let switchButton;
+    let message = '';
     if (this.state.tryon) {
-      switchButton = <i class="fas fa-toggle-on fa-lg" onClick={this.handleTryon()}></i>
+      switchButton = <i class="fas fa-toggle-on fa-lg" id='switch-on' onClick={this.handleTryon()}></i>
+      message = (
+        <div className='message-cont' >
+          <h2 className='product-name' id='message-text'>Find your perfect frames! <br/> Add to your Cart and try-on at home for free.</h2>
+          <button className='selection-button' >View Cart</button>
+        </div>
+      )
     } else {
       switchButton = <i class="fas fa-toggle-off fa-lg" onClick={this.handleTryon()}></i>
     };
@@ -101,6 +107,7 @@ class ProductIndex extends React.Component {
             </label>
           </div>
         </div>
+        {message}
         <div className='product-index'>
           {
             productArray.map((product, idx) => {
@@ -110,10 +117,12 @@ class ProductIndex extends React.Component {
                     key={idx}
                     product={product}
                     cart={cart}
-                    createTryonCartItem={this.props.createTryonItem}
-                    deleteTryonItem={this.props.deleteTryonItem}
                     switchOn={this.state.tryon}/>
-                  {this.state.tryon ? <AddTryon product={product} cart={cartArray} createTryonItem={this.props.createTryonItem} /> : ''}
+                  {this.state.tryon ? <AddTryon 
+                    product={product}
+                    cart={cartArray}
+                    deleteTryonItem={this.props.deleteTryonItem}
+                    createTryonItem={this.props.createTryonItem} /> : ''}
                 </div>
               )
             })

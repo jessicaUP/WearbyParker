@@ -1444,11 +1444,14 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       check: true,
       formPage: 0,
+      checkPage: true,
       selectedColor: props.color,
       fwName: '',
-      selectedFrameWidth: 0
-    };
-    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+      selectedFrameWidth: 0,
+      tryonItem: {},
+      cartCount: _this.props.cart.length
+    }; // this.handleSelect = this.handleSelect.bind(this);
+
     _this.tryonButton = _this.tryonButton.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.submitItem = _this.submitItem.bind(_assertThisInitialized(_this));
@@ -1490,7 +1493,13 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
         var id = _this3.props.product.id;
         var color = document.querySelector(".img-".concat(id));
         var colorId = parseInt(color.id);
-        debugger;
+
+        if (_this3.state.cartCount === 5) {
+          // setTimeout(() => window.location.href = '#/carts', 3000)
+          _this3.setState({
+            formPage: 3
+          });
+        }
 
         _this3.props.createTryonItem({
           product_id: id,
@@ -1498,8 +1507,14 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           products_frame_width_id: selectedFrameWidth
         });
 
+        var cartCount = document.querySelector('.circle');
+        var count = cartCount.innerHTML;
+        cartCount.innerHTML = parseInt(count) + 1;
+        debugger;
+
         _this3.setState({
-          formPage: 2
+          formPage: 2,
+          cartCount: _this3.state.cartCount + 1
         });
       };
     }
@@ -1508,28 +1523,24 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
     value: function tryonButton(product, cart) {
       var _this4 = this;
 
-      // if (!this.state.tryon) return;
-      var formPage = this.state.formPage;
+      var _this$state = this.state,
+          formPage = _this$state.formPage,
+          checkPage = _this$state.checkPage;
 
-      var _final; // if (this.state.check) {
-      //   cart.forEach(item => {
-      //     if (item.product_id === product.id) {
-      //       this.setState({ fwName: item.frame_width, formPage: 2, check: false, tryonItem: item })
-      //     }
-      //   })
-      // }
-
-
-      if (formPage === 0) {
+      if (checkPage) {
         cart.forEach(function (item) {
           if (item.id === product.id) _this4.setState({
             formPage: 2,
-            fwName: item.frameWidth
+            fwName: item.frameWidth,
+            tryonItem: item,
+            checkPage: false
           });
         });
       }
 
-      debugger;
+      var tryonItem = this.state.tryonItem;
+
+      var _final;
 
       switch (formPage) {
         case 0:
@@ -1600,7 +1611,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
-            onClick: this.deleteTryon()
+            onClick: this.deleteTryon(tryonItem.itemId)
           }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "form-try",
             id: "added"
@@ -1612,36 +1623,46 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
             className: "subtitle"
           }, this.state.fwName, " is in your Home Try-On"))));
           break;
+
+        case 3:
+          // FULL MESSAGE
+          _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+            className: "icon-button",
+            id: "tryon",
+            onClick: this.deleteTryon(tryonItem.itemId)
+          }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "form-try",
+            id: "added"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "option-cont"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+            className: "subtitle"
+          }, "Your Home Try-On is full"))));
       }
 
       return _final;
     }
   }, {
     key: "deleteTryon",
-    value: function deleteTryon() {
+    value: function deleteTryon(id) {
       var _this5 = this;
 
       return function (e) {
-        _this5.props.deleteTryonItem(_this5.state.tryonItem.id);
+        e.preventDefault();
+        var cartCount = document.querySelector('.circle');
+        var count = parseInt(cartCount.innerHTML);
+        cartCount.innerHTML = count - 1;
 
-        _this5.setState({
+        _this5.props.deleteTryonItem(id).then(_this5.setState({
           formPage: 0
-        });
+        }));
       };
-    }
-  }, {
-    key: "handleSelect",
-    value: function handleSelect(colorId, colorname, colorPhoto) {
-      var _this6 = this;
+    } // handleSelect(colorId, colorname, colorPhoto) {
+    //   return (e) => {
+    //     this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto })
+    //   }
+    // };
 
-      return function (e) {
-        _this6.setState({
-          selectedColor: colorId,
-          colorName: colorname,
-          colorPhoto: colorPhoto
-        });
-      };
-    }
   }, {
     key: "render",
     value: function render() {
@@ -1748,7 +1769,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       var itemTryonArray = cart.cartTryonItems;
       var tryonPopup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can add 1 more frame to try. Shop frames"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try more frames. Shop frames"));
       if (itemTryonArray.length === 5) tryonPopup = '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show"
@@ -2053,6 +2074,12 @@ var CartTryonItemShow = /*#__PURE__*/function (_React$Component) {
     key: "removePageItem",
     value: function removePageItem(itemId) {
       var ele = document.querySelector("#tryon-".concat(itemId));
+      var ele2 = document.querySelector('#amount-count');
+      var count = parseInt(ele2.innerHTML.split(' ')[0]);
+      ele2.innerHTML = "".concat(count - 1, " of 5 Home Try-On frames chosen");
+      var cartCount = document.querySelector('.circle');
+      var count2 = parseInt(cartCount.innerHTML);
+      cartCount.innerHTML = count2 - 1;
       ele.remove();
     }
   }, {
@@ -2063,7 +2090,7 @@ var CartTryonItemShow = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         e.preventDefault();
 
-        _this2.props.deleteTryonItem(itemId).then(function () {
+        _this2.props.deleteItem(itemId).then(function () {
           return _this2.removePageItem(itemId);
         });
       };
@@ -2417,19 +2444,29 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       var productArray = Object.values(genderId)[0];
       var cartArray = [];
       cart.forEach(function (item) {
-        debugger;
         cartArray.push({
           id: item.product_id,
-          frameWidth: item.framewidths.frame_width
+          frameWidth: item.framewidths.frame_width,
+          itemId: item.id
         });
       });
       var switchButton;
+      var message = '';
 
       if (this.state.tryon) {
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
           "class": "fas fa-toggle-on fa-lg",
+          id: "switch-on",
           onClick: this.handleTryon()
         });
+        message = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "message-cont"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "product-name",
+          id: "message-text"
+        }, "Find your perfect frames! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), " Add to your Cart and try-on at home for free."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "selection-button"
+        }, "View Cart"));
       } else {
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
           "class": "fas fa-toggle-off fa-lg",
@@ -2462,7 +2499,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         "class": "fas fa-search"
-      }), "Search"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), "Search"))), message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index"
       }, productArray.map(function (product, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2471,12 +2508,11 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           key: idx,
           product: product,
           cart: cart,
-          createTryonCartItem: _this3.props.createTryonItem,
-          deleteTryonItem: _this3.props.deleteTryonItem,
           switchOn: _this3.state.tryon
         }), _this3.state.tryon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_tryon_form__WEBPACK_IMPORTED_MODULE_1__.default, {
           product: product,
           cart: cartArray,
+          deleteTryonItem: _this3.props.deleteTryonItem,
           createTryonItem: _this3.props.createTryonItem
         }) : '');
       })));
