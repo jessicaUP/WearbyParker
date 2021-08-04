@@ -47,7 +47,7 @@ class CartShow extends React.Component {
 
     let tryonPopup = (
       <div className='popup-cont' >
-        <p>Still want to continue shopping? You can add 1 more frame to try. Shop frames</p>
+        <p>Still want to continue shopping? You can try more frames. Shop frames</p>
       </div>
     )
 

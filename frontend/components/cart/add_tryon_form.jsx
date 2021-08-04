@@ -8,14 +8,15 @@ class AddTryon extends React.Component {
     this.state = {
       check: true,
       formPage: 0,
+      checkPage: true,
       selectedColor: props.color,
       fwName: '',
       selectedFrameWidth: 0,
-
-
+      tryonItem: {},
+      cartCount: this.props.cart.length
 
     }
-    this.handleSelect = this.handleSelect.bind(this);
+    // this.handleSelect = this.handleSelect.bind(this);
     this.tryonButton = this.tryonButton.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.submitItem = this.submitItem.bind(this);
@@ -48,38 +49,37 @@ class AddTryon extends React.Component {
       let { id } = this.props.product;
       let color = document.querySelector(`.img-${id}`);
       let colorId = parseInt(color.id);
-      debugger
+    
+      if (this.state.cartCount === 5) {
+        // setTimeout(() => window.location.href = '#/carts', 3000)
+        this.setState({ formPage: 3 })
+      }
       this.props.createTryonItem({
         product_id: id,
         products_color_id: colorId,
         products_frame_width_id: selectedFrameWidth
       })
-
-      this.setState({ formPage: 2 })
+      let cartCount = document.querySelector('.circle')
+      let count = cartCount.innerHTML;
+      cartCount.innerHTML = parseInt(count) + 1;
+      debugger
+      this.setState({ formPage: 2, cartCount: (this.state.cartCount + 1) })
     }
   }
 
   tryonButton(product, cart) {
-    // if (!this.state.tryon) return;
-    let { formPage } = this.state;
-    let final;
+    let { formPage, checkPage } = this.state;
 
-    // if (this.state.check) {
-    //   cart.forEach(item => {
-    //     if (item.product_id === product.id) {
-    //       this.setState({ fwName: item.frame_width, formPage: 2, check: false, tryonItem: item })
-    //     }
-    //   })
-
-    // }
-
-    if (formPage === 0) {
+    if (checkPage) {
       cart.forEach(item => {
         if (item.id === product.id)
-          this.setState({ formPage: 2, fwName: item.frameWidth });
+          this.setState({ formPage: 2, fwName: item.frameWidth, tryonItem: item, checkPage: false });
       })
     }
-    debugger
+
+    let { tryonItem } = this.state;
+    let final;
+    
     switch (formPage) {
       case 0:
         // ADD BUTTON
@@ -121,7 +121,7 @@ class AddTryon extends React.Component {
         // DELETE BUTTON
         final = (
           <>
-            <button className='icon-button' id='tryon' onClick={this.deleteTryon()}>x</button>
+            <button className='icon-button' id='tryon' onClick={this.deleteTryon(tryonItem.itemId)}>x</button>
             <div className='form-try' id='added'>
               <div className='option-cont' >
                 <i class="fas fa-check-circle fa-lg"></i>
@@ -131,24 +131,42 @@ class AddTryon extends React.Component {
           </>
         )
         break;
+      case 3:
+        // FULL MESSAGE
+        final = (
+          <>
+            <button className='icon-button' id='tryon' onClick={this.deleteTryon(tryonItem.itemId)}>x</button>
+            <div className='form-try' id='added'>
+              <div className='option-cont' >
+                <p className='subtitle'>Your Home Try-On is full</p>
+              </div>
+            </div>
+          </>
+        )
+
     }
 
     return final;
 
   }
 
-  deleteTryon() {
+  deleteTryon(id) {
     return (e) => {
-      this.props.deleteTryonItem(this.state.tryonItem.id)
-      this.setState({ formPage: 0 })
+      e.preventDefault();
+      let cartCount = document.querySelector('.circle')
+      let count = parseInt(cartCount.innerHTML);
+      
+      cartCount.innerHTML = (count - 1);
+      this.props.deleteTryonItem(id)
+        .then(this.setState({ formPage: 0 }))
     }
   }
 
-  handleSelect(colorId, colorname, colorPhoto) {
-    return (e) => {
-      this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto })
-    }
-  };
+  // handleSelect(colorId, colorname, colorPhoto) {
+  //   return (e) => {
+  //     this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto })
+  //   }
+  // };
 
   render() {
 
