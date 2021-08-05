@@ -2373,7 +2373,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _cart_add_tryon_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cart/add_tryon_form */ "./frontend/components/cart/add_tryon_form.jsx");
 /* harmony import */ var _product_tile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_tile */ "./frontend/components/products/product_tile.jsx");
+/* harmony import */ var _search_filter_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search_filter/filter */ "./frontend/components/search_filter/filter.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2399,6 +2402,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ProductIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductIndex, _React$Component);
 
@@ -2411,59 +2415,32 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      tryon: true
+      tryon: true,
+      filter: false
     };
-    _this.handleTryon = _this.handleTryon.bind(_assertThisInitialized(_this)); // this.tryonElements = this.tryonElements.bind(this);
+    _this.handleMenus = _this.handleMenus.bind(_assertThisInitialized(_this)); // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
 
     return _this;
   }
 
   _createClass(ProductIndex, [{
-    key: "handleTryon",
-    value: function handleTryon() {
+    key: "handleMenus",
+    value: function handleMenus(type, status) {
       var _this2 = this;
 
       return function (e) {
         // e.preventDefault();
-        if (_this2.state.tryon) {
-          _this2.setState({
-            tryon: false
-          });
+        if (status) {
+          _this2.setState(_defineProperty({}, type, false));
         } else {
-          _this2.setState({
-            tryon: true
-          });
+          _this2.setState(_defineProperty({}, type, true));
         }
       };
     }
   }, {
     key: "componentDidMount",
-    value: // tryonAdd() {
-    //   //:product_id, :products_color_id, :products_frame_width_id)
-    //   return (e) => {
-    //     e.preventDefault();
-    //     let colot
-    //   }
-    // }
-    // tryonElements(item, cartArray) {
-    //   // if (!this.state.tryon) return;
-    //   let final;
-    //   if (cartArray.includes(item.id)) {
-    //     final = (
-    //       <>
-    //       <div className='pop-up'></div>
-    //         <button className='icon-button' id='tryon' onClick={() => this.props.deleteTryonItem(item.id)}>x</button>
-    //       </>
-    //     )
-    //   } else {
-    //     final = (
-    //       <button className='icon-button' id='tryon' onClick={() => this.props.createTryonItem()}>+</button>
-    //     )
-    //   }
-    //   return final;
-    // }
-    function componentDidMount() {
+    value: function componentDidMount() {
       this.props.fetchGenderProducts(this.props.match.params.genderId);
       this.props.fetchCart();
     }
@@ -2485,28 +2462,39 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           itemId: item.id
         });
       });
+      var _this$state = this.state,
+          tryon = _this$state.tryon,
+          filter = _this$state.filter;
       var switchButton;
       var message = '';
 
-      if (this.state.tryon) {
-        switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      if (tryon) {
+        switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "switch-on",
+          onClick: this.handleMenus('tryon', true)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
           "class": "fas fa-toggle-on fa-lg",
-          id: "switch-on",
-          onClick: this.handleTryon()
-        });
-        message = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "message-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "product-name",
-          id: "message-text"
-        }, "Find your perfect frames! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), " Add to your Cart and try-on at home for free."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "selection-button"
-        }, "View Cart"));
+          id: "switch-on"
+        }), "Available for Home Try-On"));
+
+        if (!filter) {
+          message = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "message-cont"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+            className: "product-name",
+            id: "message-text"
+          }, "Find your perfect frames! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), " Add to your Cart and try-on at home for free."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+            className: "selection-button"
+          }, "View Cart"));
+        }
       } else {
-        switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "switch-off",
+          onClick: this.handleMenus('tryon', false)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
           "class": "fas fa-toggle-off fa-lg",
-          onClick: this.handleTryon()
-        });
+          id: "switch-off"
+        }), "Available for Home Try-On"));
       }
 
       ;
@@ -2524,17 +2512,20 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "tryon-ribbon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "switch-button"
-      }, switchButton, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Available for Home Try-On")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, switchButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-filter-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "label"
+        className: "label",
+        onClick: this.handleMenus('filter', filter)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         "class": "fas fa-sort"
       }), "Filter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "label"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         "class": "fas fa-search"
-      }), "Search"))), message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), "Search"))), message, filter ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_filter_filter__WEBPACK_IMPORTED_MODULE_3__.default, {
+        key: "filter"
+      }) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index"
       }, productArray.map(function (product, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2543,8 +2534,8 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           key: idx,
           product: product,
           cart: cart,
-          switchOn: _this3.state.tryon
-        }), _this3.state.tryon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_tryon_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+          switchOn: tryon
+        }), tryon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_tryon_form__WEBPACK_IMPORTED_MODULE_1__.default, {
           product: product,
           cart: cartArray,
           deleteTryonItem: _this3.props.deleteTryonItem,
@@ -3194,6 +3185,126 @@ var Root = function Root(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Root);
+
+/***/ }),
+
+/***/ "./frontend/components/search_filter/filter.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/search_filter/filter.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Filter = /*#__PURE__*/function (_React$Component) {
+  _inherits(Filter, _React$Component);
+
+  var _super = _createSuper(Filter);
+
+  function Filter(props) {
+    var _this;
+
+    _classCallCheck(this, Filter);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      filter: 'frameWidth'
+    };
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Filter, [{
+    key: "update",
+    value: function update() {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState({
+          filter: e.target.value
+        });
+      };
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(value) {
+      return this.state.filter === value;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var filters = [{
+        type: 'frameWidth',
+        name: 'Frame width'
+      }, {
+        type: 'shape',
+        name: 'Shape'
+      }, {
+        type: 'color',
+        name: 'Color'
+      }, {
+        type: 'material',
+        name: 'Material'
+      }, {
+        type: 'noseBridge',
+        name: 'Nose bridge'
+      }];
+      debugger;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "filter-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "radio-selections"
+      }, filters.map(function (filter) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "radio",
+          className: "filter-option",
+          id: "radio-".concat(filter.type),
+          value: filter.type,
+          name: filter.type,
+          onChange: _this3.update(),
+          checked: _this3.handleSelect(filter.type)
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "radio-".concat(filter.type)
+        }, filter.name));
+      })));
+    }
+  }]);
+
+  return Filter;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Filter);
 
 /***/ }),
 
