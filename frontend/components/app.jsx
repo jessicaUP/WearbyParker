@@ -10,11 +10,13 @@ import AccountContainer from './account/account_container';
 import ProductShowContainer from './products/product_show_container';
 import ProductIndexContainer from './products/product_index_container';
 import CartShowContainer from './cart/cart_show_container';
+import ModalContainer from './modal/modal_container';
 
 
 
 const App = () => (
   <>
+  <ModalContainer />
   <Route path='/' component={NavBarContainer}></Route>
   <Switch>
     <Route path='/genders/:genderId' component={ProductIndexContainer} />
