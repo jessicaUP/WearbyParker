@@ -403,6 +403,36 @@ var fetchGenderProducts = function fetchGenderProducts(genderId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/modal_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/modal_actions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OPEN_MODAL": () => (/* binding */ OPEN_MODAL),
+/* harmony export */   "CLOSE_MODAL": () => (/* binding */ CLOSE_MODAL),
+/* harmony export */   "openModal": () => (/* binding */ openModal),
+/* harmony export */   "closeModal": () => (/* binding */ closeModal)
+/* harmony export */ });
+var OPEN_MODAL = 'OPEN_MODAL';
+var CLOSE_MODAL = 'CLOSE_MODAL';
+var openModal = function openModal(modal) {
+  return {
+    type: OPEN_MODAL,
+    modal: modal
+  };
+};
+var closeModal = function closeModal() {
+  return {
+    type: CLOSE_MODAL
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/product_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/product_actions.js ***!
@@ -642,7 +672,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
@@ -652,6 +682,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _products_product_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./products/product_show_container */ "./frontend/components/products/product_show_container.jsx");
 /* harmony import */ var _products_product_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./products/product_index_container */ "./frontend/components/products/product_index_container.jsx");
 /* harmony import */ var _cart_cart_show_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./cart/cart_show_container */ "./frontend/components/cart/cart_show_container.jsx");
+/* harmony import */ var _modal_modal_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modal/modal_container */ "./frontend/components/modal/modal_container.jsx");
+
 
 
 
@@ -665,13 +697,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_modal_container__WEBPACK_IMPORTED_MODULE_10__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/",
     component: _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/genders/:genderId",
     component: _products_product_index_container__WEBPACK_IMPORTED_MODULE_8__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/products/:productId/color/:colorId",
     component: _products_product_show_container__WEBPACK_IMPORTED_MODULE_7__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.AuthRoute, {
@@ -683,7 +715,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.ProtectedRoute, {
     path: "/account",
     component: _account_account_container__WEBPACK_IMPORTED_MODULE_6__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/carts",
     component: _cart_cart_show_container__WEBPACK_IMPORTED_MODULE_9__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_splash_splash__WEBPACK_IMPORTED_MODULE_3__.default, null)));
@@ -2181,6 +2213,137 @@ var CartTryonItemShow = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/modal/modal.jsx":
+/*!*********************************************!*\
+  !*** ./frontend/components/modal/modal.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../search_filter/search_modal */ "./frontend/components/search_filter/search_modal.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var Modal = /*#__PURE__*/function (_React$Component) {
+  _inherits(Modal, _React$Component);
+
+  var _super = _createSuper(Modal);
+
+  function Modal(props) {
+    var _this;
+
+    _classCallCheck(this, Modal);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Modal, [{
+    key: "selectModal",
+    value: function selectModal(modalName) {
+      switch (modalName) {
+        case 'search':
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__.default, null);
+
+        default:
+          return null;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          modal = _this$props.modal,
+          closeModal = _this$props.closeModal;
+      if (!modal) return null;
+      var modalElement = this.selectModal(modal);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-background",
+        onClick: closeModal
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-cancel",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        }
+      }, modalElement));
+    }
+  }]);
+
+  return Modal;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./frontend/components/modal/modal_container.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/modal/modal_container.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal */ "./frontend/components/modal/modal.jsx");
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    modal: state.ui.modal.modal
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.closeModal)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(_modal__WEBPACK_IMPORTED_MODULE_3__.default));
+
+/***/ }),
+
 /***/ "./frontend/components/nav_bar/nav_bar.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/nav_bar/nav_bar.jsx ***!
@@ -2244,6 +2407,8 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var cart = this.props.cart;
       if (!cart.id) return null;
       var accountButton = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2274,11 +2439,12 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "side-l"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-        className: "nav-link",
-        href: "https://www.linkedin.com/in/jessica-uphoff-b2584b69/",
-        target: "_blank"
-      }, "Jessica Uphoff Linkedin>")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-search",
+        onClick: function onClick() {
+          return _this2.props.openModal('search');
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "logo"
@@ -2332,8 +2498,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _nav_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _nav_bar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+
 
 
 
@@ -2351,11 +2519,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchCart: function fetchCart() {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCart)());
+    },
+    openModal: function openModal(modalName) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modalName));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(_nav_bar__WEBPACK_IMPORTED_MODULE_4__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(_nav_bar__WEBPACK_IMPORTED_MODULE_5__.default));
 
 /***/ }),
 
@@ -2415,7 +2586,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      tryon: true,
+      tryon: false,
       filter: false
     };
     _this.handleMenus = _this.handleMenus.bind(_assertThisInitialized(_this)); // this.tryonElements = this.tryonElements.bind(this);
@@ -3200,6 +3371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _util_filter_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/filter_options */ "./frontend/util/filter_options.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3224,6 +3396,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Filter = /*#__PURE__*/function (_React$Component) {
   _inherits(Filter, _React$Component);
 
@@ -3236,14 +3409,127 @@ var Filter = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      filter: 'frameWidth'
+      filter: 'frameWidth',
+      selectedFilters: {}
     };
     _this.update = _this.update.bind(_assertThisInitialized(_this));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    _this.filterOptions = _this.filterOptions.bind(_assertThisInitialized(_this));
+    _this.typeSearch = _this.typeSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Filter, [{
+    key: "typeSearch",
+    value: // handleOptions(filter) {
+    //   switch (filter.type) {
+    //     case 'frameWidth':
+    //       return (
+    //         <div className='opitons-cont' id='fw-options'>
+    //           {frameWidthOptions.map((option) => {
+    //             return (
+    //               <button className='option-btn' >{option}</button>
+    //             )
+    //           })}
+    //         </div>
+    //       )
+    //     case 'shape':
+    //       return (
+    //         <div className='opitons-cont' id='fw-options'>
+    //           {shapeOptions.map((option) => {
+    //             let image = option.split('-').join('').toLowerCase();
+    //             return (
+    //               <>
+    //               <button className='option-btn' >
+    //                 <img src={window[image]} alt='type-of-eyewear' className='shape-img' />
+    //                 <input type='checkbox'
+    //                   className='filter-i'
+    //                   id={`radio-${option.toLowerCase()}`}
+    //                   value={option.toLowerCase()}
+    //                   name={option.toLowerCase()}
+    //                   // onChange=
+    //                 />
+    //                 <label htmlFor={`radio-${option.toLowerCase()}`} >{option}</label>
+    //                   {/* <button className='option-btn' >{option}</button> */}
+    //               </button>
+    //             </>
+    //             )
+    //           })}
+    //         </div>
+    //       )
+    //   }
+    // };
+    function typeSearch(label) {
+      switch (label) {
+        case 'frameWidth':
+          return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[0];
+
+        case 'shape':
+          return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[1];
+
+        case 'color':
+          return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[2];
+
+        case 'material':
+          return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[3];
+
+        case 'noseBridge':
+          return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[4];
+      }
+    }
+  }, {
+    key: "filterOptions",
+    value: function filterOptions(filter) {
+      var idType = filter.type;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "options-cont",
+        id: "".concat(idType, "-options")
+      }, filter.options.map(function (option) {
+        var name = option.name,
+            type = option.type,
+            image = option.image,
+            desc = option.desc,
+            color = option.color;
+        var imageEle = '';
+        var descEle = '';
+        var colorEle = '';
+
+        if (image) {
+          imageEle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            src: window[type],
+            alt: "type-of-eyewear",
+            className: "filter-img"
+          });
+        } else if (desc) {
+          descEle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+            className: "option-desc"
+          }, desc);
+        } else if (color) {
+          colorEle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "circle",
+            style: {
+              backgroundColor: color
+            },
+            id: "color-circle"
+          });
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "option-btn",
+          id: "".concat(idType, "-btn")
+        }, imageEle, colorEle, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "checkbox",
+          className: "filter-i",
+          id: type,
+          value: type,
+          name: type // onChange=
+
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: type
+        }, name, descEle)));
+      }));
+    }
+  }, {
     key: "update",
     value: function update() {
       var _this2 = this;
@@ -3264,29 +3550,16 @@ var Filter = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var filters = [{
-        type: 'frameWidth',
-        name: 'Frame width'
-      }, {
-        type: 'shape',
-        name: 'Shape'
-      }, {
-        type: 'color',
-        name: 'Color'
-      }, {
-        type: 'material',
-        name: 'Material'
-      }, {
-        type: 'noseBridge',
-        name: 'Nose bridge'
-      }];
-      debugger;
+      var filter = this.state.filter;
+      var selectedOptions = this.typeSearch(filter);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "filter-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "radio-selections"
-      }, filters.map(function (filter) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS.map(function (filter) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "filter-name-cont"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "radio",
           className: "filter-option",
           id: "radio-".concat(filter.type),
@@ -3296,8 +3569,14 @@ var Filter = /*#__PURE__*/function (_React$Component) {
           checked: _this3.handleSelect(filter.type)
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "radio-".concat(filter.type)
-        }, filter.name));
-      })));
+        }, filter.name)));
+      })), this.filterOptions(selectedOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "items-selected"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "frames"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "reset-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "circle"
+      }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reset"))));
     }
   }]);
 
@@ -3305,6 +3584,83 @@ var Filter = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Filter);
+
+/***/ }),
+
+/***/ "./frontend/components/search_filter/search_modal.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/search_filter/search_modal.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _util_filter_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/filter_options */ "./frontend/util/filter_options.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var SearchModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(SearchModal, _React$Component);
+
+  var _super = _createSuper(SearchModal);
+
+  function SearchModal(props) {
+    var _this;
+
+    _classCallCheck(this, SearchModal);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(SearchModal, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "search-bar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "search-input",
+        type: "text",
+        placeholder: "Frame name",
+        onChange: this.updateState,
+        onFocus: this.searchingTime
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "results-index"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "MODAL WORKS")));
+    }
+  }]);
+
+  return SearchModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchModal);
 
 /***/ }),
 
@@ -3946,6 +4302,45 @@ var genderProductsReducer = function genderProductsReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/modals_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/modals_reducer.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+var beginState = {
+  modal: null
+};
+
+var modalReducer = function modalReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : beginState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.OPEN_MODAL:
+      return {
+        modal: action.modal
+      };
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.CLOSE_MODAL:
+      return beginState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/products_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/products_reducer.js ***!
@@ -3991,17 +4386,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
 
 
 
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_3__.default,
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
@@ -4084,6 +4482,30 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _modals_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modals_reducer */ "./frontend/reducers/modals_reducer.js");
+ // import filtersReducer from './filters_reducer';
+
+
+var UiReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
+  modal: _modals_reducer__WEBPACK_IMPORTED_MODULE_0__.default // filters: filtersReducer
+
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UiReducer);
 
 /***/ }),
 
@@ -4345,6 +4767,146 @@ var materialOptions = [{
   priceName: '$30',
   price: 30,
   desc: 'Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.'
+}];
+
+/***/ }),
+
+/***/ "./frontend/util/filter_options.js":
+/*!*****************************************!*\
+  !*** ./frontend/util/filter_options.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FILTERS": () => (/* binding */ FILTERS)
+/* harmony export */ });
+var frameWidthOptions = [{
+  type: 'narrow',
+  name: 'Narrow'
+}, {
+  type: 'medium',
+  name: 'Medium'
+}, {
+  type: 'wide',
+  name: 'Wide'
+}, {
+  type: 'extra-wide',
+  name: 'Extra wide'
+}];
+var shapeOptions = [{
+  type: 'rectangle',
+  name: 'Rectange',
+  image: true
+}, {
+  type: 'square',
+  name: 'Square',
+  image: true
+}, {
+  type: 'round',
+  name: 'Round',
+  image: true
+}, {
+  type: 'cateye',
+  name: 'Cat-eye',
+  image: true
+}, {
+  type: 'aviator',
+  name: 'Aviator',
+  image: true
+}];
+var colorOptions = [{
+  type: 'black',
+  name: 'Black',
+  color: 'rgb(0, 0, 0)'
+}, {
+  type: 'tortoise',
+  name: 'Tortoise',
+  color: 'rgb(88, 59, 21)'
+}, {
+  type: 'two-tone',
+  name: 'Two-tone',
+  color: 'rgb(0, 0, 0)'
+}, {
+  type: 'crystal',
+  name: 'Crystal',
+  color: 'rgb(205, 226, 243)'
+}, {
+  type: 'grey',
+  name: 'Grey',
+  color: 'rgb(98, 108, 116)'
+}, {
+  type: 'brown',
+  name: 'Brown',
+  color: 'rgb(75, 55, 30)'
+}, {
+  type: 'silver',
+  name: 'Silver',
+  color: 'rgb(160, 160, 158)'
+}, {
+  type: 'gold',
+  name: 'Gold',
+  color: 'rgb(160, 142, 64)'
+}, {
+  type: 'blue',
+  name: 'Blue',
+  color: 'rgb(39, 117, 189)'
+}, {
+  type: 'pink',
+  name: 'Pink',
+  color: 'rgb(207, 125, 150)'
+}, {
+  type: 'green',
+  name: 'Green',
+  color: 'rgb(83, 143, 96)'
+}, {
+  type: 'red',
+  name: 'Red',
+  color: 'rgb(143, 25, 25)'
+}];
+var materialOptions = [{
+  type: 'acetate',
+  name: 'Acetate',
+  image: true
+}, {
+  type: 'metal',
+  name: 'Metal',
+  image: true
+}, {
+  type: 'mixed',
+  name: 'Mixed',
+  image: true
+}];
+var noseBridgeOptions = [{
+  type: 'standard',
+  name: 'Standard',
+  desc: 'Typically best for those with narrow or averaged size face and cheekbones'
+}, {
+  type: 'low-bridge-fit',
+  name: 'Low bridge fit',
+  desc: 'Larger nose pads, slightly curved temples, ultra-roomy fit, and an adjusted lens tilt provide more comfort for those with low bridges, wide faces, and/or high cheekbones.'
+}];
+var FILTERS = [{
+  type: 'frameWidth',
+  name: 'Frame width',
+  options: frameWidthOptions
+}, {
+  type: 'shape',
+  name: 'Shape',
+  options: shapeOptions
+}, {
+  type: 'color',
+  name: 'Color',
+  options: colorOptions
+}, {
+  type: 'material',
+  name: 'Material',
+  options: materialOptions
+}, {
+  type: 'noseBridge',
+  name: 'Nose bridge',
+  options: noseBridgeOptions
 }];
 
 /***/ }),

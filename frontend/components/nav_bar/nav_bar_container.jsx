@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { fetchCart } from '../../actions/cart_actions';
+import { openModal } from '../../actions/modal_actions';
 import { logout } from '../../actions/session_actions';
 import NavBar from './nav_bar';
 
@@ -14,7 +15,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
   return ({
-    fetchCart: () => dispatch(fetchCart())
+    fetchCart: () => dispatch(fetchCart()),
+    openModal: modalName => dispatch(openModal(modalName))
   })
 }
 

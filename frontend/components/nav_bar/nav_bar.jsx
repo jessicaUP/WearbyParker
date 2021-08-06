@@ -20,7 +20,7 @@ class NavBar extends React.Component {
   
   render() {
 
-    let cart = this.props.cart;
+    let { cart } = this.props;
     if (!cart.id) return null;
 
 
@@ -52,10 +52,11 @@ class NavBar extends React.Component {
 
       <div className='nav-bar'>
         <div className='side-l' >
-          <a 
+            <i class="fas fa-search" onClick={() => this.props.openModal('search')}></i>
+          {/* <a 
             className='nav-link' 
             href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
-            target="_blank">Jessica Uphoff Linkedin></a>
+            target="_blank">Jessica Uphoff Linkedin></a> */}
         </div>
           <Link to='/'><h3 className='logo' >WEARBY PARKER</h3></Link>
         <div className='r-buttons'>

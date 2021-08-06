@@ -8,7 +8,7 @@ class ProductIndex extends React.Component {
     super(props);
     
     this.state = {
-      tryon: true,
+      tryon: false,
       filter: false
     };
 
