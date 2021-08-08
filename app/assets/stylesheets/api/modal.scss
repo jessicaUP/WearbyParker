@@ -1,10 +1,39 @@
 .modal-background {
-  position: absolute;
-  // background-color: rgb(255, 255, 255);
+  position: fixed;
+  background-color: rgb(255, 255, 255);
   // opacity: .5;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 5;
+  padding-top: 50px;
+  
+  #logo-search {
+    text-align: left;
+    font-size: 12px;
+    margin-left: 80px;
+    margin-bottom: 25px;
+
+  }
+
+  .search-input {
+    width: 100%;
+    border: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 55px;
+    padding-left: 80px;
+
+  }
+
+  input:focus {
+    border: 0;
+    outline-color: white;
+    box-shadow: none;
+  }
+  
+  .search-input::placeholder {
+    color: lightgray;
+  }
 }
+

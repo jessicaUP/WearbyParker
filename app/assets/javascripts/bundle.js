@@ -2266,7 +2266,9 @@ var Modal = /*#__PURE__*/function (_React$Component) {
 
       switch (modal.modal) {
         case 'search':
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__.default, null);
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__.default, {
+            closeModal: this.props.closeModal
+          });
 
         case 'buyItem':
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -3647,19 +3649,35 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SearchModal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var inputEle = document.querySelector('.search-input');
+      inputEle.focus();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-bar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "icon-button",
+        onClick: function onClick() {
+          return _this2.props.closeModal();
+        }
+      }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        className: "logo",
+        id: "logo-search"
+      }, "SEARCH WARBY PARKER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "search-input",
         type: "text",
         placeholder: "Frame name",
         onChange: this.updateState,
         onFocus: this.searchingTime
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "results-index"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "MODAL WORKS")));
+      }));
     }
   }]);
 

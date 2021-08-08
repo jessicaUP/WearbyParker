@@ -16,7 +16,7 @@ class Modal extends React.Component {
     let { product, colorPhoto, pickedColor, addFunction } = modal.data;
     switch (modal.modal) {
       case 'search':
-        return <SearchModal />
+        return <SearchModal closeModal={this.props.closeModal} />
       case 'buyItem':
         return <AddItemForm 
                   product={product}
