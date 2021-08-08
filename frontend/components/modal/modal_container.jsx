@@ -6,7 +6,7 @@ import Modal from './modal';
 
 const mSTP = state => {
   return ({
-    modal: state.ui.modal.modal
+    modal: state.ui.modal
   })
 }
 

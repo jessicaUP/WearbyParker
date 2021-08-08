@@ -6,9 +6,10 @@ class CartShow extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   total: 0
-    // };
+    this.state = {
+      cart: null,
+      check: true
+    };
 
     this.totalCost = this.totalCost.bind(this);
     // this.removePageItem = this.removePageItem.bind(this);
@@ -17,9 +18,7 @@ class CartShow extends React.Component {
 
 
   componentDidMount() { 
-    this.props.fetchCart();
-    
-
+    this.props.fetchCart()
     
   }
 
@@ -35,12 +34,18 @@ class CartShow extends React.Component {
 
   render () {
     let cart = this.props.cart;
-    if (!cart.id) return null;
+    let total;
+    if (!cart.id) {
+      // this.setState({ check: false })
+      return null;
+    } else {
+      total = this.totalCost(cart.cartItems)
+    }
     // if (Object.values(cart).length === 0) return null;
     // let { cartItems } = this.props
     // if (cartItems !== []) return null;
+
     
-    let total = this.totalCost(cart.cartItems)
     // cart.cartItems.forEach((item) => this.totalCost(item.price))
     let itemArray = cart.cartItems
     let itemTryonArray = cart.cartTryonItems

@@ -420,9 +420,11 @@ __webpack_require__.r(__webpack_exports__);
 var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modal) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal,
+    data: data
   };
 };
 var closeModal = function closeModal() {
@@ -779,7 +781,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      formPage: 0,
+      formPage: 1,
       pageWidth: _this.sizeLabel(window.innerWidth),
       cartItem: {
         frame_width: null,
@@ -808,44 +810,32 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     value: function handleClick(type, num) {
       var _this2 = this;
 
-      var cost = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var price = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var baseCost = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       return function (e) {
         e.preventDefault();
-        var header, mid, bottom;
-        var nextCost = _this2.state.cost;
-        nextCost << cost;
+        var costArr = _this2.state.cost;
+        var nextCost;
 
-        if (num === 1) {
-          header = document.querySelector('.total-menu');
-          mid = document.querySelector('.middle-details');
-          bottom = document.querySelector('.bottom');
-          header.style.display = 'none';
-          mid.style.display = 'none';
-          bottom.style.display = 'none';
+        if (price === 0 && type !== 'frame_width') {
+          nextCost = 'Free';
+        } else if (type === 'frame_width') {
+          price = baseCost + price;
+          nextCost = "$".concat(price);
+        } else {
+          nextCost = "$".concat(price);
         }
 
-        if (_this2.state.formPage > 0) {
-          var oldState = Object.assign({}, _this2.state);
-          var newState = Object.assign({}, oldState, {
-            cartItem: Object.assign({}, _this2.state.cartItem, _defineProperty({}, type, e.target.value))
-          });
-
-          _this2.setState(newState);
-        }
-
-        if (_this2.state.formPage < 5) {
-          _this2.setState({
-            totalPrice: _this2.state.totalPrice + cost
-          });
-
-          _this2.setState({
-            cost: nextCost
-          });
-        }
-
-        _this2.setState({
+        costArr.push(nextCost);
+        var oldState = Object.assign({}, _this2.state);
+        var newState = Object.assign({}, oldState, {
+          cartItem: Object.assign({}, _this2.state.cartItem, _defineProperty({}, type, e.target.value)),
+          totalPrice: _this2.state.totalPrice + price,
+          cost: costArr,
           formPage: num
         });
+
+        _this2.setState(newState);
       };
     }
   }, {
@@ -855,16 +845,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         e.preventDefault();
-        var header = document.querySelector('.total-menu');
-        var mid = document.querySelector('.middle-details');
-        var bottom = document.querySelector('.bottom');
-        header.style.display = 'flex';
-        mid.style.display = 'flex';
-        bottom.style.display = 'block';
 
-        _this3.setState({
-          formPage: 0
-        });
+        _this3.props.closeModal();
       };
     }
   }, {
@@ -945,13 +927,14 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         }); // this.props.pickedColor
         // this.props.product.colors
         // REDIRECT GOES HERE
+        // let header = document.querySelector('.total-menu');
+        // header.style.display = 'flex';
 
 
-        var header = document.querySelector('.total-menu');
-        header.style.display = 'flex';
-        location.assign("http://localhost:3000/#/carts").then(function () {
-          return location.reload();
-        });
+        _this6.props.closeModal(); // .then(location.assign("http://localhost:3000/#/carts"))
+
+
+        location.assign("http://localhost:3000/#/carts");
       };
     }
   }, {
@@ -972,13 +955,20 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     value: function selectionPages(pageNum) {
       var _this7 = this;
 
+      // let { modal } = this.props
       var product = this.props.product;
       var _this$state = this.state,
           cartItem = _this$state.cartItem,
           totalPrice = _this$state.totalPrice,
           cost = _this$state.cost;
       var nextPage = pageNum + 1;
-      var title, options;
+      var title, options; // let data = {
+      //   product,
+      //   colorPhoto: photo3,
+      //   pickedColor: this.state.currentColor
+      // }
+
+      debugger;
 
       switch (pageNum) {
         case 1:
@@ -1040,7 +1030,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           }, cartItem.prescription_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description",
             id: "p-price"
-          }, "$", cost[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          }, cost[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
             type: "hidden",
             value: cartItem.prescription_type
           })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1055,7 +1045,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           }, cartItem.lense_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description",
             id: "p-price"
-          }, "$", cost[1]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          }, cost[1]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
             type: "hidden",
             value: cartItem.lense_type
           })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1070,7 +1060,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           }, cartItem.lense_material), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description",
             id: "p-price"
-          }, "$", cost[2]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          }, cost[2]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
             type: "hidden",
             value: cartItem.lense_material
           })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1102,7 +1092,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           id: idx
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
-          onClick: _this7.handleClick(type, nextPage, price),
+          onClick: _this7.handleClick(type, nextPage, price, product.price),
           value: name
         }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "option-price"
@@ -1120,7 +1110,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     key: "combineForm",
     value: function combineForm(formNum, photoName) {
       window.addEventListener("resize", this.changeResize);
-      var product = this.props.product;
+      var product = this.props.product.product;
       var formPage = this.state.formPage;
       var photo = this.props[photoName];
       var title;
@@ -1169,13 +1159,6 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         }, this.props.product.name);
       } else {
         smallHeader = '';
-      }
-
-      if (formNum === 0) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "purchase",
-          onClick: this.handleClick('start', 1)
-        }, "Select lenses and purchase");
       }
 
       if (formNum > 0) {
@@ -1530,8 +1513,6 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
         if (currentCount === 5) {
           // setTimeout(() => window.location.href = '#/carts', 3000)
-          debugger;
-
           _this3.setState({
             formPage: 3
           });
@@ -1635,7 +1616,6 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "option-box"
           }, this.props.product.frame_widths.map(function (fw) {
-            debugger;
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "radio",
               className: "hidden",
@@ -1799,10 +1779,11 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, CartShow);
 
-    _this = _super.call(this, props); // this.state = {
-    //   total: 0
-    // };
-
+    _this = _super.call(this, props);
+    _this.state = {
+      cart: null,
+      check: true
+    };
     _this.totalCost = _this.totalCost.bind(_assertThisInitialized(_this)); // this.removePageItem = this.removePageItem.bind(this);
 
     return _this;
@@ -1828,11 +1809,18 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var cart = this.props.cart;
-      if (!cart.id) return null; // if (Object.values(cart).length === 0) return null;
+      var total;
+
+      if (!cart.id) {
+        // this.setState({ check: false })
+        return null;
+      } else {
+        total = this.totalCost(cart.cartItems);
+      } // if (Object.values(cart).length === 0) return null;
       // let { cartItems } = this.props
       // if (cartItems !== []) return null;
+      // cart.cartItems.forEach((item) => this.totalCost(item.price))
 
-      var total = this.totalCost(cart.cartItems); // cart.cartItems.forEach((item) => this.totalCost(item.price))
 
       var itemArray = cart.cartItems;
       var itemTryonArray = cart.cartTryonItems;
@@ -1941,10 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _templateObject;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1987,7 +1971,13 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
 
   _createClass(CartItemShow, [{
     key: "removePageItem",
-    value: function removePageItem(itemId) {
+    value: function removePageItem(itemId, price) {
+      var cartCount = document.querySelector('.circle');
+      var count = parseInt(cartCount.innerHTML);
+      cartCount.innerHTML = count - 1;
+      var priceEle = document.querySelector("#price-num");
+      var newPrice = parseInt(priceEle.innerHTML.split('$')[-1]) - price;
+      priceEle.innerHTML = "Your cart: $".concat(newPrice);
       var ele = document.querySelector("#item-".concat(itemId));
       ele.remove();
     }
@@ -2000,11 +1990,7 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         e.preventDefault();
 
-        _this2.props.deleteItem(itemId).then(function () {
-          return _this2.removePageItem(itemId);
-        })(_templateObject || (_templateObject = _taggedTemplateLiteral([""]))).then(function () {
-          return location.reload();
-        });
+        _this2.props.deleteItem(itemId).then(_this2.removePageItem(itemId)).then(location.reload());
       };
     }
   }, {
@@ -2023,7 +2009,7 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
         className: "cart-item-desc"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "icon-button",
-        onClick: this.deleteItem(cartItem.id)
+        onClick: this.deleteItem(cartItem.id, cartItem.price)
       }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -2226,6 +2212,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../search_filter/search_modal */ "./frontend/components/search_filter/search_modal.jsx");
+/* harmony import */ var _cart_add_item_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cart/add_item_form */ "./frontend/components/cart/add_item_form.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2252,6 +2239,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Modal = /*#__PURE__*/function (_React$Component) {
   _inherits(Modal, _React$Component);
 
@@ -2263,17 +2251,31 @@ var Modal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Modal);
 
     _this = _super.call(this, props);
-    _this.state = {};
     _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Modal, [{
     key: "selectModal",
-    value: function selectModal(modalName) {
-      switch (modalName) {
+    value: function selectModal(modal) {
+      var _modal$data = modal.data,
+          product = _modal$data.product,
+          colorPhoto = _modal$data.colorPhoto,
+          pickedColor = _modal$data.pickedColor,
+          addFunction = _modal$data.addFunction;
+
+      switch (modal.modal) {
         case 'search':
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_filter_search_modal__WEBPACK_IMPORTED_MODULE_1__.default, null);
+
+        case 'buyItem':
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_2__.default, {
+            product: product,
+            colorPhoto: colorPhoto,
+            pickedColor: pickedColor,
+            createCartItem: addFunction,
+            closeModal: this.props.closeModal
+          });
 
         default:
           return null;
@@ -2282,20 +2284,12 @@ var Modal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          modal = _this$props.modal,
-          closeModal = _this$props.closeModal;
-      if (!modal) return null;
+      var modal = this.props.modal;
+      if (!modal.modal) return null;
       var modalElement = this.selectModal(modal);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "modal-background",
-        onClick: closeModal
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "modal-cancel",
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        }
-      }, modalElement));
+        className: "modal-background"
+      }, modalElement);
     }
   }]);
 
@@ -2328,7 +2322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    modal: state.ui.modal.modal
+    modal: state.ui.modal
   };
 };
 
@@ -2520,8 +2514,8 @@ var mDTP = function mDTP(dispatch) {
     fetchCart: function fetchCart() {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCart)());
     },
-    openModal: function openModal(modalName) {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modalName));
+    openModal: function openModal(modalName, data) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modalName, data));
     }
   };
 };
@@ -2954,6 +2948,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       ;
       var details = product.details.split('#');
       var plan = Math.round(product.price / 3);
+      var dataInfo = {
+        addFunction: this.props.createCartItem,
+        product: product,
+        colorPhoto: photo3,
+        // pickedColor: parseInt(this.state.colorId)
+        pickedColor: this.state.currentColor
+      };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3005,12 +3006,12 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         });
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "price-desc"
-      }, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_1__.default, {
-        product: product,
-        colorPhoto: photo3,
-        pickedColor: this.state.currentColor,
-        createCartItem: this.props.createCartItem
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "purchase",
+        onClick: function onClick() {
+          return _this4.props.openModal('buyItem', dataInfo);
+        }
+      }, "Select lenses and purchase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "try-on"
       }, "Try at home for free"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "middle-details"
@@ -3055,7 +3056,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart_item_actions */ "./frontend/actions/cart_item_actions.js");
 /* harmony import */ var _product_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show */ "./frontend/components/products/product_show.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -3075,11 +3078,14 @@ var mDTP = function mDTP(dispatch) {
     },
     createCartItem: function createCartItem(cartItem) {
       return dispatch((0,_actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_2__.createCartItem)(cartItem));
+    },
+    openModal: function openModal(name, data) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.openModal)(name, data));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_product_show__WEBPACK_IMPORTED_MODULE_3__.default)));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_product_show__WEBPACK_IMPORTED_MODULE_3__.default)));
 
 /***/ }),
 
@@ -4326,7 +4332,8 @@ var modalReducer = function modalReducer() {
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.OPEN_MODAL:
       return {
-        modal: action.modal
+        modal: action.modal,
+        data: action.data
       };
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.CLOSE_MODAL:

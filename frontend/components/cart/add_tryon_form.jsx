@@ -54,7 +54,6 @@ class AddTryon extends React.Component {
       
       if (currentCount === 5) {
         // setTimeout(() => window.location.href = '#/carts', 3000)
-        debugger
         this.setState({ formPage: 3 })
       }
       let item = this.props.createTryonItem({
@@ -115,7 +114,6 @@ class AddTryon extends React.Component {
               <hr />
               <div className='option-box'>
                 {this.props.product.frame_widths.map((fw) => {
-                  debugger
                   return (
                     <>
                       <input type='radio'

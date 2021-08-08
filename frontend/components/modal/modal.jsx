@@ -1,23 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchModal from '../search_filter/search_modal'
+import AddItemForm from '../cart/add_item_form'
 
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    }
-
-    this.selectModal = this.selectModal.bind(this);
+    this.selectModal = this.selectModal.bind(this)
 
   }
 
-  selectModal(modalName) {
-    switch (modalName) {
+  selectModal(modal) {
+    let { product, colorPhoto, pickedColor, addFunction } = modal.data;
+    switch (modal.modal) {
       case 'search':
         return <SearchModal />
+      case 'buyItem':
+        return <AddItemForm 
+                  product={product}
+                  colorPhoto={colorPhoto} 
+                  pickedColor={pickedColor}
+                  createCartItem={addFunction}
+                  closeModal={this.props.closeModal}
+                  />
       default:
         return null;
     }
@@ -26,16 +33,14 @@ class Modal extends React.Component {
 
   render() {
 
-    let { modal, closeModal } = this.props;
-    if ( !modal ) return null;
+    let { modal } = this.props;
+    if ( !modal.modal ) return null;
 
     let modalElement = this.selectModal(modal);
 
     return (
-      <div className="modal-background" onClick={closeModal}>
-        <div className="modal-cancel" onClick={e => e.stopPropagation()}>
+      <div className="modal-background" >
           {modalElement}
-        </div>
       </div>
     )
   }
