@@ -8,7 +8,7 @@ class AddItemForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formPage: 0,
+      formPage: 1,
       pageWidth: this.sizeLabel(window.innerWidth),
       cartItem: {
         frame_width: null,
@@ -36,43 +36,39 @@ class AddItemForm extends React.Component {
 
   }
 
-  handleClick(type, num, cost = 0) {
+  handleClick(type, num, price = 0, baseCost = null) {
     return (e) => {
       e.preventDefault();
-      let header, mid, bottom;
-      let nextCost = this.state.cost;
-      nextCost << cost; 
-      if (num === 1) {
-        header = document.querySelector('.total-menu');
-        mid = document.querySelector('.middle-details');
-        bottom = document.querySelector('.bottom');
-        header.style.display = 'none';
-        mid.style.display = 'none';
-        bottom.style.display = 'none';
+      let costArr = this.state.cost;
+      let nextCost;
+      if (price === 0 && type !== 'frame_width') {
+        nextCost = 'Free'
+      } else if (type === 'frame_width') {
+        price = baseCost + price;
+        nextCost = `$${price}`
+      } else {
+        nextCost = `$${price}`;
       }
-      if (this.state.formPage > 0)  {
+      
+      costArr.push(nextCost); 
+
+
         let oldState = Object.assign({}, this.state )
-        let newState = Object.assign({}, oldState, { cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value })})
+        let newState = Object.assign({}, oldState, { 
+          cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value }),
+          totalPrice: (this.state.totalPrice + price),
+          cost: costArr,
+          formPage: num
+        })
         this.setState(newState)
-      }
-      if (this.state.formPage < 5) {
-        this.setState({ totalPrice: (this.state.totalPrice + cost)});
-        this.setState({cost: nextCost})
-      }
-      this.setState({ formPage: num })
     }
   }
 
   exitForm() {
     return (e) => {
       e.preventDefault();
-      let header = document.querySelector('.total-menu');
-      let mid = document.querySelector('.middle-details');
-      let bottom = document.querySelector('.bottom');
-      header.style.display = 'flex';
-      mid.style.display = 'flex';
-      bottom.style.display = 'block';
-      this.setState({ formPage: 0 })
+      this.props.closeModal();
+
     }
   }
 
@@ -123,7 +119,7 @@ class AddItemForm extends React.Component {
           break;
       }
 
-
+      
       this.props.createCartItem({
         product_id: this.props.product.id,
         price: this.state.totalPrice,
@@ -138,11 +134,12 @@ class AddItemForm extends React.Component {
       // this.props.product.colors
 
       // REDIRECT GOES HERE
-      let header = document.querySelector('.total-menu');
-      header.style.display = 'flex';
-
+      // let header = document.querySelector('.total-menu');
+      // header.style.display = 'flex';
+    
+      this.props.closeModal()
+      // .then(location.assign("http://localhost:3000/#/carts"))
       location.assign("http://localhost:3000/#/carts")
-        .then(() => location.reload());
 
     }
 
@@ -160,11 +157,20 @@ class AddItemForm extends React.Component {
   }
 
   selectionPages(pageNum) {
-    let { product } = this.props
-    let { cartItem, totalPrice, cost } = this.state
+    // let { modal } = this.props
+    let product = this.props.product;
+
+    let { cartItem, totalPrice, cost } = this.state;
     let nextPage = pageNum + 1;
     let title, options;
 
+    
+    // let data = {
+    //   product,
+    //   colorPhoto: photo3,
+    //   pickedColor: this.state.currentColor
+    // }
+    debugger
     switch(pageNum) {
       case 1:
         // FRAME WIDTH
@@ -213,7 +219,7 @@ class AddItemForm extends React.Component {
                <label className='subtitle'>Prescription
                <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.prescription_type}</p>
-                 <p className='option-description' id='p-price'>${cost[0]}</p>
+                 <p className='option-description' id='p-price'>{cost[0]}</p>
                  <input type='hidden' value={cartItem.prescription_type} />
                </div>
                </label>
@@ -222,7 +228,7 @@ class AddItemForm extends React.Component {
                <label className='subtitle'>Lense type
                <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.lense_type}</p>
-                 <p className='option-description' id='p-price'>${cost[1]}</p>
+                 <p className='option-description' id='p-price'>{cost[1]}</p>
                  <input type='hidden' value={cartItem.lense_type} />
                </div>
                </label>
@@ -231,7 +237,7 @@ class AddItemForm extends React.Component {
                <label className='subtitle'>Lense material
                <div className='option-pricing' >
                  <p className='option-description' id='p-option'>{cartItem.lense_material}</p>
-                 <p className='option-description' id='p-price'>${cost[2]}</p>
+                 <p className='option-description' id='p-price'>{cost[2]}</p>
                  <input type='hidden' value={cartItem.lense_material} />
                </div>
                </label>
@@ -254,7 +260,7 @@ class AddItemForm extends React.Component {
       let { type, name, price, priceName, desc } = option;
       return (
         <div className='cart-options' id={idx}>
-          <button className='selection-button' onClick={this.handleClick(type, nextPage, price)} value={name}>{name}</button>
+          <button className='selection-button' onClick={this.handleClick(type, nextPage, price, product.price)} value={name}>{name}</button>
           <p className='option-price'>{priceName}</p>
           <p className='option-description'>{desc}</p>
         </div>
@@ -275,7 +281,7 @@ class AddItemForm extends React.Component {
     
   combineForm(formNum, photoName) {
     window.addEventListener("resize", this.changeResize);
-    const { product } = this.props;
+    const { product } = this.props.product;
     const { formPage } = this.state;
     let photo = this.props[photoName];
     let title;
@@ -320,11 +326,6 @@ class AddItemForm extends React.Component {
       smallHeader = '';
     }
 
-    if (formNum === 0) {
-      return (
-        <button className='purchase' onClick={this.handleClick('start', 1)} >Select lenses and purchase</button>
-        )
-      }
       
     if (formNum > 0) {
       return (

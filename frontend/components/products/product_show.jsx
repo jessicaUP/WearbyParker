@@ -97,6 +97,14 @@ class ProductShow extends React.Component {
     let details = product.details.split('#')
     let plan = Math.round(product.price / 3)
 
+    let dataInfo = {
+      addFunction: this.props.createCartItem,
+      product,
+      colorPhoto: photo3,
+      // pickedColor: parseInt(this.state.colorId)
+      pickedColor: this.state.currentColor
+    }
+
 
 
     return (
@@ -127,7 +135,8 @@ class ProductShow extends React.Component {
                   defaultChecked={color.id === parseInt(this.state.colorId) ? 'checked' : ''} />)}
               </div>
               <p className='price-desc'>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
-                <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} />
+                {/* <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} /> */}
+                <button className='purchase' onClick={() => this.props.openModal('buyItem', dataInfo)} >Select lenses and purchase</button>
                 <button className='try-on' >Try at home for free</button>
             </div>
         </div>
