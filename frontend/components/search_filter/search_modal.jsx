@@ -24,8 +24,7 @@ class SearchModal extends React.Component {
   updateSearch(e) {
     e.preventDefault();
     this.props.fetchSearchProducts(e.currentTarget.value)
-    debugger
-    this.setState({ searchInput: e.currentTarget.value })
+      .then(this.setState({ searchInput: e.currentTarget.value }))
 
     // this.prepSearch(this.state.searchInput)
 
@@ -50,7 +49,10 @@ class SearchModal extends React.Component {
   render() {
     // this.renderProducts();
     let { products } = this.props;
-    debugger
+
+    if (products && this.state.searchInput === '') {
+      products = []
+    }
 
     // let productsIndex = [];
     // if (searchInput !== '')
@@ -62,17 +64,20 @@ class SearchModal extends React.Component {
         <input className='search-input' type="text" placeholder='Frame name' onChange={this.updateSearch} ></input>
         <hr></hr>
         <div className='results-index'>
-          {products ? products.map(product =>
-            <div className='search-tile' >
-              <NavLink to={`/products/${product.id}/color/${product.color.id}`} colorname={product.color_name} >
-              <div className='tile-image' >
-                <img className={`img-${product.id}`} src={product.photo0Url} id={product.color.id} alt="" />
+          {products ? products.map(product => 
+            product.colors.map(color => 
+              <div className='search-tile' >
+                <NavLink to={`/products/${product.id}/color/${color.id}`} colorname={color.color_name} >
+                <div className='tile-image' >
+                  <img className={`img-${product.id}`} src={color.photo0Url} id={color.id} alt="" />
+                </div>
+                <h2 className='product-name'>{product.name}</h2>
+                <h5 className='color-name'>{color.color_name}</h5>
+                </NavLink>
               </div>
-              <h2 className='product-name'>{product.name}</h2>
-              </NavLink>
-            </div>
-
-            ) : <></>
+  
+              )) : <></>
+              
           }
         </div>
       </div>

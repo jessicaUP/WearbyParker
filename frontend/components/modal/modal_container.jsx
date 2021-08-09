@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal } from '../../actions/modal_actions';
-import { fetchSearchProducts } from '../../actions/product_actions';
+import { closeModal, fetchSearchProducts } from '../../actions/modal_actions';
+// import {  } from '../../act /ions/product_actions';
 import Modal from './modal';
 
 
 const mSTP = state => {
-  debugger
   return ({
     modal: state.ui.modal
   })

@@ -8,7 +8,11 @@ class Api::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.where("name LIKE '%#{params['data']}%'")
+    input = params['input']
+    products1 = Product.where("name LIKE '%#{input.capitalize}%'")
+    products2 = Product.where("name LIKE '%#{input}%'")
+    @products = products1.or(products2)
+    
     render :search_index
   end
 

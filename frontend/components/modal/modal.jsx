@@ -17,7 +17,6 @@ class Modal extends React.Component {
     
     switch (modal.modal) { 
       case 'search':
-        debugger
         return <SearchModalContainer 
                   // closeModal={this.props.closeModal} 
                   // fetchSearchProducts={this.props.fetchSearchProducts}

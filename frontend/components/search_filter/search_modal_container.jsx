@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom';
 
 
 const mSTP = (state) => {
-  debugger
   return ({
     products: state.ui.modal.products
     // products: state.entities.products.search
