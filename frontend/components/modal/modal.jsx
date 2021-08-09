@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchModal from '../search_filter/search_modal'
+import SearchModalContainer from '../search_filter/search_modal_container'
 import AddItemForm from '../cart/add_item_form'
 
 
@@ -14,9 +14,15 @@ class Modal extends React.Component {
 
   selectModal(modal) {
     let { product, colorPhoto, pickedColor, addFunction } = modal.data;
-    switch (modal.modal) {
+    
+    switch (modal.modal) { 
       case 'search':
-        return <SearchModal closeModal={this.props.closeModal} />
+        debugger
+        return <SearchModalContainer 
+                  // closeModal={this.props.closeModal} 
+                  // fetchSearchProducts={this.props.fetchSearchProducts}
+                  // products={this.props.products}
+                  />
       case 'buyItem':
         return <AddItemForm 
                   product={product}
@@ -32,9 +38,9 @@ class Modal extends React.Component {
 
 
   render() {
-
+    
     let { modal } = this.props;
-    if ( !modal.modal ) return null;
+    if ( !modal.modal) return null;
 
     let modalElement = this.selectModal(modal);
 

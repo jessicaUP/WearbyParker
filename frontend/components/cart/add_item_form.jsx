@@ -170,7 +170,6 @@ class AddItemForm extends React.Component {
     //   colorPhoto: photo3,
     //   pickedColor: this.state.currentColor
     // }
-    debugger
     switch(pageNum) {
       case 1:
         // FRAME WIDTH

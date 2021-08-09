@@ -16,7 +16,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return ({
     fetchCart: () => dispatch(fetchCart()),
-    openModal: (modalName, data) => dispatch(openModal(modalName, data))
+    openModal: (modalName, data = {}) => dispatch(openModal(modalName, data))
   })
 }
 

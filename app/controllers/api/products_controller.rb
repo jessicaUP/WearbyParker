@@ -7,5 +7,10 @@ class Api::ProductsController < ApplicationController
     render :show
   end
 
+  def index
+    @products = Product.all.where("name LIKE '%#{params['data']}%'")
+    render :search_index
+  end
+
 
 end

@@ -1,4 +1,4 @@
-import { RECEIVE_PRODUCT } from '../actions/product_actions';
+import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from '../actions/product_actions';
 
 const productsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -7,6 +7,9 @@ const productsReducer = (oldState = {}, action) => {
     case RECEIVE_PRODUCT:
       nextState[action.product.id] = action.product;
       return nextState;
+      case RECEIVE_PRODUCTS:
+        nextState['search'] = action.products
+        return nextState;
     default:
       return oldState;
   }
