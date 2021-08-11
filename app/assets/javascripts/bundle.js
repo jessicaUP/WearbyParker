@@ -3463,7 +3463,7 @@ var Filter = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      filter: 'frameWidth',
+      filter: 'frame_width',
       selectedFilters: {
         frame_width: [],
         shape: [],
@@ -3522,7 +3522,7 @@ var Filter = /*#__PURE__*/function (_React$Component) {
     // };
     function typeSearch(label) {
       switch (label) {
-        case 'frameWidth':
+        case 'frame_width':
           return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[0];
 
         case 'shape':
@@ -3534,7 +3534,7 @@ var Filter = /*#__PURE__*/function (_React$Component) {
         case 'material':
           return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[3];
 
-        case 'noseBridge':
+        case 'nose_bridge':
           return _util_filter_options__WEBPACK_IMPORTED_MODULE_1__.FILTERS[4];
       }
     }

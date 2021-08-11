@@ -7,7 +7,7 @@ class Filter extends React.Component {
     super(props);
 
     this.state = {
-      filter: 'frameWidth',
+      filter: 'frame_width',
       selectedFilters: {
         frame_width: [],
         shape: [],
@@ -68,15 +68,15 @@ class Filter extends React.Component {
 
   typeSearch(label) {
     switch (label) {
-      case 'frameWidth':
+      case 'frame_width':
         return FILTERS[0];
-        case 'shape':
+      case 'shape':
         return FILTERS[1];
-        case 'color':
+      case 'color':
         return FILTERS[2];
-        case 'material':
+      case 'material':
         return FILTERS[3];
-        case 'noseBridge':
+      case 'nose_bridge':
         return FILTERS[4];
     }
   }
