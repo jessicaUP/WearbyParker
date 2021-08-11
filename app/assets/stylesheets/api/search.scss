@@ -1,33 +1,70 @@
+.no-search-cont {
+  margin-left: 80px;
+}
 .results-index {
-  width: 100%;
-
+  width: 90%;
   justify-content: center;
   align-self: center;
-  justify-items: center;
+  justify-content: center;
   align-content: center;
-  column-width: 250px;
+  column-count: auto;
+  column-width: 175px;
   height: auto;
   margin: 50px auto 10px;
+  // padding: 0 5%;
 
 
   .search-tile {
     position: static;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
     // min-width: 20%;
+    // max-width: 275px;
     height: 225px;
     -webkit-column-break-inside: avoid;
           page-break-inside: avoid;
                break-inside: avoid;
+
+    .product-name {
+      font-size: 18px;
+
+    }
+    .product-color {
+      font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
+      font-style: italic;
+      font-size: 18px;
+      color: gray;
+      margin: 0;
+      padding: 0 15px;
+    
+      // width: 80%;
+    }
+
+    .shop-btn-cont {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: center;
+      
+      .selection-button {
+        color: rgb(71, 85, 131);
+        background-color: white;
+        margin: 0;
+      }
+    }
+
   }
 
+  
   div.tile-image {
     display: flex;
     max-width: 100%;
     // height: 250px;
     align-content: center;
     justify-content: center;
-
+    
     img {
       // max-width: 85%;
       // width: 500px;

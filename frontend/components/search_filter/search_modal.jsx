@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FILTERS } from '../../util/filter_options';
+import SearchProduct from './search_product';
 
 
 class SearchModal extends React.Component {
@@ -49,10 +50,21 @@ class SearchModal extends React.Component {
   render() {
     // this.renderProducts();
     let { products } = this.props;
+    let { searchInput } = this.state;
+    let message = ''
 
-    if (products && this.state.searchInput === '') {
+    if (products && searchInput === '') {
       products = []
+    } else if (!products || products.length === 0) {
+      if (searchInput !== '') {
+        message = (
+          <div className='no-search-cont'>
+            <p className='no-search'>Hm. Doesn’t look like we carry a frame by that name.</p>
+          </div>
+        )
+      }
     }
+    
 
     // let productsIndex = [];
     // if (searchInput !== '')
@@ -66,20 +78,11 @@ class SearchModal extends React.Component {
         <div className='results-index'>
           {products ? products.map(product => 
             product.colors.map(color => 
-              <div className='search-tile' >
-                <NavLink to={`/products/${product.id}/color/${color.id}`} colorname={color.color_name} >
-                <div className='tile-image' >
-                  <img className={`img-${product.id}`} src={color.photo0Url} id={color.id} alt="" />
-                </div>
-                <h2 className='product-name'>{product.name}</h2>
-                <h5 className='color-name'>{color.color_name}</h5>
-                </NavLink>
-              </div>
-  
-              )) : <></>
-              
+              <SearchProduct product={product} color={color} />
+              )) : <></>  
           }
         </div>
+          {message}
       </div>
     )
   }

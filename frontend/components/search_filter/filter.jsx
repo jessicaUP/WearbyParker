@@ -1,12 +1,5 @@
 import React from 'react';
-import { 
-  FILTERS,
-  frameWidthOptions,
-  shapeOptions,
-  colorOptions,
-  materialOptions,
-  noseBridgeOptions
- } from '../../util/filter_options';
+import { FILTERS } from '../../util/filter_options';
 
 
 class Filter extends React.Component {
@@ -15,7 +8,13 @@ class Filter extends React.Component {
 
     this.state = {
       filter: 'frameWidth',
-      selectedFilters: {}
+      selectedFilters: {
+        frame_width: [],
+        shape: [],
+        color: [],
+        material: [],
+        nose_bridge: []
+      }
 
     };
 
@@ -23,6 +22,7 @@ class Filter extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.filterOptions = this.filterOptions.bind(this);
     this.typeSearch = this.typeSearch.bind(this);
+    this.addFilter = this.addFilter.bind(this);
 
   };
 
@@ -86,7 +86,7 @@ class Filter extends React.Component {
     return (
       <div className='options-cont' id={`${idType}-options`}>
         {filter.options.map((option) => {
-          let { name, type, image, desc, color } = option;
+          let { name, type, image, desc, color, optionId } = option;
           let imageEle = '';
           let descEle = '';
           let colorEle = '';
@@ -100,7 +100,7 @@ class Filter extends React.Component {
 
           return (
             <>
-              <button className='option-btn' id={`${idType}-btn`}>
+              <button className='option-btn' id={`${idType}-btn`} onClick={this.addFilter(idType, optionId)} >
                 {imageEle}
                 {colorEle}
                 <input type='checkbox'
@@ -108,7 +108,7 @@ class Filter extends React.Component {
                   id={type}
                   value={type}
                   name={type}
-                // onChange=
+                  // onChange=
                 />
                 <label htmlFor={type} >{name}
                 {descEle}
@@ -133,8 +133,25 @@ class Filter extends React.Component {
     return (this.state.filter === value)
   };
 
-  render() {
+  addFilter(type, selection) {
 
+    return (e) => {
+      // e.preventDefault();
+      let { selectedFilters } = this.state;
+      // let filterArr = selectedFilters[type]
+      if (selectedFilters[type].includes(selection)) {
+        let idx = selectedFilters[type].indexOf(selection);
+        selectedFilters[type].splice(idx, 1);
+      } else {
+        selectedFilters[type].push(selection);
+      }
+      debugger
+      this.props.fetchGenderSearchProducts({ genderId: this.props.genderId, filters: selectedFilters });
+      this.setState(selectedFilters);
+    }
+  }
+
+  render() {
     let { filter } = this.state
     let selectedOptions = this.typeSearch(filter);
 

@@ -102,7 +102,10 @@ class ProductIndex extends React.Component {
           </div>
         </div>
         {message}
-        {filter ? <Filter key='filter' /> : ''}
+        {filter ? <Filter genderId={parseInt(this.props.match.params.genderId)} 
+                          key='filter' 
+                          fetchGenderSearchProducts={this.props.fetchGenderSearchProducts}
+                          /> : ''}
         <div className='product-index'>
           {
             productArray.map((product, idx) => {
