@@ -18,6 +18,7 @@ class Api::GendersController < ApplicationController
       filters = ['frame_width', 'shape', 'color', 'material', 'nose_bridge']
 
       collected_products = []
+      @colors = []
       filters.each do |filter_name| 
         filter = selectedFilters[filter_name] 
         case filter_name 
@@ -37,9 +38,15 @@ class Api::GendersController < ApplicationController
             end
           when 'color'
             if filter
+              filter.each do |id|
+                @colors << id.to_i
+              end
               next_step = filter.map do |id|
                 Color.find(id.to_i).products
+                
+                # @colors << id.to_i
               end
+
               collected_products << next_step
             end
           when 'material'
