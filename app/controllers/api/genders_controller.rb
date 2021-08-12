@@ -77,7 +77,7 @@ class Api::GendersController < ApplicationController
       first = filter_combine.pop.to_a
       while filter_combine.length > 0 do 
         next_step = filter_combine.pop.to_a
-        first = (first | next_step)
+        first = (first & next_step)
       end
       total << first
       

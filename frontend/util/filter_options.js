@@ -60,6 +60,7 @@ const shapeOptions = [
     image: true
   }
 ]
+
 const colorOptions = [
   { 
     optionId: 1,
@@ -134,6 +135,16 @@ const colorOptions = [
     color: 'rgb(143, 25, 25)'
   }
 ]
+
+export const colorCode = (colorId) => {
+  let code;
+  colorOptions.forEach(obj => {
+   if (obj.optionId === colorId) {
+     code = obj.color;
+   }
+  })
+  return code
+}
 
 const materialOptions = [
   {

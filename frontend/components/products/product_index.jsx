@@ -9,13 +9,22 @@ class ProductIndex extends React.Component {
     
     this.state = {
       tryon: false,
-      filter: false
+      filter: false,
+      filterColor: null
     };
 
     this.handleMenus = this.handleMenus.bind(this);
     // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
+    this.colorSelect = this.colorSelect.bind(this);
   };
+
+
+
+colorSelect(color) {
+
+  this.setState({ filterColor: color })
+}
 
   handleMenus(type, status) {
     return (e) => {
@@ -40,12 +49,13 @@ class ProductIndex extends React.Component {
     let { genderId, cart } = this.props
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
+    productArray.sort();
     let cartArray = [];
     cart.forEach(item => {
       cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
     });
 
-    let { tryon, filter } = this.state;
+    let { tryon, filter, colorFilter } = this.state;
     
 
     let switchButton;
@@ -78,11 +88,10 @@ class ProductIndex extends React.Component {
     };
 
 
-
     return (
       <div className='product-show'>
         <div className='banner-cont' >
-          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' /> 
+          <img src={parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
           <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
         </div>
 
@@ -105,6 +114,10 @@ class ProductIndex extends React.Component {
         {filter ? <Filter genderId={parseInt(this.props.match.params.genderId)} 
                           key='filter' 
                           fetchGenderSearchProducts={this.props.fetchGenderSearchProducts}
+                          fetchGenderProducts={this.props.fetchGenderProducts}
+                          totalCount={productArray.length}
+                          colorSelect={this.colorSelect}
+
                           /> : ''}
         <div className='product-index'>
           {
@@ -115,7 +128,8 @@ class ProductIndex extends React.Component {
                     key={idx}
                     product={product}
                     cart={cart}
-                    switchOn={tryon}/>
+                    switchOn={tryon}
+                    filterColor={colorFilter}/>
                   {tryon ? <AddTryon 
                     product={product}
                     cart={cartArray}

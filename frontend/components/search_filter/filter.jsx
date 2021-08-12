@@ -8,6 +8,7 @@ class Filter extends React.Component {
 
     this.state = {
       filter: 'frame_width',
+      count: 0,
       selectedFilters: {
         frame_width: [],
         shape: [],
@@ -23,48 +24,10 @@ class Filter extends React.Component {
     this.filterOptions = this.filterOptions.bind(this);
     this.typeSearch = this.typeSearch.bind(this);
     this.addFilter = this.addFilter.bind(this);
+    this.resetFilters = this.resetFilters.bind(this);
 
   };
 
-
-  // handleOptions(filter) {
-  //   switch (filter.type) {
-  //     case 'frameWidth':
-  //       return (
-  //         <div className='opitons-cont' id='fw-options'>
-  //           {frameWidthOptions.map((option) => {
-  //             return (
-  //               <button className='option-btn' >{option}</button>
-  //             )
-  //           })}
-  //         </div>
-  //       )
-  //     case 'shape':
-  //       return (
-  //         <div className='opitons-cont' id='fw-options'>
-  //           {shapeOptions.map((option) => {
-  //             let image = option.split('-').join('').toLowerCase();
-  //             return (
-  //               <>
-  //               <button className='option-btn' >
-  //                 <img src={window[image]} alt='type-of-eyewear' className='shape-img' />
-  //                 <input type='checkbox'
-  //                   className='filter-i'
-  //                   id={`radio-${option.toLowerCase()}`}
-  //                   value={option.toLowerCase()}
-  //                   name={option.toLowerCase()}
-  //                   // onChange=
-  //                 />
-  //                 <label htmlFor={`radio-${option.toLowerCase()}`} >{option}</label>
-  //                   {/* <button className='option-btn' >{option}</button> */}
-  //               </button>
-  //             </>
-  //             )
-  //           })}
-  //         </div>
-  //       )
-  //   }
-  // };
 
   typeSearch(label) {
     switch (label) {
@@ -100,7 +63,7 @@ class Filter extends React.Component {
 
           return (
             <>
-              <button className='option-btn' id={`${idType}-btn`} onClick={this.addFilter(idType, optionId)} >
+              <button className={`option-btn ${idType}-${optionId}`} id={`${idType}-btn`} onClick={this.addFilter(idType, optionId)} >
                 {imageEle}
                 {colorEle}
                 <input type='checkbox'
@@ -134,43 +97,71 @@ class Filter extends React.Component {
   };
 
   addFilter(type, selection) {
-
+    
     return (e) => {
       // e.preventDefault();
-      let { selectedFilters } = this.state;
+      let { selectedFilters, count } = this.state;
+      let buttonEle = document.querySelector(`.${type}-${selection}`);
+      let nextCount;
       // let filterArr = selectedFilters[type]
       if (selectedFilters[type].includes(selection)) {
         let idx = selectedFilters[type].indexOf(selection);
         selectedFilters[type].splice(idx, 1);
+        nextCount = count - 1
+        buttonEle.classList.remove('highlight')
       } else {
+        if (type === 'color' && selectedFilters['color'].length === 0) {
+          this.props.colorSelect(selection)
+        }
         selectedFilters[type].push(selection);
+        nextCount = count + 1
+        buttonEle.classList.add('highlight')
       }
-      debugger
+      
       this.props.fetchGenderSearchProducts({ genderId: this.props.genderId, filters: selectedFilters });
-      this.setState(selectedFilters);
+      this.setState({ selectedFilters, count: nextCount});
+    }
+  }
+
+  resetFilters() {
+    return e => {
+      this.props.fetchGenderProducts(this.props.genderId)
+      let buttonElements = document.querySelectorAll(`.highlight`);
+      buttonElements.forEach(ele => ele.classList.remove('highlight'))
+      this.setState({
+        count: 0,
+        selectedFilters: {
+          frame_width: [],
+          shape: [],
+          color: [],
+          material: [],
+          nose_bridge: []
+        }})
     }
   }
 
   render() {
-    let { filter } = this.state
+    let { filter, count } = this.state
     let selectedOptions = this.typeSearch(filter);
 
     return (
       <div className='filter-cont' >
         <div className='radio-selections' >
-          {FILTERS.map(filter => {
+          {FILTERS.map(filterObj => {
+            let { type, name } = filterObj;
+            let inputSelect = type === filter ? inputSelect = 'input-highlight' : ''
             return (
               <>
             <div className='filter-name-cont'>
             <input type='radio'
               className='filter-option'
-              id={`radio-${filter.type}`}
-              value={filter.type}
-              name={filter.type}
+              id={`radio-${type}`}
+              value={type}
+              name={type}
               onChange={this.update()}
-              checked={this.handleSelect(filter.type)}
+              checked={this.handleSelect(type)}
             />
-            <label htmlFor={`radio-${filter.type}`} >{filter.name}</label>
+            <label className={`input-filter-name ${inputSelect}`} htmlFor={`radio-${type}`} >{name}</label>
             </div>
             </>
             )
@@ -178,10 +169,10 @@ class Filter extends React.Component {
         </div>
           {this.filterOptions(selectedOptions)}
           <div className='items-selected' >
-            <p>frames</p>
+          <button className='selection-button filter-reset-amount filter-reset' >{this.props.totalCount} frames</button>
             <div className='reset-cont' >
-              <div className='circle' >0</div>
-              <p>Reset</p>
+              <div className='circle' >{count}</div>
+            <button className='selection-button filter-reset' onClick={this.resetFilters()} >Reset</button>
             </div>
           </div>
       </div>

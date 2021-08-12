@@ -66,9 +66,6 @@ class SearchModal extends React.Component {
     }
     
 
-    // let productsIndex = [];
-    // if (searchInput !== '')
-    debugger
     return (
       <div className='search-bar' >
         <button className='icon-button' onClick={() => this.props.closeModal()}>X</button>

@@ -7,6 +7,8 @@
 
   .banner-cont {
     position: relative;
+    height: 335px;
+    overflow: hidden;
 
     .product-name {
       position: absolute;
@@ -14,16 +16,44 @@
       line-height: 40px;
       font-size: 32px;
       top: 30%;
-      left: 10%;
+      left: 7%;
       width: 40%;
       // height: 100%;
     }
 
     .img-banner {
       width: 100%;
+      object-fit: cover;
+      // object-position: 0 0 0 75px;
     }
   }
   
+}
+
+.circle-highlight {
+  display: flex;
+  // justify-items: center;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;    
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+
+  .radio-color-options {
+    display: none;
+  }
+  
+  .select-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+  
+  }
+}
+
+.circle-selected {
+  border: 1px solid black;
 }
 
 .filter-cont {
@@ -31,6 +61,7 @@
   width: 100%;
   height: auto;
 }
+
 
 .product-index {
   // display: flex;
@@ -52,10 +83,13 @@
     display: flex;
     justify-content: space-around;
     // width: 100%;
-    min-width: 300px;
+    min-width: 250px;
     // flex-grow: 0;
     // width: 450px;
     // height: 340px;
+    -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
+           break-inside: avoid;
   }
   
   .product-tile {
@@ -72,6 +106,9 @@
     height: 340px;
     overflow: auto;
     padding: 20px;
+      -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+             break-inside: avoid;
     
     
     
@@ -98,28 +135,29 @@
       object-fit: fill;
     }
     
-    .tile-colors {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      width: 100px;
-      justify-content: center;
-      
-      
-      input[type='radio'] { 
-        transform: scale(1.8); 
-        margin: 10px;
-        background-color: black;
-      }
-      
-      .color-preview {
-        text-align: center;
-        margin: 20px;
-        border: 1px solid lightgray;
-        border-radius: 25%;
-      }
+  }
+  
+  .tile-colors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 150px;
+    height: auto;
+    
+    
+    input[type='radio'] { 
+      transform: scale(1.8); 
+      margin: 10px;
+      background-color: black;
     }
     
+    .color-preview {
+      text-align: center;
+      margin: 20px;
+      border: 1px solid lightgray;
+      border-radius: 25%;
+    }
   }
   
 
@@ -154,6 +192,9 @@
     z-index: 2;
     bottom: 75px;
     padding: 25px 40px;
+    -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
+           break-inside: avoid;
 
     hr {
       color: lightgray;
