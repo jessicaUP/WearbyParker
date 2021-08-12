@@ -1,12 +1,12 @@
 // @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 .index-body {
-  position: absolute;
+  position: relative;
   top: 125px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 650px;
+  // right: 0;
+  // left: 0;
+  // bottom: 0;
+  height: auto;
 }
 
 .options-colors {
@@ -299,6 +299,7 @@ button.try-on:hover {
   .bottom-note {
     width: 60%;
     line-height: 27px;
+    font-size: 15px;
   }
   
 }
@@ -344,7 +345,7 @@ button.try-on:hover {
 
 .center-title {
   text-align: center;
-
+  margin-bottom: 15px;
 }
 
 

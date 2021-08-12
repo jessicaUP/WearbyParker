@@ -11,6 +11,7 @@ import ProductShowContainer from './products/product_show_container';
 import ProductIndexContainer from './products/product_index_container';
 import CartShowContainer from './cart/cart_show_container';
 import ModalContainer from './modal/modal_container';
+import Footer from './footer/footer';
 
 
 
@@ -28,6 +29,7 @@ const App = () => (
     <Route path='/carts' component={CartShowContainer} />
     <Splash />
   </Switch>
+  <Footer />
   </>
 );
 
