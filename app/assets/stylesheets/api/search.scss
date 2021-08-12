@@ -7,19 +7,23 @@
   align-self: center;
   justify-content: center;
   align-content: center;
-  column-count: auto;
+  // column-count: 6;
   column-width: 175px;
+  word-wrap: normal;
+  // word-break: break-all;
+  grid-auto-flow: row;
   height: auto;
-  margin: 50px auto 10px;
+  margin: 50px auto 10px auto;
   // padding: 0 5%;
 
 
   .search-tile {
-    position: static;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    width: 175;
     // min-width: 20%;
     // max-width: 275px;
     height: 225px;
@@ -31,6 +35,8 @@
       font-size: 18px;
 
     }
+
+
     .product-color {
       font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
       font-style: italic;

@@ -3519,24 +3519,15 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile-colors"
       }, product.colors.map(function (color, idx) {
-        var colorCheck;
-
-        if (filterCheck) {
-          debugger;
-          colorCheck = _this3.props.filterColor === color.id;
-        } else {
-          colorCheck = selectedColor === color.id;
-        }
-
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "circle-highlight ".concat(colorCheck ? 'circle-selected' : ''),
+          className: "circle-highlight ".concat(idx === 0 ? 'circle-selected' : ''),
           onClick: _this3.handleSelect(color.id, color.name, color.photo0Url)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "radio",
           className: "radio-color-options",
           name: "radio-".concat(product.id),
           key: color.id,
-          defaultChecked: colorCheck
+          defaultChecked: idx === 0
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "select-circle ".concat(color.id, "-circle"),
           style: {
@@ -3929,7 +3920,7 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
     //   this.props.updateSearch(this.state.searchInput); 
     // }, 1000);
     function updateSearch(e) {
-      e.preventDefault();
+      // e.preventDefault();
       this.props.fetchSearchProducts(e.currentTarget.value).then(this.setState({
         searchInput: e.currentTarget.value
       })); // this.prepSearch(this.state.searchInput)

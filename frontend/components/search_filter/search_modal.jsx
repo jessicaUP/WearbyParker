@@ -23,7 +23,7 @@ class SearchModal extends React.Component {
   // }, 1000);
 
   updateSearch(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.fetchSearchProducts(e.currentTarget.value)
       .then(this.setState({ searchInput: e.currentTarget.value }))
 
