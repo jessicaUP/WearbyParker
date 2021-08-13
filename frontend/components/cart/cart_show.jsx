@@ -8,7 +8,8 @@ class CartShow extends React.Component {
 
     this.state = {
       cart: null,
-      check: true
+      check: true,
+      checkReload: true
     };
 
     this.totalCost = this.totalCost.bind(this);
@@ -19,6 +20,9 @@ class CartShow extends React.Component {
 
   componentDidMount() { 
     this.props.fetchCart()
+    if ( this.state.checkReload ) {
+      this.setState({ checkReload: false })
+    }
     
   }
 
@@ -41,6 +45,9 @@ class CartShow extends React.Component {
     } else {
       total = this.totalCost(cart.cartItems)
     }
+    // if ( this.state.checkReload ) {
+    //   this.setState({ checkReload: false })
+    // }
     // if (Object.values(cart).length === 0) return null;
     // let { cartItems } = this.props
     // if (cartItems !== []) return null;
