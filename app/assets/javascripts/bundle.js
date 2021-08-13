@@ -3519,8 +3519,10 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile-colors"
       }, product.colors.map(function (color, idx) {
+        debugger;
+        var selectedColor = _this3.state.selectedColor;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "circle-highlight ".concat(idx === 0 ? 'circle-selected' : ''),
+          className: "circle-highlight ".concat(color.id === selectedColor ? 'circle-selected' : ''),
           onClick: _this3.handleSelect(color.id, color.name, color.photo0Url)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "radio",
@@ -3911,6 +3913,7 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
     _this.renderProducts = _this.renderProducts.bind(_assertThisInitialized(_this));
+    _this.combineProduct = _this.combineProduct.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3945,6 +3948,46 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "combineProduct",
+    value: function combineProduct(products) {
+      var combined = {};
+      var men = [];
+      var women = [];
+      products.forEach(function (product) {
+        product.gender_id === 1 ? women.push(product) : men.push(product);
+      });
+      women.forEach(function (product) {
+        var colorStep = {};
+        product.colors.forEach(function (color) {
+          colorStep[color.color.id] = {
+            womenColor: color.id,
+            color_name: color.color_name,
+            photo0Url: color.photo0Url
+          };
+        });
+        combined[product.name] = {
+          colors: colorStep,
+          gender_id: product.gender_id,
+          id: product.id,
+          name: product.name
+        };
+      });
+      men.forEach(function (product) {
+        product.colors.forEach(function (color) {
+          combined[product.name]['colors'][color.color.id]['menColor'] = color.id;
+        });
+        combined[product.name]['menId'] = product.id;
+      });
+
+      var _final = Object.values(combined);
+
+      _final.forEach(function (product) {
+        product['colors'] = Object.values(product['colors']);
+      });
+
+      return _final;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -3953,6 +3996,7 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
       var products = this.props.products;
       var searchInput = this.state.searchInput;
       var message = '';
+      var finalProducts = [];
 
       if (products && searchInput === '') {
         products = [];
@@ -3964,7 +4008,27 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
             className: "no-search"
           }, "Hm. Doesn\u2019t look like we carry a frame by that name."));
         }
-      }
+      } else if (products) {
+        finalProducts = this.combineProduct(products);
+      } // let productElements = ''
+      // if ( finalProducts[0] ) {
+      //   productElements = finalProducts.map(product1 => {
+      //     let menInfo;
+      //     finalProducts[1].forEach(product2 => {
+      //       if (product1.name === product2.name) {
+      //         menInfo = product
+      //       }
+      //     });
+      //     return (
+      //       product.colors.map(color => {
+      //         return (
+      //           <SearchProduct product={product} color={color} closeModal={this.props.closeModal} menInfo={menInfo}/>
+      //         )
+      //       })
+      //     )
+      //   })
+      // }
+
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-bar"
@@ -3983,11 +4047,12 @@ var SearchModal = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateSearch
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "results-index"
-      }, products ? products.map(function (product) {
+      }, finalProducts ? finalProducts.map(function (product) {
         return product.colors.map(function (color) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_product__WEBPACK_IMPORTED_MODULE_2__.default, {
             product: product,
-            color: color
+            color: color,
+            closeModal: _this2.props.closeModal
           });
         });
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), message);
@@ -4108,26 +4173,30 @@ var SearchProduct = /*#__PURE__*/function (_React$Component) {
         this.setState({
           formPage: 2
         });
+      } else {
+        this.setState({
+          formPage: 1
+        });
       }
     }
   }, {
     key: "pageRedirect",
-    value: function pageRedirect(genderId) {
-      var _this$props = this.props,
-          product = _this$props.product,
-          color = _this$props.color;
-      location.assign("http://localhost:3000/#/products/".concat(product.id, "/color/").concat(color.id));
+    value: function pageRedirect(genderId, colorId) {
+      var closeModal = this.props.closeModal;
+      closeModal();
+      location.assign("http://localhost:3000/#/products/".concat(genderId, "/color/").concat(parseInt(colorId)));
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _this$props2 = this.props,
-          product = _this$props2.product,
-          color = _this$props2.color;
+      var _this$props = this.props,
+          product = _this$props.product,
+          color = _this$props.color;
       var formPage = this.state.formPage;
       var bottom;
+      debugger;
 
       if (formPage === 1) {
         bottom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -4136,19 +4205,21 @@ var SearchProduct = /*#__PURE__*/function (_React$Component) {
           className: "product-color"
         }, color.color_name));
       } else if (formPage === 2) {
+        var menEle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "selection-button",
+          onClick: function onClick() {
+            return _this2.pageRedirect(product.menId, color.menColor);
+          }
+        }, "Shop Men");
+        if (product.id === 5) menEle = '';
         bottom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "shop-btn-cont"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
           onClick: function onClick() {
-            return _this2.pageRedirect(1);
+            return _this2.pageRedirect(product.id, color.womenColor);
           }
-        }, "Shop Women"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "selection-button",
-          onClick: function onClick() {
-            return _this2.pageRedirect(2);
-          }
-        }, "Shop Men"));
+        }, "Shop Women"), menEle);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

@@ -1,6 +1,6 @@
 json.set! @gender.id do
   json.array! @products do |product|  
-    json.extract! product, :id, :name
+    json.extract! product, :id, :name, :gender_id
     json.colors do 
       json.array! product.products_colors do |color|
         if !@colors

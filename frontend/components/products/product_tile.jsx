@@ -60,13 +60,15 @@ class ProductTile extends React.Component {
           <h2 className='product-name'>{product.name}</h2>
         <div className='tile-colors'>
           {product.colors.map((color, idx) => {
+            debugger
+            let { selectedColor } = this.state;
             return(
-            <div className={`circle-highlight ${idx === 0 ? 'circle-selected' : ''}`} onClick={this.handleSelect(color.id, color.name, color.photo0Url)}>
+            <div className={`circle-highlight ${color.id === selectedColor ? 'circle-selected' : ''}`} onClick={this.handleSelect(color.id, color.name, color.photo0Url)}>
               <input type="radio"
               className='radio-color-options'
               name={`radio-${product.id}`} 
               key={color.id}
-                  defaultChecked={idx === 0}
+              defaultChecked={idx === 0}
               />  
               <div className={`select-circle ${color.id}-circle`} style={{ backgroundColor: colorCode(color.color_id) }}></div>
             </div> 

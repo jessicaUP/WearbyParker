@@ -88,67 +88,15 @@ class Api::GendersController < ApplicationController
       end
       total << first
       
-      # combined = final.map do |type_arr| 
-      #   array = type_arr.to_a
-      #   first = array.pop.to_a
-      #   while array.length > 0 do 
-      #     next_step = array.pop.to_a
-      #     first = (first & next_step)
-      #   end
-      #   first
-      # end
       
       @products = (@products.to_a & total[0])
-      
-    #   # FIRST TRY 
-
-    #   selectedFilters = params[:filters]
-    #   # @products = @products.joins(:frame_widths, :shapes, :colors, :materials, :nose_bridges)
-    #   filters = ['frame_widths', 'shapes', 'colors', 'materials', 'nose_bridges']
-    #   filters.map do |filter_name|
-    #     if selectedFilters[filter_name] 
-    #       options = selectedFilters[filter_name] 
-    #       debugger
-    #       options.map do |option|
-    #         Products[option]
-    #         # type = filter_name[0..-2]
-    #         # return @products.where([filter_name] => { [type]: option })
-    #       end
-
-    #       final = options.pop
-    #       while options.length > 0 do 
-    #         next_step = options.pop
-    #         final = final || next_step
-    #       end
-    #       return final
-    #     end
-
-    #   end 
-
-    #   final = filters.pop
-    #   while filters.length > 0 do
-    #     next_step = filters.pop
-    #     final = final && next_step
-    #   end
-    #   # filter_arr.map do |filter|
-    #   #   debugger
-    #   #   @products.where(:frame_widths => {frame_width: 'Wide'})
-    #   # end
-
-    #   @products = final
     end
 
 
     render :show
   end
   
-  # def index
-  #   product_params = gender_params
-  #   gender = Gender.find(params[:id]);
-  #   gender.filter_products(product_params[:filters])
-    
-  #   render :show
-  # end
+
 
   private 
 

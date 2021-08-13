@@ -22,12 +22,16 @@ class SearchProduct extends React.Component {
   handleClick() {
     if (this.state.formPage === 1) {
       this.setState({ formPage: 2 })
+    } else {
+      this.setState({ formPage: 1 })
     }
   }
 
-  pageRedirect(genderId) {
-    let { product, color } = this.props;
-    location.assign(`http://localhost:3000/#/products/${product.id}/color/${color.id}`)
+  pageRedirect(genderId, colorId) {
+    let { closeModal } = this.props;
+    closeModal();
+    location.assign(`http://localhost:3000/#/products/${genderId}/color/${parseInt(colorId)}`);
+
   }
 
 
@@ -36,7 +40,7 @@ class SearchProduct extends React.Component {
     let { formPage } = this.state;
 
     let bottom;
-
+    debugger
     if (formPage === 1) {
       bottom = (
         <>
@@ -45,10 +49,12 @@ class SearchProduct extends React.Component {
         </>
       )
     } else if (formPage === 2) {
+      let menEle = <button className='selection-button' onClick={() => this.pageRedirect(product.menId, color.menColor)}>Shop Men</button>
+      if (product.id === 5) menEle = ''
       bottom = (
         <div className='shop-btn-cont'>
-          <button className='selection-button' onClick={() => this.pageRedirect(1)}>Shop Women</button>
-          <button className='selection-button' onClick={() => this.pageRedirect(2)}>Shop Men</button>
+          <button className='selection-button' onClick={() => this.pageRedirect(product.id, color.womenColor)}>Shop Women</button>
+          {menEle}
         </div>
       )
     }

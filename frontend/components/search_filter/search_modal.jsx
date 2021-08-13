@@ -15,6 +15,7 @@ class SearchModal extends React.Component {
 
     this.updateSearch = this.updateSearch.bind(this);
     this.renderProducts = this.renderProducts.bind(this);
+    this.combineProduct = this.combineProduct.bind(this);
 
   };
 
@@ -46,12 +47,43 @@ class SearchModal extends React.Component {
     }
   }
 
+  combineProduct(products) {
+    let combined = {};
+    let men = [];
+    let women = [];
+    products.forEach(product => { product.gender_id === 1 ? women.push(product) : men.push(product) })
+    women.forEach(product => {
+      let colorStep = {}; 
+      product.colors.forEach(color => {
+        colorStep[color.color.id] = { womenColor: color.id, color_name: color.color_name, photo0Url: color.photo0Url }
+      })
+      combined[product.name] = {
+        colors: colorStep,
+        gender_id: product.gender_id,
+        id: product.id,
+        name: product.name
+      };
+    })
+    men.forEach(product => {
+      product.colors.forEach(color => {
+        combined[product.name]['colors'][color.color.id]['menColor'] = color.id
+      })
+      combined[product.name]['menId'] = product.id;
+    })
+    
+    let final = Object.values(combined);
+    final.forEach(product => { product['colors'] = Object.values(product['colors']) });
+
+    return final;
+  }
+
 
   render() {
     // this.renderProducts();
     let { products } = this.props;
     let { searchInput } = this.state;
-    let message = ''
+    let message = '';
+    let finalProducts = [];
 
     if (products && searchInput === '') {
       products = []
@@ -63,8 +95,28 @@ class SearchModal extends React.Component {
           </div>
         )
       }
+    } else if (products) {
+      finalProducts = this.combineProduct(products);
     }
-    
+
+    // let productElements = ''
+    // if ( finalProducts[0] ) {
+    //   productElements = finalProducts.map(product1 => {
+    //     let menInfo;
+    //     finalProducts[1].forEach(product2 => {
+    //       if (product1.name === product2.name) {
+    //         menInfo = product
+    //       }
+    //     });
+    //     return (
+    //       product.colors.map(color => {
+    //         return (
+    //           <SearchProduct product={product} color={color} closeModal={this.props.closeModal} menInfo={menInfo}/>
+    //         )
+    //       })
+    //     )
+    //   })
+    // }
 
     return (
       <div className='search-bar' >
@@ -73,10 +125,13 @@ class SearchModal extends React.Component {
         <input className='search-input' type="text" placeholder='Frame name' onChange={this.updateSearch} ></input>
         <hr></hr>
         <div className='results-index'>
-          {products ? products.map(product => 
-            product.colors.map(color => 
-              <SearchProduct product={product} color={color} />
-              )) : <></>  
+          {finalProducts ? finalProducts.map(product => {
+            return (
+              product.colors.map(color =>
+                <SearchProduct product={product} color={color} closeModal={this.props.closeModal} />
+              )
+            )
+            }) : <></>  
           }
         </div>
           {message}
