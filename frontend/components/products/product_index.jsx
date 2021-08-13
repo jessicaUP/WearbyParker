@@ -104,8 +104,8 @@ colorSelect(color) {
               <i class="fas fa-sort"></i>
               Filter
             </label>
-            <label className='label'>
-              <i class="fas fa-search"></i>
+            <label className='label' onClick={() => this.props.openModal('search')}>
+              <i class="fas fa-search" ></i>
               Search
             </label>
           </div>
