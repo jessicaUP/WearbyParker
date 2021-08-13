@@ -13,7 +13,7 @@ class Modal extends React.Component {
   }
 
   selectModal(modal) {
-    let { product, colorPhoto, pickedColor, addFunction } = modal.data;
+    let { product, photos, pickedColor, addFunction } = modal.data;
     
     switch (modal.modal) { 
       case 'search':
@@ -25,7 +25,7 @@ class Modal extends React.Component {
       case 'buyItem':
         return <AddItemForm 
                   product={product}
-                  colorPhoto={colorPhoto} 
+                  photos={photos} 
                   pickedColor={pickedColor}
                   createCartItem={addFunction}
                   closeModal={this.props.closeModal}

@@ -129,7 +129,7 @@ class ProductShow extends React.Component {
     let dataInfo = {
       addFunction: this.props.createCartItem,
       product,
-      colorPhoto: photo3,
+      photos: [photo1, photo2, photo3, photo4],
       // pickedColor: parseInt(this.state.colorId)
       pickedColor: this.state.currentColor
     }

@@ -279,30 +279,40 @@ class AddItemForm extends React.Component {
     
     // }
     
-  combineForm(formNum, photoName) {
+  combineForm(formNum) {
     window.addEventListener("resize", this.changeResize);
-    const { product } = this.props.product;
+    const { product, photos } = this.props;
     const { formPage } = this.state;
-    let photo = this.props[photoName];
+    let photo;
     let title;
     let page;
-
+    debugger
     switch (formNum) {
+
       case 1:
         // FRAME WIDTH
-        title = 'Select a frame width'
+        title = 'Select a frame width';
+        photo = photos[2];
+        break
       case 2:
         // PRESCRIPTION
         title = 'Select a prescription type'
+        photo = photos[2]
         break;
       case 3:
         // LENSE TYPE
         title = 'Select a lens type'
+        photo = photos[0]
         break;
       case 4:
         // LENSE MATERIAL
         title = 'Select a lens material'
-        break;
+        photo = photos[3]
+      break;
+      case 5:
+        // REVIEW
+        photo = photos[2]
+      break;
     }
 
     // let header1;
@@ -377,7 +387,7 @@ class AddItemForm extends React.Component {
     const { product } = this.props;
     const { formPage } = this.state;
     
-    return this.combineForm(formPage, 'colorPhoto');
+    return this.combineForm(formPage);
   }
 }
 

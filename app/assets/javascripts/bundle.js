@@ -1147,32 +1147,45 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "combineForm",
-    value: function combineForm(formNum, photoName) {
+    value: function combineForm(formNum) {
       window.addEventListener("resize", this.changeResize);
-      var product = this.props.product.product;
+      var _this$props = this.props,
+          product = _this$props.product,
+          photos = _this$props.photos;
       var formPage = this.state.formPage;
-      var photo = this.props[photoName];
+      var photo;
       var title;
       var page;
+      debugger;
 
       switch (formNum) {
         case 1:
           // FRAME WIDTH
           title = 'Select a frame width';
+          photo = photos[2];
+          break;
 
         case 2:
           // PRESCRIPTION
           title = 'Select a prescription type';
+          photo = photos[2];
           break;
 
         case 3:
           // LENSE TYPE
           title = 'Select a lens type';
+          photo = photos[0];
           break;
 
         case 4:
           // LENSE MATERIAL
           title = 'Select a lens material';
+          photo = photos[3];
+          break;
+
+        case 5:
+          // REVIEW
+          photo = photos[2];
           break;
       } // let header1;
       // let header2;
@@ -1247,7 +1260,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var product = this.props.product;
       var formPage = this.state.formPage;
-      return this.combineForm(formPage, 'colorPhoto');
+      return this.combineForm(formPage);
     }
   }]);
 
@@ -1314,7 +1327,8 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
       fwName: props.product.frame_widths[0].frame_width,
       selectedFrameWidth: props.product.frame_widths[0].id,
       tryonItem: {},
-      cartCount: props.cart.length
+      cartCount: props.cart.length // tryoncount: props.cart.t
+
     }; // this.handleSelect = this.handleSelect.bind(this);
 
     _this.tryonButton = _this.tryonButton.bind(_assertThisInitialized(_this));
@@ -1351,22 +1365,28 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "submitItem",
-    value: function submitItem(currentCount) {
+    value: function submitItem() {
       var _this3 = this;
 
       return function (e) {
         e.preventDefault();
-        var selectedFrameWidth = _this3.state.selectedFrameWidth;
+        var _this3$state = _this3.state,
+            selectedFrameWidth = _this3$state.selectedFrameWidth,
+            cartCount = _this3$state.cartCount;
         var id = _this3.props.product.id;
         var color = document.querySelector(".img-".concat(id));
         var colorId = parseInt(color.id);
 
-        if (currentCount === 5) {
-          // setTimeout(() => window.location.href = '#/carts', 3000)
+        if (cartCount === 5) {
           _this3.setState({
             formPage: 3
           });
 
+          setTimeout(function () {
+            return _this3.setState({
+              formPage: 0
+            });
+          }, 1000);
           return;
         }
 
@@ -1376,19 +1396,22 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           products_frame_width_id: selectedFrameWidth
         });
 
-        var cartCount = document.querySelector('.circle');
-        var count = cartCount.innerHTML;
-        cartCount.innerHTML = parseInt(count) + 1;
+        _this3.props.updateTryonCount(1);
+
+        var cartCountNum = document.querySelector('.circle');
+        var count = cartCountNum.innerHTML;
+        cartCountNum.innerHTML = parseInt(count) + 1;
         var iteminfo = {
           id: id,
           frameWidth: selectedFrameWidth,
           itemId: item.id
         };
+        var nextStep = cartCount + 1;
 
         _this3.setState({
           formPage: 2,
-          cartCount: currentCount + 1,
-          tryonItem: iteminfo
+          tryonItem: iteminfo,
+          cartCount: nextStep
         });
       };
     }
@@ -1410,9 +1433,30 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "deleteTryon",
+    value: function deleteTryon() {
+      var _this5 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var cartCount = document.querySelector('.circle');
+        var count = parseInt(cartCount.innerHTML);
+
+        _this5.props.updateTryonCount(-1);
+
+        cartCount.innerHTML = count - 1;
+
+        _this5.props.deleteTryonItem(_this5.state.tryonItem.itemId).then(_this5.setState({
+          formPage: 0,
+          tryonItem: {},
+          cartCount: cartCount - 1
+        }));
+      };
+    }
+  }, {
     key: "tryonButton",
     value: function tryonButton(product, cart) {
-      var _this5 = this;
+      var _this6 = this;
 
       var _this$state = this.state,
           formPage = _this$state.formPage,
@@ -1422,7 +1466,8 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
       if (checkPage) {
         cart.forEach(function (item) {
-          if (item.id === product.id) _this5.setState({
+          debugger;
+          if (item.id === product.id) _this6.setState({
             formPage: 2,
             fwName: item.frameWidth,
             tryonItem: item,
@@ -1440,7 +1485,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
             className: "icon-button",
             id: "tryon",
             onClick: function onClick() {
-              return _this5.setState({
+              return _this6.setState({
                 formPage: formPage + 1
               });
             }
@@ -1453,7 +1498,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
             className: "icon-button",
             id: "tryon",
             onClick: function onClick() {
-              return _this5.setState({
+              return _this6.setState({
                 formPage: 0
               });
             }
@@ -1466,14 +1511,13 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "option-box"
           }, this.props.product.frame_widths.map(function (fw) {
-            debugger;
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "radio",
               className: "hidden",
               id: "fw-".concat(fw.id),
               value: fw.frame_width,
-              checked: _this5.handleSelect(fw.frame_width),
-              onChange: _this5.update(fw.frame_width, fw.id)
+              checked: _this6.handleSelect(fw.frame_width),
+              onChange: _this6.update(fw.frame_width, fw.id)
             }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
               htmlFor: "fw-".concat(fw.id)
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1500,7 +1544,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
             ;
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "selection-button",
-            onClick: this.submitItem(this.state.cartCount)
+            onClick: this.submitItem()
           }, "Add to Home Try-On")));
           break;
 
@@ -1509,7 +1553,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
-            onClick: this.deleteTryon(tryonItem.itemId)
+            onClick: this.deleteTryon()
           }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "form-try",
             id: "added"
@@ -1529,7 +1573,11 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           _final = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "icon-button",
             id: "tryon",
-            onClick: this.deleteTryon(tryonItem.itemId)
+            onClick: function onClick() {
+              return _this6.setState({
+                formPage: 0
+              });
+            }
           }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "form-try",
             id: "added"
@@ -1541,24 +1589,6 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
       }
 
       return _final;
-    }
-  }, {
-    key: "deleteTryon",
-    value: function deleteTryon(id) {
-      var _this6 = this;
-
-      return function (e) {
-        e.preventDefault();
-        var cartCount = document.querySelector('.circle');
-        var count = parseInt(cartCount.innerHTML);
-        cartCount.innerHTML = count - 1;
-
-        _this6.props.deleteTryonItem(id).then(_this6.setState({
-          formPage: 0,
-          tryonItem: {},
-          cartCount: _this6.state.cartCount - 1
-        }));
-      };
     } // handleSelect(colorId, colorname, colorPhoto) {
     //   return (e) => {
     //     this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto })
@@ -1691,14 +1721,34 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
         className: "popup-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try more frames. Shop frames"));
       if (itemTryonArray.length === 5) tryonPopup = '';
+      var tryonSection = '';
+
+      if (itemTryonArray.length !== 0) {
+        tryonSection = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "option-description",
+          id: "amount-count"
+        }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), tryonPopup, itemTryonArray.map(function (cartItem, idx) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "item-cont",
+            id: "tryon-".concat(cartItem.id)
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_tryon_show__WEBPACK_IMPORTED_MODULE_2__.default, {
+            key: "tryon-".concat(cartItem.id, "-").concat(idx),
+            cartItem: cartItem,
+            deleteItem: _this2.props.deleteCartTryonItem
+          }));
+        }));
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item-index"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name",
         id: "price-num"
-      }, "Your Cart: $", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "cart-item-index"
-      }, itemArray.map(function (cartItem, idx) {
+      }, "Your Cart: $", total), itemArray.map(function (cartItem, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "item-cont",
           id: "item-".concat(cartItem.id)
@@ -1707,21 +1757,24 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
           cartItem: cartItem,
           deleteItem: _this2.props.deleteCartItem
         }));
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "option-description",
-        id: "amount-count"
-      }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), tryonPopup, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "cart-item-index"
-      }, itemTryonArray.map(function (cartItem, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "item-cont",
-          id: "tryon-".concat(cartItem.id)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_item_tryon_show__WEBPACK_IMPORTED_MODULE_2__.default, {
-          key: "tryon-".concat(cartItem.id, "-").concat(idx),
-          cartItem: cartItem,
-          deleteItem: _this2.props.deleteCartTryonItem
-        }));
-      })));
+      }), tryonSection), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "checkout-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "checkout-list"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-check"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Includes frame case and lens cloth")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        "class": "fas fa-check"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Free standard shipping and free returns"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "checkout-price"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "checkout-sub"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Free")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "checkout-sub"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "cart-button",
+        id: "buy-button"
+      }, "Next step")))));
     }
   }]);
 
@@ -1839,21 +1892,23 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       var count = parseInt(cartCount.innerHTML);
       cartCount.innerHTML = count - 1;
       var priceEle = document.querySelector("#price-num");
-      var newPrice = parseInt(priceEle.innerHTML.split('$')[-1]) - price;
+      var newPrice = parseInt(priceEle.innerHTML.split('$')[1]) - price;
       priceEle.innerHTML = "Your cart: $".concat(newPrice);
+      debugger;
       var ele = document.querySelector("#item-".concat(itemId));
       ele.remove();
     }
   }, {
     key: "deleteItem",
-    value: function deleteItem(itemId) {
+    value: function deleteItem(itemId, cost) {
       var _this2 = this;
 
-      var price = document.getElementById('price-num');
       return function (e) {
         e.preventDefault();
 
-        _this2.props.deleteItem(itemId).then(_this2.removePageItem(itemId)).then(location.reload());
+        _this2.props.deleteItem(itemId);
+
+        _this2.removePageItem(itemId, cost);
       };
     }
   }, {
@@ -2254,7 +2309,7 @@ var Modal = /*#__PURE__*/function (_React$Component) {
     value: function selectModal(modal) {
       var _modal$data = modal.data,
           product = _modal$data.product,
-          colorPhoto = _modal$data.colorPhoto,
+          photos = _modal$data.photos,
           pickedColor = _modal$data.pickedColor,
           addFunction = _modal$data.addFunction;
 
@@ -2268,7 +2323,7 @@ var Modal = /*#__PURE__*/function (_React$Component) {
         case 'buyItem':
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_2__.default, {
             product: product,
-            colorPhoto: colorPhoto,
+            photos: photos,
             pickedColor: pickedColor,
             createCartItem: addFunction,
             closeModal: this.props.closeModal
@@ -2586,16 +2641,33 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       tryon: false,
       tryoInfo: true,
       filter: false,
-      filterColor: null
+      filterColor: null,
+      tryonCount: 0,
+      step: true
     };
     _this.handleMenus = _this.handleMenus.bind(_assertThisInitialized(_this)); // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
 
     _this.colorSelect = _this.colorSelect.bind(_assertThisInitialized(_this));
+    _this.updateTryonCount = _this.updateTryonCount.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductIndex, [{
+    key: "updateTryonCount",
+    value: function updateTryonCount(num) {
+      if (this.state.step) {
+        this.setState({
+          tryonCount: num,
+          step: false
+        });
+      } else {
+        this.setState({
+          tryonCount: this.state.tryonCount + num
+        });
+      }
+    }
+  }, {
     key: "colorSelect",
     value: function colorSelect(color) {
       this.setState({
@@ -2632,6 +2704,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           cart = _this$props.cart;
       if (!genderId || !cart) return null;
       var productArray = Object.values(genderId)[0];
+      if (this.state.step) this.updateTryonCount(cart.length);
       productArray.sort();
       var cartArray = [];
       cart.forEach(function (item) {
@@ -2730,7 +2803,8 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           product: product,
           cart: cartArray,
           deleteTryonItem: _this3.props.deleteTryonItem,
-          createTryonItem: _this3.props.createTryonItem
+          createTryonItem: _this3.props.createTryonItem,
+          updateTryonCount: _this3.updateTryonCount
         }) : '');
       })));
     }
@@ -3029,7 +3103,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       var dataInfo = {
         addFunction: this.props.createCartItem,
         product: product,
-        colorPhoto: photo3,
+        photos: [photo1, photo2, photo3, photo4],
         // pickedColor: parseInt(this.state.colorId)
         pickedColor: this.state.currentColor
       };

@@ -6,26 +6,36 @@ import Filter from '../search_filter/filter';
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       tryon: false,
       tryoInfo: true,
       filter: false,
-      filterColor: null
+      filterColor: null,
+      tryonCount: 0,
+      step: true
+
     };
 
     this.handleMenus = this.handleMenus.bind(this);
     // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
     this.colorSelect = this.colorSelect.bind(this);
+    this.updateTryonCount = this.updateTryonCount.bind(this);
+
   };
 
+  updateTryonCount(num) {
+    if (this.state.step) {
+      this.setState({ tryonCount: num, step: false })
+    } else {
+      this.setState({ tryonCount: this.state.tryonCount + num })
+    }
 
+  }
 
-colorSelect(color) {
-
-  this.setState({ filterColor: color })
-}
+  colorSelect(color) {
+    this.setState({ filterColor: color })
+  }
 
   handleMenus(type, status) {
     return (e) => {
@@ -50,6 +60,7 @@ colorSelect(color) {
     let { genderId, cart } = this.props
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
+    if (this.state.step) this.updateTryonCount(cart.length)
     productArray.sort();
     let cartArray = [];
     cart.forEach(item => {
@@ -137,7 +148,9 @@ colorSelect(color) {
                     product={product}
                     cart={cartArray}
                     deleteTryonItem={this.props.deleteTryonItem}
-                    createTryonItem={this.props.createTryonItem} /> : ''}
+                    createTryonItem={this.props.createTryonItem}
+                    updateTryonCount={this.updateTryonCount}
+                  /> : ''}
                 </div>
               )
             })

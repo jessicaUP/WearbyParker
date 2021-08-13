@@ -17,7 +17,6 @@ class CartShow extends React.Component {
   }
 
 
-
   componentDidMount() { 
     this.props.fetchCart()
     if ( this.state.checkReload ) {
@@ -65,10 +64,33 @@ class CartShow extends React.Component {
 
     if ( itemTryonArray.length === 5 ) tryonPopup = '';
 
+    let tryonSection = '';
+    if ( itemTryonArray.length !== 0 ) {
+      tryonSection = (
+        <>
+        <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
+        { tryonPopup }
+          {
+            itemTryonArray.map((cartItem, idx) => {
+              return (
+                <div className='item-cont' id={`tryon-${cartItem.id}`} >
+                  <ItemTryonShow key={`tryon-${cartItem.id}-${idx}`}
+                    cartItem={cartItem}
+                    deleteItem={this.props.deleteCartTryonItem}
+                  />
+                </div>
+              )
+            })
+          }
+        </>
+      )
+    }
+
     return (
       <div className='cart-show'>
-        <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
+        <div className='cart-top'>
         <div className='cart-item-index'>
+          <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
           {
             itemArray.map((cartItem, idx) => {
               return (
@@ -80,25 +102,28 @@ class CartShow extends React.Component {
                 </div>
             )})
           }
+          {tryonSection}
+            </div>
+          <div className='checkout-info'>
+            <div className='checkout-list'>
+              <ul>
+                <li><i class="fas fa-check"></i><p>Includes frame case and lens cloth</p></li>
+                <li><i class="fas fa-check"></i><p>Free standard shipping and free returns</p></li>
+              </ul>
+            <div className='checkout-price'>
+              <div className='checkout-sub'>
+                <p>Shipping</p>
+                <p>Free</p>
+              </div>
+              <div className='checkout-sub'>
+                <p>Subtotal</p>
+                <p>${total}</p>
+              </div>
+            </div>
+            <button className='cart-button' id='buy-button' >Next step</button>
+          </div>
         </div>
-        <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
-        {tryonPopup}
-
-        <div className='cart-item-index'>
-          {
-            itemTryonArray.map((cartItem, idx) => {
-              return (
-                <div className='item-cont' id={`tryon-${cartItem.id}`} >
-                  <ItemTryonShow key={`tryon-${cartItem.id}-${idx}`}
-                    cartItem={cartItem}
-                    deleteItem={this.props.deleteCartTryonItem}
-                    />
-                </div>
-              )
-            })
-          }
         </div>
-
       </div>
     )
   }
