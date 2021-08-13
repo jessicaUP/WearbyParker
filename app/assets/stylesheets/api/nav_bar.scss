@@ -59,6 +59,7 @@
 .fas {
   color: lightgray;
 }
+
 .side-l {
   margin-top: 20px;
   margin-left: 90px;
@@ -141,3 +142,7 @@ p.ribbon {
 //   }
 // }
 
+#root {
+  width: 100%;
+  z-index: 0;
+}

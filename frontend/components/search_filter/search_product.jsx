@@ -40,7 +40,6 @@ class SearchProduct extends React.Component {
     let { formPage } = this.state;
 
     let bottom;
-    debugger
     if (formPage === 1) {
       bottom = (
         <>

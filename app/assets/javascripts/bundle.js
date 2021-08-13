@@ -1498,10 +1498,10 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
       formPage: 0,
       checkPage: true,
       selectedColor: props.color,
-      fwName: _this.props.product.frame_widths[0].frame_width,
-      selectedFrameWidth: 0,
+      fwName: props.product.frame_widths[0].frame_width,
+      selectedFrameWidth: props.product.frame_widths[0].id,
       tryonItem: {},
-      cartCount: _this.props.cart.length
+      cartCount: props.cart.length
     }; // this.handleSelect = this.handleSelect.bind(this);
 
     _this.tryonButton = _this.tryonButton.bind(_assertThisInitialized(_this));
@@ -1553,6 +1553,8 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           _this3.setState({
             formPage: 3
           });
+
+          return;
         }
 
         var item = _this3.props.createTryonItem({
@@ -1601,7 +1603,9 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           formPage = _this$state.formPage,
-          checkPage = _this$state.checkPage;
+          checkPage = _this$state.checkPage,
+          tryonItem = _this$state.tryonItem,
+          selectedFrameWidth = _this$state.selectedFrameWidth;
 
       if (checkPage) {
         cart.forEach(function (item) {
@@ -1613,10 +1617,6 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           });
         });
       }
-
-      var _this$state2 = this.state,
-          tryonItem = _this$state2.tryonItem,
-          fwName = _this$state2.fwName;
 
       var _final;
 
@@ -1653,6 +1653,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "option-box"
           }, this.props.product.frame_widths.map(function (fw) {
+            debugger;
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "radio",
               className: "hidden",
@@ -1665,7 +1666,8 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-cont"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-              "class": "fas fa-check-circle fa-lg"
+              "class": "fas fa-check-circle fa-lg",
+              id: "".concat(fw.id === selectedFrameWidth ? 'selected-check' : '')
             }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               className: "option-desc"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -1740,7 +1742,8 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
         _this6.props.deleteTryonItem(id).then(_this6.setState({
           formPage: 0,
-          tryonItem: {}
+          tryonItem: {},
+          cartCount: _this6.state.cartCount - 1
         }));
       };
     } // handleSelect(colorId, colorname, colorPhoto) {
@@ -2758,6 +2761,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       tryon: false,
+      tryoInfo: true,
       filter: false,
       filterColor: null
     };
@@ -2820,8 +2824,10 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           colorFilter = _this$state.colorFilter;
       var switchButton;
       var message = '';
+      var infoMessage = '';
 
       if (tryon) {
+        // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "switch-on",
           onClick: this.handleMenus('tryon', true)
@@ -3509,7 +3515,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
           filterColor = _this$state.filterColor;
       var colors = Object.values(product.colors);
       if (filterColor) this.filterCheck(filterColor);
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-tile"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
@@ -3527,7 +3532,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile-colors"
       }, product.colors.map(function (color, idx) {
-        debugger;
         var selectedColor = _this3.state.selectedColor;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "circle-highlight ".concat(color.id === selectedColor ? 'circle-selected' : ''),
@@ -4204,7 +4208,6 @@ var SearchProduct = /*#__PURE__*/function (_React$Component) {
           color = _this$props.color;
       var formPage = this.state.formPage;
       var bottom;
-      debugger;
 
       if (formPage === 1) {
         bottom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {

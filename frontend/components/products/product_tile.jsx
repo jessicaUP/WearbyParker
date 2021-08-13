@@ -48,7 +48,6 @@ class ProductTile extends React.Component {
     let { selectedColor, filterCheck, filterColor } = this.state;
     const colors = Object.values(product.colors);
     if (filterColor) this.filterCheck(filterColor);
-    debugger
 
     return (
       <div className='product-tile'>
@@ -60,7 +59,6 @@ class ProductTile extends React.Component {
           <h2 className='product-name'>{product.name}</h2>
         <div className='tile-colors'>
           {product.colors.map((color, idx) => {
-            debugger
             let { selectedColor } = this.state;
             return(
             <div className={`circle-highlight ${color.id === selectedColor ? 'circle-selected' : ''}`} onClick={this.handleSelect(color.id, color.name, color.photo0Url)}>

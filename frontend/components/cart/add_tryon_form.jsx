@@ -10,10 +10,10 @@ class AddTryon extends React.Component {
       formPage: 0,
       checkPage: true,
       selectedColor: props.color,
-      fwName: this.props.product.frame_widths[0].frame_width,
-      selectedFrameWidth: 0,
+      fwName: props.product.frame_widths[0].frame_width,
+      selectedFrameWidth: props.product.frame_widths[0].id,
       tryonItem: {},
-      cartCount: this.props.cart.length
+      cartCount: props.cart.length
 
     }
     // this.handleSelect = this.handleSelect.bind(this);
@@ -55,6 +55,7 @@ class AddTryon extends React.Component {
       if (currentCount === 5) {
         // setTimeout(() => window.location.href = '#/carts', 3000)
         this.setState({ formPage: 3 })
+        return
       }
       let item = this.props.createTryonItem({
         product_id: id,
@@ -84,7 +85,7 @@ class AddTryon extends React.Component {
   }
 
   tryonButton(product, cart) {
-    let { formPage, checkPage } = this.state;
+    let { formPage, checkPage, tryonItem, selectedFrameWidth } = this.state;
 
     if (checkPage) {
       cart.forEach(item => {
@@ -93,7 +94,7 @@ class AddTryon extends React.Component {
       })
     }
 
-    let { tryonItem, fwName } = this.state;
+
     let final;
     
     switch (formPage) {
@@ -114,6 +115,7 @@ class AddTryon extends React.Component {
               <hr />
               <div className='option-box'>
                 {this.props.product.frame_widths.map((fw) => {
+                  debugger
                   return (
                     <>
                       <input type='radio'
@@ -125,7 +127,7 @@ class AddTryon extends React.Component {
                       />
                       <label htmlFor={`fw-${fw.id}`}> 
                         <div className='option-cont' >
-                         <i class="fas fa-check-circle fa-lg"></i>
+                          <i class='fas fa-check-circle fa-lg' id={`${fw.id === selectedFrameWidth ? 'selected-check' : ''}`}></i>
                          <div className='option-desc'>
                            <p className='subtitle'>{fw.frame_width}</p>
                            <p className='option-description'>{fw.description}</p>
@@ -196,7 +198,7 @@ class AddTryon extends React.Component {
       
       cartCount.innerHTML = (count - 1);
       this.props.deleteTryonItem(id)
-        .then(this.setState({ formPage: 0, tryonItem: {} }))
+        .then(this.setState({ formPage: 0, tryonItem: {}, cartCount: (this.state.cartCount - 1) }))
     }
   }
 

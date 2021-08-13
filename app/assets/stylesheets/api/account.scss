@@ -1,5 +1,5 @@
 .account-container {
-  position: absolute;
+  position: relative;
   z-index: -2;
   left: 0;
   top: 130px;
@@ -10,7 +10,7 @@
   div.account {
     display: flex;
     flex-direction: column;
-    margin-top: 130px;
+    // margin-top: 130px;
     align-items: center;
   }
 

@@ -9,6 +9,7 @@ class ProductIndex extends React.Component {
     
     this.state = {
       tryon: false,
+      tryoInfo: true,
       filter: false,
       filterColor: null
     };
@@ -60,7 +61,9 @@ colorSelect(color) {
 
     let switchButton;
     let message = '';
+    let infoMessage = '';
     if (tryon) {
+      // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
       switchButton = (
         <>
           <label htmlFor='switch-on' onClick={this.handleMenus('tryon', true)} >
