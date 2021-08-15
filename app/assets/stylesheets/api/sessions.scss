@@ -17,9 +17,14 @@ button {
   top: 130px;
   right: 0;
   left: 0;
+  // height: 720px;
   justify-content: center;
   align-items: center;
   align-self: auto;
+
+  .blue-button:hover {
+    background-color: rgb(22, 114, 167);
+  }
 }
 
 .clear-true:hover {
@@ -43,6 +48,11 @@ h2.session-h2 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-top: 70px;
   text-align: center;
+}
+
+#new-here {
+  border-top: 1px solid lightgray;
+  padding: 60px;
 }
 
 .input {
@@ -85,14 +95,14 @@ h2.session-h2 {
 }
 
 .signup-form {
-  height: 314px;
+  // height: 314px;
   width: 386px;
   display: flex;
   justify-content: center;
 }
 
 .signin-form {
-  height: 314px;
+  height: auto;
   width: 386px;
   display: flex;
   flex-direction: column;

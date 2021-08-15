@@ -17,54 +17,11 @@
     font-size: 20px;
   }
 
-  .footer-links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid lightgray;
-    // align-content: center;
-    // justify-content: center;
-    // justify-self: center;
-    // justify-items: center;
-    // text-align: center;
-
-  }
-
-  .message-foot {
-    font-size: 12px;
-    margin: 10px;
-    width: 50%;
-    text-align: center;
-    align-self: center;
-    line-height: 20px;
-  }
-
-  .footer-icons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 0 40px;
 
 
-    a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
 
-    i {
-      color: lightgray;
-    }
 
-    p {
-      font-size: 12px;
-      margin: 10px;
-      color: black;
-    }
-  }
+
   
   .footer-about {
     display: grid;
@@ -95,3 +52,56 @@
 
   }
 }
+
+  .footer-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    // align-content: center;
+    // justify-content: center;
+    // justify-self: center;
+    // justify-items: center;
+    // text-align: center;
+
+  }
+  .footer-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 40px;
+
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    i {
+      color: lightgray;
+    }
+
+    p {
+      font-size: 12px;
+      margin: 10px;
+      color: black;
+    }
+    
+  }
+  .message-foot {
+    font-size: 12px;
+    margin: 10px;
+    width: 100%;
+    // align-content: center;
+    text-align: center;
+    // align-self: center;
+    // align-content: center;
+    // justify-items: center;
+    // justify-content: center;
+    // text-justify: center;
+    line-height: 20px;
+  }

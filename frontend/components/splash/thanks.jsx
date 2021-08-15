@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Links from './links';
 
 class Thanks extends React.Component {
   constructor(props) {
@@ -9,10 +9,17 @@ class Thanks extends React.Component {
   }
 
   render() {
-    let { deleteCart, cartId } = this.props;
+    let { deleteCart, cartId, closeModal } = this.props;
     return (
-      <div className='thanks' >
-        <button onClick={() => deleteCart(cartId)}></button>
+      <div className='thanks' onClick={() => closeModal()}>
+        <div className='thanks-cont' onClick={(e) => e.stopPropagation()}>
+          <button className='icon-button' id='thanks-exit' onClick={() => closeModal()}>X</button>
+          <Links type='thanks' />
+          <div className='thanks-buttons' >
+            {/* <button onClick={() => closeModal()}>Continue 'shopping' ;)</button> */}
+            <button onClick={() => deleteCart(cartId)}>Clear cart</button>
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Links from '../splash/links';
 
 
 class Footer extends React.Component {
@@ -14,30 +14,7 @@ class Footer extends React.Component {
     return (
       <div className='footer-cont'>
         <div className='footer-links'>
-          <h2 className='product-name'>Need a Software Engineer?</h2>
-          <p className='message-foot'>Checkout my links below and get in touch by email at uphoff.jessica@gmail.com!</p>
-          <div className='footer-icons'>
-            <a href="https://www.jessicauphoff.com" target="_blank">
-              <i class="fas fa-user-alt fa-2x"></i>
-              <p>Personal</p>
-            </a>
-            <a href="https://www.linkedin.com/in/jessica-uphoff-b2584b69/" target="_blank">
-              <i class="fab fa-linkedin-in fa-2x"></i>
-              <p>LinkedIn</p>
-            </a>
-            <a href="https://github.com/jessicaUP/WearbyParker" target="_blank">
-              <i class="fab fa-github fa-2x"></i>
-              <p>Github</p>
-            </a>
-            <a href="https://angel.co/u/jessica-uphoff" target="_blank">
-              <i class="fab fa-angellist fa-2x"></i>
-              <p>AngelList</p>
-            </a>
-            <a href="mailto:uphoff.jessica@gmail.com?subject=Looking to connect!" target="_blank">
-              <i class="fas fa-paper-plane fa-2x"></i>
-              <p>Email</p>
-            </a>
-          </div>
+          <Links type='footer' />
         </div>
         <div className='footer-about'>
           <div className='footer-section'>

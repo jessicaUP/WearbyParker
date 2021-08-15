@@ -32,7 +32,10 @@ class Modal extends React.Component {
                   closeModal={this.props.closeModal}
                   />
       case 'thanks':
-        return <Thanks closeModal={this.props.closeModal} deleteCart={this.props.deleteCart} cartId={cartId} />
+        return <Thanks 
+                  closeModal={this.props.closeModal}
+                  deleteCart={this.props.deleteCart}
+                  cartId={cartId} />
       default:
         return null;
     }

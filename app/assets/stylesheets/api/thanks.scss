@@ -1,0 +1,49 @@
+.thanks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // justify-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  h2 {
+    font-size: 40px;
+  }
+
+  .thanks-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 45%;
+    min-width: 590px;
+    background-color: white;
+
+    #thanks-exit {
+      position: absolute;
+      top: 15px;
+      right: 23px;
+    }
+
+    .thanks-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 45px;
+
+      button {
+        margin: 5px;
+
+      }
+
+      button:hover {
+        background-color: rgb(22, 114, 167);
+      }
+    }
+  }
+}
