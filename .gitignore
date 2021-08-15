@@ -10,8 +10,8 @@ bundle.js
 bundle.js.map
 
 # Ignore all logfiles and tempfiles.
-log/*
-log/development.log
+# log/*
+# log/development.log
 /tmp/*
 tmp
 !/log/.keep
