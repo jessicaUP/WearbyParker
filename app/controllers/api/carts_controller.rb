@@ -16,17 +16,12 @@ class Api::CartsController < ApplicationController
     render :show
   end
 
-  # def create
- 
-  #   @cart = cart
-  #   @cart.update({ user_id: current_user }) if current_user
-      
+  def destroy 
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+    render json: 'SUCCESS'
+  end
 
-  #   if @cart.save
-  #     render :show
-  #   else
-  #     render json: @cart.errors.full_messages, status: 422
-  #   end
-  # end
+
 
 end

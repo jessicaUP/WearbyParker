@@ -120,7 +120,7 @@ class CartShow extends React.Component {
                 <p>${total}</p>
               </div>
             </div>
-            <button className='cart-button' id='buy-button' >Next step</button>
+            <button className='cart-button' id='buy-button' onClick={() => this.props.openModal('thanks', { cartId: cart.id })} >Next step</button>
           </div>
         </div>
         </div>

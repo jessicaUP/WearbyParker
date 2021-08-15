@@ -286,7 +286,6 @@ class AddItemForm extends React.Component {
     let photo;
     let title;
     let page;
-    debugger
     switch (formNum) {
 
       case 1:

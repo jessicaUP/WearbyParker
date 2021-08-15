@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchModalContainer from '../search_filter/search_modal_container'
 import AddItemForm from '../cart/add_item_form'
+import Thanks from '../splash/thanks'
 
 
 class Modal extends React.Component {
@@ -13,7 +14,7 @@ class Modal extends React.Component {
   }
 
   selectModal(modal) {
-    let { product, photos, pickedColor, addFunction } = modal.data;
+    let { product, photos, pickedColor, addFunction, cartId } = modal.data;
     
     switch (modal.modal) { 
       case 'search':
@@ -30,6 +31,8 @@ class Modal extends React.Component {
                   createCartItem={addFunction}
                   closeModal={this.props.closeModal}
                   />
+      case 'thanks':
+        return <Thanks closeModal={this.props.closeModal} deleteCart={this.props.deleteCart} cartId={cartId} />
       default:
         return null;
     }

@@ -104,7 +104,6 @@ class AddTryon extends React.Component {
 
     if (checkPage) {
       cart.forEach(item => {
-        debugger
         if (item.id === product.id)
           this.setState({ formPage: 2, fwName: item.frameWidth, tryonItem: item, checkPage: false });
       })
