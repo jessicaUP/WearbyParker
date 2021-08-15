@@ -8,8 +8,12 @@ class CartShow extends React.Component {
 
     this.state = {
       cart: null,
+<<<<<<< HEAD
       check: true,
       checkReload: true
+=======
+      check: true
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     };
 
     this.totalCost = this.totalCost.bind(this);
@@ -17,11 +21,17 @@ class CartShow extends React.Component {
   }
 
 
+<<<<<<< HEAD
   componentDidMount() { 
     this.props.fetchCart()
     if ( this.state.checkReload ) {
       this.setState({ checkReload: false })
     }
+=======
+
+  componentDidMount() { 
+    this.props.fetchCart()
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     
   }
 
@@ -44,9 +54,12 @@ class CartShow extends React.Component {
     } else {
       total = this.totalCost(cart.cartItems)
     }
+<<<<<<< HEAD
     // if ( this.state.checkReload ) {
     //   this.setState({ checkReload: false })
     // }
+=======
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     // if (Object.values(cart).length === 0) return null;
     // let { cartItems } = this.props
     // if (cartItems !== []) return null;
@@ -64,6 +77,7 @@ class CartShow extends React.Component {
 
     if ( itemTryonArray.length === 5 ) tryonPopup = '';
 
+<<<<<<< HEAD
     let tryonSection = '';
     if ( itemTryonArray.length !== 0 ) {
       tryonSection = (
@@ -91,6 +105,12 @@ class CartShow extends React.Component {
         <div className='cart-top'>
         <div className='cart-item-index'>
           <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
+=======
+    return (
+      <div className='cart-show'>
+        <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
+        <div className='cart-item-index'>
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
           {
             itemArray.map((cartItem, idx) => {
               return (
@@ -102,6 +122,7 @@ class CartShow extends React.Component {
                 </div>
             )})
           }
+<<<<<<< HEAD
           {tryonSection}
             </div>
           <div className='checkout-info'>
@@ -124,6 +145,27 @@ class CartShow extends React.Component {
           </div>
         </div>
         </div>
+=======
+        </div>
+        <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
+        {tryonPopup}
+
+        <div className='cart-item-index'>
+          {
+            itemTryonArray.map((cartItem, idx) => {
+              return (
+                <div className='item-cont' id={`tryon-${cartItem.id}`} >
+                  <ItemTryonShow key={`tryon-${cartItem.id}-${idx}`}
+                    cartItem={cartItem}
+                    deleteItem={this.props.deleteCartTryonItem}
+                    />
+                </div>
+              )
+            })
+          }
+        </div>
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
       </div>
     )
   }

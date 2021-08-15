@@ -1,4 +1,5 @@
 .cart-show {
+<<<<<<< HEAD
   position: relative;
   display: flex;
   flex-direction: column;
@@ -68,6 +69,22 @@
     width: 65%;
     align-items: center;
     margin: 0 75px;
+=======
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 125px;
+  right: 0;
+  left: 0;
+  background-color: rgb(248, 248, 248);
+  
+  .cart-item-index {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 660px;
+    align-items: center;
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
   }
     
@@ -95,6 +112,7 @@
   display: flex;
   position: relative;
   margin: 7px;
+<<<<<<< HEAD
   width: 100%;
   height: 400px;
   background-color: white;
@@ -102,6 +120,12 @@
   -moz-box-shadow:    0 0 10px 0 rgb(230, 230, 230);
     -webkit-box-shadow: 0 0 10px 0 rgb(230, 230, 230);
       box-shadow:         0 0 10px 0 rgb(230, 230, 230);
+=======
+  width: 640px;
+  height: 400px;
+  background-color: white;
+  padding: 10px;
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
   .item-picture {
     width: 55%;
@@ -114,24 +138,39 @@
     }
   }
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   .cart-item-desc {
     display: flex;
     flex-direction: column;
     width: 45%;
     padding: 10px;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     .section-title {
       margin-top: 30px;
       margin-bottom: 10px;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     .option-color {
       font-size: 15px;
       margin: 0;
       margin-bottom: 30px;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     .sub-total {
       border-top: 1px solid lightgray;
       position: unset;
@@ -153,7 +192,11 @@
   border-radius: 10px;
   justify-content: center;
   margin-bottom: 8px;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   p {
     font-size: 12px;
     text-align: center;
@@ -172,8 +215,11 @@
 
 #sub-final {
   justify-content: flex-end;
+<<<<<<< HEAD
 }
 
 .item-cont {
   width: 100%;
+=======
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 }

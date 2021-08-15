@@ -4,9 +4,22 @@ class Api::CartItemsController < ApplicationController
     
     @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
 
+<<<<<<< HEAD
     @item = CartItem.create(cart_item_params)
     @item.update({ cart_id: @cart.id })
     
+=======
+    if !@cart
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
+
+    @item = CartItem.create(cart_item_params)
+    @item.update({ cart_id: @cart.id })
+    
+
+    
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     if @item.save!
       @cart_items = @cart.cart_items
       @tryon_items = @cart.cart_tryon_items

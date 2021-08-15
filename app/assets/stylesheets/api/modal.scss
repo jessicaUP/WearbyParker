@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 .modal-background::-webkit-scrollbar {
   display: none;
 }
 
 .modal-background {
   position: fixed;
+=======
+.modal-background {
+  position: absolute;
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   // background-color: rgb(255, 255, 255);
   // opacity: .5;
   top: 0;
@@ -11,6 +16,7 @@
   right: 0;
   bottom: 0;
   z-index: 5;
+<<<<<<< HEAD
   padding-top: 50px;
   overflow: scroll;
 
@@ -42,3 +48,6 @@
   }
 }
 
+=======
+}
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a

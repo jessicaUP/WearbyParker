@@ -1,8 +1,12 @@
 .filter-cont {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+=======
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 
   .radio-selections {
@@ -32,7 +36,10 @@
   
   .option-btn {
     background-color: white;
+<<<<<<< HEAD
     border-radius: 5px;
+=======
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     width: 160px;
     height: 120px;
     color: black;
@@ -57,7 +64,11 @@
 
   }
 
+<<<<<<< HEAD
   #nose_bridge-btn {
+=======
+  #noseBridge-btn {
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     width: 420px;
     height: 120px;
   }
@@ -79,7 +90,16 @@
   height: auto;
 }
 
+<<<<<<< HEAD
 
+=======
+.filter-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 #color-options {
   width: 80%;
@@ -102,6 +122,7 @@
   .reset-cont {
     display: flex;
     flex-direction: row;
+<<<<<<< HEAD
     justify-items: center;
     align-items: center;
   }
@@ -148,3 +169,19 @@
   padding-bottom: 5px;
   border-bottom: 1px solid black;
 }
+=======
+  }
+
+}
+.circle {
+  text-align: center;
+  align-self: baseline;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: rgb(71, 85, 131);
+  border-radius: 100%;
+
+
+}
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a

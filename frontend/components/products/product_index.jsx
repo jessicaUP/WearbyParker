@@ -6,6 +6,7 @@ import Filter from '../search_filter/filter';
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
+<<<<<<< HEAD
     this.state = {
       tryon: false,
       tryoInfo: true,
@@ -14,11 +15,18 @@ class ProductIndex extends React.Component {
       tryonCount: 0,
       step: true
 
+=======
+    
+    this.state = {
+      tryon: false,
+      filter: false
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     };
 
     this.handleMenus = this.handleMenus.bind(this);
     // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
+<<<<<<< HEAD
     this.colorSelect = this.colorSelect.bind(this);
     this.updateTryonCount = this.updateTryonCount.bind(this);
 
@@ -37,6 +45,10 @@ class ProductIndex extends React.Component {
     this.setState({ filterColor: color })
   }
 
+=======
+  };
+
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   handleMenus(type, status) {
     return (e) => {
       // e.preventDefault();
@@ -60,21 +72,32 @@ class ProductIndex extends React.Component {
     let { genderId, cart } = this.props
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
+<<<<<<< HEAD
     if (this.state.step) this.updateTryonCount(cart.length)
     productArray.sort();
+=======
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     let cartArray = [];
     cart.forEach(item => {
       cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
     });
 
+<<<<<<< HEAD
     let { tryon, filter, colorFilter } = this.state;
+=======
+    let { tryon, filter } = this.state;
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     
 
     let switchButton;
     let message = '';
+<<<<<<< HEAD
     let infoMessage = '';
     if (tryon) {
       // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
+=======
+    if (tryon) {
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
       switchButton = (
         <>
           <label htmlFor='switch-on' onClick={this.handleMenus('tryon', true)} >
@@ -102,10 +125,18 @@ class ProductIndex extends React.Component {
     };
 
 
+<<<<<<< HEAD
     return (
       <div className='product-show'>
         <div className='banner-cont' >
           <img src={parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
+=======
+
+    return (
+      <div className='product-show'>
+        <div className='banner-cont' >
+          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' /> 
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
           <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
         </div>
 
@@ -118,13 +149,19 @@ class ProductIndex extends React.Component {
               <i class="fas fa-sort"></i>
               Filter
             </label>
+<<<<<<< HEAD
             <label className='label' onClick={() => this.props.openModal('search')}>
               <i class="fas fa-search" ></i>
+=======
+            <label className='label'>
+              <i class="fas fa-search"></i>
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
               Search
             </label>
           </div>
         </div>
         {message}
+<<<<<<< HEAD
         {filter ? <Filter genderId={parseInt(this.props.match.params.genderId)} 
                           key='filter' 
                           fetchGenderSearchProducts={this.props.fetchGenderSearchProducts}
@@ -133,6 +170,9 @@ class ProductIndex extends React.Component {
                           colorSelect={this.colorSelect}
 
                           /> : ''}
+=======
+        {filter ? <Filter key='filter' /> : ''}
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
         <div className='product-index'>
           {
             productArray.map((product, idx) => {
@@ -142,15 +182,23 @@ class ProductIndex extends React.Component {
                     key={idx}
                     product={product}
                     cart={cart}
+<<<<<<< HEAD
                     switchOn={tryon}
                     filterColor={colorFilter}/>
+=======
+                    switchOn={tryon}/>
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
                   {tryon ? <AddTryon 
                     product={product}
                     cart={cartArray}
                     deleteTryonItem={this.props.deleteTryonItem}
+<<<<<<< HEAD
                     createTryonItem={this.props.createTryonItem}
                     updateTryonCount={this.updateTryonCount}
                   /> : ''}
+=======
+                    createTryonItem={this.props.createTryonItem} /> : ''}
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
                 </div>
               )
             })

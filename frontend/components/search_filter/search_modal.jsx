@@ -1,7 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import { NavLink } from 'react-router-dom';
 import { FILTERS } from '../../util/filter_options';
 import SearchProduct from './search_product';
+=======
+import { FILTERS } from '../../util/filter_options';
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 
 class SearchModal extends React.Component {
@@ -9,6 +13,7 @@ class SearchModal extends React.Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       searchInput: ''
 
     };
@@ -135,6 +140,25 @@ class SearchModal extends React.Component {
           }
         </div>
           {message}
+=======
+
+
+    };
+
+
+  };
+
+
+  render() {
+
+
+    return (
+      <div className='search-bar' >
+        <input className='search-input' type="text" placeholder='Frame name' onChange={this.updateState} onFocus={this.searchingTime}></input>
+        <div className='results-index'>
+          <h2>MODAL WORKS</h2>
+        </div>
+>>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
       </div>
     )
   }
