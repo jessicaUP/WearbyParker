@@ -13,9 +13,12 @@ json.set! @gender.id do
       end
     end
     json.frame_widths do 
-      json.array! product.frame_widths do |frame_width|
-        json.extract! frame_width, :frame_width, :description, :id
+      json.array! product.products_frame_widths do |frame_width|
+        json.extract! frame_width, :id, :frame_width_id
+        json.extract! frame_width.frame_width, :description, :frame_width
+        # json.extract! frame_width.frame_width, :description, :frame_width
       end
     end
   end
 end
+

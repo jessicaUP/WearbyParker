@@ -852,7 +852,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       var price = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
       var baseCost = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       return function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         var costArr = _this2.state.cost;
         var nextCost;
 
@@ -928,41 +928,46 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           if (color.color_name === colorName) {
             colorId = color.id;
           }
-        });
+        }); // debugger
+        // this.props.product.frameWidth.forEach(color => {
+        //   if (color.color_name === colorName) {
+        //     colorId = color.id
+        //   } 
+        // });
+        // let fw_id;
+        // switch (this.state.cartItem.frame_width) {
+        //   // GET THROUGH BACKEND WHEN HAVE TIME
+        //   case 'Extra narrow':
+        //     fw_id = 1;
+        //     break;
+        //   case 'Narrow':
+        //     fw_id = 2;
+        //     break;
+        //   case 'Medium':
+        //     fw_id = 3;
+        //     break;
+        //   case 'Wide':
+        //     fw_id = 4;
+        //     break;
+        //   case 'Extra wide':
+        //     fw_id = 5;
+        //     break;
+        // }
 
-        var fw_id;
 
-        switch (_this6.state.cartItem.frame_width) {
-          // GET THROUGH BACKEND WHEN HAVE TIME
-          case 'Extra narrow':
-            fw_id = 1;
-            break;
-
-          case 'Narrow':
-            fw_id = 2;
-            break;
-
-          case 'Medium':
-            fw_id = 3;
-            break;
-
-          case 'Wide':
-            fw_id = 4;
-            break;
-
-          case 'Extra wide':
-            fw_id = 5;
-            break;
-        }
+        var _this6$state = _this6.state,
+            cartItem = _this6$state.cartItem,
+            totalPrice = _this6$state.totalPrice;
+        var product = _this6.props.product;
 
         _this6.props.createCartItem({
-          product_id: _this6.props.product.id,
-          price: _this6.state.totalPrice,
+          product_id: product.id,
+          price: totalPrice,
           products_color_id: colorId,
-          products_frame_width_id: fw_id,
-          prescription_type: _this6.state.cartItem.prescription_type,
-          lense_type: _this6.state.cartItem.lense_type,
-          lense_material: _this6.state.cartItem.lense_material
+          products_frame_width_id: parseInt(cartItem.frame_width),
+          prescription_type: cartItem.prescription_type,
+          lense_type: cartItem.lense_type,
+          lense_material: cartItem.lense_material
         }); // this.props.pickedColor
         // this.props.product.colors
         // REDIRECT GOES HERE
@@ -1018,7 +1023,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
               type: 'frame_width',
               name: frameWidth.frame_width,
               priceName: '',
-              desc: frameWidth.description
+              desc: frameWidth.description,
+              products_frame_width_id: frameWidth.id
             };
           });
           break;
@@ -1054,9 +1060,9 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description",
             id: "p-option"
-          }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          }, parseInt(cartItem.frame_width)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
             type: "hidden",
-            value: cartItem.frame_width.id
+            value: parseInt(cartItem.frame_width)
           }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "cart-selections"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
@@ -1125,14 +1131,16 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
             name = option.name,
             price = option.price,
             priceName = option.priceName,
-            desc = option.desc;
+            desc = option.desc,
+            products_frame_width_id = option.products_frame_width_id;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart-options",
-          id: idx
+          id: idx,
+          key: "".concat(name, "-").concat(idx)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
           onClick: _this7.handleClick(type, nextPage, price, product.price),
-          value: name
+          value: _this7.state.formPage === 1 ? products_frame_width_id : name
         }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "option-price"
         }, priceName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -1509,6 +1517,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "option-box"
           }, this.props.product.frame_widths.map(function (fw) {
+            debugger;
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "radio",
               className: "hidden",
@@ -1903,7 +1912,6 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
       var priceEle = document.querySelector("#price-num");
       var newPrice = parseInt(priceEle.innerHTML.split('$')[1]) - price;
       priceEle.innerHTML = "Your cart: $".concat(newPrice);
-      debugger;
       var ele = document.querySelector("#item-".concat(itemId));
       ele.remove();
     }
@@ -1951,7 +1959,7 @@ var CartItemShow = /*#__PURE__*/function (_React$Component) {
         id: "p-option"
       }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "hidden",
-        value: cartItem.frame_width.id
+        value: cartItem.products_frame_width_id
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-selections"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
@@ -2100,16 +2108,16 @@ var CartTryonItemShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "section-title",
         id: "item-name"
-      }, cartItem.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-color"
       }, cartItem.color_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "subtitle"
       }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-description",
         id: "p-option"
-      }, cartItem.framewidths.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, cartItem.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "hidden",
-        value: cartItem.framewidths.id
+        value: cartItem.products_frame_width_id
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "sub-total",
         id: "sub-final"
@@ -2367,7 +2375,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
-  debugger;
   return {
     modal: state.ui.modal
   };
@@ -2594,6 +2601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart_add_tryon_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cart/add_tryon_form */ "./frontend/components/cart/add_tryon_form.jsx");
 /* harmony import */ var _product_tile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_tile */ "./frontend/components/products/product_tile.jsx");
 /* harmony import */ var _search_filter_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search_filter/filter */ "./frontend/components/search_filter/filter.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2617,6 +2625,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2702,8 +2711,8 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           cart = _this$props.cart;
       if (!genderId || !cart) return null;
       var productArray = Object.values(genderId)[0];
-      if (this.state.step) this.updateTryonCount(cart.length);
-      productArray.sort();
+      if (this.state.step) this.updateTryonCount(cart.length); // productArray.sort();
+
       var cartArray = [];
       cart.forEach(function (item) {
         cartArray.push({
@@ -2737,9 +2746,11 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
             className: "product-name",
             id: "message-text"
-          }, "Find your perfect frames! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), " Add to your Cart and try-on at home for free."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          }, "Find your perfect frames! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), " Add to your Cart and try-on at home for free."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/carts"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
             className: "selection-button"
-          }, "View Cart"));
+          }, "View Cart")));
         }
       } else {
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
@@ -2753,7 +2764,20 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null)));
       }
 
-      ;
+      ; // let yellow = productArray[9];
+      // productArray.splice(9, 1)
+      // productArray.push(yellow)
+      // let change = yellow.colors[3];
+      // let change2 = yellow.colors[1];
+      // yellow.colors[3] = change2
+      // yellow.colors[1] = change
+
+      var picks = [17, 18, 19, 20];
+      var jessPicks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: window.jess,
+        className: "jess-picks",
+        alt: "jess-edits"
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2762,9 +2786,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         src: parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3,
         className: "img-banner",
         alt: "woman-in-glasses"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "banner-over"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        className: "logo",
+        id: "logo-search"
+      }, genderId === 1 ? 'MEN\'S EYEGLASSES' : 'WOMEN\'S EYEGLASSES'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name"
-      }, "Shop frames below or pick five pairs to try for free")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Shop frames below or pick five pairs to try for free"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tryon-ribbon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "switch-button"
@@ -2793,8 +2822,10 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "product-index"
       }, productArray.map(function (product, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "product-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_tile__WEBPACK_IMPORTED_MODULE_2__.default, {
+          className: "product-cont",
+          id: "product-".concat(product.id),
+          key: "".concat(product.id, "-").concat(idx)
+        }, picks.includes(product.id) ? jessPicks : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_tile__WEBPACK_IMPORTED_MODULE_2__.default, {
           key: idx,
           product: product,
           cart: cart,
@@ -3368,24 +3399,31 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       fwName: '',
       selectedFrameWidth: 0,
       filterColor: null,
-      filterCheck: false // tryonIds: props.tryonIds,
+      filterCheck: true // tryonIds: props.tryonIds,
       // tryon: props.switchOn,
       // tryonItem: ''
 
     };
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
-    _this.filterCheck = _this.filterCheck.bind(_assertThisInitialized(_this)); // this.color = this.tryonButton.bind(this);
+    _this.imageFilter = _this.imageFilter.bind(_assertThisInitialized(_this)); // this.filterCheck = this.filterCheck.bind(this);
+    // this.color = this.tryonButton.bind(this);
     // this.colorSelect = this.colorSelect.bind(this);
 
     return _this;
   }
 
   _createClass(ProductTile, [{
-    key: "filterCheck",
-    value: function filterCheck(filterColor) {
+    key: "imageFilter",
+    value: // filterCheck(filterColor) {
+    //   this.setState({ filterCheck: true, selectedColor: filterColor })
+    // }
+    function imageFilter() {
+      var productEles = document.getElementsByClassName('.tile-colors');
+      productEles.forEach(function (element) {
+        element[0].click();
+      });
       this.setState({
-        filterCheck: true,
-        selectedColor: filterColor
+        filterCheck: false
       });
     }
   }, {
@@ -3394,6 +3432,8 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
+        e.prevetDefault();
+
         _this2.setState({
           selectedColor: colorId,
           colorName: colorname,
@@ -3410,36 +3450,39 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           selectedColor = _this$state.selectedColor,
           filterCheck = _this$state.filterCheck,
-          filterColor = _this$state.filterColor;
+          filterColor = _this$state.filterColor,
+          colorPhoto = _this$state.colorPhoto,
+          colorName = _this$state.colorName;
       var colors = Object.values(product.colors);
-      if (filterColor) this.filterCheck(filterColor);
+      if (filterColor && filterCheck) this.imageFilter();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-tile"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
-        to: "/products/".concat(product.id, "/color/").concat(this.state.selectedColor),
-        colorname: this.state.colorName
+        to: "/products/".concat(product.id, "/color/").concat(selectedColor),
+        colorname: colorName
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile-image"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "img-".concat(product.id),
-        src: this.state.colorPhoto,
-        id: this.state.selectedColor,
+        src: "".concat(colorPhoto, "#").concat(new Date().getTime()),
+        id: selectedColor,
         alt: ""
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name"
       }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile-colors"
       }, product.colors.map(function (color, idx) {
-        var selectedColor = _this3.state.selectedColor;
+        // let { selectedColor } = this.state;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "circle-highlight ".concat(color.id === selectedColor ? 'circle-selected' : ''),
+          key: "".concat(color.id, "-").concat(selectedColor),
           onClick: _this3.handleSelect(color.id, color.name, color.photo0Url)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "radio",
           className: "radio-color-options",
           name: "radio-".concat(product.id),
           key: color.id,
-          defaultChecked: idx === 0
+          defaultChecked: color.id === selectedColor
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "select-circle ".concat(color.id, "-circle"),
           style: {
@@ -4801,12 +4844,27 @@ var Thanks = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Thanks);
 
   function Thanks(props) {
+    var _this;
+
     _classCallCheck(this, Thanks);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.clearCart = _this.clearCart.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Thanks, [{
+    key: "clearCart",
+    value: function clearCart() {
+      var _this2 = this;
+
+      return function () {
+        _this2.props.closeModal();
+
+        deleteCart(cartId);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -4834,9 +4892,7 @@ var Thanks = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "thanks-buttons"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: function onClick() {
-          return deleteCart(cartId);
-        }
+        onClick: this.clearCart
       }, "Clear cart"))));
     }
   }]);
@@ -5544,6 +5600,11 @@ var colorOptions = [{
   type: 'black',
   name: 'Black',
   color: 'rgb(0, 0, 0)'
+}, {
+  optionId: 13,
+  type: 'yellow',
+  name: 'Yellow',
+  color: 'rgb(255, 235, 56)'
 }, {
   optionId: 2,
   type: 'tortoise',

@@ -6,7 +6,7 @@ class Api::CartItemsController < ApplicationController
 
     @item = CartItem.create(cart_item_params)
     @item.update({ cart_id: @cart.id })
-    
+
     if @item.save!
       @cart_items = @cart.cart_items
       @tryon_items = @cart.cart_tryon_items

@@ -8,9 +8,9 @@ class ProductsFrameWidth < ApplicationRecord
     class_name: :FrameWidth
 
   belongs_to :product,
-  foreign_key: :product_id,
-  primary_key: :id,
-  class_name: :Product
+    foreign_key: :product_id,
+    primary_key: :id,
+    class_name: :Product
 
   has_many :cart_items,
     foreign_key: :products_frame_width_id,

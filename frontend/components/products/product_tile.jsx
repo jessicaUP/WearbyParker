@@ -18,7 +18,7 @@ class ProductTile extends React.Component {
       fwName: '',
       selectedFrameWidth: 0,
       filterColor: null,
-      filterCheck: false
+      filterCheck: true
       // tryonIds: props.tryonIds,
       // tryon: props.switchOn,
       // tryonItem: ''
@@ -26,47 +26,62 @@ class ProductTile extends React.Component {
 
     }
     this.handleSelect = this.handleSelect.bind(this);
-    this.filterCheck = this.filterCheck.bind(this);
+    this.imageFilter = this.imageFilter.bind(this);
+    // this.filterCheck = this.filterCheck.bind(this);
     // this.color = this.tryonButton.bind(this);
     // this.colorSelect = this.colorSelect.bind(this);
 
   };
 
-  filterCheck(filterColor) {
-    this.setState({ filterCheck: true, selectedColor: filterColor })
+  // filterCheck(filterColor) {
+  //   this.setState({ filterCheck: true, selectedColor: filterColor })
+  // }
+
+  imageFilter() {
+    let productEles = document.getElementsByClassName('.tile-colors');
+    productEles.forEach(element => {
+      element[0].click();
+        });
+    this.setState({filterCheck: false})
+    
   }
 
 
   handleSelect(colorId, colorname, colorPhoto) {
     return (e) => {
+      e.prevetDefault();
       this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto})
     }
   };
 
   render() {
     let { product } = this.props;
-    let { selectedColor, filterCheck, filterColor } = this.state;
+    let { selectedColor, filterCheck, filterColor, colorPhoto, colorName } = this.state;
     const colors = Object.values(product.colors);
-    if (filterColor) this.filterCheck(filterColor);
+    if (filterColor && filterCheck) this.imageFilter();
+
 
     return (
       <div className='product-tile'>
-        <NavLink to={`/products/${product.id}/color/${this.state.selectedColor}`}
-           colorname={this.state.colorName}
+        <NavLink to={`/products/${product.id}/color/${selectedColor}`}
+           colorname={colorName}
            ><div className='tile-image' >
-            <img className={`img-${product.id}`} src={this.state.colorPhoto} id={this.state.selectedColor} alt="" />
+            <img className={`img-${product.id}`} src={`${colorPhoto}#${new Date().getTime()}`} id={selectedColor} alt="" />
           </div></NavLink>
           <h2 className='product-name'>{product.name}</h2>
         <div className='tile-colors'>
           {product.colors.map((color, idx) => {
-            let { selectedColor } = this.state;
+            // let { selectedColor } = this.state;
             return(
-            <div className={`circle-highlight ${color.id === selectedColor ? 'circle-selected' : ''}`} onClick={this.handleSelect(color.id, color.name, color.photo0Url)}>
+            <div className={`circle-highlight ${color.id === selectedColor ? 'circle-selected' : ''}`} 
+              key={`${color.id}-${selectedColor}`}
+              onClick={this.handleSelect(color.id, color.name, color.photo0Url)}
+              >
               <input type="radio"
               className='radio-color-options'
               name={`radio-${product.id}`} 
               key={color.id}
-              defaultChecked={idx === 0}
+              defaultChecked={color.id === selectedColor}
               />  
               <div className={`select-circle ${color.id}-circle`} style={{ backgroundColor: colorCode(color.color_id) }}></div>
             </div> 

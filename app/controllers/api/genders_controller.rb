@@ -1,9 +1,8 @@
 class Api::GendersController < ApplicationController
 
   def show
-    @gender = Gender.find(params[:id])
+    @gender = Gender.find(params[:id].to_i)
     @products = @gender.products
-    
     render :show
   end
 

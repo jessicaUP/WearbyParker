@@ -2,6 +2,8 @@ import React from 'react';
 import AddTryon from '../cart/add_tryon_form';
 import ProductTile from './product_tile';
 import Filter from '../search_filter/filter';
+import { Link } from 'react-router-dom';
+
 
 class ProductIndex extends React.Component {
   constructor(props) {
@@ -55,6 +57,7 @@ class ProductIndex extends React.Component {
   componentDidMount() {
     this.props.fetchGenderProducts(this.props.match.params.genderId)
     this.props.fetchCart()
+
   };
 
   render() {
@@ -62,7 +65,7 @@ class ProductIndex extends React.Component {
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
     if (this.state.step) this.updateTryonCount(cart.length)
-    productArray.sort();
+    // productArray.sort();
     let cartArray = [];
     cart.forEach(item => {
       cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
@@ -87,7 +90,7 @@ class ProductIndex extends React.Component {
       message = (
         <div className='message-cont' >
           <h2 className='product-name' id='message-text'>Find your perfect frames! <br/> Add to your Cart and try-on at home for free.</h2>
-          <button className='selection-button' >View Cart</button>
+          <Link to={`/carts`} ><button className='selection-button' >View Cart</button></Link>
         </div>
       )
 
@@ -105,12 +108,23 @@ class ProductIndex extends React.Component {
       )
     };
 
-
+    // let yellow = productArray[9];
+    // productArray.splice(9, 1)
+    // productArray.push(yellow)
+    // let change = yellow.colors[3];
+    // let change2 = yellow.colors[1];
+    // yellow.colors[3] = change2
+    // yellow.colors[1] = change
+    let picks = [17, 18, 19, 20]
+    let jessPicks = <img src={window.jess} className='jess-picks' alt='jess-edits' />
     return (
       <div className='product-show'>
         <div className='banner-cont' >
           <img src={parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
-          <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
+          <div className='banner-over'>
+            <h3 className='logo' id='logo-search'>{genderId === 1 ? 'MEN\'S EYEGLASSES' : 'WOMEN\'S EYEGLASSES'}</h3>
+            <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
+          </div>
         </div>
 
         <div className='tryon-ribbon' >
@@ -141,7 +155,8 @@ class ProductIndex extends React.Component {
           {
             productArray.map((product, idx) => {
               return (
-                <div className='product-cont' >
+                <div className='product-cont' id={`product-${product.id}`} key={`${product.id}-${idx}`}>
+                  {picks.includes(product.id) ? jessPicks : ''}
                   <ProductTile 
                     key={idx}
                     product={product}

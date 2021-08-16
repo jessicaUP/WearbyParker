@@ -69,6 +69,12 @@ const colorOptions = [
     color: 'rgb(0, 0, 0)'
   },
   {
+    optionId: 13,
+    type: 'yellow',
+    name: 'Yellow',
+    color: 'rgb(255, 235, 56)'
+  },
+  {
     optionId: 2,
     type: 'tortoise',
     name: 'Tortoise',
@@ -134,6 +140,7 @@ const colorOptions = [
     name: 'Red',
     color: 'rgb(143, 25, 25)'
   }
+
 ]
 
 export const colorCode = (colorId) => {

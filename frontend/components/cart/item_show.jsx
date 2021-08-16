@@ -21,7 +21,6 @@ class CartItemShow extends React.Component {
     let priceEle = document.querySelector(`#price-num`);
     let newPrice = parseInt(priceEle.innerHTML.split('$')[1]) - price;
     priceEle.innerHTML = `Your cart: $${newPrice}`
-    debugger
 
     let ele = document.querySelector(`#item-${itemId}`);
     ele.remove();
@@ -54,7 +53,7 @@ class CartItemShow extends React.Component {
             <p className='option-color'>{cartItem.color_name}</p>
             <label className='subtitle'>Frame width
               <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
-              <input type='hidden' value={cartItem.frame_width.id} />
+              <input type='hidden' value={cartItem.products_frame_width_id} />
             </label>
           </div>
           <div className='cart-selections'>

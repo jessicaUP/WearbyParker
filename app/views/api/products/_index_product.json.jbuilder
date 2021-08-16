@@ -9,6 +9,6 @@ json.array! products do |product|
           end
     end
     product.products_frame_widths.each do |frameWidth|
-        json.extract! frameWidth, :frame_width, :description
+        json.extract! frameWidth, :frame_width, :description, :id
     end
 end 

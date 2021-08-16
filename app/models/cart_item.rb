@@ -17,6 +17,11 @@ class CartItem < ApplicationRecord
     foreign_key: :products_frame_width_id,
     primary_key: :id,
     class_name: :ProductsFrameWidth
+  
+  has_one :frame_width,
+    through: :products_frame_width,
+    source: :frame_width,
+    class_name: :FrameWidth
     
   belongs_to :products_color,
     foreign_key: :products_color_id,

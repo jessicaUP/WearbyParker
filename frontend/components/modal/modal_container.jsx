@@ -7,7 +7,6 @@ import Modal from './modal';
 
 
 const mSTP = state => {
-  debugger
   return ({
     modal: state.ui.modal
   })

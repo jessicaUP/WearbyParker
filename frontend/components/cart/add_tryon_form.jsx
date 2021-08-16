@@ -63,7 +63,7 @@ class AddTryon extends React.Component {
         products_color_id: colorId,
         products_frame_width_id: selectedFrameWidth
       })
-      this.props.updateTryonCount(1)
+      this.props.updateTryonCount(1);
       let cartCountNum = document.querySelector('.circle')
       let count = cartCountNum.innerHTML;
       cartCountNum.innerHTML = parseInt(count) + 1;
@@ -129,6 +129,7 @@ class AddTryon extends React.Component {
               <hr />
               <div className='option-box'>
                 {this.props.product.frame_widths.map((fw) => {
+                  debugger
                   return (
                     <>
                       <input type='radio'

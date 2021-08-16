@@ -38,7 +38,7 @@ class AddItemForm extends React.Component {
 
   handleClick(type, num, price = 0, baseCost = null) {
     return (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       let costArr = this.state.cost;
       let nextCost;
       if (price === 0 && type !== 'frame_width') {
@@ -51,7 +51,6 @@ class AddItemForm extends React.Component {
       }
       
       costArr.push(nextCost); 
-
 
         let oldState = Object.assign({}, this.state )
         let newState = Object.assign({}, oldState, { 
@@ -96,38 +95,45 @@ class AddItemForm extends React.Component {
       this.props.product.colors.forEach(color => {
         if (color.color_name === colorName) {
           colorId = color.id
-        }
+        } 
       });
+      // debugger
+      // this.props.product.frameWidth.forEach(color => {
+      //   if (color.color_name === colorName) {
+      //     colorId = color.id
+      //   } 
+      // });
 
-      let fw_id;
-      switch (this.state.cartItem.frame_width) {
-        // GET THROUGH BACKEND WHEN HAVE TIME
-        case 'Extra narrow':
-          fw_id = 1;
-          break;
-        case 'Narrow':
-          fw_id = 2;
-          break;
-        case 'Medium':
-          fw_id = 3;
-          break;
-        case 'Wide':
-          fw_id = 4;
-          break;
-        case 'Extra wide':
-          fw_id = 5;
-          break;
-      }
+      // let fw_id;
+      // switch (this.state.cartItem.frame_width) {
+      //   // GET THROUGH BACKEND WHEN HAVE TIME
+      //   case 'Extra narrow':
+      //     fw_id = 1;
+      //     break;
+      //   case 'Narrow':
+      //     fw_id = 2;
+      //     break;
+      //   case 'Medium':
+      //     fw_id = 3;
+      //     break;
+      //   case 'Wide':
+      //     fw_id = 4;
+      //     break;
+      //   case 'Extra wide':
+      //     fw_id = 5;
+      //     break;
+      // }
 
-      
+      let { cartItem, totalPrice } = this.state;
+      let { product } = this.props;
       this.props.createCartItem({
-        product_id: this.props.product.id,
-        price: this.state.totalPrice,
+        product_id: product.id,
+        price: totalPrice,
         products_color_id: colorId,
-        products_frame_width_id: fw_id,
-        prescription_type: this.state.cartItem.prescription_type,
-        lense_type: this.state.cartItem.lense_type,
-        lense_material: this.state.cartItem.lense_material
+        products_frame_width_id: parseInt(cartItem.frame_width),
+        prescription_type: cartItem.prescription_type,
+        lense_type: cartItem.lense_type,
+        lense_material: cartItem.lense_material
       })
 
       // this.props.pickedColor
@@ -181,7 +187,8 @@ class AddItemForm extends React.Component {
               type: 'frame_width',
               name: frameWidth.frame_width,
               priceName: '',
-              desc: frameWidth.description
+              desc: frameWidth.description,
+              products_frame_width_id: frameWidth.id
             }
           )
         });
@@ -211,8 +218,8 @@ class AddItemForm extends React.Component {
              <div className='cart-selections'>
                {/* <h2>{product.name}</h2> */}
                <label className='subtitle'>Frame width
-                 <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
-                 <input type='hidden' value={cartItem.frame_width.id} />
+                 <p className='option-description' id='p-option'>{parseInt(cartItem.frame_width)}</p>
+                <input type='hidden' value={parseInt(cartItem.frame_width)} />
                </label>
              </div>
              <div className='cart-selections'>
@@ -257,10 +264,13 @@ class AddItemForm extends React.Component {
 
 
     let finalOptions = options.map((option, idx) => {
-      let { type, name, price, priceName, desc } = option;
+      let { type, name, price, priceName, desc, products_frame_width_id } = option;
       return (
-        <div className='cart-options' id={idx}>
-          <button className='selection-button' onClick={this.handleClick(type, nextPage, price, product.price)} value={name}>{name}</button>
+        <div className='cart-options' id={idx} key={`${name}-${idx}`}>
+          <button className='selection-button' 
+              onClick={this.handleClick(type, nextPage, price, product.price)} 
+              value={this.state.formPage === 1 ? products_frame_width_id : name }
+            >{name}</button>
           <p className='option-price'>{priceName}</p>
           <p className='option-description'>{desc}</p>
         </div>

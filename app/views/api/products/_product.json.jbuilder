@@ -1,8 +1,10 @@
 json.extract! product, :id, :name, :details, :price
 json.frameWidths do
-  json.array! frame_widths do |frameWidth|
-    json.extract! frameWidth, :frame_width, :description
+  json.array! product.products_frame_widths do |frame|
+    json.extract! frame, :id
+    json.extract! frame.frame_width, :frame_width, :description
   end
+
 end
 json.colors do
   json.array! colors do |color|
