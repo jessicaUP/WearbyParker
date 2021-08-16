@@ -19,14 +19,9 @@ class CartItemShow extends React.Component {
     cartCount.innerHTML = count - 1;
 
     let priceEle = document.querySelector(`#price-num`);
-<<<<<<< HEAD
     let newPrice = parseInt(priceEle.innerHTML.split('$')[1]) - price;
     priceEle.innerHTML = `Your cart: $${newPrice}`
     debugger
-=======
-    let newPrice = parseInt(priceEle.innerHTML.split('$')[-1]) - price;
-    priceEle.innerHTML = `Your cart: $${newPrice}`
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
     let ele = document.querySelector(`#item-${itemId}`);
     ele.remove();
@@ -34,21 +29,11 @@ class CartItemShow extends React.Component {
 
 
 
-<<<<<<< HEAD
   deleteItem(itemId, cost) {
     return (e) => {
       e.preventDefault();
       this.props.deleteItem(itemId)
       this.removePageItem(itemId, cost)
-=======
-  deleteItem(itemId) {
-    let price = document.getElementById('price-num');
-    return (e) => {
-      e.preventDefault();
-      this.props.deleteItem(itemId)
-      .then(this.removePageItem(itemId))
-        .then(location.reload());
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     }
   }
 

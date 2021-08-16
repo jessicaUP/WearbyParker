@@ -32,11 +32,7 @@ class AddItemForm extends React.Component {
     // this.leftRender = this.leftRender.bind(this);
     // this.rightRender = this.rightRender.bind(this);
     this.combineForm = this.combineForm.bind(this);
-<<<<<<< HEAD
     // this.changeResize = this.changeResize.bind(this);
-=======
-    this.changeResize = this.changeResize.bind(this);
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
   }
 
@@ -144,10 +140,7 @@ class AddItemForm extends React.Component {
       this.props.closeModal()
       // .then(location.assign("http://localhost:3000/#/carts"))
       location.assign("http://localhost:3000/#/carts")
-<<<<<<< HEAD
         .then(() => window.location.reload())
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
     }
 
@@ -178,10 +171,6 @@ class AddItemForm extends React.Component {
     //   colorPhoto: photo3,
     //   pickedColor: this.state.currentColor
     // }
-<<<<<<< HEAD
-=======
-    debugger
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     switch(pageNum) {
       case 1:
         // FRAME WIDTH
@@ -290,7 +279,6 @@ class AddItemForm extends React.Component {
     
     // }
     
-<<<<<<< HEAD
   combineForm(formNum) {
     window.addEventListener("resize", this.changeResize);
     const { product, photos } = this.props;
@@ -309,45 +297,21 @@ class AddItemForm extends React.Component {
         // PRESCRIPTION
         title = 'Select a prescription type'
         photo = photos[2]
-=======
-  combineForm(formNum, photoName) {
-    window.addEventListener("resize", this.changeResize);
-    const { product } = this.props.product;
-    const { formPage } = this.state;
-    let photo = this.props[photoName];
-    let title;
-    let page;
-
-    switch (formNum) {
-      case 1:
-        // FRAME WIDTH
-        title = 'Select a frame width'
-      case 2:
-        // PRESCRIPTION
-        title = 'Select a prescription type'
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
         break;
       case 3:
         // LENSE TYPE
         title = 'Select a lens type'
-<<<<<<< HEAD
         photo = photos[0]
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
         break;
       case 4:
         // LENSE MATERIAL
         title = 'Select a lens material'
-<<<<<<< HEAD
         photo = photos[3]
       break;
       case 5:
         // REVIEW
         photo = photos[2]
       break;
-=======
-        break;
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     }
 
     // let header1;
@@ -402,7 +366,6 @@ class AddItemForm extends React.Component {
     }
   }
 
-<<<<<<< HEAD
   // changeResize() {
   //   let wWidth = this.sizeLabel();
   //   if (wWidth === 'small' && this.state.formPage > 0) {
@@ -418,239 +381,14 @@ class AddItemForm extends React.Component {
   //   }
   //   return;
   // };
-=======
-  changeResize() {
-    let wWidth = this.sizeLabel();
-    if (wWidth === 'small' && this.state.formPage > 0) {
-      let right = document.querySelector('#right-bottom');
-      let total = document.querySelector('#left-top');
-      // $('#left-top').addClass('left-select-item-s')
-      // $('#left-top').removeClass('left-select-item-l')
-      $('#right-bottom').toggleClass('right-select-item-l right-select-item-s')
-      // this.setState({ pageWidth: wWidth })
-      console.log('booyah')
-    } else {
-
-    }
-    return;
-  };
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   
   render() {
     const { product } = this.props;
     const { formPage } = this.state;
     
-<<<<<<< HEAD
     return this.combineForm(formPage);
-=======
-    return this.combineForm(formPage, 'colorPhoto');
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   }
 }
 
 export default AddItemForm;
 
-<<<<<<< HEAD
-=======
-
-
-
-// rightRender() {
-//   let windowWidth = window.innerWidth;
-//   const { product } = this.props
-//   const { totalPrice, cartItem } = this.state
-
-//   let options = product.frameWidths.map((frameWidth, idx) => {
-//     return (
-//       <div key={idx} className='cart-options'>
-//         <button className='selection-button' onClick={this.handleClick('frame_width', 2)} value={frameWidth.frame_width} >{frameWidth.frame_width}</button>
-//         <p className='option-description'>{frameWidth.description}</p>
-//       </div>
-//     )
-//   });
-
-//   if (windowWidth < 950) {
-//     switch (this.state.formPage) {
-//       case 1:
-//         return (
-//           <div className='right-select-item-s'>
-//             <h2 className='section-title'>Select a frame width</h2>
-//             {options}
-//           </div>
-//         );
-//       case 2:
-//         return (
-//           <div className='right-select-item-s'>
-//             <button className='icon-button' onClick={this.backForm()}>←</button>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='option-title'>Select a prescription type</h2>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision'>Single-vision</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-desc'>Corrects one field of vision (near, intermediate, or distance)</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives'>Progressives</button>
-//               <p className='option-price'>$295</p>
-//               <p className='option-desc'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between multiple pairs</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription'>Non-prescription</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-desc'>Offers style and protection with no vision correction</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers'>Readers</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-desc'>Offers simple magnification for, well, reading (no prescription necessary)</p>
-//             </div>
-//           </div>
-//         );
-//       // case 3:
-//       //   return (
-
-//       //   );
-//       // case 4:
-//       //   return (
-
-//       //   );
-//     }
-
-//   } else { // BIGGER
-//     switch (this.state.formPage) {
-//       case 1:
-//         return (
-//           <div className='right-select-item-l'>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='section-title'>Select a frame width</h2>
-//             {options}
-//           </div>
-//         );
-//       case 2:
-//         return (
-//           <div className='right-select-item-l'>
-//             <button className='icon-button' id='back-button' onClick={this.backForm()}>←</button>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='section-title'>Select a prescription type</h2>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Single-vision' className='selection-button' >Single-vision</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-description'>Corrects one field of vision (near, intermediate, or distance)</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 295)} value='Progressives' className='selection-button' >Progressives</button>
-//               <p className='option-price'>$295</p>
-//               <p className='option-description'>Correct near, intermediate, and distance fields of vision in one lens so you don't have to switch between  multiple pairs</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Non-prescription' className='selection-button' >Non-prescription</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-description'>Offers style and protection with no vision correction</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('prescription_type', 3, 95)} value='Readers' className='selection-button' >Readers</button>
-//               <p className='option-price'>$95</p>
-//               <p className='option-description'>Offers simple magnification for, well, reading (no prescription necessary)</p>
-//             </div>
-//           </div>
-
-//         );
-//       case 3:
-//         return (
-//           <div className='right-select-item-l'>
-//             <button className='icon-button' onClick={this.backForm()}>←</button>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='section-title'>Select a lens type</h2>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('lense_type', 4)} value='Classic' className='selection-button' >Classic</button>
-//               <p className='option-price'>Free</p>
-//               <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('lense_type', 4, 295)} value='Blue-light-filtering' className='selection-button' >Blue-light-filtering</button>
-//               <p className='option-price'>+$50</p>
-//               <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light from digital screens and the sun then our classic or light-responsive lenses.</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('lense_type', 4, 95)} value='Light-responsive' className='selection-button' >Light-responsive</button>
-//               <p className='option-price'>+$100</p>
-//               <p className='option-description'>Scratch-resistant, anti-reflective lenses that block 100% of UV rays and the transition from clear to a darker tint outdoors</p>
-//             </div>
-//             <div className='sub-total'>
-//               <p id='sub'>Subtotal</p>
-//               <p id='sub'>{`$${totalPrice}`}</p>
-//             </div>
-//           </div>
-//         );
-//       case 4:
-//         return (
-//           <div className='right-select-item-l'>
-//             <button className='icon-button' onClick={this.backForm()}>←</button>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='section-title'>Select a lens material</h2>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('lense_material', 5)} value='Polycarbonate' className='selection-button' >Polycerbonate</button>
-//               <p className='option-price'>Free</p>
-//               <p className='option-description'>High-quality and impact-resistant</p>
-//             </div>
-//             <div className='cart-options'>
-//               <button onClick={this.handleClick('lense_material', 5, 30)} value='1.67 high-index' className='selection-button' >1.67 high-index</button>
-//               <p className='option-price'>+$30</p>
-//               <p className='option-description'>Thinner lenses recommended tor strong prescription (if total power if +/-4.0 or higher)</p>
-//             </div>
-//             <div className='sub-total'>
-//               <p id='sub'>Subtotal</p>
-//               <p id='sub'>{`$${totalPrice}`}</p>
-//             </div>
-//           </div>
-//         );
-//       case 5:
-//         return (
-//           <div className='right-select-item-l'>
-//             <button className='icon-button' onClick={this.backForm()}>←</button>
-//             <button className='icon-button' onClick={this.exitForm()}>X</button>
-//             <h2 className='section-title'>Review your selections</h2>
-//             <p className='option-description' id='info-cart'>With every pair, you'll get free shipping, hassle-free returns, and our one-year, no-scratch guarantee</p>
-//             <div className='cart-selections'>
-//               {/* <h2>{product.name}</h2> */}
-//               <label className='sub-title'>Frame width
-//                 <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
-//                 <input type='hidden' value={cartItem.frame_width.id} />
-//               </label>
-//             </div>
-//             <div className='cart-selections'>
-//               <label className='subtitle'>Prescription
-//                 <p className='option-description' id='p-option'>{cartItem.prescription_type}</p>
-//                 <input type='hidden' value={cartItem.prescription_type} />
-//               </label>
-//             </div>
-//             <div className='cart-selections'>
-//               <label className='subtitle'>Lense type
-//                 <p className='option-description' id='p-option'>{cartItem.lense_type}</p>
-//                 <input type='hidden' value={cartItem.lense_type} />
-//               </label>
-//             </div>
-//             <div className='cart-selections'>
-//               <label className='subtitle'>Lense material
-//                 <p className='option-description' id='p-option'>{cartItem.lense_material}</p>
-//                 <input type='hidden' value={cartItem.lense_material} />
-//               </label>
-//             </div>
-//             <hr />
-//             <div className='sub-total' id='sub-final'>
-//               <p id='sub'>Subtotal</p>
-//               <p id='sub'>${totalPrice}</p>
-//             </div>
-//             <button className='cart-button' id='buy-button' onClick={this.handleSubmit()}>Add to cart: ${totalPrice}</button>
-//             <button className='cart-button' id='back-button' onClick={this.startForm()}>Edit Selections</button>
-//           </div>
-//         );
-
-//     }
-//   }
-
-
-
-
-// };
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a

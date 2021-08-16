@@ -1,17 +1,12 @@
 class Api::GendersController < ApplicationController
 
   def show
-<<<<<<< HEAD
     @gender = Gender.find(params[:id])
-=======
-    @gender = Gender.find(params[:id]);
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     @products = @gender.products
     
     render :show
   end
 
-<<<<<<< HEAD
   def index
     
     @gender = Gender.find(search_params[:genderId].to_i)
@@ -116,7 +111,5 @@ class Api::GendersController < ApplicationController
     })
   end
 
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 end

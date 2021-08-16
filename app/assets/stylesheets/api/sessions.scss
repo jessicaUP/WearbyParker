@@ -13,7 +13,6 @@ button {
 .all-form {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   position: relative;
   top: 130px;
   right: 0;
@@ -26,15 +25,6 @@ button {
   .blue-button:hover {
     background-color: rgb(22, 114, 167);
   }
-=======
-  position: absolute;
-  top: 130px;
-  right: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center;
-  align-self: auto;
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 }
 
 .clear-true:hover {
@@ -60,14 +50,11 @@ h2.session-h2 {
   text-align: center;
 }
 
-<<<<<<< HEAD
 #new-here {
   border-top: 1px solid lightgray;
   padding: 60px;
 }
 
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 .input {
   color: rgb(136, 136, 136);
   background-color: white;
@@ -108,22 +95,14 @@ h2.session-h2 {
 }
 
 .signup-form {
-<<<<<<< HEAD
   // height: 314px;
-=======
-  height: 314px;
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   width: 386px;
   display: flex;
   justify-content: center;
 }
 
 .signin-form {
-<<<<<<< HEAD
   height: auto;
-=======
-  height: 314px;
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   width: 386px;
   display: flex;
   flex-direction: column;

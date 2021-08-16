@@ -7,7 +7,6 @@ class Api::ProductsController < ApplicationController
     render :show
   end
 
-<<<<<<< HEAD
   def index
     input = params['input']
     @products = Product.where("name LIKE '%#{input.capitalize}%' OR name LIKE '%#{input}%'")
@@ -16,7 +15,5 @@ class Api::ProductsController < ApplicationController
     render :search_index
   end
 
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 end

@@ -1,10 +1,7 @@
 class Cart < ApplicationRecord 
 
   belongs_to :user,
-<<<<<<< HEAD
     optional: true,
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     foreign_key: :user_id,
     primary_key: :id,
     class_name: :User

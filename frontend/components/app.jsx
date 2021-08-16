@@ -11,10 +11,7 @@ import ProductShowContainer from './products/product_show_container';
 import ProductIndexContainer from './products/product_index_container';
 import CartShowContainer from './cart/cart_show_container';
 import ModalContainer from './modal/modal_container';
-<<<<<<< HEAD
 import Footer from './footer/footer';
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 
 
 
@@ -32,10 +29,7 @@ const App = () => (
     <Route path='/carts' component={CartShowContainer} />
     <Splash />
   </Switch>
-<<<<<<< HEAD
   <Footer />
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   </>
 );
 

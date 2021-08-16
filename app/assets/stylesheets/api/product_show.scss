@@ -1,21 +1,12 @@
 // @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 .index-body {
-<<<<<<< HEAD
   position: relative;
   top: 125px;
   // right: 0;
   // left: 0;
   // bottom: 0;
   height: auto;
-=======
-  position: absolute;
-  top: 125px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 650px;
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 }
 
 .options-colors {
@@ -25,7 +16,6 @@
   left: 75px;
   z-index: 1;
   flex-direction: row;
-<<<<<<< HEAD
 
   input[type='radio'] {
   -webkit-appearance: none;
@@ -48,8 +38,6 @@ input[type='radio']:checked {
   background-color: rgb(68, 65, 109);
   border-radius: 100%;
   }
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 }
 
 .materials {
@@ -70,10 +58,7 @@ input[type='radio']:checked {
     // display: flex;
     
     .pictures {
-<<<<<<< HEAD
       position: relative;
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
       display: flex;
       width: 100%;
       height: 570px;
@@ -136,21 +121,15 @@ input[type='radio']:checked {
 
     .radio-cont {
       font-size: 40px;
-<<<<<<< HEAD
       display: flex;
       flex-direction: row;
       margin-top: 20px;
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
     }
   }
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
 .middle-details {
   display: flex;
   flex-direction: row;
@@ -256,7 +235,6 @@ button.try-on:hover {
 }
 
 .bottom {
-<<<<<<< HEAD
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -400,20 +378,3 @@ button.try-on:hover {
   }
 
 }
-=======
-  max-width: 75%;
-  align-items: center;
-  justify-content: center;
-
-  .bottom-note-title {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 28px;
-    margin-bottom: 20px;
-  
-    .bottom-note {
-      width: 75%;
-    }
-  }
-
-}
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a

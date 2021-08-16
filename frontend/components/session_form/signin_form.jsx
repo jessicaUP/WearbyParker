@@ -74,19 +74,11 @@ class SigninForm extends React.Component {
               placeholder='Password'
             />
             </div>
-<<<<<<< HEAD
             <button className={`click-${this.state.submitCleared} blue-button`} >Sign in</button>
             <button className='demo-button' onClick={this.handleDemo} >Demo user?</button>
           </form>
           <hr className='break-line' />
           <h2 className='session-h2' id='new-here'>I'm new here</h2>
-=======
-            <button className={`click-${this.state.submitCleared}`} >Sign in</button>
-            <button className='demo-button' onClick={this.handleDemo} >Demo user?</button>
-          </form>
-          <hr className='break-line' />
-          <h2 className='session-h2'>I'm new here</h2>
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
           <button 
             className='demo-button'
             onClick={() => this.props.history.push('/signup')}>Create an account</button>

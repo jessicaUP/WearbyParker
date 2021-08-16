@@ -56,7 +56,6 @@ class Product < ApplicationRecord
   has_many :nose_bridges,
     through: :products_nose_bridges,
     source: :nose_bridge
-<<<<<<< HEAD
 
   # def self.filter_products(filters)
   #   case x
@@ -67,8 +66,6 @@ class Product < ApplicationRecord
     
 
   # end
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
  
 
 end

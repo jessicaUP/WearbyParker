@@ -12,11 +12,8 @@ json.colors do
     json.photo2Url url_for(color.photo2)
     json.photo3Url url_for(color.photo3)
     json.photo4Url url_for(color.photo4)
-<<<<<<< HEAD
     json.colorCode do 
       json.extract! color.color, :id
     end
-=======
->>>>>>> 18e67994b24a50d8aa9e38abe0f5769f7d53274a
   end
 end
