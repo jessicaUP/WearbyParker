@@ -57,9 +57,12 @@ class CartShow extends React.Component {
     let itemTryonArray = cart.cartTryonItems
 
     let tryonPopup = (
+      <>
+      <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
       <div className='popup-cont' >
         <p>Still want to continue shopping? You can try more frames. Shop frames</p>
       </div>
+      </>
     )
 
     if ( itemTryonArray.length === 5 ) tryonPopup = '';
@@ -68,7 +71,6 @@ class CartShow extends React.Component {
     if ( itemTryonArray.length !== 0 ) {
       tryonSection = (
         <>
-        <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
         { tryonPopup }
           {
             itemTryonArray.map((cartItem, idx) => {

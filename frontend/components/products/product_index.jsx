@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 
 class ProductIndex extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.state = {
-      tryon: false,
+      tryon: props.location.tryon,
       tryoInfo: true,
       filter: false,
       filterColor: null,
@@ -115,6 +116,7 @@ class ProductIndex extends React.Component {
     // let change2 = yellow.colors[1];
     // yellow.colors[3] = change2
     // yellow.colors[1] = change
+
     let picks = [17, 18, 19, 20]
     let jessPicks = <img src={window.jess} className='jess-picks' alt='jess-edits' />
     return (

@@ -1724,17 +1724,17 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
 
       var itemArray = cart.cartItems;
       var itemTryonArray = cart.cartTryonItems;
-      var tryonPopup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      var tryonPopup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "option-description",
+        id: "amount-count"
+      }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try more frames. Shop frames"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try more frames. Shop frames")));
       if (itemTryonArray.length === 5) tryonPopup = '';
       var tryonSection = '';
 
       if (itemTryonArray.length !== 0) {
-        tryonSection = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "option-description",
-          id: "amount-count"
-        }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), tryonPopup, itemTryonArray.map(function (cartItem, idx) {
+        tryonSection = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, tryonPopup, itemTryonArray.map(function (cartItem, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "item-cont",
             id: "tryon-".concat(cartItem.id)
@@ -2448,8 +2448,10 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      cartCount: props.cartCount
+      cartCount: props.cartCount,
+      tryon: false
     };
+    _this.openMenu = _this.openMenu.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2459,9 +2461,23 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       this.props.fetchCart();
     }
   }, {
+    key: "openMenu",
+    value: function openMenu() {
+      var _this2 = this;
+
+      return function () {
+        var next;
+        _this2.state.tryon ? next = false : next = true;
+
+        _this2.setState({
+          tryon: next
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var cart = this.props.cart;
       if (!cart.id) return null;
@@ -2496,10 +2512,10 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         "class": "fas fa-search",
         onClick: function onClick() {
-          return _this2.props.openModal('search');
+          return _this3.props.openModal('search');
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-        href: "/",
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/#",
         className: "logo-a"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "logo"
@@ -2516,7 +2532,42 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         "class": "fas fa-shopping-cart"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "nav-bottom"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Home Try-on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "relative-btn btn-line-".concat(this.state.tryon),
+        onClick: this.openMenu()
+      }, "Home Try-on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "grey-out"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "hideEle-".concat(this.state.tryon)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "tryon-info-img",
+        src: window.tryon,
+        alt: "tryon-box"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "right-tryon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "tryon-over"
+      }, "Pick 5 frames to try on at home (it's free!)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        "class": "button-drop"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        className: "drop-options",
+        to: {
+          pathname: '/genders/1',
+          tryon: true
+        },
+        onClick: this.openMenu
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu border-button"
+      }, "Women")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        className: "drop-options",
+        to: {
+          pathname: '/genders/2',
+          tryon: true
+        },
+        tryon: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu border-button"
+      }, "Men")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
         to: "/genders/2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -2642,9 +2693,10 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProductIndex);
 
+    debugger;
     _this = _super.call(this, props);
     _this.state = {
-      tryon: false,
+      tryon: props.location.tryon,
       tryoInfo: true,
       filter: false,
       filterColor: null,
