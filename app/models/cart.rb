@@ -4,7 +4,7 @@ class Cart < ApplicationRecord
 
   belongs_to :user,
     optional: true,
-    require: false,
+    required: false,
     foreign_key: :user_id,
     primary_key: :id,
     class_name: :User
