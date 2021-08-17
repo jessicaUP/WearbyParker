@@ -182,8 +182,8 @@ class ProductShow extends React.Component {
               </div>
               <p className='price-desc'>Starting at ${product.price}, including prescription lenses or 3 payments of ${plan}</p>
                 {/* <AddItemForm product={product} colorPhoto={photo3} pickedColor={this.state.currentColor} createCartItem={this.props.createCartItem} /> */}
-                <button className='purchase' onClick={() => this.props.openModal('buyItem', dataInfo)} >Select lenses and purchase</button>
-                <button className='try-on' >Try at home for free</button>
+                <button className='purchase' id='buy-item' onClick={() => this.props.openModal('buyItem', dataInfo)} >Select lenses and purchase</button>
+            {/* <button className='try-on' onClick={() => this.props.openModal('tryItem', dataInfo)} >Try at home for free</button> */}
             </div>
         </div>
         <div className='middle-details' >

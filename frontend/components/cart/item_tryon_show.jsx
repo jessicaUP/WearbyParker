@@ -47,10 +47,10 @@ class CartTryonItemShow extends React.Component {
         <div className='cart-item-desc'>
           <button className='icon-button' onClick={this.deleteItem(cartItem.id)}>X</button>
           <div className='cart-selections'>
-            <h2 className='section-title' id='item-name'>{cartItem.frame_width}</h2>
+            <h2 className='section-title' id='item-name'>{cartItem.name}</h2>
             <p className='option-color'>{cartItem.color_name}</p>
             <label className='subtitle'>Frame width
-              <p className='option-description' id='p-option'>{cartItem.description}</p>
+              <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
               <input type='hidden' value={cartItem.products_frame_width_id} />
             </label>
           </div>

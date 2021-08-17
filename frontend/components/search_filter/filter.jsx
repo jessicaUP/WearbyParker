@@ -171,7 +171,7 @@ class Filter extends React.Component {
           <div className='items-selected' >
           <button className='selection-button filter-reset-amount filter-reset' >{this.props.totalCount} frames</button>
             <div className='reset-cont' >
-              <div className='circle' >{count}</div>
+              <div className={`circle ${count === 1 ? 'grey-circle' : ''}`} id='reset-circle'>{count}</div>
             <button className='selection-button filter-reset' onClick={this.resetFilters()} >Reset</button>
             </div>
           </div>

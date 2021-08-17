@@ -9,16 +9,17 @@ class Thanks extends React.Component {
 
   }
 
-  clearCart() {
+  clearCart(cartId) {
     return () => {
       this.props.closeModal();
-      deleteCart(cartId);
+      this.props.deleteCart(cartId)
+      .then(() => location.reload())
 
     }
   }
 
   render() {
-    let { deleteCart, cartId, closeModal } = this.props;
+    let { cartId, closeModal } = this.props;
     return (
       <div className='thanks' onClick={() => closeModal()}>
         <div className='thanks-cont' onClick={(e) => e.stopPropagation()}>
@@ -26,7 +27,7 @@ class Thanks extends React.Component {
           <Links type='thanks' />
           <div className='thanks-buttons' >
             {/* <button onClick={() => closeModal()}>Continue 'shopping' ;)</button> */}
-            <button onClick={this.clearCart}>Clear cart</button>
+            <button onClick={this.clearCart(cartId)}>Clear cart</button>
           </div>
         </div>
       </div>

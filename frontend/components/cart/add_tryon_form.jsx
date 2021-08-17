@@ -6,6 +6,7 @@ class AddTryon extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: props.cart,
       check: true,
       formPage: 0,
       checkPage: true,
@@ -53,7 +54,7 @@ class AddTryon extends React.Component {
       let color = document.querySelector(`.img-${id}`);
       let colorId = parseInt(color.id);
       
-      if (cartCount === 5) {
+      if (cartCount >= 5) {
         this.setState({ formPage: 3 })
         setTimeout(() => this.setState({ formPage: 0 }), 1000)
         return
@@ -90,16 +91,16 @@ class AddTryon extends React.Component {
   deleteTryon() {
     return (e) => {
       e.preventDefault();
-      let cartCount = document.querySelector('.circle')
+      let cartCount = document.querySelector('.circle');
       let count = parseInt(cartCount.innerHTML);
-      this.props.updateTryonCount(-1)
+      this.props.updateTryonCount(-1);
       cartCount.innerHTML = (count - 1);
-      this.props.deleteTryonItem(this.state.tryonItem.itemId)
-        .then(this.setState({ formPage: 0, tryonItem: {}, cartCount: cartCount - 1 }))
+      this.props.deleteTryonItem(this.state.tryonItem.itemId);
+      this.setState({ formPage: 0, tryonItem: {}, cartCount: cartCount - 1 });
     }
   }
 
-  tryonButton(product, cart) {
+  tryonButton(product, cart, cartCount) {
     let { formPage, checkPage, tryonItem, selectedFrameWidth } = this.state;
 
     if (checkPage) {
@@ -129,7 +130,6 @@ class AddTryon extends React.Component {
               <hr />
               <div className='option-box'>
                 {this.props.product.frame_widths.map((fw) => {
-                  debugger
                   return (
                     <>
                       <input type='radio'
@@ -213,8 +213,10 @@ class AddTryon extends React.Component {
 
   render() {
 
-    let { product, cart } = this.props
-    return this.tryonButton(product, cart)
+    let { product } = this.props;
+    let { cart, cartCount } = this.state;
+    return this.tryonButton(product, cart, cartCount)
+
 
   }
 }

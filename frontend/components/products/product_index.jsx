@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 class ProductIndex extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       tryon: props.location.tryon,
@@ -68,9 +67,13 @@ class ProductIndex extends React.Component {
     if (this.state.step) this.updateTryonCount(cart.length)
     // productArray.sort();
     let cartArray = [];
-    cart.forEach(item => {
-      cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
-    });
+    if (this.state.tryonCount) {
+      cart.forEach(item => {
+        cartArray.push({ id: item.product_id, frameWidth: item.frame_width, itemId: item.id});
+      });
+
+    }
+    
 
     let { tryon, filter, colorFilter, howTo } = this.state;
     
@@ -119,12 +122,14 @@ class ProductIndex extends React.Component {
 
     let picks = [17, 18, 19, 20]
     let jessPicks = <img src={window.jess} className='jess-picks' alt='jess-edits' />
+    let genderID = parseInt(this.props.match.params.genderId);
+    
     return (
       <div className='product-show'>
         <div className='banner-cont' >
-          <img src={parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
+          <img src={genderID === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
           <div className='banner-over'>
-            <h3 className='logo' id='logo-search'>{genderId === 1 ? 'MEN\'S EYEGLASSES' : 'WOMEN\'S EYEGLASSES'}</h3>
+            <h3 className='logo' id='logo-search'>{genderID === 1 ? 'WOMEN\'S EYEGLASSES' : 'MEN\'S EYEGLASSES' }</h3>
             <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
           </div>
         </div>

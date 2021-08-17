@@ -18,6 +18,7 @@ class AddItemForm extends React.Component {
         products_color_id: null,  
 
       },
+      fwName: null,
       totalPrice: 0,
       cost: []
 
@@ -36,17 +37,20 @@ class AddItemForm extends React.Component {
 
   }
 
-  handleClick(type, num, price = 0, baseCost = null) {
+  handleClick(type, name, num, price = 0, baseCost = null) {
     return (e) => {
       // e.preventDefault();
       let costArr = this.state.cost;
       let nextCost;
+      let nameNext;
       if (price === 0 && type !== 'frame_width') {
         nextCost = 'Free'
       } else if (type === 'frame_width') {
         price = baseCost + price;
-        nextCost = `$${price}`
+        nextCost = `$${price}`;
+        nameNext = name;
       } else {
+        nameNext = this.state.fwName;
         nextCost = `$${price}`;
       }
       
@@ -57,7 +61,8 @@ class AddItemForm extends React.Component {
           cartItem: Object.assign({}, this.state.cartItem, { [type]: e.target.value }),
           totalPrice: (this.state.totalPrice + price),
           cost: costArr,
-          formPage: num
+          formPage: num,
+          fwName: nameNext
         })
         this.setState(newState)
     }
@@ -167,7 +172,7 @@ class AddItemForm extends React.Component {
     // let { modal } = this.props
     let product = this.props.product;
 
-    let { cartItem, totalPrice, cost } = this.state;
+    let { cartItem, totalPrice, cost, fwName } = this.state;
     let nextPage = pageNum + 1;
     let title, options;
 
@@ -218,7 +223,7 @@ class AddItemForm extends React.Component {
              <div className='cart-selections'>
                {/* <h2>{product.name}</h2> */}
                <label className='subtitle'>Frame width
-                 <p className='option-description' id='p-option'>{parseInt(cartItem.frame_width)}</p>
+                 <p className='option-description' id='p-option'>{this.state.fwName}</p>
                 <input type='hidden' value={parseInt(cartItem.frame_width)} />
                </label>
              </div>
@@ -268,7 +273,7 @@ class AddItemForm extends React.Component {
       return (
         <div className='cart-options' id={idx} key={`${name}-${idx}`}>
           <button className='selection-button' 
-              onClick={this.handleClick(type, nextPage, price, product.price)} 
+              onClick={this.handleClick(type, name, nextPage, price, product.price)} 
               value={this.state.formPage === 1 ? products_frame_width_id : name }
             >{name}</button>
           <p className='option-price'>{priceName}</p>
@@ -293,15 +298,18 @@ class AddItemForm extends React.Component {
     window.addEventListener("resize", this.changeResize);
     const { product, photos } = this.props;
     const { formPage } = this.state;
-    let photo;
-    let title;
-    let page;
-    switch (formNum) {
+    let photo, title, fwLine;
 
+    switch (formNum) {
       case 1:
         // FRAME WIDTH
         title = 'Select a frame width';
         photo = photos[2];
+        fwLine = (
+          <div className='side-lines' >
+            <div className='middle-line' ></div>
+          </div>
+        )
         break
       case 2:
         // PRESCRIPTION
@@ -336,7 +344,7 @@ class AddItemForm extends React.Component {
     if (formNum === 1) {
       back = '';
     } else if (formNum > 1) {
-      back = <button className='icon-button' onClick={this.backForm()}>←</button>
+      back = <button className='icon-button' id='back-btn' onClick={this.backForm()}>←</button>
     }
     
     if (window.innerWidth < 900) {
@@ -355,6 +363,7 @@ class AddItemForm extends React.Component {
             <button className='icon-button' onClick={this.exitForm()}>X</button>
           </div>
           <div className='left-select-item-l' id='left-top'>
+            {fwLine}
             <img src={photo} className='selection-photo' />
             <div className='name-color-l'>
               <h2 className='section-title'>{this.props.product.name}</h2>

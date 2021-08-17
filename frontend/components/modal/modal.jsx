@@ -36,6 +36,14 @@ class Modal extends React.Component {
                   closeModal={this.props.closeModal}
                   deleteCart={this.props.deleteCart}
                   cartId={cartId} />
+      case 'tryItem':
+        return <AddItemForm
+          product={product}
+          photos={photos}
+          pickedColor={pickedColor}
+          createCartTryonItem={addFunction}
+          closeModal={this.props.closeModal}
+        />
       default:
         return null;
     }

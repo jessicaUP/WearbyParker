@@ -91,8 +91,8 @@ class NavBar extends React.Component {
             <div className='right-tryon'>
             <p className='tryon-over'>Pick 5 frames to try on at home (it's free!)</p>
               <div class='button-drop'>
-                <Link className='drop-options' to={{ pathname: '/genders/1', tryon: true }} onClick={this.openMenu}><button className='menu border-button' >Women</button></Link>
-                <Link className='drop-options' to={{ pathname: '/genders/2', tryon: true }} tryon={true} ><button className='menu border-button' >Men</button></Link>
+                <Link className='drop-options' to={{ pathname: '/genders/1', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Women</button></Link>
+                <Link className='drop-options' to={{ pathname: '/genders/2', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Men</button></Link>
               </div>
               </div>
             </div>

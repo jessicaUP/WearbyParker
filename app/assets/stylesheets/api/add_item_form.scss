@@ -90,7 +90,7 @@
     flex-direction: column;
     // justify-content: space-around;
     align-items: center;
-    position: absolute;
+    position: relative;
     bottom: 0;
     top: 0;
     left: 0;
@@ -101,9 +101,9 @@
     .name-color-l {
       display: flex;
       flex-direction: row;
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
+      position: fixed;
+      bottom: 40px;
+      left: 60px;
       // justify-self: start;
 
     }
@@ -116,7 +116,8 @@
  // SAME FOR BOTH LAYOUTS 
 
   #sub-final {
-    // position: initial;
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
 
 
@@ -143,7 +144,11 @@
   background-color: white;
   color: lightgray;
   width: 10px;
-  z-index: 2;
+  z-index: 5;
+}
+
+#back-btn {
+  right: 25%;
 }
 
 .cart-button {
@@ -226,3 +231,26 @@
 // }
 
 
+// #right-bottom {
+//   position: relative;
+// }
+
+.side-lines {
+  position: absolute;
+  bottom: 40%;
+  // display: flex;
+  // align-items: center;
+  width: 78%;
+  height: 20px;
+  border-right: 3px solid rgb(62, 89, 177);
+  border-left: 3px solid rgb(62, 89, 177);
+
+  .middle-line {
+    border-top: 3px dashed rgb(62, 89, 177);
+    position: absolute;
+    top: 8px;
+    right: 0;
+    left: 0;
+    height: 1px;
+  }
+}

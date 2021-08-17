@@ -60,7 +60,7 @@ class CartShow extends React.Component {
       <>
       <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
       <div className='popup-cont' >
-        <p>Still want to continue shopping? You can try more frames. Shop frames</p>
+          <p>Still want to continue shopping? You can try {5 - itemTryonArray.length} more frames.</p>
       </div>
       </>
     )

@@ -7,6 +7,7 @@
   // left: 0;
   // bottom: 0;
   height: auto;
+  z-index: -1;
 }
 
 .options-colors {
@@ -192,10 +193,13 @@ input[type='radio']:checked {
 // // END SOURCE
 
 button.purchase, button.try-on {
-  width: 250px;
-  height: 50px;
+  height: 100px;
   margin-bottom: 12px;
   width: 280px;
+}
+
+#buy-item {
+  padding: 20px;
 }
 
 button.purchase {
@@ -340,7 +344,7 @@ button.try-on:hover {
   font-weight: 100;
   font-size: 28px;
   margin-bottom: 45px;
-  text-align: left;
+  text-align: center;
   margin-right: 0;
   width: 80%;
   color: rgb(82, 82, 82);

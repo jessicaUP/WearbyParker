@@ -48,8 +48,8 @@ class ProductTile extends React.Component {
 
 
   handleSelect(colorId, colorname, colorPhoto) {
-    return (e) => {
-      e.prevetDefault();
+    return () => {
+      // e.prevetDefault();
       this.setState({ selectedColor: colorId, colorName: colorname, colorPhoto: colorPhoto})
     }
   };

@@ -829,6 +829,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         lense_material: '',
         products_color_id: null
       },
+      fwName: null,
       totalPrice: 0,
       cost: []
     };
@@ -846,22 +847,25 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
   _createClass(AddItemForm, [{
     key: "handleClick",
-    value: function handleClick(type, num) {
+    value: function handleClick(type, name, num) {
       var _this2 = this;
 
-      var price = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-      var baseCost = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+      var price = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+      var baseCost = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
       return function (e) {
         // e.preventDefault();
         var costArr = _this2.state.cost;
         var nextCost;
+        var nameNext;
 
         if (price === 0 && type !== 'frame_width') {
           nextCost = 'Free';
         } else if (type === 'frame_width') {
           price = baseCost + price;
           nextCost = "$".concat(price);
+          nameNext = name;
         } else {
+          nameNext = _this2.state.fwName;
           nextCost = "$".concat(price);
         }
 
@@ -871,7 +875,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           cartItem: Object.assign({}, _this2.state.cartItem, _defineProperty({}, type, e.target.value)),
           totalPrice: _this2.state.totalPrice + price,
           cost: costArr,
-          formPage: num
+          formPage: num,
+          fwName: nameNext
         });
 
         _this2.setState(newState);
@@ -1006,7 +1011,8 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           cartItem = _this$state.cartItem,
           totalPrice = _this$state.totalPrice,
-          cost = _this$state.cost;
+          cost = _this$state.cost,
+          fwName = _this$state.fwName;
       var nextPage = pageNum + 1;
       var title, options; // let data = {
       //   product,
@@ -1060,7 +1066,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
             className: "option-description",
             id: "p-option"
-          }, parseInt(cartItem.frame_width)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          }, this.state.fwName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
             type: "hidden",
             value: parseInt(cartItem.frame_width)
           }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1139,7 +1145,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           key: "".concat(name, "-").concat(idx)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "selection-button",
-          onClick: _this7.handleClick(type, nextPage, price, product.price),
+          onClick: _this7.handleClick(type, name, nextPage, price, product.price),
           value: _this7.state.formPage === 1 ? products_frame_width_id : name
         }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "option-price"
@@ -1161,15 +1167,18 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           product = _this$props.product,
           photos = _this$props.photos;
       var formPage = this.state.formPage;
-      var photo;
-      var title;
-      var page;
+      var photo, title, fwLine;
 
       switch (formNum) {
         case 1:
           // FRAME WIDTH
           title = 'Select a frame width';
           photo = photos[2];
+          fwLine = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "side-lines"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "middle-line"
+          }));
           break;
 
         case 2:
@@ -1208,6 +1217,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
       } else if (formNum > 1) {
         back = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "icon-button",
+          id: "back-btn",
           onClick: this.backForm()
         }, "\u2190");
       }
@@ -1231,7 +1241,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "left-select-item-l",
           id: "left-top"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        }, fwLine, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
           src: photo,
           className: "selection-photo"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1327,6 +1337,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      cart: props.cart,
       check: true,
       formPage: 0,
       checkPage: true,
@@ -1384,7 +1395,7 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
         var color = document.querySelector(".img-".concat(id));
         var colorId = parseInt(color.id);
 
-        if (cartCount === 5) {
+        if (cartCount >= 5) {
           _this3.setState({
             formPage: 3
           });
@@ -1453,16 +1464,18 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
 
         cartCount.innerHTML = count - 1;
 
-        _this5.props.deleteTryonItem(_this5.state.tryonItem.itemId).then(_this5.setState({
+        _this5.props.deleteTryonItem(_this5.state.tryonItem.itemId);
+
+        _this5.setState({
           formPage: 0,
           tryonItem: {},
           cartCount: cartCount - 1
-        }));
+        });
       };
     }
   }, {
     key: "tryonButton",
-    value: function tryonButton(product, cart) {
+    value: function tryonButton(product, cart, cartCount) {
       var _this6 = this;
 
       var _this$state = this.state,
@@ -1517,7 +1530,6 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
           }, "For more widths, try another color or frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "option-box"
           }, this.props.product.frame_widths.map(function (fw) {
-            debugger;
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
               type: "radio",
               className: "hidden",
@@ -1605,10 +1617,11 @@ var AddTryon = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          product = _this$props.product,
-          cart = _this$props.cart;
-      return this.tryonButton(product, cart);
+      var product = this.props.product;
+      var _this$state2 = this.state,
+          cart = _this$state2.cart,
+          cartCount = _this$state2.cartCount;
+      return this.tryonButton(product, cart, cartCount);
     }
   }]);
 
@@ -1729,7 +1742,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
         id: "amount-count"
       }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try more frames. Shop frames")));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frames.")));
       if (itemTryonArray.length === 5) tryonPopup = '';
       var tryonSection = '';
 
@@ -2108,14 +2121,14 @@ var CartTryonItemShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "section-title",
         id: "item-name"
-      }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, cartItem.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-color"
       }, cartItem.color_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "subtitle"
       }, "Frame width", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-description",
         id: "p-option"
-      }, cartItem.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, cartItem.frame_width), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "hidden",
         value: cartItem.products_frame_width_id
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2326,6 +2339,15 @@ var Modal = /*#__PURE__*/function (_React$Component) {
             closeModal: this.props.closeModal,
             deleteCart: this.props.deleteCart,
             cartId: cartId
+          });
+
+        case 'tryItem':
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_add_item_form__WEBPACK_IMPORTED_MODULE_2__.default, {
+            product: product,
+            photos: photos,
+            pickedColor: pickedColor,
+            createCartTryonItem: addFunction,
+            closeModal: this.props.closeModal
           });
 
         default:
@@ -2555,7 +2577,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           pathname: '/genders/1',
           tryon: true
         },
-        onClick: this.openMenu
+        onClick: this.openMenu()
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "menu border-button"
       }, "Women")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
@@ -2564,7 +2586,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           pathname: '/genders/2',
           tryon: true
         },
-        tryon: true
+        onClick: this.openMenu()
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "menu border-button"
       }, "Men")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
@@ -2693,7 +2715,6 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProductIndex);
 
-    debugger;
     _this = _super.call(this, props);
     _this.state = {
       tryon: props.location.tryon,
@@ -2766,13 +2787,17 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       if (this.state.step) this.updateTryonCount(cart.length); // productArray.sort();
 
       var cartArray = [];
-      cart.forEach(function (item) {
-        cartArray.push({
-          id: item.product_id,
-          frameWidth: item.framewidths.frame_width,
-          itemId: item.id
+
+      if (this.state.tryonCount) {
+        cart.forEach(function (item) {
+          cartArray.push({
+            id: item.product_id,
+            frameWidth: item.frame_width,
+            itemId: item.id
+          });
         });
-      });
+      }
+
       var _this$state = this.state,
           tryon = _this$state.tryon,
           filter = _this$state.filter,
@@ -2830,12 +2855,13 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "jess-picks",
         alt: "jess-edits"
       });
+      var genderID = parseInt(this.props.match.params.genderId);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "banner-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: parseInt(this.props.match.params.genderId) === 1 ? window.banner2 : window.banner3,
+        src: genderID === 1 ? window.banner2 : window.banner3,
         className: "img-banner",
         alt: "woman-in-glasses"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2843,7 +2869,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "logo",
         id: "logo-search"
-      }, genderId === 1 ? 'MEN\'S EYEGLASSES' : 'WOMEN\'S EYEGLASSES'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      }, genderID === 1 ? 'WOMEN\'S EYEGLASSES' : 'MEN\'S EYEGLASSES'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name"
       }, "Shop frames below or pick five pairs to try for free"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tryon-ribbon"
@@ -3271,12 +3297,11 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         className: "price-desc"
       }, "Starting at $", product.price, ", including prescription lenses or 3 payments of $", plan), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "purchase",
+        id: "buy-item",
         onClick: function onClick() {
           return _this5.props.openModal('buyItem', dataInfo);
         }
-      }, "Select lenses and purchase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "try-on"
-      }, "Try at home for free"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Select lenses and purchase"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "middle-details"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "white-box"
@@ -3483,9 +3508,8 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     value: function handleSelect(colorId, colorname, colorPhoto) {
       var _this2 = this;
 
-      return function (e) {
-        e.prevetDefault();
-
+      return function () {
+        // e.prevetDefault();
         _this2.setState({
           selectedColor: colorId,
           colorName: colorname,
@@ -3846,7 +3870,8 @@ var Filter = /*#__PURE__*/function (_React$Component) {
       }, this.props.totalCount, " frames"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "reset-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "circle"
+        className: "circle ".concat(count === 1 ? 'grey-circle' : ''),
+        id: "reset-circle"
       }, count), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "selection-button filter-reset",
         onClick: this.resetFilters()
@@ -4907,20 +4932,21 @@ var Thanks = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Thanks, [{
     key: "clearCart",
-    value: function clearCart() {
+    value: function clearCart(cartId) {
       var _this2 = this;
 
       return function () {
         _this2.props.closeModal();
 
-        deleteCart(cartId);
+        _this2.props.deleteCart(cartId).then(function () {
+          return location.reload();
+        });
       };
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          deleteCart = _this$props.deleteCart,
           cartId = _this$props.cartId,
           closeModal = _this$props.closeModal;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -4944,7 +4970,7 @@ var Thanks = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "thanks-buttons"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.clearCart
+        onClick: this.clearCart(cartId)
       }, "Clear cart"))));
     }
   }]);
@@ -5382,7 +5408,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  console.log(preloadedState);
   return (0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_2__.default, preloadedState, (0,redux__WEBPACK_IMPORTED_MODULE_3__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__.default, (redux_logger__WEBPACK_IMPORTED_MODULE_1___default())));
 };
 
