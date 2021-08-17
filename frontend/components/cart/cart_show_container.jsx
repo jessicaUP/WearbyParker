@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCart } from '../../actions/cart_actions';
 import { deleteCartItem } from '../../actions/cart_item_actions';
 import { deleteCartTryonItem } from '../../actions/cart_tryon_item_actions';
+import { openModal } from '../../actions/modal_actions';
 import CartShow from './cart_show';
 
 const mSTP = (state) => {
@@ -15,7 +16,8 @@ const mDTP = (dispatch) => {
   return ({
     fetchCart: () => dispatch(fetchCart()),
     deleteCartItem: (cartItemId) => dispatch(deleteCartItem(cartItemId)),
-    deleteCartTryonItem: (cartItemId) => dispatch(deleteCartTryonItem(cartItemId))
+    deleteCartTryonItem: (cartItemId) => dispatch(deleteCartTryonItem(cartItemId)),
+    openModal: (modalName, data = {}) => dispatch(openModal(modalName, data))
   })
 }
 

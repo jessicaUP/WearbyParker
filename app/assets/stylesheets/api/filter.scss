@@ -1,0 +1,153 @@
+.filter-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .radio-selections {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding-top: 30px;
+
+
+    .filter-name-cont {
+      padding: 10px;
+
+      label:hover {
+        font-weight: normal;
+      }
+
+      .filter-option {
+        display: none;
+      }
+    }
+  }
+
+  .filter-i {
+    display: none;
+  }
+  
+  .option-btn {
+    background-color: white;
+    border-radius: 5px;
+    width: 160px;
+    height: 120px;
+    color: black;
+    margin: 5px;
+    
+  }
+  
+  .option-btn:hover {
+    border: 1px solid gray;
+  }
+  
+  #color-btn {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    label {
+      margin-left: 2px;
+    }
+
+  }
+
+  #nose_bridge-btn {
+    width: 420px;
+    height: 120px;
+  }
+
+  #color-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    margin: 10px;
+  }
+
+}
+
+.grey-circle {
+  background-color: lightgray;
+}
+
+.options-cont {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+}
+
+
+#color-options {
+  width: 80%;
+  align-items: center;
+
+}
+
+.filter-img {
+  width: 80%;
+}
+
+.items-selected {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  width: 200px;
+
+  .reset-cont {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+  }
+
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(71, 85, 131);
+  border-radius: 100%;
+  color: white;
+  margin: 5px 5px 5px 15px;
+
+
+}
+
+.filter-reset {
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 12px;
+  padding: 5px;
+  height: auto;
+
+}
+
+.filter-reset-amount {
+  border-right: 1px solid lightgray;
+  border-radius: 0;
+  margin-right: 10px;
+  padding-right: 25px;
+
+}
+
+.highlight {
+  border: 1px solid black;
+}
+
+.input-highlight {
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}

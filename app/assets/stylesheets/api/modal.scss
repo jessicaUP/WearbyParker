@@ -1,0 +1,46 @@
+.modal-background::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-background {
+  position: fixed;
+  // background-color: rgb(255, 255, 255);
+  // opacity: .5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  padding-top: 50px;
+  overflow: scroll;
+
+
+  
+
+
+  .search-input {
+    width: 100%;
+    border: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 55px;
+    padding-left: 80px;
+
+  }
+
+  input:focus {
+    outline-color: white;
+  }
+  
+  .search-input::placeholder {
+    color: lightgray;
+  }
+}
+
+  #logo-search {
+    text-align: left;
+    font-size: 12px;
+    margin-left: 80px;
+    margin-bottom: 25px;
+    margin-top: 60px;
+
+  }

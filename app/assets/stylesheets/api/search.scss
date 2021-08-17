@@ -1,0 +1,104 @@
+.search-bar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: scroll;
+  background-color: white;
+}
+
+.search-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-search-cont {
+  margin-left: 80px;
+}
+.results-index {
+  width: 90%;
+  display: grid;
+  justify-content: center;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat( auto-fit, minmax(225px, 1fr) );
+  // -webkit-column-width: 175px;
+  //  -moz-column-width: 175px;
+  //    column-width: 175px;
+  // word-wrap: normal;
+  // word-break: break-all;
+  grid-auto-flow: row;
+  height: auto;
+  margin: 50px auto 10px auto;
+  // padding: 0 5%;
+
+
+  .search-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    // min-width: 175px;
+    // max-width: 275px;
+    height: 225px;
+    -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
+        break-inside: avoid;
+
+    .product-name {
+      font-size: 18px;
+
+    }
+
+
+    .product-color {
+      font-family: 'Playfair Display', 'Didot', "Times New Roman", Times, serif;
+      font-style: italic;
+      font-size: 18px;
+      color: gray;
+      margin: 0;
+      padding: 0 15px;
+    
+      // width: 80%;
+    }
+
+    .shop-btn-cont {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: center;
+      
+      .selection-button {
+        color: rgb(71, 85, 131);
+        background-color: white;
+        margin: 0;
+      }
+    }
+
+  }
+
+  
+  div.tile-image {
+    position: absolute;
+    top: 15px;
+    display: flex;
+    max-width: 100%;
+    // height: 250px;
+    align-content: center;
+    justify-content: center;
+    
+    img {
+      // max-width: 85%;
+      // width: 500px;
+      width: 80%;
+      height: auto;
+      // margin-top: 65px;
+      margin-bottom: 15px;
+      object-fit: fill;
+    }
+  }
+}

@@ -7,6 +7,12 @@ class Api::SessionsController < ApplicationController
     )
     if @user 
       login!(@user)
+      cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+      # if !cart
+      #   cart = Cart.create 
+      #   cart.update({ user_id: cart.id })
+      # end
+      session[:cart_id] = cart.id
       render 'api/users/show'
     else
       render json: ["The information you entered is incorrect. Try again or reset your password."], status: 401

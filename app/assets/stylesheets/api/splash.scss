@@ -1,16 +1,26 @@
 .splash {
-  position: absolute;
-  left: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  // left: 0;
   top: 130px;
   width: 100%;
+  height: auto;
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   button {
     background-color: white;
     color: black;
+    margin: 5px;
   }
 
   img {
-    position: absolute;
+    // position: relative;
     width: 100%;
     height: auto;
   }
@@ -22,10 +32,6 @@
     right: 100px;
     align-items: center;
 
-    .splash {
-      display: flex;
-      align-items: center;
-    }
 
     .banner-title {
       font-size: 55px;

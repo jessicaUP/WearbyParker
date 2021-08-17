@@ -7,3 +7,4 @@ export const fetchProduct = (productId) => {
   )
 
 } 
+

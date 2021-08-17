@@ -13,20 +13,26 @@ class CartItemShow extends React.Component {
 
   };
 
-  removePageItem(itemId) {
+  removePageItem(itemId, price) {
+    let cartCount = document.querySelector('.circle')
+    let count = parseInt(cartCount.innerHTML);
+    cartCount.innerHTML = count - 1;
+
+    let priceEle = document.querySelector(`#price-num`);
+    let newPrice = parseInt(priceEle.innerHTML.split('$')[1]) - price;
+    priceEle.innerHTML = `Your cart: $${newPrice}`
+
     let ele = document.querySelector(`#item-${itemId}`);
     ele.remove();
   }
 
 
 
-  deleteItem(itemId) {
-    let price = document.getElementById('price-num');
+  deleteItem(itemId, cost) {
     return (e) => {
       e.preventDefault();
       this.props.deleteItem(itemId)
-      .then(() => this.removePageItem(itemId))
-        ``.then(() => location.reload());
+      this.removePageItem(itemId, cost)
     }
   }
 
@@ -41,13 +47,13 @@ class CartItemShow extends React.Component {
           <img className='cart-picture' src={cartItem.photo0Url} alt='eyewear-picture' />
         </div>
         <div className='cart-item-desc'>
-          <button className='icon-button' onClick={this.deleteItem(cartItem.id)}>X</button>
+          <button className='icon-button' onClick={this.deleteItem(cartItem.id, cartItem.price)}>X</button>
           <div className='cart-selections'>
             <h2 className='section-title' id='item-name'>{cartItem.name}</h2>
             <p className='option-color'>{cartItem.color_name}</p>
             <label className='subtitle'>Frame width
               <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
-              <input type='hidden' value={cartItem.frame_width.id} />
+              <input type='hidden' value={cartItem.products_frame_width_id} />
             </label>
           </div>
           <div className='cart-selections'>

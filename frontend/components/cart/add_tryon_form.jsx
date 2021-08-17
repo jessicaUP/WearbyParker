@@ -6,14 +6,16 @@ class AddTryon extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: props.cart,
       check: true,
       formPage: 0,
       checkPage: true,
       selectedColor: props.color,
-      fwName: this.props.product.frame_widths[0].frame_width,
-      selectedFrameWidth: 0,
+      fwName: props.product.frame_widths[0].frame_width,
+      selectedFrameWidth: props.product.frame_widths[0].id,
       tryonItem: {},
-      cartCount: this.props.cart.length
+      cartCount: props.cart.length,
+      // tryoncount: props.cart.t
 
     }
     // this.handleSelect = this.handleSelect.bind(this);
@@ -44,33 +46,35 @@ class AddTryon extends React.Component {
     }
   };
 
-  submitItem(currentCount) {
+  submitItem() {
     return (e) => {
       e.preventDefault();
-      let { selectedFrameWidth } = this.state;
+      let { selectedFrameWidth, cartCount } = this.state;
       let { id } = this.props.product;
       let color = document.querySelector(`.img-${id}`);
       let colorId = parseInt(color.id);
       
-      if (currentCount === 5) {
-        // setTimeout(() => window.location.href = '#/carts', 3000)
-        debugger
+      if (cartCount >= 5) {
         this.setState({ formPage: 3 })
+        setTimeout(() => this.setState({ formPage: 0 }), 1000)
+        return
       }
       let item = this.props.createTryonItem({
         product_id: id,
         products_color_id: colorId,
         products_frame_width_id: selectedFrameWidth
       })
-      let cartCount = document.querySelector('.circle')
-      let count = cartCount.innerHTML;
-      cartCount.innerHTML = parseInt(count) + 1;
+      this.props.updateTryonCount(1);
+      let cartCountNum = document.querySelector('.circle')
+      let count = cartCountNum.innerHTML;
+      cartCountNum.innerHTML = parseInt(count) + 1;
       let iteminfo = {
         id: id,
         frameWidth: selectedFrameWidth,
         itemId: item.id
       }
-      this.setState({ formPage: 2, cartCount: (currentCount + 1), tryonItem: iteminfo })
+      let nextStep = cartCount + 1;
+      this.setState({ formPage: 2, tryonItem: iteminfo, cartCount: nextStep })
     }
   }
 
@@ -83,9 +87,21 @@ class AddTryon extends React.Component {
       this.setState({ fwName: fwName, selectedFrameWidth: fwId })
     }
   }
+  
+  deleteTryon() {
+    return (e) => {
+      e.preventDefault();
+      let cartCount = document.querySelector('.circle');
+      let count = parseInt(cartCount.innerHTML);
+      this.props.updateTryonCount(-1);
+      cartCount.innerHTML = (count - 1);
+      this.props.deleteTryonItem(this.state.tryonItem.itemId);
+      this.setState({ formPage: 0, tryonItem: {}, cartCount: cartCount - 1 });
+    }
+  }
 
-  tryonButton(product, cart) {
-    let { formPage, checkPage } = this.state;
+  tryonButton(product, cart, cartCount) {
+    let { formPage, checkPage, tryonItem, selectedFrameWidth } = this.state;
 
     if (checkPage) {
       cart.forEach(item => {
@@ -94,7 +110,6 @@ class AddTryon extends React.Component {
       })
     }
 
-    let { tryonItem, fwName } = this.state;
     let final;
     
     switch (formPage) {
@@ -115,7 +130,6 @@ class AddTryon extends React.Component {
               <hr />
               <div className='option-box'>
                 {this.props.product.frame_widths.map((fw) => {
-                  debugger
                   return (
                     <>
                       <input type='radio'
@@ -127,7 +141,7 @@ class AddTryon extends React.Component {
                       />
                       <label htmlFor={`fw-${fw.id}`}> 
                         <div className='option-cont' >
-                         <i class="fas fa-check-circle fa-lg"></i>
+                          <i class='fas fa-check-circle fa-lg' id={`${fw.id === selectedFrameWidth ? 'selected-check' : ''}`}></i>
                          <div className='option-desc'>
                            <p className='subtitle'>{fw.frame_width}</p>
                            <p className='option-description'>{fw.description}</p>
@@ -150,7 +164,7 @@ class AddTryon extends React.Component {
                   )
                 })}
               </div>
-              <button className='selection-button' onClick={this.submitItem(this.state.cartCount)}>Add to Home Try-On</button>
+              <button className='selection-button' onClick={this.submitItem()}>Add to Home Try-On</button>
             </div>
           </>
         )
@@ -159,7 +173,7 @@ class AddTryon extends React.Component {
         // DELETE BUTTON
         final = (
           <>
-            <button className='icon-button' id='tryon' onClick={this.deleteTryon(tryonItem.itemId)}>x</button>
+            <button className='icon-button' id='tryon' onClick={this.deleteTryon()}>x</button>
             <div className='form-try' id='added'>
               <div className='option-cont' >
                 <i class="fas fa-check-circle fa-lg"></i>
@@ -175,7 +189,7 @@ class AddTryon extends React.Component {
         // FULL MESSAGE
         final = (
           <>
-            <button className='icon-button' id='tryon' onClick={this.deleteTryon(tryonItem.itemId)}>x</button>
+            <button className='icon-button' id='tryon' onClick={() => this.setState({ formPage: 0 })}>x</button>
             <div className='form-try' id='added'>
               <div className='option-cont' >
                 <p className='subtitle'>Your Home Try-On is full</p>
@@ -190,17 +204,6 @@ class AddTryon extends React.Component {
 
   }
 
-  deleteTryon(id) {
-    return (e) => {
-      e.preventDefault();
-      let cartCount = document.querySelector('.circle')
-      let count = parseInt(cartCount.innerHTML);
-      
-      cartCount.innerHTML = (count - 1);
-      this.props.deleteTryonItem(id)
-        .then(this.setState({ formPage: 0, tryonItem: {} }))
-    }
-  }
 
   // handleSelect(colorId, colorname, colorPhoto) {
   //   return (e) => {
@@ -210,8 +213,10 @@ class AddTryon extends React.Component {
 
   render() {
 
-    let { product, cart } = this.props
-    return this.tryonButton(product, cart)
+    let { product } = this.props;
+    let { cart, cartCount } = this.state;
+    return this.tryonButton(product, cart, cartCount)
+
 
   }
 }

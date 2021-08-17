@@ -7,7 +7,8 @@ class Product < ApplicationRecord
    
 
 #GENDER
-  belongs_to :gender, optional: true,
+  belongs_to :gender,
+    optional: true,
     foreign_key: :gender_id,
     primary_key: :id,
     class_name: :Gender
@@ -19,7 +20,8 @@ class Product < ApplicationRecord
     class_name: :ProductsFrameWidth
   has_many :frame_widths,
     through: :products_frame_widths,
-    source: :frame_width
+    source: :frame_width,
+    class_name: :FrameWidth
     
 #SHAPE
   has_many :products_shapes,
@@ -56,6 +58,16 @@ class Product < ApplicationRecord
   has_many :nose_bridges,
     through: :products_nose_bridges,
     source: :nose_bridge
+
+  # def self.filter_products(filters)
+  #   case x
+  #     when 1..5
+        
+  #     else
+  #   end
+    
+
+  # end
  
 
 end

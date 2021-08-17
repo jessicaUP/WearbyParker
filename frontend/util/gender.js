@@ -4,3 +4,11 @@ export const fetchGenderProducts = (genderId) => (
     url: `/api/genders/${genderId}`
   })
 )
+
+export const fetchGenderSearchProducts = (data) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/genders`,
+    data: data
+  })
+)

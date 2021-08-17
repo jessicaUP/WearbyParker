@@ -2,7 +2,7 @@ class Color < ApplicationRecord
 
   validates :color, presence: true
   validates :color, inclusion: { in: ['Black', 'Tortoise', 'Two-tone', 'Red', 
-    'Crystal', 'Grey', 'Brown', 'Silver', 'Gold', 'Blue' , 'Pink', 'Green'] }
+    'Crystal', 'Grey', 'Brown', 'Silver', 'Gold', 'Blue' , 'Pink', 'Green', 'Yellow'] }
 
   has_many :products_colors,
     foreign_key: :color_id,

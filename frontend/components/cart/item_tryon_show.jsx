@@ -50,8 +50,8 @@ class CartTryonItemShow extends React.Component {
             <h2 className='section-title' id='item-name'>{cartItem.name}</h2>
             <p className='option-color'>{cartItem.color_name}</p>
             <label className='subtitle'>Frame width
-              <p className='option-description' id='p-option'>{cartItem.framewidths.frame_width}</p>
-              <input type='hidden' value={cartItem.framewidths.id} />
+              <p className='option-description' id='p-option'>{cartItem.frame_width}</p>
+              <input type='hidden' value={cartItem.products_frame_width_id} />
             </label>
           </div>
           <div className='sub-total' id='sub-final'>

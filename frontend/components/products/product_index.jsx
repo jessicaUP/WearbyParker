@@ -1,127 +1,182 @@
 import React from 'react';
 import AddTryon from '../cart/add_tryon_form';
 import ProductTile from './product_tile';
+import Filter from '../search_filter/filter';
+import { Link } from 'react-router-dom';
+
 
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
-    
     this.state = {
-      tryon: true
+      tryon: props.location.tryon,
+      tryoInfo: true,
+      filter: false,
+      filterColor: null,
+      tryonCount: 0,
+      step: true,
+      howTo: true
+
     };
 
-    this.handleTryon = this.handleTryon.bind(this);
+    this.handleMenus = this.handleMenus.bind(this);
     // this.tryonElements = this.tryonElements.bind(this);
     // this.tryonAdd = this.tryonAdd.bind(this);
+    this.colorSelect = this.colorSelect.bind(this);
+    this.updateTryonCount = this.updateTryonCount.bind(this);
+
   };
 
-  handleTryon() {
+  updateTryonCount(num) {
+    if (this.state.step) {
+      this.setState({ tryonCount: num, step: false })
+    } else {
+      this.setState({ tryonCount: this.state.tryonCount + num })
+    }
+
+  }
+
+  colorSelect(color) {
+    this.setState({ filterColor: color })
+  }
+
+  handleMenus(type, status) {
     return (e) => {
       // e.preventDefault();
-      if (this.state.tryon) {
-        this.setState({ tryon: false })
+      
+      if (status) {
+        this.setState({ [type]: false })
       } else {
-        this.setState({ tryon: true })
+        this.setState({ [type]: true })
       }
       
     }
   };
 
-  // tryonAdd() {
-  //   //:product_id, :products_color_id, :products_frame_width_id)
-  
-  //   return (e) => {
-  //     e.preventDefault();
-  //     let colot
-  //   }
-  // }
-
-  // tryonElements(item, cartArray) {
-  //   // if (!this.state.tryon) return;
-  //   let final;
-
-  //   if (cartArray.includes(item.id)) {
-  //     final = (
-  //       <>
-  //       <div className='pop-up'></div>
-  //         <button className='icon-button' id='tryon' onClick={() => this.props.deleteTryonItem(item.id)}>x</button>
-  //       </>
-  //     )
-  //   } else {
-  //     final = (
-  //       <button className='icon-button' id='tryon' onClick={() => this.props.createTryonItem()}>+</button>
-  //     )
-  //   }
-  //   return final;
-  // }
 
   componentDidMount() {
     this.props.fetchGenderProducts(this.props.match.params.genderId)
     this.props.fetchCart()
+
   };
 
   render() {
     let { genderId, cart } = this.props
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
+    if (this.state.step) this.updateTryonCount(cart.length)
+    // productArray.sort();
     let cartArray = [];
-    cart.forEach(item => {
-      cartArray.push({ id: item.product_id, frameWidth: item.framewidths.frame_width, itemId: item.id});
-    });
+    if (this.state.tryonCount) {
+      cart.forEach(item => {
+        cartArray.push({ id: item.product_id, frameWidth: item.frame_width, itemId: item.id});
+      });
+
+    }
+    
+
+    let { tryon, filter, colorFilter, howTo } = this.state;
+    
 
     let switchButton;
     let message = '';
-    if (this.state.tryon) {
-      switchButton = <i class="fas fa-toggle-on fa-lg" id='switch-on' onClick={this.handleTryon()}></i>
+    let infoMessage = '';
+    if (tryon) {
+      // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
+      switchButton = (
+        <>
+          <label htmlFor='switch-on' onClick={this.handleMenus('tryon', true)} >
+          <i class="fas fa-toggle-on fa-lg" id='switch-on' ></i>
+        Available for Home Try-On</label>
+        </>
+      )
+      if (!filter) {
       message = (
         <div className='message-cont' >
           <h2 className='product-name' id='message-text'>Find your perfect frames! <br/> Add to your Cart and try-on at home for free.</h2>
-          <button className='selection-button' >View Cart</button>
+          <Link to={`/carts`} ><button className='selection-button' >View Cart</button></Link>
         </div>
       )
+
+      }
     } else {
-      switchButton = <i class="fas fa-toggle-off fa-lg" onClick={this.handleTryon()}></i>
+      switchButton = (
+        <>
+          <label htmlFor='switch-off' onClick={this.handleMenus('tryon', false)}>
+         <i class="fas fa-toggle-off fa-lg" id='switch-off' ></i>
+        Available for Home Try-On</label>
+        <div className='how-to'>
+          <p></p>
+        </div>
+        </>
+      )
     };
 
+    // let yellow = productArray[9];
+    // productArray.splice(9, 1)
+    // productArray.push(yellow)
+    // let change = yellow.colors[3];
+    // let change2 = yellow.colors[1];
+    // yellow.colors[3] = change2
+    // yellow.colors[1] = change
+
+    let picks = [17, 18, 19, 20]
+    let jessPicks = <img src={window.jess} className='jess-picks' alt='jess-edits' />
+    let genderID = parseInt(this.props.match.params.genderId);
+    
     return (
       <div className='product-show'>
         <div className='banner-cont' >
-          <img src={window.banner2} className='img-banner' alt='woman-in-glasses' /> 
-          <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
+          <img src={genderID === 1 ? window.banner2 : window.banner3} className='img-banner' alt='woman-in-glasses' />
+          <div className='banner-over'>
+            <h3 className='logo' id='logo-search'>{genderID === 1 ? 'WOMEN\'S EYEGLASSES' : 'MEN\'S EYEGLASSES' }</h3>
+            <h2 className='product-name' >Shop frames below or pick five pairs to try for free</h2>
+          </div>
         </div>
 
         <div className='tryon-ribbon' >
           <div className='switch-button' >
             {switchButton}
-            <p>Available for Home Try-On</p>
           </div>
           <div className='search-filter-cont' >
-            <label className='label' >
+            <label className='label' onClick={this.handleMenus('filter', filter)}>
               <i class="fas fa-sort"></i>
               Filter
             </label>
-            <label className='label'>
-              <i class="fas fa-search"></i>
+            <label className='label' onClick={() => this.props.openModal('search')}>
+              <i class="fas fa-search" ></i>
               Search
             </label>
           </div>
         </div>
         {message}
+        {filter ? <Filter genderId={parseInt(this.props.match.params.genderId)} 
+                          key='filter' 
+                          fetchGenderSearchProducts={this.props.fetchGenderSearchProducts}
+                          fetchGenderProducts={this.props.fetchGenderProducts}
+                          totalCount={productArray.length}
+                          colorSelect={this.colorSelect}
+
+                          /> : ''}
         <div className='product-index'>
           {
             productArray.map((product, idx) => {
               return (
-                <div className='product-cont' >
+                <div className='product-cont' id={`product-${product.id}`} key={`${product.id}-${idx}`}>
+                  {picks.includes(product.id) ? jessPicks : ''}
                   <ProductTile 
                     key={idx}
                     product={product}
                     cart={cart}
-                    switchOn={this.state.tryon}/>
-                  {this.state.tryon ? <AddTryon 
+                    switchOn={tryon}
+                    filterColor={colorFilter}/>
+                  {tryon ? <AddTryon 
                     product={product}
                     cart={cartArray}
                     deleteTryonItem={this.props.deleteTryonItem}
-                    createTryonItem={this.props.createTryonItem} /> : ''}
+                    createTryonItem={this.props.createTryonItem}
+                    updateTryonCount={this.updateTryonCount}
+                  /> : ''}
                 </div>
               )
             })

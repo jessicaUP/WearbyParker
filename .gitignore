@@ -10,11 +10,12 @@ bundle.js
 bundle.js.map
 
 # Ignore all logfiles and tempfiles.
-/log/*
+log/*
+log/development.log
 /tmp/*
 tmp
-# !/log/.keep
-# !/tmp/.keep
+!/log/.keep
+!/tmp/.keep
 
 # Ignore uploaded files in development
 /storage/*

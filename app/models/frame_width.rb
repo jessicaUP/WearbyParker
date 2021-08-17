@@ -12,4 +12,10 @@ class FrameWidth < ApplicationRecord
     through: :products_frame_widths,
     source: :product
 
+  has_many :cart_item,
+    through: :products_frame_width,
+    source: :frame_width,
+    class_name: :CartItem
+
+
 end

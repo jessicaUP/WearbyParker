@@ -1,18 +1,74 @@
 .cart-show {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 125px;
+  top: 130px;
   right: 0;
   left: 0;
   background-color: rgb(248, 248, 248);
+  z-index: -1;
+
+  #price-num {
+    width: 100%;
+    text-align: left;
+  }
+
+  .cart-top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .checkout-info {
+      position: sticky;
+      top: 0;
+      width: 30%;
+      margin-right: 85px;
+      margin-top: 85px;
+      padding-top: 25px;
+      padding-bottom: 7px;
+      align-self: flex-start;
+
+      .fa-check {
+        margin-right: 10px;
+      }
+
+      li {
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        padding: 10px;
+      }
+
+      .checkout-price {
+        display: flex;
+        flex-direction: column;
+        padding-top: 25px;
+        border-top: 1px solid lightgray;
+        margin-top: 15px;
+        
+        .checkout-sub {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 10px;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: bolder;
+        }
+      }
+
+    }
+  }
   
   .cart-item-index {
     display: flex;
     flex-direction: column;
-    width: 660px;
+    width: 65%;
     align-items: center;
+    margin: 0 75px;
 
   }
     
@@ -40,10 +96,13 @@
   display: flex;
   position: relative;
   margin: 7px;
-  width: 640px;
+  width: 100%;
   height: 400px;
   background-color: white;
   padding: 10px;
+  -moz-box-shadow:    0 0 10px 0 rgb(230, 230, 230);
+    -webkit-box-shadow: 0 0 10px 0 rgb(230, 230, 230);
+      box-shadow:         0 0 10px 0 rgb(230, 230, 230);
 
   .item-picture {
     width: 55%;
@@ -56,23 +115,24 @@
     }
   }
 
+  
   .cart-item-desc {
     display: flex;
     flex-direction: column;
     width: 45%;
     padding: 10px;
-
+    
     .section-title {
       margin-top: 30px;
       margin-bottom: 10px;
     }
-
+    
     .option-color {
       font-size: 15px;
       margin: 0;
       margin-bottom: 30px;
     }
-
+    
     .sub-total {
       border-top: 1px solid lightgray;
       position: unset;
@@ -93,8 +153,8 @@
   border: 1px solid darkgray;
   border-radius: 10px;
   justify-content: center;
-  margin-bottom: 8px;
-
+  margin-bottom: 50px;
+  
   p {
     font-size: 12px;
     text-align: center;
@@ -113,4 +173,8 @@
 
 #sub-final {
   justify-content: flex-end;
+}
+
+.item-cont {
+  width: 100%;
 }

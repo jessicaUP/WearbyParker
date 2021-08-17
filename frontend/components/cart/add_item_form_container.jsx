@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { createCartItem } from '../../actions/cart_item_actions';
+import { createCartTryonItem } from '../../actions/cart_tryon_item_actions';
 import AddItemForm from './add_item_form';
 
 // const mSTP = (state) => {
@@ -10,7 +11,8 @@ import AddItemForm from './add_item_form';
 
 const mDTP = (dispatch) => {
   return ({
-    createCartItem: (cartItem) => dispatch(createCartItem(cartItem))
+    createCartItem: (cartItem) => dispatch(createCartItem(cartItem)),
+    createCartTryonItem: (cartItem) => dispatch(createCartTryonItem(cartItem))
   })
 }
 

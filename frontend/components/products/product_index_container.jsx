@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchGenderProducts } from '../../actions/gender_actions';
+import { fetchGenderProducts, fetchGenderSearchProducts } from '../../actions/gender_actions';
 import { fetchCart } from '../../actions/cart_actions';
+import { openModal } from '../../actions/modal_actions';
 import { createCartTryonItem, deleteCartTryonItem } from '../../actions/cart_tryon_item_actions';
 import ProductIndex from './product_index';
 import { withRouter } from 'react-router-dom';
@@ -16,9 +17,12 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
   return ({
     fetchGenderProducts: genderId => dispatch(fetchGenderProducts(genderId)),
+    fetchGenderSearchProducts: data => dispatch(fetchGenderSearchProducts(data)),
     fetchCart: () => dispatch(fetchCart()),
     createTryonItem: (item) => dispatch(createCartTryonItem(item)),
-    deleteTryonItem: (itemId) => dispatch(deleteCartTryonItem(itemId))
+    deleteTryonItem: (itemId) => dispatch(deleteCartTryonItem(itemId)),
+    openModal: (type) => dispatch(openModal(type)),
+    
   })
 };
 

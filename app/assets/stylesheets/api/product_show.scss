@@ -1,12 +1,13 @@
 // @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 .index-body {
-  position: absolute;
+  position: relative;
   top: 125px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 650px;
+  // right: 0;
+  // left: 0;
+  // bottom: 0;
+  height: auto;
+  z-index: -1;
 }
 
 .options-colors {
@@ -16,6 +17,28 @@
   left: 75px;
   z-index: 1;
   flex-direction: row;
+
+  input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgb(68, 65, 109);
+  border-radius: 100%;
+}
+
+input[type='radio']:checked {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  width: 8px;
+  height: 8px;
+  background-color: rgb(68, 65, 109);
+  border-radius: 100%;
+  }
 }
 
 .materials {
@@ -36,6 +59,7 @@
     // display: flex;
     
     .pictures {
+      position: relative;
       display: flex;
       width: 100%;
       height: 570px;
@@ -98,21 +122,29 @@
 
     .radio-cont {
       font-size: 40px;
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
     }
   }
 }
+
+
 
 .middle-details {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 100px;
+  height: 400px;
   width: 100%;
-  padding-top: 75px;
-  padding-bottom: 85px;
+  // padding-top: 75px;
+  // padding-bottom: 85px;
   background-color: white;
   position: relative;
   z-index: 2;
+  -webkit-box-shadow:0 0 10px lightgrey;
+    -moz-box-shadow:0 0 10px lightgrey;
+      box-shadow:0 0 10px lightgrey;
 
   .white-box{
     display: flex;
@@ -120,7 +152,7 @@
     justify-content: center;
     width: 100%;
     height: 255px;
-    background-color: white;
+    // background-color: white;
 
 
     
@@ -134,37 +166,40 @@
 }
 
 
-//DROP SHADOW SOURCE: https://css-tricks.com/almanac/properties/o/object-fit/
-.middle-details:before, .middle-details:after {
-  content:"";
-    position:absolute;
-    z-index:-1;
-    -webkit-box-shadow:0 0 10px lightgrey;
-    -moz-box-shadow:0 0 10px lightgrey;
-    box-shadow:0 0 10px lightgrey;
-    top:0;
-    bottom:0;
-    left:10px;
-    right:10px;
-    -moz-border-radius:100px / 10px;
-    border-radius:100px / 10px;
-}
-.middle-details:after {
-  right:10px;
-    left:auto;
-    -webkit-transform:skew(8deg) rotate(3deg);
-       -moz-transform:skew(8deg) rotate(3deg);
-        -ms-transform:skew(8deg) rotate(3deg);
-         -o-transform:skew(8deg) rotate(3deg);
-            transform:skew(8deg) rotate(3deg);
-}
-// END SOURCE
+// //DROP SHADOW SOURCE: https://css-tricks.com/almanac/properties/o/object-fit/
+// .middle-details:before, .middle-details:after {
+//   content:"";
+//     position:absolute;
+//     z-index:-1;
+//     -webkit-box-shadow:0 0 10px lightgrey;
+//     -moz-box-shadow:0 0 10px lightgrey;
+//     box-shadow:0 0 10px lightgrey;
+//     top:0;
+//     bottom:0;
+//     left:10px;
+//     right:10px;
+//     -moz-border-radius:100px / 10px;
+//     border-radius:100px / 10px;
+// }
+// .middle-details:after {
+//   right:10px;
+//     left:auto;
+//     -webkit-transform:skew(8deg) rotate(3deg);
+//        -moz-transform:skew(8deg) rotate(3deg);
+//         -ms-transform:skew(8deg) rotate(3deg);
+//          -o-transform:skew(8deg) rotate(3deg);
+//             transform:skew(8deg) rotate(3deg);
+// }
+// // END SOURCE
 
 button.purchase, button.try-on {
-  width: 250px;
-  height: 50px;
+  height: 100px;
   margin-bottom: 12px;
   width: 280px;
+}
+
+#buy-item {
+  padding: 20px;
 }
 
 button.purchase {
@@ -207,18 +242,147 @@ button.try-on:hover {
 }
 
 .bottom {
-  max-width: 75%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-items: center;
+  align-content: center;
   justify-content: center;
 
-  .bottom-note-title {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 28px;
-    margin-bottom: 20px;
-  
-    .bottom-note {
-      width: 75%;
+  .options-information {
+    display: flex;
+    flex-direction: row;
+
+    .bottom-head-div {
+      display: flex;
+      flex-direction: row;
     }
+  }
+
+  .info-img {
+    display: flex;
+    align-content: center;
+    width: 60%;
+    height: auto;
+    padding-top: 60px;
+    overflow: clip;
+    
+    .btm-picture {
+      width: 130%;
+      object-fit: contain;
+    }
+  }
+
+  .bottom-img {
+    width: 85%;
+  }
+
+  
+  ul {
+    list-style-type: disc;
+    
+    li::marker {
+      color: gray;
+    }
+    
+    li {
+      margin: 5px;
+    }
+  }
+  
+  .bottom-head-div {
+    // width: 80%;
+    // margin-left: 60px;
+    margin-bottom: 20px;
+    
+    .bottom-head {
+      width: 200px;
+      font-weight: bolder;
+      padding-top: 5px;
+    }
+  }
+  
+  .bottom-note {
+    width: 60%;
+    line-height: 27px;
+    font-size: 15px;
+    margin-bottom: 100px;
+  }
+  
+}
+
+.options-2 {
+  position: relative;
+  width: 40%;
+  height: auto;
+  padding: 60px;
+}
+
+.arrow {
+  width: 50%;
+  height: 100%;
+}
+
+#right-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: e-resize;
+}
+
+#left-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: w-resize;
+}
+
+
+.bottom-note-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 100;
+  font-size: 28px;
+  margin-bottom: 45px;
+  text-align: center;
+  margin-right: 0;
+  width: 80%;
+  color: rgb(82, 82, 82);
+  
+}
+
+.center-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+.middle-grey {
+  position: relative;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  justify-items: center;
+  // width: 100%;
+  height: 400px;
+  background-color: rgba(43, 52, 62, .03);
+  padding: 60px;
+  align-items: center;
+
+  .info-grey {
+    width: 50%;
+
+  }
+
+  .grey-picture {
+    mix-blend-mode: multiply;
+    width: 100%;
+  }
+
+  .bottom-note-title {
+    width: 50%;
+    margin: 0 0 0 60px;
   }
 
 }

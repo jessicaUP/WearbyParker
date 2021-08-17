@@ -1,5 +1,8 @@
 .logo {
   color: black;
+}
+
+.logo-a {
   text-decoration: none;
 }
 
@@ -11,7 +14,7 @@
   left: 0;
   width: 100%;
   align-content: center;
-  z-index: -2;
+  z-index: 0;
 }
 
 .nav-bar {
@@ -25,6 +28,60 @@
 
 }
 
+.btn-line-true {
+  border-bottom: 2px solid rgb(71, 85, 131);
+}
+
+.hideEle-true {
+  display: flex;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  // bottom: auto;
+  background-color: #f5f6fb;
+  box-shadow: 0 100px 200px rgba(0, 0, 0, .3);
+  // height: auto;
+  // z-index: 5;
+
+
+
+  img {
+    position: relative;
+    width: 55%;
+    margin: 10px;
+  }
+  
+  .right-tryon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 50px;
+
+  }
+
+  .border-button {
+    border: 1px solid rgb(71, 85, 131);
+    margin: 10px;
+  }
+
+  .tryon-over {
+    font-size: 30px;
+    font-weight: bolder;
+    line-height: 40px;
+    margin-bottom: 20px;
+    // justify-items: center;
+    // justify-content: center;
+    text-align: center;
+  }
+}
+
+.hideEle-false {
+  display: none;
+  
+}
+
 .r-buttons {
   display: flex;
   width: 300px;
@@ -36,21 +93,21 @@
   margin: 20px;
   position: relative;
 
+  
   .circle {
     position: absolute;
     text-align: center;
     justify-items: center;
-    top: -8px;
-    right: -6px;
-    padding-top: 3px;
+    top: -14px;
+    right: -10px;
+    // padding-top: 3px;
     background-color: rgb(71, 85, 131);
     width: 15px;
-    height: 13px;
+    height: 15px;
     border-radius: 100%;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
   }
-
 }
 
 .fas {
@@ -76,6 +133,7 @@
 }
 
 .nav-bottom {
+  position: relative;
   display: flex;
   direction: flex;
   width: 100%;
@@ -138,3 +196,7 @@ p.ribbon {
 //   }
 // }
 
+#root {
+  width: 100%;
+  z-index: 0;
+}
