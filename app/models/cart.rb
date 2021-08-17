@@ -2,7 +2,7 @@ class Cart < ApplicationRecord
 
   validates :user_id, presence: false
 
-  has_one :user,
+  belongs_to :user,
     optional: true,
     foreign_key: :user_id,
     primary_key: :id,
