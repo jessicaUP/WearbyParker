@@ -1,9 +1,8 @@
 class Cart < ApplicationRecord 
 
-  validates :user_id, numericality: { only_integer: true }, allow_blank: true
+  validates :user_id, presence: false
 
-
-  belongs_to :user,
+  has_one :user,
     optional: true,
     foreign_key: :user_id,
     primary_key: :id,
