@@ -1,5 +1,8 @@
 class Cart < ApplicationRecord 
 
+  validates :user_id, :allow_nil => true
+
+
   belongs_to :user,
     optional: true,
     foreign_key: :user_id,
