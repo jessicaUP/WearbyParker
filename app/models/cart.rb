@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord 
 
-  validates :user_id, :allow_nil => true
+  validates :user_id, numericality: { only_integer: true }, allow_blank: true
 
 
   belongs_to :user,
