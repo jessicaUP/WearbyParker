@@ -11,8 +11,7 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
   after_validation :ensure_cart
 
-  has_one :cart,
-    optional: true,
+  has_many :cart,
     foreign_key: :user_id,
     primary_key: :id,
     class_name: :Cart
