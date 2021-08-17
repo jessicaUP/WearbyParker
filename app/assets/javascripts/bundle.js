@@ -3464,7 +3464,13 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProductTile);
 
-    _this = _super.call(this, props);
+    _this = _super.call(this, props); // let colorId, colorname;
+    // if (props.product.colors[0]) {
+    //   colorId = props.product.colors[0].id;
+    //   colorName = props.product.colors[0].colorname;
+    // }
+
+    debugger;
     _this.state = {
       // check: true,
       // formCheck: props.switchOn,
@@ -3502,6 +3508,19 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       this.setState({
         filterCheck: false
       });
+    }
+  }, {
+    key: "colorCheck",
+    value: function colorCheck(product) {
+      debugger;
+
+      if (product.colors[0]) {
+        this.setState({
+          selectedColor: product.colors[0],
+          colorName: product.colors[0].color_name,
+          colorPhoto: product.colors[0].photo0Url
+        });
+      }
     }
   }, {
     key: "handleSelect",

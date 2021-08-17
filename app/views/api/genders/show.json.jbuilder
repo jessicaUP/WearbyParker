@@ -3,13 +3,9 @@ json.set! @gender.id do
     json.extract! product, :id, :name, :gender_id
     json.colors do 
       json.array! product.products_colors do |color|
-        if !@colors
-          json.extract! color, :color_id, :color_name, :id
-          json.photo0Url url_for(color.photo0)
-        elsif @colors.include?(color.color.id)
-          json.extract! color, :color_id, :color_name, :id
-          json.photo0Url url_for(color.photo0)
-        end
+        json.extract! color, :color_id, :color_name, :id
+        json.photo0Url url_for(color.photo0)
+
       end
     end
     json.frame_widths do 

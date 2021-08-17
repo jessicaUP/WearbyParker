@@ -7,6 +7,13 @@ class ProductTile extends React.Component {
 
   constructor(props) {
     super(props);
+    // let colorId, colorname;
+    // if (props.product.colors[0]) {
+    //   colorId = props.product.colors[0].id;
+    //   colorName = props.product.colors[0].colorname;
+    // }
+    
+    debugger
     this.state = {
       // check: true,
       // formCheck: props.switchOn,
@@ -22,6 +29,8 @@ class ProductTile extends React.Component {
       // tryonIds: props.tryonIds,
       // tryon: props.switchOn,
       // tryonItem: ''
+
+
 
 
     }
@@ -44,6 +53,14 @@ class ProductTile extends React.Component {
         });
     this.setState({filterCheck: false})
     
+  }
+
+  colorCheck(product) {
+    debugger
+    if (product.colors[0]) {
+      this.setState({ selectedColor: product.colors[0], colorName: product.colors[0].color_name, colorPhoto: product.colors[0].photo0Url })
+
+    }
   }
 
 
