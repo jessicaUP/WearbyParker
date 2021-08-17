@@ -12,6 +12,7 @@ class User < ApplicationRecord
   after_validation :ensure_cart
 
   has_one :cart,
+    optional: true,
     foreign_key: :user_id,
     primary_key: :id,
     class_name: :Cart
