@@ -30,7 +30,7 @@ class SearchProduct extends React.Component {
   pageRedirect(genderId, colorId) {
     let { closeModal } = this.props;
     closeModal();
-    location.assign(`http://localhost:3000/#/products/${genderId}/color/${parseInt(colorId)}`);
+    location.assign(`http://wearby-parker.herokuapp.com/products/${genderId}/color/${parseInt(colorId)}`);
 
   }
 

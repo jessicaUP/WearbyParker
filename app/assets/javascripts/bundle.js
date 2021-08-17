@@ -983,7 +983,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         _this6.props.closeModal(); // .then(location.assign("http://localhost:3000/#/carts"))
 
 
-        location.assign("http://localhost:3000/#/carts").then(function () {
+        location.assign("http://wearby-parker.herokuapp.com/carts").then(function () {
           return window.location.reload();
         });
       };
@@ -2537,7 +2537,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           return _this3.props.openModal('search');
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/#",
+        to: "/",
         className: "logo-a"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "logo"
@@ -4214,7 +4214,7 @@ var SearchProduct = /*#__PURE__*/function (_React$Component) {
     value: function pageRedirect(genderId, colorId) {
       var closeModal = this.props.closeModal;
       closeModal();
-      location.assign("http://localhost:3000/#/products/".concat(genderId, "/color/").concat(parseInt(colorId)));
+      location.assign("http://wearby-parker.herokuapp.com/products/".concat(genderId, "/color/").concat(parseInt(colorId)));
     }
   }, {
     key: "render",

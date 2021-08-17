@@ -150,7 +150,7 @@ class AddItemForm extends React.Component {
     
       this.props.closeModal()
       // .then(location.assign("http://localhost:3000/#/carts"))
-      location.assign("http://localhost:3000/#/carts")
+      location.assign("http://wearby-parker.herokuapp.com/carts")
         .then(() => window.location.reload())
 
     }

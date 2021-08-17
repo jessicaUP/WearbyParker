@@ -69,7 +69,7 @@ class NavBar extends React.Component {
             href='https://www.linkedin.com/in/jessica-uphoff-b2584b69/' 
             target="_blank">Jessica Uphoff Linkedin></a> */}
         </div>
-          <Link to='/#' className='logo-a' ><h3 className='logo' >WEARBY PARKER</h3></Link>
+          <Link to='/' className='logo-a' ><h3 className='logo' >WEARBY PARKER</h3></Link>
         <div className='r-buttons'>
           {accountButton}
           <div className='cart-icon-cont' >
