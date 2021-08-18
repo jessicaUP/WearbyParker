@@ -12,7 +12,7 @@ class ProductTile extends React.Component {
     //   colorId = props.product.colors[0].id;
     //   colorName = props.product.colors[0].colorname;
     // }
-    
+    debugger
     this.state = {
       // check: true,
       // formCheck: props.switchOn,

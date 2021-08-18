@@ -10,14 +10,14 @@ class Api::GendersController < ApplicationController
     
     @gender = Gender.find(search_params[:genderId].to_i)
     @products = @gender.products
-        if search_params[:filters]
-
-      selectedFilters = search_params[:filters]
-      # @products = @products.joins(:frame_widths, :shapes, :colors, :materials, :nose_bridges)
+    @colors = []
+      if search_params[:filters]
+        
+        selectedFilters = search_params[:filters]
+        # @products = @products.joins(:frame_widths, :shapes, :colors, :materials, :nose_bridges)
       filters = ['frame_width', 'shape', 'color', 'material', 'nose_bridge']
 
       collected_products = []
-      @colors = []
       filters.each do |filter_name| 
         filter = selectedFilters[filter_name] 
         case filter_name 
@@ -91,7 +91,6 @@ class Api::GendersController < ApplicationController
       @products = (@products.to_a & total[0])
     end
 
-
     render :show
   end
   
@@ -100,7 +99,7 @@ class Api::GendersController < ApplicationController
   private 
 
   def search_params
-    params.permit(:genderId, filters: {
+    params.permit(:genderId, :format, filters: {
       frame_width: [],
       shape: [],
       color: [],

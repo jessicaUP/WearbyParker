@@ -2503,15 +2503,13 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       return function () {
-        // let history = useHistory()
         var historyCheck = location.href.split('/#/')[1];
 
         if (historyCheck.includes("genders/".concat(gender))) {
           var switchEle = document.querySelector('.switch-off');
           var button = document.querySelector('.relative-btn');
           if (switchEle) switchEle.click();
-          button.click(); // location.replace(`/#/genders/${gender}?true`)
-          // location.reload();
+          button.click();
         } else {
           location.assign("/#/genders/".concat(gender, "?true"));
           location.reload();
@@ -3503,6 +3501,7 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     //   colorName = props.product.colors[0].colorname;
     // }
 
+    debugger;
     _this.state = {
       // check: true,
       // formCheck: props.switchOn,

@@ -30,15 +30,12 @@ class NavBar extends React.Component {
 
   tryonNav(gender) {
     return () => {
-      // let history = useHistory()
       let historyCheck = location.href.split('/#/')[1];
       if (historyCheck.includes(`genders/${gender}`)) {
         let switchEle = document.querySelector('.switch-off')
         let button = document.querySelector('.relative-btn')
         if (switchEle) switchEle.click();
         button.click();
-        // location.replace(`/#/genders/${gender}?true`)
-        // location.reload();
       } else {
         location.assign(`/#/genders/${gender}?true`)
         location.reload();
