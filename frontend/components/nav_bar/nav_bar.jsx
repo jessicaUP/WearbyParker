@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     }
 
     this.openMenu = this.openMenu.bind(this);
+    this.tryonNav = this.tryonNav.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,22 @@ class NavBar extends React.Component {
       this.state.tryon ? next = false : next = true;
       this.setState({ tryon: next })
 
+    }
+  }
+
+  tryonNav(gender) {
+    return () => {
+      // let history = useHistory()
+      let historyCheck = location.href.split('/#/')[1];
+      if (historyCheck.includes(`genders/${gender}`)) {
+        location.replace(`/#/genders/${gender}?true`)
+        location.reload();
+      } else {
+        location.assign(`/#/genders/${gender}?true`)
+        location.reload();
+      }
+
+      this.setState({ tryon: false });
     }
   }
 
@@ -58,7 +75,7 @@ class NavBar extends React.Component {
     return (
     <div className='total-menu'>
       <div className='ribbon' >
-        <p className='ribbon' >The latest on shopping with us.</p>
+        <p className='ribbon' >WEBSITE CLONE BY JESSICA UPHOFF</p>
       </div>
 
       <div className='nav-bar'>
@@ -91,8 +108,10 @@ class NavBar extends React.Component {
             <div className='right-tryon'>
             <p className='tryon-over'>Pick 5 frames to try on at home (it's free!)</p>
               <div class='button-drop'>
-                <Link className='drop-options' to={{ pathname: '/genders/1', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Women</button></Link>
-                <Link className='drop-options' to={{ pathname: '/genders/2', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Men</button></Link>
+                <button className='menu' onClick={this.tryonNav(2)} >Men</button>
+                <button className='menu' onClick={this.tryonNav(1)}  >Women</button>
+                {/* <Link className='drop-options' to={{ pathname: '/genders/1', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Women</button></Link>
+                <Link className='drop-options' to={{ pathname: '/genders/2', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Men</button></Link> */}
               </div>
               </div>
             </div>

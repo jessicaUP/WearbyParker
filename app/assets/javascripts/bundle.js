@@ -2474,6 +2474,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       tryon: false
     };
     _this.openMenu = _this.openMenu.bind(_assertThisInitialized(_this));
+    _this.tryonNav = _this.tryonNav.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2497,9 +2498,31 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "tryonNav",
+    value: function tryonNav(gender) {
+      var _this3 = this;
+
+      return function () {
+        // let history = useHistory()
+        var historyCheck = location.href.split('/#/')[1];
+
+        if (historyCheck.includes("genders/".concat(gender))) {
+          location.replace("/#/genders/".concat(gender, "?true"));
+          location.reload();
+        } else {
+          location.assign("/#/genders/".concat(gender, "?true"));
+          location.reload();
+        }
+
+        _this3.setState({
+          tryon: false
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var cart = this.props.cart;
       if (!cart.id) return null;
@@ -2527,14 +2550,14 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "ribbon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "ribbon"
-      }, "The latest on shopping with us.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "WEBSITE CLONE BY JESSICA UPHOFF")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "side-l"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         "class": "fas fa-search",
         onClick: function onClick() {
-          return _this3.props.openModal('search');
+          return _this4.props.openModal('search');
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/",
@@ -2571,25 +2594,13 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "tryon-over"
       }, "Pick 5 frames to try on at home (it's free!)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         "class": "button-drop"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "drop-options",
-        to: {
-          pathname: '/genders/1',
-          tryon: true
-        },
-        onClick: this.openMenu()
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu border-button"
-      }, "Women")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "drop-options",
-        to: {
-          pathname: '/genders/2',
-          tryon: true
-        },
-        onClick: this.openMenu()
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu border-button"
-      }, "Men")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        className: "menu",
+        onClick: this.tryonNav(2)
+      }, "Men"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu",
+        onClick: this.tryonNav(1)
+      }, "Women"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
         to: "/genders/2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -2716,8 +2727,9 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProductIndex);
 
     _this = _super.call(this, props);
+    debugger;
     _this.state = {
-      tryon: props.location.tryon,
+      tryon: false,
       tryoInfo: true,
       filter: false,
       filterColor: null,
@@ -2730,6 +2742,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
     _this.colorSelect = _this.colorSelect.bind(_assertThisInitialized(_this));
     _this.updateTryonCount = _this.updateTryonCount.bind(_assertThisInitialized(_this));
+    _this.tryonCheck = _this.tryonCheck.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2775,6 +2788,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchCart();
     }
   }, {
+    key: "tryonCheck",
+    value: function tryonCheck() {
+      this.setState({
+        tryon: true,
+        update: false
+      }); // location.reload();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -2784,7 +2805,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
           cart = _this$props.cart;
       if (!genderId || !cart) return null;
       var productArray = Object.values(genderId)[0];
-      if (this.state.step) this.updateTryonCount(cart.length); // productArray.sort();
+
+      if (this.state.step) {
+        this.updateTryonCount(cart.length);
+        if (location.hash.includes('?')) this.tryonCheck();
+      }
+
+      debugger;
+      var update = location.hash.split('?')[1]; // productArray.sort();
 
       var cartArray = [];
 
@@ -3470,7 +3498,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
     //   colorName = props.product.colors[0].colorname;
     // }
 
-    debugger;
     _this.state = {
       // check: true,
       // formCheck: props.switchOn,
@@ -3512,8 +3539,6 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "colorCheck",
     value: function colorCheck(product) {
-      debugger;
-
       if (product.colors[0]) {
         this.setState({
           selectedColor: product.colors[0],

@@ -13,7 +13,6 @@ class ProductTile extends React.Component {
     //   colorName = props.product.colors[0].colorname;
     // }
     
-    debugger
     this.state = {
       // check: true,
       // formCheck: props.switchOn,
@@ -56,7 +55,6 @@ class ProductTile extends React.Component {
   }
 
   colorCheck(product) {
-    debugger
     if (product.colors[0]) {
       this.setState({ selectedColor: product.colors[0], colorName: product.colors[0].color_name, colorPhoto: product.colors[0].photo0Url })
 

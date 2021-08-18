@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
+    debugger
     this.state = {
-      tryon: props.location.tryon,
+      tryon: false,
       tryoInfo: true,
       filter: false,
       filterColor: null,
@@ -24,6 +25,7 @@ class ProductIndex extends React.Component {
     // this.tryonAdd = this.tryonAdd.bind(this);
     this.colorSelect = this.colorSelect.bind(this);
     this.updateTryonCount = this.updateTryonCount.bind(this);
+    this.tryonCheck = this.tryonCheck.bind(this);
 
   };
 
@@ -60,11 +62,22 @@ class ProductIndex extends React.Component {
 
   };
 
+  tryonCheck() {
+      this.setState({ tryon: true, update: false })
+      // location.reload();
+  }
+
   render() {
     let { genderId, cart } = this.props
     if (!genderId || !cart) return null;
     let productArray = Object.values(genderId)[0]
-    if (this.state.step) this.updateTryonCount(cart.length)
+    if (this.state.step) {
+      this.updateTryonCount(cart.length)
+      if (location.hash.includes('?')) this.tryonCheck();
+
+    }
+    debugger
+    let update = location.hash.split('?')[1];
     // productArray.sort();
     let cartArray = [];
     if (this.state.tryonCount) {
