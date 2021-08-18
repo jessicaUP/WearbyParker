@@ -98,7 +98,7 @@ class ProductIndex extends React.Component {
       // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
       switchButton = (
         <>
-          <label htmlFor='switch-on' onClick={this.handleMenus('tryon', true)} >
+          <label className='switch-on' htmlFor='switch-on' onClick={this.handleMenus('tryon', true)} >
           <i class="fas fa-toggle-on fa-lg" id='switch-on' ></i>
         Available for Home Try-On</label>
         </>
@@ -115,7 +115,7 @@ class ProductIndex extends React.Component {
     } else {
       switchButton = (
         <>
-          <label htmlFor='switch-off' onClick={this.handleMenus('tryon', false)}>
+          <label className='switch-off' htmlFor='switch-off' onClick={this.handleMenus('tryon', false)}>
          <i class="fas fa-toggle-off fa-lg" id='switch-off' ></i>
         Available for Home Try-On</label>
         <div className='how-to'>

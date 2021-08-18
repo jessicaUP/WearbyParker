@@ -2507,8 +2507,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         var historyCheck = location.href.split('/#/')[1];
 
         if (historyCheck.includes("genders/".concat(gender))) {
-          location.replace("/#/genders/".concat(gender, "?true"));
-          location.reload();
+          var switchEle = document.querySelector('.switch-off');
+          var button = document.querySelector('.relative-btn');
+          if (switchEle) switchEle.click();
+          button.click(); // location.replace(`/#/genders/${gender}?true`)
+          // location.reload();
         } else {
           location.assign("/#/genders/".concat(gender, "?true"));
           location.reload();
@@ -2838,6 +2841,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
       if (tryon) {
         // if (tryoInfo) infoMessage = <div class='tryon-show'></div>
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          className: "switch-on",
           htmlFor: "switch-on",
           onClick: this.handleMenus('tryon', true)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
@@ -2859,6 +2863,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         }
       } else {
         switchButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          className: "switch-off",
           htmlFor: "switch-off",
           onClick: this.handleMenus('tryon', false)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
