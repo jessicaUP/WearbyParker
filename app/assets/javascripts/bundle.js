@@ -3506,9 +3506,9 @@ var ProductTile = /*#__PURE__*/function (_React$Component) {
       // check: true,
       // formCheck: props.switchOn,
       // formPage: 0,
-      selectedColor: props.product.colors[0].id,
-      colorName: props.product.colors[0].color_name,
-      colorPhoto: props.product.colors[0].photo0Url,
+      selectedColor: props.product.colors[0] ? props.product.colors[0].id : 0,
+      colorName: props.product.colors[0] ? props.product.colors[0].color_name : '',
+      colorPhoto: props.product.colors[0] ? props.product.colors[0].photo0Url : '',
       frameWidths: props.product.frameWidths,
       fwName: '',
       selectedFrameWidth: 0,
@@ -3784,8 +3784,10 @@ var Filter = /*#__PURE__*/function (_React$Component) {
           });
         }
 
+        debugger;
+        var selectedFilters = _this2.state.selectedFilters[idType];
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "option-btn ".concat(idType, "-").concat(optionId),
+          className: "option-btn ".concat(idType, "-").concat(optionId, " ").concat(selectedFilters.includes(optionId) ? 'filter-btn-selected' : ''),
           id: "".concat(idType, "-btn"),
           onClick: _this2.addFilter(idType, optionId)
         }, imageEle, colorEle, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {

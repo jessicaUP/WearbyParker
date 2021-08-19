@@ -10,7 +10,6 @@ class Api::GendersController < ApplicationController
     
     @gender = Gender.find(search_params[:genderId].to_i)
     @products = @gender.products
-    @colors = []
       if search_params[:filters]
         
         selectedFilters = search_params[:filters]
@@ -37,8 +36,9 @@ class Api::GendersController < ApplicationController
             end
           when 'color'
             if filter
+              @colorsArr = []
               filter.each do |id|
-                @colors << id.to_i
+                @colorsArr << id.to_i
               end
               next_step = filter.map do |id|
                 Color.find(id.to_i).products
@@ -90,7 +90,6 @@ class Api::GendersController < ApplicationController
       
       @products = (@products.to_a & total[0])
     end
-
     render :show
   end
   

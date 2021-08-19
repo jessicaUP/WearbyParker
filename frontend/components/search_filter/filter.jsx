@@ -60,10 +60,11 @@ class Filter extends React.Component {
           } else if (color) {
             colorEle = <div className='circle' style={{ backgroundColor: color }} id='color-circle' ></div>
           }
-
+        debugger
+          let selectedFilters = this.state.selectedFilters[idType]
           return (
             <>
-              <button className={`option-btn ${idType}-${optionId}`} id={`${idType}-btn`} onClick={this.addFilter(idType, optionId)} >
+              <button className={`option-btn ${idType}-${optionId} ${selectedFilters.includes(optionId) ? 'filter-btn-selected' : ''}`} id={`${idType}-btn`} onClick={this.addFilter(idType, optionId)} >
                 {imageEle}
                 {colorEle}
                 <input type='checkbox'
