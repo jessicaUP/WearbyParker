@@ -1743,7 +1743,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
         id: "amount-count"
       }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frames.")));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frame", itemTryonArray.length === 1 ? '' : 's', ".")));
       if (itemTryonArray.length === 5) tryonPopup = '';
       var tryonSection = '';
 
@@ -2597,12 +2597,12 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, "Pick 5 frames to try on at home (it's free!)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         "class": "button-drop"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu",
-        onClick: this.tryonNav(2)
-      }, "Men"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu",
+        className: "menu menu-drop",
         onClick: this.tryonNav(1)
-      }, "Women"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, "Women"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu menu-drop",
+        onClick: this.tryonNav(2)
+      }, "Men"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "drop-options",
         to: "/genders/2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
