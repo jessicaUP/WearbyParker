@@ -12,8 +12,8 @@ class Thanks extends React.Component {
   clearCart(cartId) {
     return () => {
       this.props.closeModal();
-      this.props.deleteCart(cartId)
-      .then(() => location.reload())
+      this.props.deleteCart(cartId);
+      location.reload();
 
     }
   }

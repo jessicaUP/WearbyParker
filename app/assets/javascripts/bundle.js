@@ -4988,9 +4988,9 @@ var Thanks = /*#__PURE__*/function (_React$Component) {
       return function () {
         _this2.props.closeModal();
 
-        _this2.props.deleteCart(cartId).then(function () {
-          return location.reload();
-        });
+        _this2.props.deleteCart(cartId);
+
+        location.reload();
       };
     }
   }, {
