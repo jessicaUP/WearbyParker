@@ -1743,7 +1743,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
         id: "amount-count"
       }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frame", itemTryonArray.length === 1 ? '' : 's', ".")));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frame", itemTryonArray.length === 4 ? '' : 's', ".")));
       if (itemTryonArray.length === 5) tryonPopup = '';
       var tryonSection = '';
 
