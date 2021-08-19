@@ -648,7 +648,9 @@ var Account = /*#__PURE__*/function (_React$Component) {
         className: "account-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "account"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "session-h2 title-account"
+      }, "Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.props.logout
       }, "Sign out")));
     }
@@ -982,7 +984,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
         _this6.props.closeModal(); // .then(location.assign("http://localhost:3000/#/carts"))
 
 
-        location.assign("http://wearby-parker.herokuapp.com/carts").then(function () {
+        location.assign("http://wearby-parker.herokuapp.com/#/carts").then(function () {
           return window.location.reload();
         });
       };

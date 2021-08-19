@@ -17,7 +17,7 @@ class Account extends React.Component {
     return (
       <div className='account-container' >
         <div className='account' >
-          <h2>Account</h2>
+          <h2 className='session-h2 title-account' >Account</h2>
           <button onClick={this.props.logout}>Sign out</button>
         </div>
       </div>
