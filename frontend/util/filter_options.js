@@ -90,7 +90,7 @@ const colorOptions = [
     optionId: 4,
     type: 'crystal',
     name: 'Crystal',
-    color: 'rgb(205, 226, 243)'
+    color: 'rgb(252, 243, 229)'
   },
   {
     optionId: 5,

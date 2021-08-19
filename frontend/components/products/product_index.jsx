@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = {
       tryon: false,
       tryoInfo: true,
@@ -76,8 +75,7 @@ class ProductIndex extends React.Component {
       if (location.hash.includes('?')) this.tryonCheck();
 
     }
-    debugger
-    let update = location.hash.split('?')[1];
+    // let update = location.hash.split('?')[1];
     // productArray.sort();
     let cartArray = [];
     if (this.state.tryonCount) {
@@ -153,7 +151,7 @@ class ProductIndex extends React.Component {
           </div>
           <div className='search-filter-cont' >
             <label className='label' onClick={this.handleMenus('filter', filter)}>
-              <i class="fas fa-sort"></i>
+              <i class="fas fa-sort filter-icon"></i>
               Filter
             </label>
             <label className='label' onClick={() => this.props.openModal('search')}>

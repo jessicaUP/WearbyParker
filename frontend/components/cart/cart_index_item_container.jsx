@@ -5,7 +5,6 @@ import CartIndexItem from '/cart_index_item'
 const mSTP = (state) => {
   return ({
     cartItem: state.cartItem
-    // NEED TO CHECK WITH DEBUGGER (what is in my state currently)!
   })
 }
 

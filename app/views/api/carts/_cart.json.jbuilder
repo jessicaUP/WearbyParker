@@ -4,7 +4,6 @@ json.extract! @cart, :id
       json.extract! item, :id, :product_id, :price, :prescription_type, :lense_type, :lense_material, :products_frame_width_id
       json.extract! item.product, :name
       json.extract! item.products_color, :color_name
-      #   debugger
       json.extract! item.frame_width, :frame_width, :description
       json.photo0Url url_for(item.products_color.photo0)
     end

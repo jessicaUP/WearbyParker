@@ -102,7 +102,6 @@ class AddItemForm extends React.Component {
           colorId = color.id
         } 
       });
-      // debugger
       // this.props.product.frameWidth.forEach(color => {
       //   if (color.color_name === colorName) {
       //     colorId = color.id

@@ -60,7 +60,6 @@ class Filter extends React.Component {
           } else if (color) {
             colorEle = <div className='circle' style={{ backgroundColor: color }} id='color-circle' ></div>
           }
-        debugger
           let selectedFilters = this.state.selectedFilters[idType]
           return (
             <>
@@ -118,6 +117,10 @@ class Filter extends React.Component {
         nextCount = count + 1
         buttonEle.classList.add('highlight')
       }
+
+      // let filterBtn = document.querySelector('.filter-icon')
+      //   filterBtn.classList.add('filter-icon-on')
+
       
       this.props.fetchGenderSearchProducts({ genderId: this.props.genderId, filters: selectedFilters });
       this.setState({ selectedFilters, count: nextCount});
@@ -129,6 +132,9 @@ class Filter extends React.Component {
       this.props.fetchGenderProducts(this.props.genderId)
       let buttonElements = document.querySelectorAll(`.highlight`);
       buttonElements.forEach(ele => ele.classList.remove('highlight'))
+
+      // let filterBtn = document.querySelector('.filter-icon')
+      // filterBtn.classList.remove('filter-icon-on')
       this.setState({
         count: 0,
         selectedFilters: {
