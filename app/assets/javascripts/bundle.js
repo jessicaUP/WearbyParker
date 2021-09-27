@@ -2477,6 +2477,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
     };
     _this.openMenu = _this.openMenu.bind(_assertThisInitialized(_this));
     _this.tryonNav = _this.tryonNav.bind(_assertThisInitialized(_this));
+    _this.genderNav = _this.genderNav.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2520,6 +2521,18 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         _this3.setState({
           tryon: false
         });
+      };
+    }
+  }, {
+    key: "genderNav",
+    value: function genderNav(gender) {
+      return function () {
+        var historyCheck = location.href.split('/#/')[1];
+
+        if (!historyCheck.includes("genders/".concat(gender))) {
+          location.assign("/#/genders/".concat(gender));
+          location.reload();
+        }
       };
     }
   }, {
@@ -2603,17 +2616,13 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, "Women"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "menu menu-drop",
         onClick: this.tryonNav(2)
-      }, "Men"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "drop-options",
-        to: "/genders/2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu"
-      }, "Men")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "drop-options",
-        to: "/genders/1"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "menu"
-      }, "Women")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Men"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu",
+        onClick: this.genderNav(2)
+      }, "Men"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "menu",
+        onClick: this.genderNav(1)
+      }, "Women"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "menu-item"
       })));
     }
@@ -2787,7 +2796,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchGenderProducts(this.props.match.params.genderId);
-      this.props.fetchCart();
+      this.props.fetchCart(); // this.setState({});
     }
   }, {
     key: "tryonCheck",

@@ -56,13 +56,14 @@ class ProductIndex extends React.Component {
 
 
   componentDidMount() {
-    this.props.fetchGenderProducts(this.props.match.params.genderId)
-    this.props.fetchCart()
+    this.props.fetchGenderProducts(this.props.match.params.genderId);
+    this.props.fetchCart();
+    // this.setState({});
 
   };
 
   tryonCheck() {
-      this.setState({ tryon: true, update: false })
+      this.setState({ tryon: true, update: false });
       // location.reload();
   }
 

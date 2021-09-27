@@ -13,6 +13,7 @@ class NavBar extends React.Component {
 
     this.openMenu = this.openMenu.bind(this);
     this.tryonNav = this.tryonNav.bind(this);
+    this.genderNav = this.genderNav.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,16 @@ class NavBar extends React.Component {
       }
 
       this.setState({ tryon: false });
+    }
+  }
+
+  genderNav(gender) {
+    return () => {
+      let historyCheck = location.href.split('/#/')[1];
+      if (!historyCheck.includes(`genders/${gender}`)) {
+        location.assign(`/#/genders/${gender}`);
+        location.reload();
+      }
     }
   }
 
@@ -109,7 +120,7 @@ class NavBar extends React.Component {
             <div className='right-tryon'>
             <p className='tryon-over'>Pick 5 frames to try on at home (it's free!)</p>
               <div class='button-drop'>
-                <button className='menu menu-drop' onClick={this.tryonNav(1)}  >Women</button>
+                <button className='menu menu-drop' onClick={this.tryonNav(1)} >Women</button>
                 <button className='menu menu-drop' onClick={this.tryonNav(2)} >Men</button>
                 {/* <Link className='drop-options' to={{ pathname: '/genders/1', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Women</button></Link>
                 <Link className='drop-options' to={{ pathname: '/genders/2', tryon: true }} onClick={this.openMenu()}><button className='menu border-button' >Men</button></Link> */}
@@ -118,8 +129,10 @@ class NavBar extends React.Component {
             </div>
             </div>
 
-            <Link className='drop-options' to='/genders/2' ><button className='menu' >Men</button></Link>
-            <Link className='drop-options' to='/genders/1' ><button className='menu' >Women</button></Link>
+            <button className='menu' onClick={this.genderNav(2)} >Men</button>
+            <button className='menu' onClick={this.genderNav(1)} >Women</button>
+            {/* <Link className='drop-options' to='/genders/2' ><button className='menu' >Men</button></Link>
+            <Link className='drop-options' to='/genders/1' ><button className='menu' >Women</button></Link> */}
           <div className='menu-item'>
             {/* <button onClick={toggleItem}>Eyeglasses</button> */}
 
