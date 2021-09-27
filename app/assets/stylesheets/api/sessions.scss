@@ -81,6 +81,9 @@ h2.session-h2 {
 }
 
 .errors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: grey;
   border: 1px solid #f2b600;
   background-color: #fff0c7;
