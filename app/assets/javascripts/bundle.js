@@ -4272,7 +4272,7 @@ var SearchProduct = /*#__PURE__*/function (_React$Component) {
     value: function pageRedirect(genderId, colorId) {
       var closeModal = this.props.closeModal;
       closeModal();
-      location.assign("http://wearby-parker.herokuapp.com/#/products/".concat(genderId, "/color/").concat(parseInt(colorId)));
+      location.assign("/#/products/".concat(genderId, "/color/").concat(parseInt(colorId)));
     }
   }, {
     key: "render",
