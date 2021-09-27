@@ -56,6 +56,8 @@ class CartShow extends React.Component {
     let itemArray = cart.cartItems
     let itemTryonArray = cart.cartTryonItems
 
+    let totalProduct = itemArray.length + itemTryonArray.length;
+
     let tryonPopup = (
       <>
       <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
@@ -122,7 +124,7 @@ class CartShow extends React.Component {
                 <p>${total}</p>
               </div>
             </div>
-            <button className='cart-button' id='buy-button' onClick={() => this.props.openModal('thanks', { cartId: cart.id })} >Next step</button>
+              <button className={totalProduct === 0 ? 'cart-button no-cart' : 'cart-button'} id='buy-button' onClick={totalProduct !== 0 ? () => this.props.openModal('thanks', { cartId: cart.id }) : () => {}} >Next step</button>
           </div>
         </div>
         </div>

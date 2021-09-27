@@ -1738,6 +1738,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
 
       var itemArray = cart.cartItems;
       var itemTryonArray = cart.cartTryonItems;
+      var totalProduct = itemArray.length + itemTryonArray.length;
       var tryonPopup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "option-description",
         id: "amount-count"
@@ -1793,13 +1794,13 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Free")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "checkout-sub"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "cart-button",
+        className: totalProduct === 0 ? 'cart-button no-cart' : 'cart-button',
         id: "buy-button",
-        onClick: function onClick() {
+        onClick: totalProduct !== 0 ? function () {
           return _this2.props.openModal('thanks', {
             cartId: cart.id
           });
-        }
+        } : function () {}
       }, "Next step")))));
     }
   }]);

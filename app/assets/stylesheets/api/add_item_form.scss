@@ -157,6 +157,20 @@
   width: 100%;
 }
 
+.cart-button:hover {
+  background-color: rgb(42, 56, 100);
+
+}
+
+.no-cart {
+ background-color: rgb(113, 121, 148);
+}
+
+.no-cart:hover {
+  background-color: rgb(113, 121, 148);
+  cursor: not-allowed;
+}
+
 #buy-button {
   margin-top: 20px;
 }
