@@ -18,10 +18,13 @@ class CartShow extends React.Component {
 
 
   componentDidMount() { 
-    this.props.fetchCart()
-    if ( this.state.checkReload ) {
-      this.setState({ checkReload: false })
-    }
+    this.setState({});
+    this.props.fetchCart();
+    // location.reload();
+    // if ( this.state.checkReload ) {
+    //   this.setState({ checkReload: false });
+    //   // location.reload();
+    // }
     
   }
 

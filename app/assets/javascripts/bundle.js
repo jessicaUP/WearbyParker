@@ -982,11 +982,10 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
 
         _this6.props.closeModal(); // .then(location.assign("http://localhost:3000/#/carts"))
+        // location.assign("http://wearby-parker.herokuapp.com/#/carts")
 
 
-        location.assign("http://wearby-parker.herokuapp.com/#/carts").then(function () {
-          return window.location.reload();
-        });
+        location.assign("/#/carts");
       };
     }
   }, {
@@ -1697,13 +1696,12 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
   _createClass(CartShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCart();
-
-      if (this.state.checkReload) {
-        this.setState({
-          checkReload: false
-        });
-      }
+      this.setState({});
+      this.props.fetchCart(); // location.reload();
+      // if ( this.state.checkReload ) {
+      //   this.setState({ checkReload: false });
+      //   // location.reload();
+      // }
     }
   }, {
     key: "totalCost",
