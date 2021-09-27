@@ -77,6 +77,7 @@ class CartShow extends React.Component {
       tryonSection = (
         <>
         { tryonPopup }
+        <div className='cart-collections'>
           {
             itemTryonArray.map((cartItem, idx) => {
               return (
@@ -89,6 +90,7 @@ class CartShow extends React.Component {
               )
             })
           }
+          </div>
         </>
       )
     }
@@ -98,6 +100,7 @@ class CartShow extends React.Component {
         <div className='cart-top'>
         <div className='cart-item-index'>
           <h2 className='product-name' id='price-num'>Your Cart: ${total}</h2>
+          <div className='cart-collections'>
           {
             itemArray.map((cartItem, idx) => {
               return (
@@ -109,6 +112,7 @@ class CartShow extends React.Component {
                 </div>
             )})
           }
+          </div>
           {tryonSection}
             </div>
           <div className='checkout-info'>

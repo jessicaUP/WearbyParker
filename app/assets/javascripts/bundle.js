@@ -1747,7 +1747,9 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       var tryonSection = '';
 
       if (itemTryonArray.length !== 0) {
-        tryonSection = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, tryonPopup, itemTryonArray.map(function (cartItem, idx) {
+        tryonSection = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, tryonPopup, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "cart-collections"
+        }, itemTryonArray.map(function (cartItem, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "item-cont",
             id: "tryon-".concat(cartItem.id)
@@ -1756,7 +1758,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
             cartItem: cartItem,
             deleteItem: _this2.props.deleteCartTryonItem
           }));
-        }));
+        })));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1768,7 +1770,9 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "product-name",
         id: "price-num"
-      }, "Your Cart: $", total), itemArray.map(function (cartItem, idx) {
+      }, "Your Cart: $", total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-collections"
+      }, itemArray.map(function (cartItem, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "item-cont",
           id: "item-".concat(cartItem.id)
@@ -1777,7 +1781,7 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
           cartItem: cartItem,
           deleteItem: _this2.props.deleteCartItem
         }));
-      }), tryonSection), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      })), tryonSection), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "checkout-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "checkout-list"

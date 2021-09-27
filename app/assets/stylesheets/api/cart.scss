@@ -69,6 +69,12 @@
     width: 65%;
     align-items: center;
     margin: 0 75px;
+    
+    .cart-collections {
+      display: flex;
+      flex-direction: column-reverse;
+
+    }
 
   }
     

@@ -2,7 +2,8 @@ class Api::CartItemsController < ApplicationController
 
   def create
     
-    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    @cart =  Cart.find_cart(session[:cart_id], current_user)
+    session[:cart_id] = @cart.id
 
     @item = CartItem.create(cart_item_params)
     @item.update({ cart_id: @cart.id })
@@ -32,7 +33,8 @@ class Api::CartItemsController < ApplicationController
   def destroy
     @item = CartItem.find(params[:id])
     @item.destroy
-    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    @cart =  Cart.find_cart(session[:cart_id], current_user)
+    session[:cart_id] = @cart.id
     @cart_items = @cart.cart_items
     @tryon_items = @cart.cart_tryon_items
     render '/api/carts/show'

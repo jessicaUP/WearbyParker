@@ -1,16 +1,9 @@
 class Api::CartTryonItemsController < ApplicationController
 
   def create
-    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    @cart = Cart.find_cart(session[:cart_id], current_user)
+    session[:cart_id] = @cart.id
     
-    if !@cart
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    end
-
-    # render json: ['Your home try-on is full!'] if cart.tryon_cart_full?
-    
-
     if cart.tryon_cart_full?
       @cart_items = @cart.cart_items
       @tryon_items = @cart.cart_tryon_items
@@ -18,9 +11,8 @@ class Api::CartTryonItemsController < ApplicationController
       # render json: ['Added']
       render 'api/carts/show'
     else
-      @item = CartTryonItem.create(cart_item_params)
+      @item = CartTryonItem.create(cart_tryon_item_params)
       @item.update({ cart_id: @cart.id })
-
 
       if @item.save!
         render 'show'
@@ -33,7 +25,7 @@ class Api::CartTryonItemsController < ApplicationController
 
   def update 
     @item = CartTryonItem.find(params[:id])
-    if @item.update(cart_item_params)
+    if @item.update(cart_tryon_item_params)
       @cart_items = cart.cart_items
       @tryon_items = cart.cart_tryon_items
       render '/api/carts/show'
@@ -45,7 +37,8 @@ class Api::CartTryonItemsController < ApplicationController
   def destroy
     @item = CartTryonItem.find(params[:id])
     @item.destroy
-    @cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
+    @cart =  Cart.find_cart(session[:cart_id], current_user)
+    session[:cart_id] = @cart.id
     @cart_items = cart.cart_items
     @tryon_items = cart.cart_tryon_items
     render '/api/carts/show'
@@ -54,7 +47,7 @@ class Api::CartTryonItemsController < ApplicationController
 
   private
 
-  def cart_item_params
+  def cart_tryon_item_params
     params.require(:cartTryonItem).permit(:product_id, :products_color_id, :products_frame_width_id)
   end
 

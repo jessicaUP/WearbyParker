@@ -21,7 +21,18 @@ class Cart < ApplicationRecord
 
 
   def tryon_cart_full?
-    self.cart_tryon_items.length == 5
+    self.cart_tryon_items.length >= 5
+  end
+
+  def self.find_cart(session_id, current_user)
+    cart = Cart.find_by(id: session_id)
+    
+    if !cart
+      Cart.find_by(user_id: current_user.id) if current_user
+      cart = Cart.create if !cart
+    end
+
+    return cart
   end
 
 
