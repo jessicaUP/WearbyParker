@@ -108,16 +108,16 @@ NoseBridge.destroy_all
 ProductsNoseBridge.destroy_all
 
 #USERS --> last in user group
-jessica = User.create!(id: 1, name: 'Jessica Uphoff', password: 'killercat', email: 'jessica@uphoff.com')
-nick = User.create!(id: 2, name: 'Nick Missel', password: 'killercat', email: 'nick@missel.com')
-morgan = User.create!(id: 3, name: 'Morgan Fritz', password: 'killercat', email: 'morgan@fritz.com')
-gabby = User.create!(id: 4, name: 'Gabby West', password: 'killercat', email: 'gabby@west.com')
-karl = User.create!(id: 5, name: 'Karl Brown', password: 'killercat', email: 'karl@brown.com')
-brad = User.create!(id: 6, name: 'Brad Pitt', password: 'killercat', email: 'brad@pitt.com')
-bill = User.create!(id: 7, name: 'Bill Skarsgard', password: 'killercat', email: 'bill@skarsgard.com')
-sam = User.create!(id: 8, name: 'Samantha Frank', password: 'killercat', email: 'samantha@frank.com')
-claire = User.create!(id: 9, name: 'Claire Rose', password: 'killercat', email: 'claire@rose.com')
-billy = User.create!(id: 10, name: 'Billy Bob', password: 'killercat', email: 'billy@bob.com')
+jessica = User.create!(name: 'Jessica Uphoff', password: 'killercat', email: 'jessica@uphoff.com')
+nick = User.create!(name: 'Nick Missel', password: 'killercat', email: 'nick@missel.com')
+morgan = User.create!(name: 'Morgan Fritz', password: 'killercat', email: 'morgan@fritz.com')
+gabby = User.create!(name: 'Gabby West', password: 'killercat', email: 'gabby@west.com')
+karl = User.create!(name: 'Karl Brown', password: 'killercat', email: 'karl@brown.com')
+brad = User.create!(name: 'Brad Pitt', password: 'killercat', email: 'brad@pitt.com')
+bill = User.create!(name: 'Bill Skarsgard', password: 'killercat', email: 'bill@skarsgard.com')
+sam = User.create!(name: 'Samantha Frank', password: 'killercat', email: 'samantha@frank.com')
+claire = User.create!(name: 'Claire Rose', password: 'killercat', email: 'claire@rose.com')
+billy = User.create!(name: 'Billy Bob', password: 'killercat', email: 'billy@bob.com')
 
 
 #FILTERS --> first in product group

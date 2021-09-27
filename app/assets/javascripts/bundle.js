@@ -4605,8 +4605,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       var user = {
-        email: 'uphoff.jessica@gmail.com',
-        password: 'wearbyparker'
+        email: 'jessica@uphoff.com',
+        password: 'killercat'
       };
       this.handleInput('email');
       this.handleInput('password');

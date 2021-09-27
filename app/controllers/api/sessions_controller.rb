@@ -10,8 +10,9 @@ class Api::SessionsController < ApplicationController
       cart =  Cart.find_by(id: session[:cart_id]) || Cart.find_by(user_id: current_user.id)
       # if !cart
       #   cart = Cart.create 
-      #   cart.update({ user_id: cart.id })
       # end
+      cart.update({ user_id: @user.id })
+      # cart.user_id = @user.id
       session[:cart_id] = cart.id
       render 'api/users/show'
     else
