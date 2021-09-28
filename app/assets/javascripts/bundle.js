@@ -644,7 +644,8 @@ var Account = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var name = this.props.user.name.split(' ')[0];
+      var name = this.props.user.name;
+      if (name) name = " ".concat(name.split(' ')[0]);
       debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "account-container"
@@ -652,7 +653,7 @@ var Account = /*#__PURE__*/function (_React$Component) {
         className: "account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "session-h2 title-account"
-      }, "Welcome back ", name, "..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Welcome back", name, "..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.props.logout
       }, "Sign out")));
     }
