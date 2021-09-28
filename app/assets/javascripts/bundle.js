@@ -644,13 +644,15 @@ var Account = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var name = this.props.user.name.split(' ')[0];
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "account-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "session-h2 title-account"
-      }, "Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Welcome back ", name, "..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.props.logout
       }, "Sign out")));
     }
@@ -684,8 +686,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
+  debugger;
   return {
-    user: state.session.currentUser
+    user: Object.values(state.entities.users)[0]
   };
 };
 
@@ -935,31 +938,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
           if (color.color_name === colorName) {
             colorId = color.id;
           }
-        }); // this.props.product.frameWidth.forEach(color => {
-        //   if (color.color_name === colorName) {
-        //     colorId = color.id
-        //   } 
-        // });
-        // let fw_id;
-        // switch (this.state.cartItem.frame_width) {
-        //   // GET THROUGH BACKEND WHEN HAVE TIME
-        //   case 'Extra narrow':
-        //     fw_id = 1;
-        //     break;
-        //   case 'Narrow':
-        //     fw_id = 2;
-        //     break;
-        //   case 'Medium':
-        //     fw_id = 3;
-        //     break;
-        //   case 'Wide':
-        //     fw_id = 4;
-        //     break;
-        //   case 'Extra wide':
-        //     fw_id = 5;
-        //     break;
-        // }
-
+        });
 
         var _this6$state = _this6.state,
             cartItem = _this6$state.cartItem,
@@ -986,6 +965,7 @@ var AddItemForm = /*#__PURE__*/function (_React$Component) {
 
 
         location.assign("/#/carts");
+        location.reload();
       };
     }
   }, {

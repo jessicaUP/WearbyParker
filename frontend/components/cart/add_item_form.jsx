@@ -102,31 +102,6 @@ class AddItemForm extends React.Component {
           colorId = color.id
         } 
       });
-      // this.props.product.frameWidth.forEach(color => {
-      //   if (color.color_name === colorName) {
-      //     colorId = color.id
-      //   } 
-      // });
-
-      // let fw_id;
-      // switch (this.state.cartItem.frame_width) {
-      //   // GET THROUGH BACKEND WHEN HAVE TIME
-      //   case 'Extra narrow':
-      //     fw_id = 1;
-      //     break;
-      //   case 'Narrow':
-      //     fw_id = 2;
-      //     break;
-      //   case 'Medium':
-      //     fw_id = 3;
-      //     break;
-      //   case 'Wide':
-      //     fw_id = 4;
-      //     break;
-      //   case 'Extra wide':
-      //     fw_id = 5;
-      //     break;
-      // }
 
       let { cartItem, totalPrice } = this.state;
       let { product } = this.props;
@@ -151,6 +126,7 @@ class AddItemForm extends React.Component {
       // .then(location.assign("http://localhost:3000/#/carts"))
       // location.assign("http://wearby-parker.herokuapp.com/#/carts")
       location.assign("/#/carts")
+      location.reload();
     }
 
   };
