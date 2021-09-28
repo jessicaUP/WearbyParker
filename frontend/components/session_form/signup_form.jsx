@@ -4,9 +4,11 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
+      inputs: {
+        name: '',
+        email: '',
+        password: ''
+      },
       submitCleared: false
     };
     
@@ -16,7 +18,9 @@ class SignupForm extends React.Component {
 
   handleInput(type) {
     return (e) => {
-      this.setState({ [type]: e.target.value });
+      let newState = Object.assign(this.state.inputs, { [type]: e.target.value })
+      this.setState({ inputs: newState });
+      this.submitClear();
     }
   }
 
@@ -31,20 +35,18 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.submitClear()) {
-      this.props.createNewUser(this.state)
+    if (this.state.submitCleared) {
+      this.props.createNewUser(this.state.inputs)
         .then(() => this.props.history.push('/'))
     }
   }
 
   submitClear() {
-    let sendStatus = true;
-    let inputs = Object.values(this.state);
+    let inputs = Object.values(this.state.inputs);
 
-    inputs.forEach(value => {
-      if (value === '') sendStatus = false;
-    });
-    return sendStatus;
+    debugger
+   let sendStatus = inputs.every(amount => amount.length !== 0 );
+    this.setState({ submitCleared: sendStatus })
   }
 
 
@@ -53,7 +55,8 @@ class SignupForm extends React.Component {
     let error = (this.props.errors.session.length) ? (
       <p className='errors' >{this.props.errors.session[0]}</p>) : ''
 
-
+    let clickCheck = this.state.submitCleared;
+      debugger
     return (
       <div className='all-form' >
         <h2 className='session-h2'>Nice to meet you!</h2>
@@ -83,7 +86,7 @@ class SignupForm extends React.Component {
               placeholder='Password'
             />
             </div>
-            <button className={`click-${this.submitClear()}`} >Create account</button>
+            <button className={`click-${clickCheck}`} >Create account</button>
             <button className='demo-button' onClick={this.handleDemo}>Demo user?</button>
           </form>
         </div>

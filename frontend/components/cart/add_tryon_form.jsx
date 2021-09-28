@@ -187,6 +187,7 @@ class AddTryon extends React.Component {
         break;
       case 3:
         // FULL MESSAGE
+        
         final = (
           <>
             <button className='icon-button' id='tryon' onClick={() => this.setState({ formPage: 0 })}>x</button>

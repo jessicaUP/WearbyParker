@@ -7,8 +7,8 @@ class Api::SessionsController < ApplicationController
     )
     if @user 
       login!(@user)
-      cart =  Cart.find_cart(session[:cart_id], current_user)
-      session[:cart_id] = @cart.id
+      cart = Cart.find_cart(session[:cart_id], current_user)
+      session[:cart_id] = cart.id
       cart.update({ user_id: @user.id })
       render 'api/users/show'
     else

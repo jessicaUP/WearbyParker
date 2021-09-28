@@ -70,7 +70,8 @@ class CartShow extends React.Component {
       </>
     )
 
-    if ( itemTryonArray.length === 5 ) tryonPopup = '';
+    if (itemTryonArray.length === 5) tryonPopup = <p className='option-description' id='amount-count' >{itemTryonArray.length} of 5 Home Try-On frames chosen</p>
+;
 
     let tryonSection = '';
     if ( itemTryonArray.length !== 0 ) {

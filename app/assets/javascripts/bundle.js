@@ -1743,7 +1743,10 @@ var CartShow = /*#__PURE__*/function (_React$Component) {
       }, itemTryonArray.length, " of 5 Home Try-On frames chosen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "popup-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Still want to continue shopping? You can try ", 5 - itemTryonArray.length, " more frame", itemTryonArray.length === 4 ? '' : 's', ".")));
-      if (itemTryonArray.length === 5) tryonPopup = '';
+      if (itemTryonArray.length === 5) tryonPopup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "option-description",
+        id: "amount-count"
+      }, itemTryonArray.length, " of 5 Home Try-On frames chosen");
       var tryonSection = '';
 
       if (itemTryonArray.length !== 0) {
@@ -4384,8 +4387,10 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      email: '',
-      password: '',
+      inputs: {
+        email: '',
+        password: ''
+      },
       submitCleared: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -4400,11 +4405,13 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+        var newState = Object.assign(_this2.state.inputs, _defineProperty({}, type, e.target.value));
 
         _this2.setState({
-          submitCleared: _this2.submitClearCheck()
+          inputs: newState
         });
+
+        _this2.submitClearCheck();
       };
     }
   }, {
@@ -4430,8 +4437,8 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
 
-      if (this.submitClearCheck()) {
-        this.props.login(this.state).then(function () {
+      if (this.state.submitCleared) {
+        this.props.login(this.state.inputs).then(function () {
           return _this4.props.history.push('/account');
         });
       }
@@ -4439,12 +4446,14 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "submitClearCheck",
     value: function submitClearCheck() {
-      var sendStatus = true;
-      var inputs = Object.values(this.state);
-      inputs.forEach(function (value) {
-        if (value === '') sendStatus = false;
+      var inputs = Object.values(this.state.inputs);
+      debugger;
+      var sendStatus = inputs.every(function (amount) {
+        return amount.length !== 0;
       });
-      return sendStatus;
+      this.setState({
+        submitCleared: sendStatus
+      });
     }
   }, {
     key: "render",
@@ -4454,6 +4463,7 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       var error = this.props.errors.session.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "errors"
       }, this.props.errors.session[0]) : '';
+      var clickCheck = this.state.submitCleared;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "all-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -4478,7 +4488,7 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleInput('password'),
         placeholder: "Password"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "click-".concat(this.state.submitCleared, " blue-button")
+        className: "click-".concat(clickCheck, " blue-button")
       }, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemo
@@ -4590,9 +4600,11 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      name: '',
-      email: '',
-      password: '',
+      inputs: {
+        name: '',
+        email: '',
+        password: ''
+      },
       submitCleared: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -4606,7 +4618,13 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.target.value));
+        var newState = Object.assign(_this2.state.inputs, _defineProperty({}, type, e.target.value));
+
+        _this2.setState({
+          inputs: newState
+        });
+
+        _this2.submitClear();
       };
     }
   }, {
@@ -4632,8 +4650,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
 
-      if (this.submitClear()) {
-        this.props.createNewUser(this.state).then(function () {
+      if (this.state.submitCleared) {
+        this.props.createNewUser(this.state.inputs).then(function () {
           return _this4.props.history.push('/');
         });
       }
@@ -4641,12 +4659,14 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "submitClear",
     value: function submitClear() {
-      var sendStatus = true;
-      var inputs = Object.values(this.state);
-      inputs.forEach(function (value) {
-        if (value === '') sendStatus = false;
+      var inputs = Object.values(this.state.inputs);
+      debugger;
+      var sendStatus = inputs.every(function (amount) {
+        return amount.length !== 0;
       });
-      return sendStatus;
+      this.setState({
+        submitCleared: sendStatus
+      });
     }
   }, {
     key: "render",
@@ -4654,6 +4674,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       var error = this.props.errors.session.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "errors"
       }, this.props.errors.session[0]) : '';
+      var clickCheck = this.state.submitCleared;
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "all-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -4684,7 +4706,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleInput('password'),
         placeholder: "Password"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "click-".concat(this.submitClear())
+        className: "click-".concat(clickCheck)
       }, "Create account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemo

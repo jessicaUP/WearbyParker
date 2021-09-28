@@ -4,8 +4,10 @@ class SigninForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      inputs: {
+        email: '',
+        password: ''
+      },
       submitCleared: false
     };
 
@@ -16,8 +18,10 @@ class SigninForm extends React.Component {
 
   handleInput(type) {
     return (e) => {
-      this.setState({ [type]: e.currentTarget.value });
-      this.setState({ submitCleared: this.submitClearCheck() })
+      let newState = Object.assign(this.state.inputs, { [type]: e.target.value })
+      this.setState({ inputs: newState });
+      this.submitClearCheck();
+
     }
   };
 
@@ -32,26 +36,25 @@ class SigninForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    if (this.submitClearCheck()) {
-        this.props.login(this.state)
+    if (this.state.submitCleared) {
+        this.props.login(this.state.inputs)
       .then(() => this.props.history.push('/account'))
     }
   };
 
   submitClearCheck() {
-    let sendStatus = true;
-    let inputs = Object.values(this.state);
-    
-    inputs.forEach(value => {
-      if (value === '') sendStatus = false;
-    });
-    return sendStatus;
+    let inputs = Object.values(this.state.inputs);
+
+    debugger
+    let sendStatus = inputs.every(amount => amount.length !== 0);
+    this.setState({ submitCleared: sendStatus })
   };
 
   render() {
     let error = (this.props.errors.session.length) ? (
       <p className='errors' >{this.props.errors.session[0]}</p>) : ''
 
+    let clickCheck = this.state.submitCleared;
     return (
       <div className='all-form' >
         <h2 className='session-h2'>Sign in</h2>
@@ -74,7 +77,7 @@ class SigninForm extends React.Component {
               placeholder='Password'
             />
             </div>
-            <button className={`click-${this.state.submitCleared} blue-button`} >Sign in</button>
+            <button className={`click-${clickCheck} blue-button`} >Sign in</button>
             <button className='demo-button' onClick={this.handleDemo} >Demo user?</button>
           </form>
           <hr className='break-line' />

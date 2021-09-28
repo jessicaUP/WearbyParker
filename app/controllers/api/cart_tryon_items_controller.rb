@@ -9,7 +9,7 @@ class Api::CartTryonItemsController < ApplicationController
       @tryon_items = @cart.cart_tryon_items
       # @frame_widths = cart.frame_widths
       # render json: ['Added']
-      render 'api/carts/show'
+      render json: 'Your home tryon is full!'
     else
       @item = CartTryonItem.create(cart_tryon_item_params)
       @item.update({ cart_id: @cart.id })
