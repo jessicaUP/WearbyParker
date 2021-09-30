@@ -48,6 +48,25 @@ This duel cart feature allows users to add items ready for purchase alongside up
 - By pressing the toggle on the product index, each product populates a button to allow users to add to cart.
 - The switch is automatically turned off unless user navigates though the 'Home Try-on' located in the main navigation bar. A query is added to the url, prompting the tryon toggle to turn on.
 
+```javascript
+  tryonNav(gender) {
+    return () => {
+      let historyCheck = location.href.split('/#/')[1];
+      if (historyCheck.includes(`genders/${gender}`)) {
+        let switchEle = document.querySelector('.switch-off')
+        let button = document.querySelector('.relative-btn')
+        if (switchEle) switchEle.click();
+        button.click();
+      } else {
+        location.assign(`/#/genders/${gender}?true`)
+        location.reload();
+      }
+
+      this.setState({ tryon: false });
+    }
+  }
+  ```
+
 ![TryonToggle](https://user-images.githubusercontent.com/79214086/135513624-55a82a97-7825-4751-9670-f6cf58428f84.gif)
 
 ## PRODUCTS
@@ -65,6 +84,15 @@ By creating tables in the database for all catigories, the logic on the backend 
 
 ## SEARCH
 The Search modal is available in both the main and product nav bar. The minimal design and the on-focus text input prompts users to type in a product name. The search shows all products by colorway. Once product is clicked, gender options become available linking to appropriate show page.
+
+```ruby
+  def index
+    input = params['input']
+    @products = Product.where("name LIKE '%#{input.capitalize}%' OR name LIKE '%#{input}%'")
+    
+    render :search_index
+  end
+  ```
 
 ![SearchFeature](https://user-images.githubusercontent.com/79214086/135520254-960c1d17-cce2-4a8b-a840-77a8289b2321.gif)
 
