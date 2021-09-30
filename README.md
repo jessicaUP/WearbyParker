@@ -27,6 +27,7 @@ Users must enter information into all inputs in order to click the login or sign
 
 ## SHOPPING CART / TRYON CART
 This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
+
 ![BuyForm](https://user-images.githubusercontent.com/79214086/135509880-73926c9e-5bd7-4f2d-bd0e-32b8845e2999.gif)
 
 * TRYON
