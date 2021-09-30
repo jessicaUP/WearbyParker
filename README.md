@@ -26,8 +26,7 @@ First time users can easily create an account or use the provided Demo User prof
 Users must enter information into all inputs in order to click the login or sign-up button. User error handling provides specific messages for each input for aid.
 
 ## SHOPPING CART / TRYON CART
-This duel cart feature allows users to add ![Uploading WearbyParker4-_1_.gif…]()
-items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
+This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
 
 ![BuyForm](https://user-images.githubusercontent.com/79214086/135510227-0a7e58cc-51c3-4a21-ba97-269c13d2171d.gif)
 
