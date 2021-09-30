@@ -1,9 +1,8 @@
 # Wearby Parker
 
-![Logo](https://user-images.githubusercontent.com/79214086/135525131-9a085200-d4c3-457a-9d28-1e72fa5883e8.png)
 ![Banner](https://user-images.githubusercontent.com/79214086/135525049-5e75254e-65b8-41d8-aec3-700857275547.png)
 
-Link: [Wearby Parker](http://wearby-parker.herokuapp.com/#/)
+Project Link: [Wearby Parker](http://wearby-parker.herokuapp.com/#/)
 
 ## SUMMARY
 WearbyParker is a clone of the eyewear company, Warby Parker's ecommerce site. 
