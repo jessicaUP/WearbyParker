@@ -1,8 +1,8 @@
-#Wearby Parker
+# Wearby Parker
 
 Link: [Wearby Parker](http://wearby-parker.herokuapp.com/#/)
 
-# SUMMARY
+## SUMMARY
 WearbyParker is a clone of the eyewear company, Warby Parker's ecommerce site. 
 Features:
   * User Authentication
