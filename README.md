@@ -1,7 +1,5 @@
 # Wearby Parker
 
-![Banner](https://user-images.githubusercontent.com/79214086/135525049-5e75254e-65b8-41d8-aec3-700857275547.png)
-
 Project Link: [Wearby Parker](http://wearby-parker.herokuapp.com/#/)
 
 ## SUMMARY
