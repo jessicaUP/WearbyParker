@@ -22,11 +22,12 @@ Features:
 
 
 ## USER AUTHENTICATION
-First time users can easily create an account or use the provided Demo User profile. All features of the site are availble without login, however to save your cart one must be logged in. When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
+First time users can easily create an account or use the provided Demo User profile. To ensure security, all passwords are salted and hashed before added to the database. All features of the site are availble without login, however to save your cart one must have an account. When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
 Users must enter information into all inputs in order to click the login or sign-up button. User error handling provides specific messages for each input for aid.
 
 ## SHOPPING CART / TRYON CART
-This duel cart feature allows users to add items ready for purchase alongside up to 5 items to tryon for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
+This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
+![BuyForm](https://user-images.githubusercontent.com/79214086/135509880-73926c9e-5bd7-4f2d-bd0e-32b8845e2999.gif)
 
 * TRYON
 > By pressing the toggle on the product index, each product populates a button to allow users to add to cart.
