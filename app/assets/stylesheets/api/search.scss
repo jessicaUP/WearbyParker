@@ -31,7 +31,7 @@
   // word-break: break-all;
   grid-auto-flow: row;
   height: auto;
-  margin: 50px auto 10px auto;
+  margin: 100px auto 10px auto;
   // padding: 0 5%;
 
 
@@ -41,7 +41,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    width: 100%;
+    max-width: 100%;
     // min-width: 175px;
     // max-width: 275px;
     height: 225px;

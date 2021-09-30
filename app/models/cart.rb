@@ -26,8 +26,6 @@ class Cart < ApplicationRecord
 
   def self.find_cart(session_cart, current_user)
     cart = Cart.find_by(id: session_cart)
-
-    
     total_count = cart.cart_items.length + cart.cart_tryon_items.length if cart
 
     if !cart || total_count === 0

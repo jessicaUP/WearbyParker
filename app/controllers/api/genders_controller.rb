@@ -13,8 +13,7 @@ class Api::GendersController < ApplicationController
       if search_params[:filters]
         
         selectedFilters = search_params[:filters]
-        # @products = @products.joins(:frame_widths, :shapes, :colors, :materials, :nose_bridges)
-      filters = ['frame_width', 'shape', 'color', 'material', 'nose_bridge']
+        filters = ['frame_width', 'shape', 'color', 'material', 'nose_bridge']
 
       collected_products = []
       filters.each do |filter_name| 
