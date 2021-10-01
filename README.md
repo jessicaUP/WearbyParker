@@ -25,6 +25,9 @@ Features:
 First time users can easily create an account or use the provided Demo User profile. To ensure security, all passwords are salted and hashed before added to the database. All features of the site are availble without login, however to save your cart one must have an account. When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
 Users must enter information into all inputs in order to click the login or sign-up button. User error handling provides specific messages for each input for aid.
 
+## SHOPPING CART / TRYON CART
+This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
+
 ```ruby
   def self.find_cart(session_cart, current_user)
     cart = Cart.find_by(id: session_cart)
@@ -38,9 +41,6 @@ Users must enter information into all inputs in order to click the login or sign
     return cart
   end
 ```
-
-## SHOPPING CART / TRYON CART
-This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
 
 ![BuyForm](https://user-images.githubusercontent.com/79214086/135510227-0a7e58cc-51c3-4a21-ba97-269c13d2171d.gif)
 
@@ -76,9 +76,44 @@ The selected colorway persists from the product index page and is refelcted thro
 ![DynamicProductIndex](https://user-images.githubusercontent.com/79214086/135515386-966c75b9-f61c-4cc2-9f0a-e9c70d3f6c02.gif)
 
 ## FILTER
-From the product index page the user can drop down the dynamic Filter element. By selecting multiple options within the same catigory, the products will reflect any product with either option. When options across multiple catigories are selected, the product will reflect products with both features present. In addtion the Color catigory will only show the color option(s) selected within each product.
+From the product index page the user can drop down the dynamic Filter element. By selecting multiple options within the same catigory, the products will reflect any product with either option. When options across multiple catigories are selected, the product will reflect products with both features present. In addtion the Color catigory will only show the color option(s) selected within each product. By creating tables in the database for all catigories, the logic on the backend is optimized.
 
-By creating tables in the database for all catigories, the logic on the backend is optimized.
+```ruby
+    when 'color'
+      if filter
+        @colorsArr = []
+        filter.each do |id|
+           @colorsArr << id.to_i
+        end
+        next_step = filter.map do |id|
+          Color.find(id.to_i).products
+        end
+        collected_products << next_step
+      end
+```
+...
+```ruby 
+      collected_products.each do |type_arr| 
+        array = type_arr
+        first = array.pop.to_a
+        while array.length > 0 do 
+          next_step = array.pop.to_a
+          first = (first | next_step)
+        end
+        filter_combine << first
+      end
+
+      total = []
+      first = filter_combine.pop.to_a
+      while filter_combine.length > 0 do 
+        next_step = filter_combine.pop.to_a
+        first = (first & next_step)
+      end
+      total << first
+      
+      @products = (@products.to_a & total[0])
+    end
+```
 
 ![FIlterFeature](https://user-images.githubusercontent.com/79214086/135518820-35f615d6-bc0c-4622-aa30-76a8365cc270.gif)
 
