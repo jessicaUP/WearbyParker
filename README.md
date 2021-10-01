@@ -28,6 +28,8 @@ Users must enter information into all inputs in order to click the login or sign
 ## SHOPPING CART / TRYON CART
 This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
 
+![BuyForm](https://user-images.githubusercontent.com/79214086/135510227-0a7e58cc-51c3-4a21-ba97-269c13d2171d.gif)
+
 When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
 ```ruby
   def self.find_cart(session_cart, current_user)
@@ -42,8 +44,6 @@ When a user has a cart prior to loging in, the current cart will be prioritized 
     return cart
   end
 ```
-
-![BuyForm](https://user-images.githubusercontent.com/79214086/135510227-0a7e58cc-51c3-4a21-ba97-269c13d2171d.gif)
 
 * TRYON
 - By pressing the toggle on the product index, each product populates a button to allow users to add to cart.
