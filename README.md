@@ -78,7 +78,7 @@ The selected colorway persists from the product index page and is refelcted thro
 ## FILTER
 From the product index page the user can drop down the dynamic Filter element. By selecting multiple options within the same catigory, the products will reflect any product with either option. When options across multiple catigories are selected, the product will reflect products with both features present. In addtion the Color catigory will only show the color option(s) selected within each product. By creating tables in the database for all catigories, the logic on the backend is optimized.
 
-Each catigory is checked for selected filters and product colection is added to array.
+Each catigory is checked for selected filters and the product collection is added to array.
 ```ruby
     when 'color'
       if filter
@@ -92,7 +92,7 @@ Each catigory is checked for selected filters and product colection is added to 
         collected_products << next_step
       end
 ```
-...once all catigories have been added, selections within the same catigory (like color above) will use an 'or' operator to combine products. Then use the 'and' operator to compare the major catigories, selecting the final collection.
+...once all catigories have been added, selections within the same catigory (like color above) will use an 'or' operator to combine products. Then use the 'and' operator to compare the major catigories, curating the final collection.
 ```ruby 
       filter_combine = []
       collected_products.each do |type_arr| 
