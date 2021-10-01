@@ -22,12 +22,13 @@ Features:
 
 
 ## USER AUTHENTICATION
-First time users can easily create an account or use the provided Demo User profile. To ensure security, all passwords are salted and hashed before added to the database. All features of the site are availble without login, however to save your cart one must have an account. When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
+First time users can easily create an account or use the provided Demo User profile. To ensure security, all passwords are salted and hashed before added to the database. All features of the site are availble without login, however to save your cart one must have an account. 
 Users must enter information into all inputs in order to click the login or sign-up button. User error handling provides specific messages for each input for aid.
 
 ## SHOPPING CART / TRYON CART
 This duel cart feature allows users to add items ready for purchase alongside up to 5 items to try for free. To add items to the cart, users are navigated through a multi-page form for an intuitive experience. 
 
+When a user has a cart prior to loging in, the current cart will be prioritized over the cart stored on the user account.
 ```ruby
   def self.find_cart(session_cart, current_user)
     cart = Cart.find_by(id: session_cart)
