@@ -49,6 +49,8 @@ When a user has a cart prior to loging in, the current cart will be prioritized 
 - By pressing the toggle on the product index, each product populates a button to allow users to add to cart.
 - The switch is automatically turned off unless user navigates though the 'Home Try-on' located in the main navigation bar. A query is added to the url, prompting the tryon toggle to turn on.
 
+![TryonToggle](https://user-images.githubusercontent.com/79214086/135513624-55a82a97-7825-4751-9670-f6cf58428f84.gif)
+
 ```javascript
   tryonNav(gender) {
     return () => {
@@ -68,8 +70,6 @@ When a user has a cart prior to loging in, the current cart will be prioritized 
   }
   ```
 
-![TryonToggle](https://user-images.githubusercontent.com/79214086/135513624-55a82a97-7825-4751-9670-f6cf58428f84.gif)
-
 ## PRODUCTS
 Products are grouped by gender with custom imagery for Men and Women products. The dynamic layout scales images and adds or reduces columns for the optimal viewing experience. 
 The selected colorway persists from the product index page and is refelcted throughout the entire show page. On the show page users can explore the products by selecting the radio button or by using the cursor arrows when hovering over the image. 
@@ -78,6 +78,8 @@ The selected colorway persists from the product index page and is refelcted thro
 
 ## FILTER
 From the product index page the user can drop down the dynamic Filter element. By selecting multiple options within the same catigory, the products will reflect any product with either option. When options across multiple catigories are selected, the product will reflect products with both features present. In addtion the Color catigory will only show the color option(s) selected within each product. By creating tables in the database for all catigories, the logic on the backend is optimized.
+
+![FIlterFeature](https://user-images.githubusercontent.com/79214086/135518820-35f615d6-bc0c-4622-aa30-76a8365cc270.gif)
 
 Each catigory is checked for selected filters and the product collection is added to array.
 ```ruby
@@ -117,8 +119,6 @@ Each catigory is checked for selected filters and the product collection is adde
       @products = (@products.to_a & total[0])
     end
 ```
-
-![FIlterFeature](https://user-images.githubusercontent.com/79214086/135518820-35f615d6-bc0c-4622-aa30-76a8365cc270.gif)
 
 ## SEARCH
 The Search modal is available in both the main and product nav bar. The minimal design and the on-focus text input prompts users to type in a product name. The search shows all products by colorway. Once product is clicked, gender options become available linking to appropriate show page.
