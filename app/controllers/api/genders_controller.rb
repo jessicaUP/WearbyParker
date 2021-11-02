@@ -41,8 +41,6 @@ class Api::GendersController < ApplicationController
               end
               next_step = filter.map do |id|
                 Color.find(id.to_i).products
-                
-                # @colors << id.to_i
               end
 
               collected_products << next_step
@@ -78,14 +76,12 @@ class Api::GendersController < ApplicationController
       end
 
       total = []
-      
       first = filter_combine.pop.to_a
       while filter_combine.length > 0 do 
         next_step = filter_combine.pop.to_a
         first = (first & next_step)
       end
       total << first
-      
       
       @products = (@products.to_a & total[0])
     end
